@@ -1,6 +1,6 @@
-MARKETING CONTRACTOR AGREEMENT
+PR CONTRACTOR AGREEMENT
 
-This Marketing Contractor Agreement ("Agreement") is entered into as of [START_DATE] ("Effective Date") by and between:
+This PR Contractor Agreement ("Agreement") is entered into as of [START_DATE] ("Effective Date") by and between:
 
 COMPANY: Soul In PsyAbstract LLC, a Delaware limited liability company, EIN 30-1491964, with its registered address at 131 Continental Dr Suite 305, Newark, DE 19713 ("Company"); and
 
@@ -12,16 +12,18 @@ The Company and Contractor are each referred to herein individually as a "Party"
 
 1. ENGAGEMENT AND SCOPE OF SERVICES
 
-1.1 The Company engages Contractor, and Contractor agrees to provide, marketing services in connection with the Company's SIPA OS product suite — a suite of productivity applications designed for neurodivergent users — as further described in this Agreement (the "Services").
+1.1 The Company engages Contractor, and Contractor agrees to provide, public relations services in connection with the Company's SIPA OS product suite — a suite of AI productivity and wellness applications designed for neurodivergent users (including individuals with ADHD and BPD) — as further described in this Agreement (the "Services").
 
 1.2 The Services shall include, without limitation:
 
-    (a) Developing and executing social media marketing strategy across Facebook, Instagram, LinkedIn, and TikTok;
-    (b) Creating original content including posts, copy, graphics, campaign assets, and promotional materials for SIPA OS applications;
-    (c) Managing and scheduling social media campaigns on behalf of the Company;
-    (d) Tracking and reporting on performance metrics and campaign outcomes; and
-    (e) Delivering a written monthly deliverables report to the Company summarizing activities completed, metrics achieved, and planned activities for the following month; and
-    (f) Attending a minimum of two (2) relevant industry events per calendar month on behalf of the Company, including but not limited to startup networking events, product launches, marketing and growth conferences, and community meetups relevant to the Company's target audience of neurodivergent users, for purposes of brand visibility, content creation, and direct community engagement. Virtual or online events shall count as one-half (0.5) of one qualifying event toward the monthly minimum. Contractor shall notify the Company of planned event attendance no later than seventy-two (72) hours in advance and shall provide event-derived content (e.g., social media posts, photos, or recap copy) within forty-eight (48) hours following attendance.
+    (a) Developing and executing a PR strategy targeting tier-1 technology, mental health, and neurodivergent-focused media outlets, including but not limited to TechCrunch, Wired, Geektime, CTech, ADDitude Magazine, and Psychology Today;
+    (b) Building and maintaining a media contact database of journalists, editors, and influencers relevant to AI, mental health, and neurodivergent communities;
+    (c) Drafting and distributing press releases, media pitches, and story angles on behalf of the Company;
+    (d) Securing and coordinating press interviews, podcast appearances, and editorial features for the Company's founder and products;
+    (e) Monitoring media coverage and providing the Company with monthly press clippings and coverage summaries;
+    (f) Supporting investor relations outreach through coordinated media narratives; and
+    (g) Delivering a written monthly deliverables report to the Company summarizing activities completed, coverage obtained, metrics achieved, and planned activities for the following month; and
+    (h) Attending a minimum of four (4) relevant industry events per calendar month on behalf of the Company, including but not limited to technology conferences, startup networking events, investor meetups, media industry events, and neurodivergent or mental health advocacy events, for purposes of brand visibility, media relationship cultivation, and Company representation. Virtual or online events shall count as one-half (0.5) of one qualifying event toward the monthly minimum. Contractor shall notify the Company of planned event attendance no later than seventy-two (72) hours in advance and shall provide a brief written summary per event within forty-eight (48) hours following attendance.
 
 1.3 Contractor shall perform the Services in a professional and timely manner consistent with industry standards and the Company's reasonable directions.
 
@@ -65,7 +67,7 @@ The Company and Contractor are each referred to herein individually as a "Party"
 
 4. INTELLECTUAL PROPERTY ASSIGNMENT
 
-4.1 All content, materials, works, and deliverables created, developed, or produced by Contractor in connection with the Services — including but not limited to social media posts, copy, graphics, campaign assets, creative strategies, photographs, videos, and any derivative works thereof — shall be considered works made for hire to the fullest extent permitted by applicable law (collectively, "Work Product").
+4.1 All content, materials, works, and deliverables created, developed, or produced by Contractor in connection with the Services — including but not limited to press releases, media pitches, story narratives, brand messaging, media contact databases, PR strategies, and any derivative works thereof — shall be considered works made for hire to the fullest extent permitted by applicable law (collectively, "Work Product").
 
 4.2 To the extent any Work Product does not qualify as work made for hire, Contractor hereby irrevocably assigns to the Company all right, title, and interest in and to such Work Product, including all intellectual property rights therein, throughout the world, in perpetuity.
 
@@ -77,7 +79,7 @@ The Company and Contractor are each referred to herein individually as a "Party"
 
 5. CONFIDENTIALITY
 
-5.1 "Confidential Information" means any non-public information disclosed by the Company to Contractor, or to which Contractor gains access in connection with the Services, including but not limited to: business plans, financial information, product roadmaps, user data, technical specifications, marketing strategies, customer and partner information, and the terms of this Agreement.
+5.1 "Confidential Information" means any non-public information disclosed by the Company to Contractor, or to which Contractor gains access in connection with the Services, including but not limited to: business plans, financial information, product roadmaps, user data, technical specifications, investor relations materials, media strategy, customer and partner information, and the terms of this Agreement.
 
 5.2 Contractor agrees to: (a) hold all Confidential Information in strict confidence; (b) not disclose Confidential Information to any third party without the Company's prior written consent; and (c) use Confidential Information solely for the purpose of performing the Services.
 
@@ -89,9 +91,9 @@ The Company and Contractor are each referred to herein individually as a "Party"
 
 6. NON-COMPETE
 
-6.1 During the term of this Agreement and for a period of six (6) months following the termination of this Agreement for any reason, Contractor shall not, directly or indirectly, provide marketing, consulting, or promotional services to any individual or entity whose primary business is the development or sale of productivity software or applications targeted at neurodivergent users, including but not limited to applications for ADHD, autism spectrum, dyslexia, anxiety management, or related conditions, that compete with the Company's SIPA OS product suite.
+6.1 During the term of this Agreement and for a period of six (6) months following the termination of this Agreement for any reason, Contractor shall not, directly or indirectly, provide public relations, media outreach, or communications consulting services to any individual or entity whose primary business is the development or sale of productivity software or applications targeted at neurodivergent users, including but not limited to applications for ADHD, autism spectrum, dyslexia, anxiety management, or related conditions, that compete with the Company's SIPA OS product suite.
 
-6.2 The Parties acknowledge that this non-compete restriction is reasonable in scope, duration, and geographic reach given the nature of the Services and the Company's legitimate business interests in protecting its proprietary marketing strategies and goodwill.
+6.2 The Parties acknowledge that this non-compete restriction is reasonable in scope, duration, and geographic reach given the nature of the Services and the Company's legitimate business interests in protecting its proprietary PR strategy, media relationships, and goodwill.
 
 ─────────────────────────────────────────────────────────────────────────────
 
@@ -111,7 +113,7 @@ The Company and Contractor are each referred to herein individually as a "Party"
 
 8.1 Each Party represents and warrants that: (a) it has full authority to enter into this Agreement; and (b) this Agreement does not conflict with any other agreement, obligation, or legal restriction binding on such Party.
 
-8.2 Contractor further represents and warrants that: (a) the Services and all Work Product shall be original and shall not infringe any third-party intellectual property rights; and (b) Contractor is not subject to any non-compete, non-solicitation, or confidentiality agreement that would restrict performance of the Services.
+8.2 Contractor further represents and warrants that: (a) the Services and all Work Product shall be original and shall not infringe any third-party intellectual property rights; (b) Contractor is not subject to any non-compete, non-solicitation, or confidentiality agreement that would restrict performance of the Services; and (c) Contractor holds no undisclosed conflicts of interest with any media outlet, journalist, or publication that would impair Contractor's ability to represent the Company in good faith.
 
 ─────────────────────────────────────────────────────────────────────────────
 
@@ -120,6 +122,8 @@ The Company and Contractor are each referred to herein individually as a "Party"
 9.1 In no event shall either Party be liable for indirect, incidental, consequential, special, or punitive damages arising out of or related to this Agreement, even if advised of the possibility of such damages.
 
 9.2 The Company's total cumulative liability to Contractor under this Agreement shall not exceed the total value of Profit Share payments, if any, paid to Contractor in the three (3) months preceding the event giving rise to the claim.
+
+9.3 The Company makes no representation or guarantee regarding the outcome of any media placement or press coverage. Contractor's performance shall be measured by reasonable effort and activity standards, not by guaranteed coverage results.
 
 ─────────────────────────────────────────────────────────────────────────────
 
@@ -141,7 +145,7 @@ The Company and Contractor are each referred to herein individually as a "Party"
 
 ─────────────────────────────────────────────────────────────────────────────
 
-IN WITNESS WHEREOF, the Parties have executed this Marketing Contractor Agreement as of the Effective Date.
+IN WITNESS WHEREOF, the Parties have executed this PR Contractor Agreement as of the Effective Date.
 
 SOUL IN PSYABSTRACT LLC
 
@@ -164,17 +168,41 @@ EXHIBIT A — MONTHLY DELIVERABLES REPORT TEMPLATE
 
 Due: by the 5th of each calendar month for the prior month.
 
-1. Platforms active during period: ___________________________________________
-2. Total posts published: ___________________________________________________
-3. Content types produced: __________________________________________________
-4. Key performance metrics (reach, engagement, follower growth): ______________
-5. Campaigns launched or concluded: _________________________________________
-6. Events attended during period (name, date, type, in-person/virtual): ________
-7. Content produced from events (posts, photos, recaps): _____________________
-8. Issues or blockers encountered: __________________________________________
-9. Planned activities for next month (incl. events registered): ________________
+1. Media outlets pitched during period: _______________________________________
+2. Press placements secured (publication, date, link): _________________________
+3. Interviews or appearances arranged: _______________________________________
+4. Media contact database size (new contacts added): __________________________
+5. Coverage metrics (estimated reach, impressions where available): ____________
+6. Investor or strategic inquiries attributed to PR activity: __________________
+7. Events attended during period (name, date, type, in-person/virtual): ________
+8. Event outcomes (contacts made, pitches delivered, follow-ups initiated): _____
+9. Issues or blockers encountered: __________________________________________
+10. Planned activities for next month (incl. events registered): ________________
 
 Contractor signature: ___________________________ Date: ____________________
+
+─────────────────────────────────────────────────────────────────────────────
+
+EXHIBIT B — PR STRATEGY BRIEF (REFERENCE)
+
+Key Narratives:
+  1. Personal: AI built by a neurodivergent founder for neurodivergent minds
+  2. Product: First integrated AI suite for ADHD/BPD (Focus + NeuroPower + SIPA AI + Games)
+  3. Market: Mental health tech + neurodivergent productivity gap
+  4. Investment: Pre-seed opportunity, Delaware LLC, equity-model hiring
+
+Target Media Tiers:
+  Tier 1 (Global): TechCrunch, Wired, Forbes Tech
+  Tier 2 (Israel): Geektime, CTech (Calcalist), The Jerusalem Post Business
+  Tier 3 (Niche): ADDitude Magazine, The Mighty, NeuroClastic, Psychology Today
+
+KPI — First 3 Months:
+  - 6+ media mentions in tier-1/2 outlets
+  - 2-3 founder interviews or profiles
+  - 50+ media contacts in database
+  - 20+ pitches sent per month
+  - 2,000+ UTM-tracked visits from PR activity
+  - 5+ investor inquiries attributed to press coverage
 
 ─────────────────────────────────────────────────────────────────────────────
 
