@@ -45,6 +45,21 @@ support ticket found during platform research for EXP-004/005)
   result — the honest answer is "we don't know, and can't find out without paying for a
   Nebius Dedicated Endpoint," which was deliberately not pursued (see repo README approach:
   free/self-hostable paths first).
-- No further action planned on this specific job. Superseded in practice by EXP-005
-  (Nebius fine-tune on a size-appropriate model chosen specifically to remain locally
-  downloadable and mergeable).
+- Superseded in practice by EXP-005 (Nebius fine-tune on a size-appropriate model chosen
+  specifically to remain locally downloadable and mergeable).
+
+## TODO — open path to actually evaluate this job (not started)
+
+Investigated 2026-07-22 whether a Nebius **Dedicated Endpoint** ($14.80/hr for a
+4x H200 replica, confirmed live in console) could serve the `sipa-protocol-v1` adapter
+directly, avoiding the deprecated per-token LoRA path. Blocked: per
+`custom-weights.md`, serving custom/fine-tuned weights on a Dedicated Endpoint is
+**"currently in beta and available on request"** — the standard self-service deploy flow
+only provisions the vanilla base model, not our adapter. Spending money on that would test
+the wrong thing.
+
+**Next step (not yet done):** file a new Nebius support ticket requesting Custom Weights
+beta access for project `project-e00pp0qspr00hgse3ffpaf`, referencing job
+`ftjob-56ea846badc64bc6b8b53916d432054a` / adapter `sipa-protocol-v1`, so the adapter can
+be attached to a Dedicated Endpoint once approved. Until that ticket is filed and answered,
+this experiment stays closed/unevaluable — no further spend planned in the meantime.
