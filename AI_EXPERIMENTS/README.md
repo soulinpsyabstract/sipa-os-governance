@@ -11,6 +11,10 @@ and inconclusive ones. Nothing here is spun for marketing purposes.
 |----|------|-----------|---------|--------|--------|
 | [EXP-001](EXP-001__DeepSeek-R1-Distill-Qwen-1.5B.md) | 2026-07-21 | DeepSeek-R1-Distill-Qwen-1.5B | 24 synthetic examples | BASE 1/5 vs FT 1/5 — no measurable difference | closed |
 | [EXP-002](EXP-002__Qwen2.5-7B-Instruct.md) | 2026-07-22 | Qwen2.5-7B-Instruct | 302 real canon-grounded examples | BASE 4/5 (80%) vs FT 3/5 (60%) — fine-tune measurably worse | closed |
+| [EXP-003](EXP-003__Qwen3-235B-A22B-Nebius.md) | 2026-07-20 | Qwen3-235B-A22B-Instruct-2507 (Nebius) | unconfirmed, likely 24 examples | Job succeeded but **unevaluable** — Nebius deprecated LoRA inference deployment, model too large to serve locally | closed |
+| EXP-004 | 2026-07-22 | Mistral-7B-Instruct-v0.3 (Lightning L4) | 302 real canon-grounded examples | running | in progress |
+| EXP-005 | 2026-07-22 | Llama-3.1-8B-Instruct (Nebius) | 302 real canon-grounded examples | running | in progress |
+| EXP-006 | 2026-07-22 | gpt-4o-mini (Azure OpenAI) | 302 real canon-grounded examples | file upload pending | in progress |
 
 ## Methodology (shared across experiments)
 
