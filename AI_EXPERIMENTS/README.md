@@ -14,7 +14,8 @@ and inconclusive ones. Nothing here is spun for marketing purposes.
 | [EXP-003](EXP-003__Qwen3-235B-A22B-Nebius.md) | 2026-07-20 | Qwen3-235B-A22B-Instruct-2507 (Nebius) | unconfirmed, likely 24 examples | Job succeeded but **unevaluable** — Nebius deprecated LoRA inference deployment, model too large to serve locally | closed |
 | [EXP-004](EXP-004__Mistral-7B-Instruct.md) | 2026-07-22 | Mistral-7B-Instruct-v0.3 (Lightning L4) | 302 real canon-grounded examples | BASE 2/5 (40%) vs FT 3/5 (60%) — first genuine improvement, with caveats | closed |
 | [EXP-005](EXP-005__Llama-3.1-8B-Nebius.md) | 2026-07-22 | Llama-3.1-8B-Instruct (Nebius) | 302 real canon-grounded examples | Job succeeded, but downloaded adapter produces incoherent output when merged locally — broken, not a Protocol-0 result | closed |
-| EXP-006 | 2026-07-22 | gpt-4o-2024-08-06 (Azure OpenAI) | 302 real canon-grounded examples | running | in progress |
+| [EXP-006](EXP-006__gpt-4o-Azure.md) | 2026-07-22/23 | gpt-4o-2024-08-06 (Azure OpenAI) | 302 real canon-grounded examples | BASE 4/5 (80%) vs FT 3/5 (60%) — regression; 3rd independent confirmation of a fabrication-under-protocol-language pattern | closed |
+| EXP-007 | 2026-07-22/23 | Phi-3.5-mini-instruct (Lightning T4) | 302 real canon-grounded examples | running (fixed a transformers/remote-code incompatibility mid-run) | in progress |
 
 ## Methodology (shared across experiments)
 
