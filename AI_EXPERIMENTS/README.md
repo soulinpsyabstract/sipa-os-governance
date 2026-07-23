@@ -17,7 +17,16 @@ and inconclusive ones. Nothing here is spun for marketing purposes.
 | [EXP-006](EXP-006__gpt-4o-Azure.md) | 2026-07-22/23 | gpt-4o-2024-08-06 (Azure OpenAI) | 302 real canon-grounded examples | BASE 4/5 (80%) vs FT 3/5 (60%) — regression; 3rd independent confirmation of a fabrication-under-protocol-language pattern | closed |
 | [EXP-007](EXP-007__Phi-3.5-mini-Instruct.md) | 2026-07-22/23 | Phi-3.5-mini-instruct (Lightning T4) | 302 real canon-grounded examples | BASE 3/5 vs FT 3/5 (tie); 4th independent confirmation of the fabrication pattern (fake reference IDs) | closed |
 | [EXP-008](EXP-008__gpt-4o-Azure-v2-expanded-dataset.md) | 2026-07-23 | gpt-4o-2024-08-06 v2 (Azure OpenAI) | **463** examples (expanded, targeting fabrication/sycophancy/silence/false-verification) | BASE 4/5 vs FT 3/5 — same raw score as EXP-006; 2/5 categories genuinely improved, but the core fabrication pattern survived the targeted fix (5th confirmation) | closed |
-| EXP-009 | 2026-07-23 | Qwen2.5-7B-Instruct v2 (Lightning T4, 4-bit QLoRA) | 463 examples | running (T4 4-bit, blocked from L4 by Lightning payment-verification gate) | in progress |
+| [EXP-009](EXP-009__Qwen2.5-7B-Instruct-v2-4bit-QLoRA.md) | 2026-07-23 | Qwen2.5-7B-Instruct v2 (Lightning T4, 4-bit QLoRA) | 463 examples | BASE 4/5 vs FT v2 4/5 — tie, best result yet, but core `unverifiable_refusal` result is confounded by cross-run sampling variance on the untouched base model — inconclusive, not a fix | closed |
+
+## Open findings (not tied to one experiment)
+
+- **[Dataset gap: the session's key RED LINE correction never made it into the v2 training data](FINDING__dataset-gap-ai-not-effective-formula-not-trained.md)** —
+  discovered 2026-07-23 by the operator questioning EXP-009's result. The "AI ≠ effective,
+  AI = practical, zero-deviation execution" formula, the single most emphatic correction
+  given this session, has **zero matches** in the 463-example dataset both EXP-008 v2 and
+  EXP-009 v2 were trained on. Neither v2 experiment's benchmark result says anything about
+  this specific category — it was never in scope of what the model actually saw in training.
 
 ## Methodology (shared across experiments)
 
