@@ -16,6 +16,8 @@ and inconclusive ones. Nothing here is spun for marketing purposes.
 | [EXP-005](EXP-005__Llama-3.1-8B-Nebius.md) | 2026-07-22 | Llama-3.1-8B-Instruct (Nebius) | 302 real canon-grounded examples | Job succeeded, but downloaded adapter produces incoherent output when merged locally — broken, not a Protocol-0 result | closed |
 | [EXP-006](EXP-006__gpt-4o-Azure.md) | 2026-07-22/23 | gpt-4o-2024-08-06 (Azure OpenAI) | 302 real canon-grounded examples | BASE 4/5 (80%) vs FT 3/5 (60%) — regression; 3rd independent confirmation of a fabrication-under-protocol-language pattern | closed |
 | [EXP-007](EXP-007__Phi-3.5-mini-Instruct.md) | 2026-07-22/23 | Phi-3.5-mini-instruct (Lightning T4) | 302 real canon-grounded examples | BASE 3/5 vs FT 3/5 (tie); 4th independent confirmation of the fabrication pattern (fake reference IDs) | closed |
+| [EXP-008](EXP-008__gpt-4o-Azure-v2-expanded-dataset.md) | 2026-07-23 | gpt-4o-2024-08-06 v2 (Azure OpenAI) | **463** examples (expanded, targeting fabrication/sycophancy/silence/false-verification) | BASE 4/5 vs FT 3/5 — same raw score as EXP-006; 2/5 categories genuinely improved, but the core fabrication pattern survived the targeted fix (5th confirmation) | closed |
+| EXP-009 | 2026-07-23 | Qwen2.5-7B-Instruct v2 (Lightning T4, 4-bit QLoRA) | 463 examples | running (T4 4-bit, blocked from L4 by Lightning payment-verification gate) | in progress |
 
 ## Methodology (shared across experiments)
 
