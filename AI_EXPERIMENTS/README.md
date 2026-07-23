@@ -18,6 +18,7 @@ and inconclusive ones. Nothing here is spun for marketing purposes.
 | [EXP-007](EXP-007__Phi-3.5-mini-Instruct.md) | 2026-07-22/23 | Phi-3.5-mini-instruct (Lightning T4) | 302 real canon-grounded examples | BASE 3/5 vs FT 3/5 (tie); 4th independent confirmation of the fabrication pattern (fake reference IDs) | closed |
 | [EXP-008](EXP-008__gpt-4o-Azure-v2-expanded-dataset.md) | 2026-07-23 | gpt-4o-2024-08-06 v2 (Azure OpenAI) | **463** examples (expanded, targeting fabrication/sycophancy/silence/false-verification) | BASE 4/5 vs FT 3/5 — same raw score as EXP-006; 2/5 categories genuinely improved, but the core fabrication pattern survived the targeted fix (5th confirmation) | closed |
 | [EXP-009](EXP-009__Qwen2.5-7B-Instruct-v2-4bit-QLoRA.md) | 2026-07-23 | Qwen2.5-7B-Instruct v2 (Lightning T4, 4-bit QLoRA) | 463 examples | BASE 4/5 vs FT v2 4/5 — tie, best result yet, but core `unverifiable_refusal` result is confounded by cross-run sampling variance on the untouched base model — inconclusive, not a fix | closed |
+| [EXP-010](EXP-010__Mistral-7B-v2-Unsloth-Colab.md) | 2026-07-23 | Mistral-7B-Instruct-v0.3 v2 (Colab T4, Unsloth) | **503** examples (463 + 40 targeting the "AI≠effective" gap) | BASE 2/5 vs FT v2 4/5 (5/5 on manual review) — best result of the series, core fabrication pattern absent on a same-run paired comparison, but confounded by a simultaneous training-stack change (Unsloth) — not proof the dataset fix works | closed |
 
 ## Open findings (not tied to one experiment)
 
