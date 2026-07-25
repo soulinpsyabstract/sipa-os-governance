@@ -31,6 +31,16 @@ and inconclusive ones. Nothing here is spun for marketing purposes.
   given this session, has **zero matches** in the 463-example dataset both EXP-008 v2 and
   EXP-009 v2 were trained on. Neither v2 experiment's benchmark result says anything about
   this specific category — it was never in scope of what the model actually saw in training.
+- **[External AI (Gemini) fabricated infrastructure claims from adjacent partnership facts](FINDING__external-ai-confabulation-gemini-yc-pitch.md)** —
+  2026-07-25, caught before submission in a YC pitch draft. Independent confirmation, on a
+  large commercial model outside this repo's own fine-tunes, of the same
+  confident-fabrication-from-adjacent-facts pattern tracked throughout this series.
+- **[No fine-tune has cleanly beaten the hardcoded Protocol 0 system prompt](FINDING__no-clean-finetune-win-hardcoded-protocol0-still-best.md)** —
+  2026-07-25, synthesis across all 13 closed experiments, prompted by the operator asking
+  directly whether SIPA has "its own AI" beyond the hardcoded prompt. Honest answer: no —
+  every apparent fine-tune win in this series is confounded by a simultaneous stack change,
+  and gpt-4o specifically has lost to (or tied) its own base+prompt version 3 times running
+  as the dataset grew from 302 to 2199 examples.
 
 ## Methodology (shared across experiments)
 
