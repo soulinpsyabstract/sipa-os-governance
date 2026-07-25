@@ -22,10 +22,10 @@ compatibility.
 | Phi-3.5-mini-instruct v2 | EXP-011 | Colab T4, Unsloth | broken — base model itself crashes on this stack, unevaluable |
 | Mistral-7B-Instruct-v0.3 v3 | EXP-012 | Colab T4, Unsloth | in progress, 1500-example dataset |
 
-## Candidates — not yet run, unverified compatibility
+## Candidates — from operator's list (2026-07-25), not yet run
 
-From operator's list (2026-07-25): Kimi, DeepSeek, Qwen, Hermes, Nemotron, Mistral.
-DeepSeek/Qwen/Mistral already covered above. The remaining three, plus additions:
+Kimi, DeepSeek, Qwen, Hermes, Nemotron, Mistral. DeepSeek/Qwen/Mistral already covered
+above (tested). The remaining three:
 
 | Model | Maker | Notes |
 |---|---|---|
@@ -33,12 +33,12 @@ DeepSeek/Qwen/Mistral already covered above. The remaining three, plus additions
 | **Hermes (Nous)** | Nous Research | Already an instruction-tuned fine-tune of Llama/Mistral/Qwen bases, not itself a base checkpoint — a LoRA on top of Hermes weights is possible but untested here; unsloth preset availability not checked. |
 | **Nemotron-Mini-4B** | NVIDIA | Smaller Nemotron variant, more realistic for T4 than the larger Nemotron models. Not verified to have an unsloth 4-bit preset — not checked yet. |
 | **Llama-3.1-8B-Instruct** | Meta | Already attempted (EXP-005) via Nebius, broken on merge — not yet retried via the Colab/Unsloth pipeline that worked for Mistral. |
-| **GLM-4-9B** | Zhipu AI | Not attempted. Unsloth preset availability not checked. |
-| **Gemma-2-9B** | Google | Not attempted. Unsloth preset availability not checked. |
-| **InternLM2.5-7B** | Shanghai AI Lab | Not attempted. Unsloth preset availability not checked. |
-| **Yi-1.5-9B** | 01.AI | Not attempted. Unsloth preset availability not checked. |
 
-**Honesty note:** "not verified" above means exactly that — I have not confirmed an
-`unsloth/*-bnb-4bit` checkpoint exists for these, nor run them. Before spending a Colab
-session on any of them, that should be checked first (`hf_hub` search or HF page), same
-as was skipped for Phi-3.5 going in and cost EXP-011 a broken run.
+I removed the four speculative additions I'd put in the earlier version (GLM-4-9B,
+Gemma-2-9B, InternLM2.5-7B, Yi-1.5-9B) — I hadn't verified any of them, they weren't on
+the operator's list, and padding the list with unchecked names is exactly what this
+repo's honesty charter says not to do.
+
+**Before spending a Colab session on any of the four above**, check the HF page for an
+`unsloth/*-bnb-4bit` checkpoint first — skipping that check for Phi-3.5 is part of what
+cost EXP-011 a broken run.
