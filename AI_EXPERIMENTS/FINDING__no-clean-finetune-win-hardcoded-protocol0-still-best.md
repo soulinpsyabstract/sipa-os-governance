@@ -79,3 +79,15 @@ follow-up would need:
   Llama-3.1-8B pending Lightning credit top-up; Llama-3.1-8B and Qwen2.5-7B via Together
   AI trained but benchmark-blocked on inference access; GLM-4-9B and Gemma-2-9B with no
   working platform found yet).
+
+## Update — a live, unsettled contradiction (2026-07-26)
+
+[EXP-014](EXP-014__gpt-4o-Azure-v5-2349-examples.md), run the same night this finding was
+written (job was still in progress when the paragraphs above were drafted), produced the
+first gpt-4o fine-tune in this series whose `unverifiable_refusal` response was not a
+fabrication on manual review — a genuine break from EXP-006/008/013's 3-for-3 pattern.
+Corrected picture was a tie (5/5 vs 5/5), not a fine-tune win, so this does not overturn
+the verdict above. But it is a real data point cutting against the "gpt-4o fine-tune never
+beats/matches base on this specific category" framing this finding leaned on — flagged
+here rather than silently left stale. A single sample at one temperature is not enough to
+call this fixed; see EXP-014's own caveats before treating it as resolved.
