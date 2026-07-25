@@ -30,9 +30,11 @@ Colab T4 для тренировочных прогонов). Прямо сей�
 Мы не заявляем о создании абсолютного технического рва (Moat), так как еще не проводили
 прямого бенчмаркинга наших локальных моделей против сложных оптимизированных промптов на
 коммерческих закрытых моделях верхнего уровня (например, GPT-4o). Наша уникальность — в
-методологии сбора данных и воспроизводимом пайплайне: за плечами 11 проведенных экспериментов,
-где EXP-010 на текущий момент показал лучший результат в серии (с допущением, что на метрики
-повлияла одновременная смена тренировочного движка, что мы и верифицируем в текущем EXP-012).
+методологии сбора данных и воспроизводимом пайплайне: за плечами 16 завершённых прогонов
+(12 из них с полным разбором результатов), где Mistral-7B стабильно показывает лучший
+результат в серии (EXP-004, EXP-010, EXP-012, и независимо воспроизведён на отдельной
+GPU-платформе после потери первого прогона по квоте) — паттерн, который мы продолжаем
+проверять в контролируемых условиях, а не выдаём за окончательно доказанный.
 
 ## 3. What do you understand about your users/domain that others don't?
 
@@ -81,11 +83,11 @@ Our experiment pipeline runs on available cloud compute (Google Colab T4 for tra
 Azure OpenAI for a parallel gpt-4o track). The training dataset has grown from an initial
 503 examples to 2,349, through successive expansion rounds each tied to a specific canon
 source (our internal governance rules, then our earliest historical protocol documents from
-December 2025). 14 fine-tuning experiments have been run to date across 7 base model
-families (DeepSeek, Qwen, Mistral, Llama, gpt-4o, Phi, and — in progress as of this
-writing — GLM/Gemma/Hermes) and 4 platforms (Lightning AI, Nebius, Azure OpenAI, Google
-Colab) — including broken and inconclusive ones, which we document as such rather than
-omit.
+December 2025). 16 fine-tuning runs completed to date (12 with full written analysis,
+4 more trained and awaiting write-up) across 6 base model families (DeepSeek, Qwen,
+Mistral, Llama, gpt-4o, Phi — with GLM, Gemma, and Hermes attempts in progress as of this
+writing) and 5 platforms (Lightning AI, Nebius, Azure OpenAI, Google Colab, Together AI)
+— including broken and inconclusive ones, which we document as such rather than omit.
 
 Legally, the company is fully formed: a Delaware LLC, EIN issued, and an internal IP Policy
 recorded in the project's public governance repository.
