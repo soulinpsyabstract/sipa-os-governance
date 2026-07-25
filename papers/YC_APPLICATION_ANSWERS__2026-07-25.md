@@ -5,7 +5,8 @@ against this repo's actual state (see `AI_EXPERIMENTS/FINDING__external-ai-confa
 for the caught error and why it happened). This version has no known overclaiming — verified
 against `AI_EXPERIMENTS/README.md`, `AI_EXPERIMENTS/EXP-009`, and project state as of this date.
 
-Deadline: 2026-07-27. Not yet submitted — not yet translated to English.
+Deadline: 2026-07-27. Not yet submitted. English translation added below (see
+"English — copy-paste ready for the YC form") — ready to paste into the actual form.
 
 ## 1. What is your tech stack and what are you building?
 
@@ -62,6 +63,78 @@ ZeroTier mesh), полностью спроектированных и пост�
 остаётся единственным субъектом решений (это же закреплено юридически: `OWNERSHIP.md` и
 `GOVERNANCE.md` в публичном репозитории проекта называют Aelin AquaSoul Founder/CEO/Chief
 Architect и primary decision-maker — не AI).
+
+## English — copy-paste ready for the YC form
+
+Translated and updated to current state (2349-example dataset, EXP-012 closed, EXP-013/014
+still running as of this writing — not claimed as finished).
+
+### 1. What is your tech stack and what are you building?
+
+We're building SIPA OS, a cognitive-support system for users with ADHD and BPD. Instead of
+relying on long context-stuffed system prompts against commercial APIs, we're researching
+iterative local fine-tuning of small language models toward specific behavioral compliance
+patterns — a resource, not a decision-maker, that never fabricates and stops to ask under
+ambiguity.
+
+Our experiment pipeline runs on available cloud compute (Google Colab T4 for training runs,
+Azure OpenAI for a parallel gpt-4o track). The training dataset has grown from an initial
+503 examples to 2,349, through successive expansion rounds each tied to a specific canon
+source (our internal governance rules, then our earliest historical protocol documents from
+December 2025). 14 fine-tuning experiments have been run to date across 7 base model
+families (DeepSeek, Qwen, Mistral, Llama, gpt-4o, Phi, and — in progress as of this
+writing — GLM/Gemma/Hermes) and 4 platforms (Lightning AI, Nebius, Azure OpenAI, Google
+Colab) — including broken and inconclusive ones, which we document as such rather than
+omit.
+
+Legally, the company is fully formed: a Delaware LLC, EIN issued, and an internal IP Policy
+recorded in the project's public governance repository.
+
+### 2. What is unique about what you're building?
+
+We're building AI-support interfaces aimed at compensating for executive-function deficits
+from inside the lived experience of neurodivergence. We compare base model weights against
+our fine-tuned weights, trained on proprietary behavioral traces.
+
+We do not claim an absolute technical moat — we have not yet run a direct benchmark of our
+local models against heavily-optimized prompts on top-tier closed commercial models (e.g.
+GPT-4o). Our differentiation is in the methodology and the reproducible pipeline itself: 14
+experiments run so far, with mixed but real findings — automatic benchmark scores are
+frequently wrong in both directions (false positives on the base model, false negatives on
+the fine-tuned model), and every experiment write-up includes a manual, response-by-response
+correction of the raw score, not just the raw number. We treat this as a finding about the
+methodology, not something to smooth over.
+
+### 3. What do you understand about your users/domain that others don't?
+
+We've found that sampling variance (even at low temperature — e.g. temperature=0.3 with
+do_sample=True) introduces real noise into the stability of microaction generation for the
+user. During one experiment (EXP-009) we documented random sampling fluctuations muddying
+results between runs of the identical prompt.
+
+We haven't found public data suggesting existing AI assistants on the market account for
+this state-retention factor as it applies specifically to cognitive breakdowns under ADHD
+or BPD. We're working to balance model flexibility against firm context retention by
+training weights on custom behavioral traces rather than relying on prompt engineering
+alone.
+
+### 4. How do you and your system work together?
+
+The architecture runs on 5 physical nodes (a home server hub plus four devices, mesh-networked
+via ZeroTier), entirely designed and built by me, Aelin AquaSoul. I am the sole architect and
+decision-maker: I set direction and approve every action; the final call is always mine. This
+isn't rhetoric — it's an enforced system rule (internally: Protocol 0, CORE LAW), and it's
+verified in practice daily: the AI layer never acts without an explicit operator command, has
+no independent initiative, and no authority to interpret ambiguous requests on its own.
+
+Direct execution — code, files, commits, dataset generation, deployment, communication — is
+largely delegated to AI agents operating on top of this infrastructure. In practice: I define
+the task and approve each step; the AI absorbs the volume of routine and technical execution
+that would otherwise require a dedicated engineering team. This lets one person run a
+full multi-layer system — but the human, not the AI, remains the sole subject of decisions
+(this is also legally recorded: our public governance repository's OWNERSHIP.md and
+GOVERNANCE.md name Aelin AquaSoul as Founder/CEO/Chief Architect and primary decision-maker
+— not the AI).
 
 ## How to mention AMD/NVIDIA honestly (if the form has an Awards/Partnerships section)
 
