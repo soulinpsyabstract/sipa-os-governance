@@ -34,11 +34,19 @@ above (tested). The remaining three:
 | **Nemotron-Mini-4B** | NVIDIA | Smaller Nemotron variant, more realistic for T4 than the larger Nemotron models. Not verified to have an unsloth 4-bit preset — not checked yet. |
 | **Llama-3.1-8B-Instruct** | Meta | Already attempted (EXP-005) via Nebius, broken on merge — not yet retried via the Colab/Unsloth pipeline that worked for Mistral. |
 
-I removed the four speculative additions I'd put in the earlier version (GLM-4-9B,
-Gemma-2-9B, InternLM2.5-7B, Yi-1.5-9B) — I hadn't verified any of them, they weren't on
-the operator's list, and padding the list with unchecked names is exactly what this
-repo's honesty charter says not to do.
-
 **Before spending a Colab session on any of the four above**, check the HF page for an
 `unsloth/*-bnb-4bit` checkpoint first — skipping that check for Phi-3.5 is part of what
 cost EXP-011 a broken run.
+
+## Candidates — verified via HF Hub search, 2026-07-25
+
+An earlier version of this file listed GLM-4-9B, Gemma-2-9B, InternLM2.5-7B, Yi-1.5-9B as
+unchecked speculation and was trimmed for that. Checked properly now via HF Hub search
+(`hub_repo_search`, author=unsloth) before re-adding anything:
+
+| Model | Verified checkpoint | Verdict |
+|---|---|---|
+| **GLM-4-9B-0414** | `unsloth/GLM-4-9B-0414-bnb-4bit` exists | Real unsloth 4-bit checkpoint confirmed — viable candidate |
+| **Gemma-2-9B** | `unsloth/gemma-2-9b-bnb-4bit`, `unsloth/gemma-2-9b-it-bnb-4bit` exist | Real unsloth 4-bit checkpoint confirmed — viable candidate |
+| **InternLM2.5-7B** | none under `unsloth/` — only third-party GPTQ 4-bit (ModelCloud) | No unsloth support found. Architecture tag is `internlm2` (custom_code, non-Llama) — same shape of risk that broke EXP-011 on Phi-3.5. Do not schedule without a dry-run coherence check on the base model first. |
+| **Yi-1.5-9B** | none under `unsloth/` — base model is `01-ai/Yi-1.5-9B` (full precision) | No pre-quantized unsloth checkpoint, but architecture tag is `llama` (Yi-1.5 is Llama-compatible), unlike Phi-3.5/InternLM's non-Llama architectures. Lower risk than InternLM, still unconfirmed — nobody has actually run it through this pipeline.
