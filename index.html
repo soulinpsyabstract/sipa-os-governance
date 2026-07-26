@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Soul In PsyAbstract LLC — Public Governance</title>
+<meta name="description" content="Public governance, legal, and honest AI-experiment record for Soul In PsyAbstract LLC (SIPA OS)." />
+<style>
+  @font-face {
+    font-family: "JBM";
+    src: local("JetBrains Mono"), local("IBM Plex Mono"), local("SF Mono"), local("Consolas");
+  }
+  :root {
+    --bg: #08090a;
+    --panel: #0f1512;
+    --border: rgba(120, 200, 160, 0.14);
+    --border-strong: rgba(120, 200, 160, 0.3);
+    --text: #d8ede2;
+    --dim: #6b8579;
+    --dimmer: #445048;
+    --accent: #4ade80;
+    --accent-dim: #2f9e63;
+    --amber: #d9a441;
+  }
+  :root[data-theme="light"] {
+    --bg: #f4f7f5; --panel: #ffffff;
+    --border: rgba(30, 90, 60, 0.14); --border-strong: rgba(30, 90, 60, 0.3);
+    --text: #16241c; --dim: #4c6156; --dimmer: #7c9086;
+    --accent: #1f8a4c; --accent-dim: #16693a; --amber: #96660f;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f4f7f5; --panel: #ffffff;
+      --border: rgba(30, 90, 60, 0.14); --border-strong: rgba(30, 90, 60, 0.3);
+      --text: #16241c; --dim: #4c6156; --dimmer: #7c9086;
+      --accent: #1f8a4c; --accent-dim: #16693a; --amber: #96660f;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    background-image: radial-gradient(ellipse 900px 500px at 50% -10%, color-mix(in srgb, var(--accent) 7%, transparent), transparent);
+    color: var(--text);
+    font-family: "JBM", ui-monospace, "SF Mono", Consolas, monospace;
+    line-height: 1.7;
+  }
+  .topbar {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 11px; letter-spacing: 0.08em; color: var(--dim); text-transform: uppercase;
+  }
+  .topbar .dot {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 8px var(--accent);
+    margin-right: 8px; animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+  @media (prefers-reduced-motion: reduce) { .topbar .dot { animation: none; } }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 64px 24px 100px; }
+  .eyebrow { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--dimmer); margin-bottom: 8px; }
+  h1 { font-size: clamp(1.8rem,4vw,2.5rem); font-weight: 600; margin: 0 0 12px; text-wrap: balance; letter-spacing: -.01em; }
+  .tagline { color: var(--dim); font-size: .95rem; margin: 0 0 40px; max-width: 640px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 48px; }
+  .card {
+    border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px;
+    background: color-mix(in srgb, var(--accent) 3%, transparent);
+  }
+  .card a { color: var(--text); text-decoration: none; font-weight: 600; font-size: .95rem; }
+  .card a:hover { color: var(--accent); }
+  .card p { margin: 6px 0 0; color: var(--dim); font-size: .82rem; }
+
+  h2 { font-size: 1.05rem; letter-spacing: .05em; text-transform: uppercase; color: var(--accent-dim); margin: 48px 0 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: .85rem; margin-bottom: 8px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--dim); font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; }
+  td a { color: var(--accent-dim); text-decoration: none; }
+  td a:hover { color: var(--accent); }
+  .status-closed { color: var(--dimmer); font-size: .78rem; }
+  .status-blocked { color: var(--amber); font-size: .78rem; }
+
+  .doclist { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 8px; }
+  .doclist li { border-bottom: 1px solid var(--border); padding: 8px 0; }
+  .doclist a { color: var(--text); text-decoration: none; font-size: .88rem; }
+  .doclist a:hover { color: var(--accent); }
+
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border-strong); color: var(--dimmer); font-size: .78rem; text-align: center; }
+  footer a { color: var(--dimmer); }
+  .overflow-x { overflow-x: auto; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span><span class="dot"></span>sipa-os-governance · public</span>
+  <span>Delaware LLC · EIN 30-1491964</span>
+</div>
+
+<div class="wrap">
+  <p class="eyebrow">// public governance</p>
+  <h1>Soul In PsyAbstract LLC</h1>
+  <p class="tagline">Honestly, governance, forensic, and zero-trust. Public legal record, product overview, and an unedited log of AI fine-tuning experiments — including the negative and inconclusive ones.</p>
+
+  <div class="grid">
+    <div class="card"><a href="#products">Products</a><p>SIPA OS ecosystem, live apps</p></div>
+    <div class="card"><a href="#governance">Governance</a><p>Charter, ownership, token rules</p></div>
+    <div class="card"><a href="#experiments">AI Experiments</a><p>15 fine-tuning runs, honest results</p></div>
+    <div class="card"><a href="#legal">Legal &amp; Policy</a><p>Terms, privacy, IP, security</p></div>
+  </div>
+
+  <h2 id="products">What we build</h2>
+  <div class="overflow-x">
+  <table>
+    <tr><th>Product</th><th>Description</th></tr>
+    <tr><td>SIPA OS</td><td>Multi-layer AI orchestration platform (MLL L00–L10)</td></tr>
+    <tr><td>SIPA Focus</td><td>ADHD productivity app — focus.sipa-os.org</td></tr>
+    <tr><td>SIPA NeuroPower</td><td>Neurodivergent empowerment platform — neuropower.sipa-os.org</td></tr>
+    <tr><td>SIPA AI</td><td>AI assistant and coach — ai.sipa-os.org</td></tr>
+    <tr><td>SIPA Token</td><td>ERC-20 governance token on Base mainnet</td></tr>
+    <tr><td>Soul In PsyAbstract Store</td><td>UV-reactive psychedelic art — soulinpsyabstract.store</td></tr>
+  </table>
+  </div>
+
+  <h2 id="governance">Governance documents</h2>
+  <ul class="doclist">
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/GOVERNANCE.md">Governance.md</a> — decision-making structure</li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/OWNERSHIP.md">Ownership.md</a> — membership &amp; equity</li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/CHARTER.md">Charter.md</a> — operating principles</li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/TOKEN_GOVERNANCE.md">Token Governance.md</a> — SIPA token rules</li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/TOKEN_TECHNICAL_SPEC.md">Token Technical Spec.md</a></li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/IP_POLICY.md">IP Policy.md</a></li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/AMENDMENTS.md">Amendments.md</a> — change log</li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/CODE_OF_CONDUCT.md">Code of Conduct.md</a></li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/FORMATION_SUMMARY.md">Formation Summary.md</a></li>
+  </ul>
+
+  <h2 id="experiments">AI fine-tuning experiments</h2>
+  <p style="color:var(--dim);font-size:.88rem;margin-top:-8px;">Every run recorded as measured — including the negative ones. Nothing here is spun for marketing.</p>
+  <div class="overflow-x">
+  <table>
+    <tr><th>ID</th><th>Model</th><th>Result</th><th>Status</th></tr>
+    <tr><td><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/AI_EXPERIMENTS/EXP-006__gpt-4o-Azure.md">EXP-006</a></td><td>gpt-4o (Azure)</td><td>Regression — fabrication pattern confirmed</td><td class="status-closed">closed</td></tr>
+    <tr><td><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/AI_EXPERIMENTS/EXP-010__Mistral-7B-v2-Unsloth-Colab.md">EXP-010</a></td><td>Mistral-7B v2</td><td>Best result of early series — confounded by stack change</td><td class="status-closed">closed</td></tr>
+    <tr><td><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/AI_EXPERIMENTS/EXP-013__gpt-4o-Azure-v3-2199-examples.md">EXP-013</a></td><td>gpt-4o v3 (2199 ex.)</td><td>6th confirmation of disclaim-then-fabricate</td><td class="status-closed">closed</td></tr>
+    <tr><td><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/AI_EXPERIMENTS/EXP-014__gpt-4o-Azure-v5-2349-examples.md">EXP-014</a></td><td>gpt-4o v5 (2349 ex.)</td><td>10/11 clean on repeat — ~9% fabrication rate, not fixed</td><td class="status-closed">closed</td></tr>
+    <tr><td><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/AI_EXPERIMENTS/EXP-015__o4-mini-Azure-RFT-in-progress.md">EXP-015</a></td><td>o4-mini (RFT)</td><td>Blocked by content-moderation policy</td><td class="status-blocked">blocked</td></tr>
+    <tr><td><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/AI_EXPERIMENTS/SUMMARY__finetune-series-hf-post__2026-07-26.md">Summary</a></td><td>—</td><td>Public write-up, cross-posted HF / NVIDIA Forums / Pikabu</td><td class="status-closed">—</td></tr>
+  </table>
+  </div>
+  <p style="margin-top:12px;"><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/AI_EXPERIMENTS/README.md" style="color:var(--accent-dim);">→ Full index, all 15 experiments</a></p>
+
+  <h2 id="legal">Legal &amp; policy</h2>
+  <ul class="doclist">
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/TERMS_OF_SERVICE.md">Terms of Service.md</a></li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/PRIVACY_POLICY.md">Privacy Policy.md</a></li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/SECURITY.md">Security.md</a></li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/RISK_DISCLOSURE.md">Risk Disclosure.md</a></li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/KYC_AML_POLICY.md">KYC / AML Policy.md</a></li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/NDA_TEMPLATE.md">NDA Template.md</a></li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/PR_CONTRACT_TEMPLATE.md">PR Contract Template.md</a></li>
+    <li><a href="https://github.com/soulinpsyabstract/sipa-os-governance/blob/main/MARKETING_CONTRACT_TEMPLATE.md">Marketing Contract Template.md</a></li>
+  </ul>
+
+  <footer>
+    Soul In PsyAbstract LLC · Delaware, USA · EIN 30-1491964 · Eilat, Israel (operations)<br>
+    <a href="mailto:sipa-core@sipa-os.org">sipa-core@sipa-os.org</a> · <a href="https://github.com/soulinpsyabstract/sipa-os-governance">github.com/soulinpsyabstract/sipa-os-governance</a>
+  </footer>
+</div>
+
+</body>
+</html>
