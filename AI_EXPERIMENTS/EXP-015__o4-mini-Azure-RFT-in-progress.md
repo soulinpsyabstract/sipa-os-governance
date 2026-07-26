@@ -84,3 +84,37 @@ minutes of investigation before finding the fix: pass an explicit JSON body, eve
   checker is unreliable in both directions.
 
 This file will be updated (not silently rewritten) once the job reaches a terminal state.
+
+## Update — second attempt also failed, different reason (2026-07-26)
+
+After fixing the system-message format issue, the resubmitted job
+(`ftjob-c24fd461d0d7443d94ae16f0586a79bf`) failed again, this time for a substantively
+different reason:
+
+```
+unsafe_file: The job failed due to an unsafe training file. This training file was
+blocked because too many examples were flagged by our moderation for content that
+violates Azure OpenAI's usage policies with respect to model reasoning extraction.
+Please review the data and remove potential offending examples before retrying
+fine-tuning.
+```
+
+**This is a content-moderation block, not a format error** — Azure's RFT pipeline appears
+to specifically screen for training data that resembles attempts to distill/extract a
+reasoning model's chain-of-thought (a known industry concern with o-series models). This
+dataset's governance-heavy content — CORE LAW, RED LINE prohibitions, macro-pattern
+rounds about refusal boundaries and security — plausibly triggered this at scale, though
+Azure's error does not identify which specific examples were flagged, so this is
+diagnosis by plausibility, not confirmed cause.
+
+**Status: blocked, pending a decision on how to proceed** — options not yet chosen
+between:
+1. Filter the dataset for content most likely to trigger this policy (RED LINE/security-
+   framed examples specifically) and retry with a smaller, non-governance subset.
+2. Abandon the o4-mini RFT attempt and treat EXP-015 as closed-unevaluable (same category
+   as EXP-003/005/011 — job blocked before any real training happened, not a Protocol-0
+   result).
+3. Try a different reasoning-capable model or platform for RFT instead of Azure's o4-mini.
+
+No further Azure fine-tuning jobs were submitted after this failure pending that decision
+— avoiding a repeat of the earlier duplicate-job mistake by not retrying blindly.
