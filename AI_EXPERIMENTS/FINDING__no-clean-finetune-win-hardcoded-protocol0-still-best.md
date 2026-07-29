@@ -91,3 +91,34 @@ the verdict above. But it is a real data point cutting against the "gpt-4o fine-
 beats/matches base on this specific category" framing this finding leaned on — flagged
 here rather than silently left stale. A single sample at one temperature is not enough to
 call this fixed; see EXP-014's own caveats before treating it as resolved.
+
+## Update — two more v5 experiments, same dataset/recipe, opposite architecture outcomes (2026-07-29)
+
+[EXP-016](EXP-016__Hermes-3-Llama-3.1-8B-v5-2349-examples-Lightning.md) (Hermes-3-Llama-3.1-8B)
+and [EXP-017](EXP-017__GLM-4-9B-v5-2349-examples-Lightning.md) (GLM-4-9B-0414) both trained
+on the identical 2349-example v5 dataset with the identical Unsloth/LoRA recipe (r=16,
+alpha=32, 4-bit QLoRA), differing only in base architecture. Result: Llama-3.1 **regressed**
+(4/5 → 3/5, with manual review confirming at least one category — `ambiguity_stop` — is a
+real quality drop, not just a scoring artifact). GLM-4 **tied** (4/5 → 4/5) but 3 of its 5
+fine-tuned responses degenerated into repeating a short phrase 10-15+ times until the token
+budget ran out — a real generation defect the automatic score cannot see, present in zero
+base-model responses and zero Llama-3.1 fine-tuned responses. Same data, same method, two
+different failure modes depending on base architecture — this reads as further evidence
+against "the dataset needs more examples" and for the reading (raised independently by an
+HF commenter, dipankarsarkar, on the operator's public write-up of this series) that
+plain SFT cannot separate "disclaimer" tokens from "abstention" tokens when both good and
+bad training completions share an identical prefix.
+
+[EXP-018](EXP-018__Hermes-3-v5-plus-R1-Distill-Llama-8B-TIES-merge.md), a same-architecture
+weight merge (not a fine-tune) attempted as a cheap alternative to more SFT, made things
+worse still: Hermes-3-v5 merged with `DeepSeek-R1-Distill-Llama-8B` via TIES scored 2/5,
+below EXP-016's already-regressed 3/5, and introduced visible generation corruption
+(orphaned tool-call tags, garbage token sequences, Chinese-character bleed into Russian
+text) present in neither source model. "Same architecture" was necessary for the merge to
+run at all but was not sufficient for the merge to produce a coherent model — the two
+source models' training data used incompatible token-level conventions that TIES has no
+mechanism to reconcile.
+
+**Series total is now 18 closed experiments** (EXP-001 through EXP-018, EXP-015 excepted
+as still in progress at last check). No experiment in the series — fine-tune or merge — has
+yet cleanly and unconfoundedly beaten the hardcoded Protocol 0 system prompt.
