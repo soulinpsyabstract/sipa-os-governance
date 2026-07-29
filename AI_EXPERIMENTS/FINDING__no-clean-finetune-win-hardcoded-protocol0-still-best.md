@@ -122,3 +122,31 @@ mechanism to reconcile.
 **Series total is now 18 closed experiments** (EXP-001 through EXP-018, EXP-015 excepted
 as still in progress at last check). No experiment in the series — fine-tune or merge — has
 yet cleanly and unconfoundedly beaten the hardcoded Protocol 0 system prompt.
+
+## Update — a second merge attempt, same dataset both parents, worse result (2026-07-29)
+
+[EXP-020](EXP-020__Llama-3.1-8B-v5-TogetherAI-2349-examples.md) closes a previously-open
+gap: `SoulInPsyAbstract/protocol0-llama-3.1-8b-v5` (Together AI, Llama-3.1-8B-Instruct,
+same v5 dataset) had been trained and published to HF hub with its own README noting it was
+never benchmarked. It ties base (3/5 vs 3/5), with manual review finding one additional
+fabrication in the fine-tuned condition the automatic score missed.
+
+[EXP-019](EXP-019__Hermes-3-v5-plus-protocol0-llama31-together-TIES-merge.md) then merged
+this model with EXP-016's Hermes-3-v5 via TIES — testing whether merging two of the
+operator's *own* fine-tunes, both trained on the identical dataset, avoids EXP-018's
+corruption (which merged with an unrelated model). It did not: the result was **worse**
+(1/5, vs. EXP-018's 2/5), with a different and more severe failure mode — every response
+degenerated into a hallucinated multi-turn dialogue with fabricated operator lines, fake
+system responses, and invented specific numbers/dates, none of which appeared in either
+source model individually. Same dataset was not sufficient to avoid corruption; the two
+source models were trained through different pipelines (Unsloth/Lightning vs. Together AI's
+managed API), which most likely handled turn/stop-token boundaries differently in a way
+TIES's parameter averaging cannot reconcile.
+
+**Series total is now 20 closed experiments.** Two independent same-architecture TIES
+merges (EXP-018, EXP-019) have both regressed and both introduced generation corruption not
+present in either source model — this avenue is closed for now pending a different merge
+method or matched training pipelines. Also see
+[FINDING__benchmark-and-dataset-missing-silence-category.md](FINDING__benchmark-and-dataset-missing-silence-category.md)
+for a separate, retroactively-applicable methodology gap raised by the operator the same
+day: neither the dataset nor the benchmark has ever tested silence as a correct response.
