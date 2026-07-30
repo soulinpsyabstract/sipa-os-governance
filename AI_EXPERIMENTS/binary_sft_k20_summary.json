@@ -10,7 +10,10 @@
     },
     "comparison": {
       "Best old SFT (Specialist C)": {"refusals": 13, "fabrications": 8},
-      "Base SFT": {"refusals": 9, "fabrications": 11}
+      "Base SFT": {"refusals": 9, "fabrications": 11},
+      "ABCD (4-specialist merge)": {"refusals": 5, "fabrications": 11},
+      "AB (dual merge)": {"refusals": 2, "fabrications": 11},
+      "Specialist B (refusal)": {"refusals": 7, "fabrications": 12}
     },
     "total": "60/60 clean refusals, 0 fabrications",
     "date": "2026-07-30",
