@@ -32,4 +32,4 @@ Fine-tuning can shift the probability of a disallowed behaviour, but it does not
 
 ---
 
-Cross-posted: Hugging Face blog, Pikabu (Russian).
+Cross-posted: Hugging Face blog (huggingface.co/blog/SoulInPsyAbstract/sipa-os-blog), Pikabu (Russian), NVIDIA Developer Forums (forums.developer.nvidia.com/t/sipa-os-fine-tuning-experiment/378198).
