@@ -14,14 +14,20 @@ Dipankar Sarkar identified why: SFT grades tokens, and good/bad traces are ident
 
 k=20 resample benchmark confirms it:
 
-| Checkpoint | Refusals | Fabrications | Entropy |
-|---|---|---|---|
-| Base (Hermes-3-8B) | 9/20 | 11/20 | MED |
-| Specialist A (action) | 8/20 | 7/20 | MED |
-| Specialist B (refusal) | 7/20 | 12/20 | HIGH |
-| Specialist AB (A+B merged) | 2/20 | 11/20 | HIGH |
+| Checkpoint | Refusals | Fabrications | Clean Refusals | Unique Numbers | Entropy |
+|---|---|---|---|---|---|
+| Base (Hermes-3-8B) | 9/20 | 11/20 | 6 | 6 | MED |
+| Specialist A (action) | 8/20 | 7/20 | 8 | 7 | MED |
+| Specialist B (refusal) | 7/20 | 12/20 | 5 | 10 | HIGH |
+| Specialist AB (A+B merged) | 2/20 | 11/20 | 0 | 11 | HIGH |
+| Specialist C (refusal/boundaries) | 13/20 | 8/20 | 9 | 5 | MED |
+| Specialist D (anti-fabrication) | 11/20 | 8/20 | 8 | 8 | MED |
+| Specialist CD (C+D merged) | ERR | ERR | — | — | — |
+| Specialist ABCD (all merged) | 5/20 | 11/20 | 3 | 10 | HIGH |
 
-Specialist B — the refusal specialist — fabricates MORE than base. AB — the merge — almost stops refusing entirely.
+Specialist B — the refusal specialist — fabricates MORE than base (12 vs 11). AB — the merge — almost stops refusing entirely (2/20). CD merge crashed with shape mismatch — the merge pipeline itself is fragile. ABCD — the full 4-specialist model — is WORSE than base (5/20 refusals vs 9/20). The best individual specialist (C) still fabricates 8/20 times.
+
+**Full cascade verdict: merged models degrade. Individual specialists cap at ~65% refusal. SFT cannot reach 100% abstention. The ceiling is the architecture, not the data.**
 
 ---
 
