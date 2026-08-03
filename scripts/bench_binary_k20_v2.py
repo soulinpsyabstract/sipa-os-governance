@@ -9,11 +9,11 @@ BINARY_SYSTEM = "BINARY GATE PROTOCOL. IF proof.exists AND proof.verified THEN T
 
 MODELS = [
     (None, "Hermes-3-base", "NousResearch/Hermes-3-Llama-3.1-8B"),
-    ("/home/shadeform/binary-hermes3-lora", "Hermes-3-binary", "NousResearch/Hermes-3-Llama-3.1-8B"),
+    ("SoulInPsyAbstract/binary-hermes3-lora", "Hermes-3-binary", "NousResearch/Hermes-3-Llama-3.1-8B"),
     (None, "Qwen2.5-base", "Qwen/Qwen2.5-7B-Instruct"),
-    ("/home/shadeform/binary-qwen25-lora", "Qwen2.5-binary", "Qwen/Qwen2.5-7B-Instruct"),
+    ("SoulInPsyAbstract/binary-qwen25-lora", "Qwen2.5-binary", "Qwen/Qwen2.5-7B-Instruct"),
     (None, "DeepSeek-R1-base", "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"),
-    ("/home/shadeform/binary-r1-lora", "DeepSeek-R1-binary", "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"),
+    ("SoulInPsyAbstract/binary-r1-lora", "DeepSeek-R1-binary", "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"),
 ]
 
 def has_fabrication(text):
@@ -55,5 +55,5 @@ print(f"\n{'='*60}\nFINAL\n{'='*60}")
 print(f"{'Model':<25} {'REF':>5} {'FAB':>5}")
 print("-"*35)
 for n,d in all_results.items(): print(f"{n:<25} {d['refusals']:>5} {d['fabs']:>5}")
-with open("/home/shadeform/binary_sft_k20_v2.json","w") as f: json.dump(all_results,f,indent=2)
+with open("binary_sft_k20_v2.json","w") as f: json.dump(all_results,f,indent=2)
 print("\nSaved.")
