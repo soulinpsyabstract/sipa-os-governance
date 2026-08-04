@@ -25,9 +25,7 @@ for adapter_path, name in ARMS:
     model = AutoModelForCausalLM.from_pretrained(BASE, torch_dtype=torch.float16, device_map="auto")
     if adapter_path is not None:
         model = PeftModel.from_pretrained(model, adapter_path)
-        tokenizer = AutoTokenizer.from_pretrained(adapter_path, use_fast=True)
-    else:
-        tokenizer = AutoTokenizer.from_pretrained(BASE, use_fast=True)
+    tokenizer = AutoTokenizer.from_pretrained(BASE, use_fast=True)
     tokenizer.pad_token = tokenizer.eos_token
 
     arm_results = []

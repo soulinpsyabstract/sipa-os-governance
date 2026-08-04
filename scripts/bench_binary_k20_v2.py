@@ -30,9 +30,7 @@ for adapter_path, name, base in MODELS:
     model = AutoModelForCausalLM.from_pretrained(base, quantization_config=bnb, device_map="auto", torch_dtype=torch.bfloat16)
     if adapter_path is not None:
         model = PeftModel.from_pretrained(model, adapter_path)
-        tokenizer = AutoTokenizer.from_pretrained(adapter_path, use_fast=True)
-    else:
-        tokenizer = AutoTokenizer.from_pretrained(base, use_fast=True)
+    tokenizer = AutoTokenizer.from_pretrained(base, use_fast=True)
     tokenizer.pad_token = tokenizer.eos_token
     results = []; refs = fabs = 0
     for k in range(20):
