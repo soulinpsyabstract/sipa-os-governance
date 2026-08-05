@@ -74,6 +74,37 @@ bare "I don't know."
 **Total: 10/10 rows — zero fabrication, zero Cyrillic/language drift, zero invented citations.**
 Every non-refusal answer named a real, checkable source and an as-of date.
 
+## Follow-up: same GPU probe re-run at k=20 (not just ask.sh) — is the corruption rate
+## domain-specific, or did k=5 just get unlucky?
+
+The k=5 run above (base results section, `deepseek_protocol0_probe.json`) showed contamination
+skewed heavily toward one prompt — 1/5 on population, 4/5 on money — which reads like the bug is
+tied to the financial-question domain. Raised k to 20 per this file's own recommendation
+(`deepseek_protocol0_probe_k20.json`, same harness, same real `PROTOCOL_0_RULES` text, same two
+questions, new GPU instance) to check whether that split was real or just small-sample noise.
+
+| Arm / question | Cyrillic-contaminated | hit_cap (800 tok) | Truncated, no answer |
+|---|---|---|---|
+| base / population | 0/20 | 1/20 | 0 |
+| base / money | 0/20 | 13/20 | 4 |
+| binary / population | 13/20 | 8/20 | 2 |
+| binary / money | 6/20 | 5/20 | 4 |
+
+**The split inverted.** At k=20, population is now the worse prompt (13/20 = 65%) and money the
+better one (6/20 = 30%) — the exact opposite ranking from k=5. Base still never produces Cyrillic
+across all 40 trials (though it now visibly struggles to close a concise answer on the money
+question — 13/20 hit the 800-token cap, 4 never closed `<think>` at all — reasoning without
+fabricating, just not converging).
+
+**Conclusion, revised from the k=5 read:** the corruption is not tied to either prompt's domain.
+Combined across both questions, binary contaminates 19/40 rows (47.5%) — a roughly coin-flip rate
+that k=5 was too small a sample to estimate; it just happened to land unevenly across the two
+prompts that run. This matches Dipankar's original point about `bench_binary_k20.py` (EXP-024):
+small-k, single-question metrics don't discriminate signal from sampling noise. At n=40 combined
+trials the picture is a stable ~50% weight-level failure rate on the LoRA adapter, present
+regardless of question topic — not a money-question-specific or population-question-specific
+defect.
+
 ## Interpretation — honest, not defensive
 
 This does not contradict EXP-024. It separates two variables EXP-024 left conflated:
@@ -114,12 +145,18 @@ broken independent of any system prompt.
 
 Dipankar's implicit challenge (is the GPU probe representative of production?) resolves in the
 operator's favor for this specific comparison: swapping "broken small model + P0" for "healthy
-production model + identical P0" took the fabrication/corruption rate from 4/10 to 0/10 on the
-same two questions. The fix that matters here was model integrity, not prompt wording — but on
-intact weights, Protocol-0-first is doing real, measurable work, not merely coincidental honesty.
-Recommended next step before this becomes a public claim: repeat across the other seven
-production model aliases and raise k, so "0/10" becomes a rate estimate instead of a single
-observation.
+production model + identical P0" took the fabrication/corruption rate from a combined-40-trial
+~47.5% (k=20 GPU follow-up above) to 0/10 on ask.sh's production path, same two questions. The
+fix that matters here was model integrity, not prompt wording — but on intact weights,
+Protocol-0-first is doing real, measurable work, not merely coincidental honesty. The k=20 GPU
+follow-up also closes the "which prompt is worse" question raised by the original k=5 run: it
+isn't either prompt specifically, it's a roughly coin-flip rate on damaged weights regardless of
+topic.
+
+Remaining open item before this becomes a public claim: the ask.sh side only tested one
+production model alias (`chat`) at k=5. Repeat across the other seven production model aliases
+and raise k there too, so ask.sh's "0/10" becomes a rate estimate instead of a single observation
+— the GPU side no longer has this gap, the production side still does.
 
 Series total: 25 experiments (EXP-022 was never assigned/exists as a gap in the sequence, not
 lost — confirmed by directory listing before writing this file).
