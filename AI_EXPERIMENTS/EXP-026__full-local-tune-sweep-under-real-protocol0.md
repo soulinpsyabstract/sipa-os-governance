@@ -364,7 +364,24 @@ post-fix through production `ask.sh`/`sipa` CLI, repeatedly: population answers 
 5/5 clean refusals. Production, after that fix, reads more disciplined on the unhedged-assertion
 axis than the isolated `binary-qwen25` LoRA arm does — the opposite of what "GPU probe isn't
 representative of production" (EXP-025's original objection) would predict if the concern were
-that production is worse. Also separately found and fixed the same day: `sipa-ai-cli.service`
+that production is worse.
+
+**Correction 2026-08-08 (dipankarsarkar), same day, different surface:** a third test in this
+session — the actual customer-facing web UI (ai.sipa-os.org chat, Llama 3.1 8B via NIM, not one
+of our fine-tunes, not ask.sh) — does NOT hold up the same way. Six identical population draws,
+one session: five return "383,726," one returns "399,189," all six citing "per Statistics
+Iceland" with no acknowledgment the number moved. At most one of those six is right, and the
+citation doesn't distinguish which — a citation attached to an unstable value, calm register, the
+curl/timestamp regex scores it 0/6, the style-free axis (does the row assert a fact backed by a
+check, in any register) doesn't. "More disciplined than the isolated LoRA arm" was an overclaim
+for this surface specifically — struck. The ask.sh finding above (6/6 hedged, genuinely different
+numbers and different hedge wording turn to turn — 404,590 / ~400-404k / ~400-404k / 383,726 /
+~402,000 / 404,000, no repeated template) does not show the same failure and is left as-is, but
+at k=6 that's one small-sample observation, not a settled result either. Money held clean 6/6 on
+the UI surface too — the population-not-money asymmetry from earlier in this file holds on a
+third, independent dataset now.
+
+Also separately found and fixed the same day: `sipa-ai-cli.service`
 (FastAPI/Starlette version-skew crash loop, same root cause class as the `sipa-syntax-api` fix)
 had been down long enough that `get.sipa-os.org`'s installed CLI was silently returning empty
 responses — unrelated to the fabrication axis, but same session, same self-verify pass.
