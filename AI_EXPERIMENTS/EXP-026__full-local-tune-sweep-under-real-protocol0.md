@@ -386,6 +386,19 @@ Also separately found and fixed the same day: `sipa-ai-cli.service`
 had been down long enough that `get.sipa-os.org`'s installed CLI was silently returning empty
 responses — unrelated to the fabrication axis, but same session, same self-verify pass.
 
+**Correction 2026-08-08, same day, five more draws pulled after the fact:** the "6/6 hedged"
+figure above undersold the picture in one direction. Five additional `ask.sh` population draws,
+same question, same session (eleven total now): raw values `404,590` / `~400,000-404,000` /
+`~400,000-404,000` / `383,726` / `~402,000` / `404,000` / refused ("НЕ ЗНАЮ") / explicit
+hypothesis only, labeled "not a confirmed fact" / `376,000` / `380,000-400,000` /
+`387,758`-then-`393,000` inside one answer. Zero exact repeats across all eleven — the
+non-determinism claim holds, and is now on a larger sample. But the hedge isn't uniform the way
+"6/6" implied: 9 of 11 carry an explicit can't-verify/refusal marker, 2 of 11 (`376,000`;
+`387,758`+`393,000`) attach only a date-basis tag with no uncertainty language — closer to the
+sipa-UI pattern on those two specifically, just without a repeated number to expose it via the
+style-free axis. Net: real per-draw value variance holds up, hedge presence is common but not
+universal, and n=11 on one question is still not a settled result.
+
 ## Caveats
 
 - k=10 per arm here vs k=20 in EXP-025's `binary-r1-lora` follow-up — smaller sample per arm,
