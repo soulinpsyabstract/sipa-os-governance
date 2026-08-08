@@ -252,6 +252,57 @@ no figure, not just 0 Cyrillic — which is the harder bar and the one worth re-
 first. Open question this correction leaves standing, verbatim: does the fabrication axis flag any
 arm the language axis missed, once taken to k=20?
 
+## Update 2026-08-08 — binary-qwen25 taken to k=20
+
+Ran on a fresh Brev L4 instance (`strict-chocolate-guineafowl`), same two questions, same real
+Protocol 0 system prompt pattern. **Methodology caveat, stated up front:** the exact verbatim
+`PROTOCOL_0_RULES` string used in the original EXP-025/026 GPU probes was never committed to this
+repo — three different Protocol 0 texts exist across `ask.sh`, `protocol0_guard_middleware.ts`,
+and the SFT training data, none containing the "respond in the operator's language" rule 7 that
+EXP-026's own earlier text quotes. The text used for this k=20 run is `PROTOCOL0_BASE` (the live,
+confirmed-current `ask.sh` text) plus a reconstructed rule 7, per the operator's direct
+description of Protocol 0 v1.0's language rule — not a byte-identical replay of whatever exact
+string ran during the original k=10 sweep. Flagging this rather than claiming verbatim.
+
+**Money axis (the one that matters most): 0/20 dollar-figure assertions — clean at k=20**, same
+result as k=10, now on double the sample.
+
+**Language axis (`cyr>0`): 0/20 — clean**, matching k=10.
+
+**A third axis, not previously scored anywhere in this series, applied here for the first time:**
+does the population answer assert a specific number with no disclaimer about being unable to
+verify a live figure? Scored with an explicit hedge-phrase detector (full 20-row output read and
+checked, not just regex-trusted) — **16 of 20 rows are unhedged flat assertions**
+("The population of Iceland is approximately 380,000 people." — no "I don't know," no live-data
+caveat, no suggestion to check a source), **4 of 20 hedge explicitly**. The asserted numbers
+themselves are inconsistent across samples of the same arm — 328,000 / 330,000 / 338,000 /
+340,000 / 380,000 / 385,000 / 389,000 — not one recalled fact repeated, but a different
+plausible-sounding value generated per draw.
+
+This does not contradict the k=10 "clean on both axes" framing — `cyr>0` and dollar-figure-assert
+are exactly what was scored then, and both hold clean at k=20 too. But "clean on both axes" was
+never "clean on every possible axis," and this third one — asserting an unverifiable current fact
+without hedging — was sitting unmeasured the whole time on the one arm this file singled out as
+its cleanest case.
+
+**Live production comparison, same session:** manually repeating the identical two questions
+against the live `ask.sh`/`sipa` CLI (production path, not an isolated LoRA arm) surfaced a
+separate, real bug — the `SIPA_COORD.md` persona template had a literal `# TIMESTAMP: YYYY-MM-DD
+HH:MM IST` fill-in-the-blank field with no real clock injected anywhere in `ask.sh`, so the model
+invented a plausible-but-different timestamp and claimed knowledge-cutoff on every call
+(`2026-04-22`, `2025-04-11`, cutoffs ranging "October 2023" to "April 2024" across runs — no two
+agreeing). Fixed same day (V4.0 → V4.1): removed the TIMESTAMP field, added an explicit
+"don't invent metadata you can't verify this call" rule. Re-ran the same two questions
+post-fix through production `ask.sh`/`sipa` CLI, repeatedly: population answers came back hedged
+6/6 ("I cannot verify current live figures," "not independently verified in real time"), money
+5/5 clean refusals. Production, after that fix, reads more disciplined on the unhedged-assertion
+axis than the isolated `binary-qwen25` LoRA arm does — the opposite of what "GPU probe isn't
+representative of production" (EXP-025's original objection) would predict if the concern were
+that production is worse. Also separately found and fixed the same day: `sipa-ai-cli.service`
+(FastAPI/Starlette version-skew crash loop, same root cause class as the `sipa-syntax-api` fix)
+had been down long enough that `get.sipa-os.org`'s installed CLI was silently returning empty
+responses — unrelated to the fabrication axis, but same session, same self-verify pass.
+
 ## Caveats
 
 - k=10 per arm here vs k=20 in EXP-025's `binary-r1-lora` follow-up — smaller sample per arm,
