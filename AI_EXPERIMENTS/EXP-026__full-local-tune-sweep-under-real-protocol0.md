@@ -399,6 +399,16 @@ sipa-UI pattern on those two specifically, just without a repeated number to exp
 style-free axis. Net: real per-draw value variance holds up, hedge presence is common but not
 universal, and n=11 on one question is still not a settled result.
 
+**Two more same-day data points, sharpening rather than softening the read above.** Same UI,
+model switched to Groq's Llama-3.3-70B (production, unrelated to any fine-tune in this series):
+6/6 population draws returned the identical string, "383,726 (1 January 2024, Statistics
+Iceland)," zero hedge across all six — no outlier this time, an even cleaner illustration of
+dipankarsarkar's determinism point than the NIM run: not six observations, one. Separately, one
+internal layer with actual conversation memory (not an independent-draw setup — not directly
+comparable count-for-count to anything above) gave two different unhedged numbers back to back,
+named its own contradiction on the third turn, and refused for the rest of that session. Worth
+noting as a mechanism, not worth claiming as a result at n=1.
+
 ## Caveats
 
 - k=10 per arm here vs k=20 in EXP-025's `binary-r1-lora` follow-up — smaller sample per arm,
