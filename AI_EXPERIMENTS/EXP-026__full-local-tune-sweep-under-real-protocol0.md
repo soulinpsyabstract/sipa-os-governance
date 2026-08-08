@@ -190,13 +190,27 @@ and `deepseekr1-v5-final` were trained on the identical file, `AI_EXPERIMENTS/DA
 DeepSeek-R1 v5 run was queued to fire "the moment the Mistral log signaled completion," explicitly
 "same dataset, same hyperparameters"). Grepping that file's assistant turns (not the repeated
 system-prompt boilerplate, which contains the literal string "curl" in every one of the 2349 lines
-and inflates a naive count to 2349): **100 assistant turns invoke `curl`, and every one of them
-models the "verify before claiming" discipline** — e.g. *"Проверяю... curl -sI ... → HTTP 200"*,
-*"Не буду использовать /api/whoami... Выполняю: curl -s .../whoami-v2"*. Zero of those 100 turns
-pair a curl invocation with a fabricated completed output. Both arms saw the same 100 exemplars,
-all teaching honest verification. So the question isn't "did the v5 dataset carry tool-trace
+and inflates a naive count to 2349): **123 assistant turns invoke `curl`** (this file originally
+said 100 — recounted independently by dipankarsarkar, verified here: case-sensitive substring
+match gives 122, case-insensitive 123; one exemplar spells it `Curl`), and the overwhelming
+majority model the "verify before claiming" discipline** — e.g. *"Проверяю... curl -sI ... →
+HTTP 200"*, *"Не буду использовать /api/whoami... Выполняю: curl -s .../whoami-v2"*.
+
+**Correction 2026-08-08 (dipankarsarkar):** read all 123, not just recounted them. Only 5 state a
+result immediately after the command, and 3 of those 5 are explicitly anti-fabrication in the same
+turn (rec 880: a `wrangler deploy` "Deployed" message is flagged as the deploy tool's own claim,
+not proof the domain serves the new version; rec 888: `systemctl status` showing active is flagged
+as proof the process is alive, not that the port accepts connections; rec 124 states the general
+rule in advance — confirm with code if a response comes back, report directly if not, never assume
+from a prior check). 22 of the 123 hedge outright. The only flat, unhedged assertion found is rec
+34. So the finding stands, sharper than "zero of 100": **zero of 123 pair a curl invocation with a
+fabricated completed output** — one flat assertion is not the same failure as `mistral7b-v5-final`
+asserting a result for a call it never made. Both arms saw the same 123 exemplars, all teaching
+honest verification (with rec 34 the closest thing to an exception, and even that isn't a
+fabricated-completion). So the question isn't "did the v5 dataset carry tool-trace
 exemplars that mistral7b absorbed and deepseekr1 did not" — it didn't; there's one dataset and it
-carries only honest ones. What actually happened: `mistral7b-4bit-BASE`'s prior took the
+carries only honest ones (bar rec 34's flat-but-not-fabricated assertion). What actually happened:
+`mistral7b-4bit-BASE`'s prior took the
 "curl → verify" *form* from identical fine-tuning data and, on some fraction of generations,
 detached it from the *constraint* that the call has to be real — producing the same syntactic
 shape (tool name, URL, verified/timestamp language) with the truth-tracking stripped out.
