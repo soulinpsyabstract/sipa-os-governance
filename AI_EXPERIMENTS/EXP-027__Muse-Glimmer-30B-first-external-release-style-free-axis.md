@@ -106,11 +106,10 @@ model download, four failed-and-fixed loading attempts (wrong `AutoModel` class 
 checkpoint, `device_map="auto"` misjudging VRAM, missing `jinja2`/`torchvision` versions), and the
 run itself once it worked — was under an hour. The instance stayed up between debugging/monitoring
 cycles rather than being stopped and restarted each time, so billed wall-clock time was longer than
-the active-work time. First estimate here (~5.5h, ≈$4.70) treated a boot-time log entry read off
-the instance itself as local time (IDT); GCP instances default to UTC, so that entry most likely
-meant the instance came up ~3h later than assumed — actual wall-clock is closer to ~2.5h, ≈$2.15.
-Could not re-verify precisely: the instance stopped responding to SSH before this was caught, so
-this is the corrected best estimate, not a re-confirmed number — flagged as such rather than
-presented with false certainty either way.
+the active-work time. Confirmed against the operator's own instance record (created 14:57, deleted
+17:38 IDT): **2h41m, ≈$2.28**. Two earlier estimates in this same section were wrong before landing
+here — 5.5h/$4.70 (from a boot-time log entry misread as local time instead of UTC), then a
+self-corrected ~2.5h/$2.15 that couldn't be verified because the instance had stopped responding to
+SSH. This is the number from the actual record, not another estimate.
 Model weights and raw JSON not yet committed to this repo (21GB checkpoint, would need Git LFS or
 exclusion — decision deferred to a future session, this file stands on the quoted excerpts above).
