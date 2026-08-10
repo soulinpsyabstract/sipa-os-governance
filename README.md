@@ -1,3 +1,17 @@
+---
+license: mit
+language:
+- en
+pretty_name: Soul In PsyAbstract LLC — Public Governance
+tags:
+- governance
+- sipa-os
+- protocol0
+- legal
+task_categories:
+- text-generation
+---
+
 # Soul In PsyAbstract LLC — Public Governance
 
 **Soul In PsyAbstract LLC** (SIPA) is a Delaware-registered technology and art company building SIPA OS — an AI infrastructure platform for neurodivergent creators.
