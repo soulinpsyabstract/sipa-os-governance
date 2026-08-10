@@ -204,5 +204,19 @@ production model alias (`chat`) at k=5. Repeat across the other seven production
 and raise k there too, so ask.sh's "0/10" becomes a rate estimate instead of a single observation
 — the GPU side no longer has this gap, the production side still does.
 
+**Correction 2026-08-10 (dipankarsarkar) — the "zero Cyrillic" / "production path is intact"
+framing above doesn't hold at the sample size the hierarchy argument actually needs.** The "zero
+Cyrillic" line describes only the original 10 rows scored here (5 population + 5 money, k=0-4
+each) — that specific claim, about those specific rows, is still literally true and unchanged. But
+this file's actual argument was never "these 10 rows are clean," it was "the production path is
+the intact one" as a property of the path, used to counter the GPU LoRA arm's weight-level
+corruption. EXP-026 later collected 5 more ask.sh population draws (11 total, see that file's
+2026-08-10 correction) — one of them is a Cyrillic refusal ("НЕ ЗНАЮ"), and only 1 of the 9 numeric
+draws in that fuller set matches Iceland's real population data exactly, with 5 of 9 landing above
+the all-time historical maximum. Model integrity (no LoRA-level language corruption) is still real
+and still distinct from the GPU arm's failure mode — that specific comparison in this file holds.
+"Production is the clean, reliable path" as a broader claim does not hold up on the larger sample
+that now exists; see EXP-026 for the full re-scoring.
+
 Series total: 25 experiments (EXP-022 was never assigned/exists as a gap in the sequence, not
 lost — confirmed by directory listing before writing this file).

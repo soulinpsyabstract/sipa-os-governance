@@ -409,6 +409,60 @@ comparable count-for-count to anything above) gave two different unhedged number
 named its own contradiction on the third turn, and refused for the rest of that session. Worth
 noting as a mechanism, not worth claiming as a result at n=1.
 
+**Correction 2026-08-10 (dipankarsarkar) — the Groq and NIM framing above both misread their own
+numbers, in the direction of understating accuracy.** Independently re-verified MAN00000
+(Statistics Iceland's PX-Web API, `Eining=0`, all years): 375,218 (2023) / 383,726 (2024) /
+389,444 (2025) / 394,324 (2026), all-time maximum 394,324, no year in the 294-row series ever at
+or above 400,000.
+
+Against that table, "383,726 (1 January 2024, Statistics Iceland)" is not an ambiguous case of
+determinism to be filed next to a flawed run — it is the exact, correctly-dated, correctly-
+attributed 2024 figure. Calling the Groq 6/6 "an even cleaner illustration of dipankarsarkar's
+determinism point than the NIM run" put a fully correct answer in the same bucket as NIM's
+partly-wrong one, on the theory that unwavering repetition is itself the concern regardless of
+whether the repeated value is true. It isn't — a model that is both stable and right is a better
+outcome than one that is stable and wrong, and the paragraph above didn't say so.
+
+The NIM line — "At most one of those six is right, and the citation doesn't distinguish which" —
+reads as if none of the six could be trusted. Checked against the table: five of six ("383,726")
+are the real, correct 2024 figure; the sixth ("399,189") is above the historical maximum and has
+never been Iceland's population at any point in the 1703–2026 series. Five of six are right, not
+"at most one." The single outlier is the fabrication; the five repeats are not made suspect by
+sitting next to it.
+
+**Re-scoring the ask.sh eleven against the same table sharpens the ask.sh finding too, in the
+opposite direction from how it read above.** Of the 9 numeric draws (11 total, 2 non-numeric):
+`404,590`, both `~400,000-404,000` draws, `~402,000`, and `404,000` — five values — sit entirely
+above the 394,324 ceiling, numbers Iceland's population has never reached. Only `383,726` is exact.
+Splitting the eleven by hedge-marker presence (9 carry an explicit can't-verify/refusal marker, 2
+don't) and checking each group against the table: of the 7 marker-carrying draws that state a
+number, 5 are impossible; of the 2 bare draws (`376,000`; `387,758`→`393,000`), 0 are impossible —
+both sit below the ceiling, closer to a real year even if not exact. Inside this one arm, the
+hedge language clusters with the impossible values, not away from them; the two draws with no
+uncertainty marker at all happen to be the two closest to something that could actually be true.
+That inverts the intuitive read of "hedged = more careful."
+
+One more item from the same eleven, not a scoring point but a direct conflict with a claim EXP-025
+makes and leans on: draw 7 of the eleven is a refusal in Cyrillic, "НЕ ЗНАЮ." EXP-025's own
+"zero Cyrillic" line describes only its original 10-row set (5 population + 5 money, k=0-4 each) —
+that specific claim about those specific rows is still literally true, that data hasn't changed.
+But EXP-025's central hierarchy argument — that the production path is the intact one, unlike the
+GPU LoRA arm's weight-level corruption — was never scoped to "these exact 10 rows only"; it was
+framed as a property of the production path itself. On the fuller 11-draw population set now on
+record, Cyrillic drift shows up in production too, once, and the accuracy rate on that same set is
+1 numeric-exact answer out of 9. "Production is the clean path" doesn't hold at this sample size
+the way the original framing implied.
+
+**The deeper problem this keeps surfacing:** none of the three axes this series settled on after
+retiring the circular acceptance band — curl/timestamp regex, style-free assertion, determinism —
+actually opens MAN00000 or any other ground-truth source. All three score the *shape* of an
+answer: does it look like a citation, does it hedge, is it consistent across repeats. A stable,
+correctly-dated, correctly-attributed true fact (Groq, 6/6) can rank below six hedge-wrapped wrong
+numbers under axes that never check whether either one is actually true. Determinism in particular
+cannot be the load-bearing axis for a public claim about which arm is more trustworthy unless it is
+scored against the real table first — a deterministically-correct arm and a deterministically-wrong
+one are not the same finding, and this file conflated them twice in the same session.
+
 ## Caveats
 
 - k=10 per arm here vs k=20 in EXP-025's `binary-r1-lora` follow-up — smaller sample per arm,
