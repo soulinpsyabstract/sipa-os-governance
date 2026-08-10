@@ -101,9 +101,13 @@ unique to this repo's own tuning or to the specific hosted models `ask.sh` calls
 release is one data point, not a trend — repeating this on other fresh external releases is the
 obvious next step before generalizing further.
 
-**Cost/infra note:** Brev GPU instance (GCP `g2-standard-4`, single L4, `$0.85/hr`), ~50 minutes
-wall clock total including model download, four failed-and-fixed loading attempts (wrong
-`AutoModel` class for a multimodal checkpoint, `device_map="auto"` misjudging VRAM, missing
-`jinja2`/`torchvision` versions) before the run itself completed cleanly — full cost under $1.
+**Cost/infra note:** Brev GPU instance (GCP `g2-standard-4`, single L4, `$0.85/hr`). Active work —
+model download, four failed-and-fixed loading attempts (wrong `AutoModel` class for a multimodal
+checkpoint, `device_map="auto"` misjudging VRAM, missing `jinja2`/`torchvision` versions), and the
+run itself once it worked — was under an hour. Actual billed cost was higher: the instance stayed
+up between debugging/monitoring cycles rather than being stopped and restarted each time, ~5.5
+wall-clock hours total, ≈$4.70. Recording the real number, not the "if it had run efficiently"
+number — this is the same distinction the sha256/EXP-025 corrections earlier this session were
+about: don't let an optimistic estimate stand once the actual figure is known.
 Model weights and raw JSON not yet committed to this repo (21GB checkpoint, would need Git LFS or
 exclusion — decision deferred to a future session, this file stands on the quoted excerpts above).
