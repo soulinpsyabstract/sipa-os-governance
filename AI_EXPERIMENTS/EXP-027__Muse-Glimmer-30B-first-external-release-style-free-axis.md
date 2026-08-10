@@ -104,10 +104,13 @@ obvious next step before generalizing further.
 **Cost/infra note:** Brev GPU instance (GCP `g2-standard-4`, single L4, `$0.85/hr`). Active work —
 model download, four failed-and-fixed loading attempts (wrong `AutoModel` class for a multimodal
 checkpoint, `device_map="auto"` misjudging VRAM, missing `jinja2`/`torchvision` versions), and the
-run itself once it worked — was under an hour. Actual billed cost was higher: the instance stayed
-up between debugging/monitoring cycles rather than being stopped and restarted each time, ~5.5
-wall-clock hours total, ≈$4.70. Recording the real number, not the "if it had run efficiently"
-number — this is the same distinction the sha256/EXP-025 corrections earlier this session were
-about: don't let an optimistic estimate stand once the actual figure is known.
+run itself once it worked — was under an hour. The instance stayed up between debugging/monitoring
+cycles rather than being stopped and restarted each time, so billed wall-clock time was longer than
+the active-work time. First estimate here (~5.5h, ≈$4.70) treated a boot-time log entry read off
+the instance itself as local time (IDT); GCP instances default to UTC, so that entry most likely
+meant the instance came up ~3h later than assumed — actual wall-clock is closer to ~2.5h, ≈$2.15.
+Could not re-verify precisely: the instance stopped responding to SSH before this was caught, so
+this is the corrected best estimate, not a re-confirmed number — flagged as such rather than
+presented with false certainty either way.
 Model weights and raw JSON not yet committed to this repo (21GB checkpoint, would need Git LFS or
 exclusion — decision deferred to a future session, this file stands on the quoted excerpts above).
