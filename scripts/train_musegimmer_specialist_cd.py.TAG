@@ -1,0 +1,6 @@
+FILE=scripts/train_musegimmer_specialist_cd.py
+SHA256=5532d54504c68bccd31051ae287f56437a1dd971e165eff3df7ff545a9a1b422
+SIZE=3519
+DEVICE=SERVER
+TS=2026-08-11__21-41-01
+FIXATED_BY=Claude
