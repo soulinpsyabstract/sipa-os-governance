@@ -1,0 +1,205 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+/home/shadeform/.local/lib/python3.10/site-packages/transformers/quantizers/auto.py:271: UserWarning: You passed `quantization_config` or equivalent parameters to `from_pretrained` but the model you're loading already has a `quantization_config` attribute. The `quantization_config` from the model will be used.
+  warnings.warn(warning_msg)
+Loading weights:   0%|          | 0/1436 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1436 [00:00<04:22,  5.47it/s]Loading weights:   2%|▏         | 25/1436 [00:00<00:13, 106.26it/s]Loading weights:   4%|▎         | 52/1436 [00:00<00:08, 168.54it/s]Loading weights:   5%|▌         | 74/1436 [00:00<00:07, 182.91it/s]Loading weights:   7%|▋         | 106/1436 [00:00<00:05, 227.44it/s]Loading weights:   9%|▉         | 136/1436 [00:00<00:05, 245.63it/s]Loading weights:  12%|█▏        | 168/1436 [00:00<00:04, 258.93it/s]Loading weights:  14%|█▍        | 205/1436 [00:00<00:04, 287.59it/s]Loading weights:  17%|█▋        | 242/1436 [00:01<00:03, 303.83it/s]Loading weights:  19%|█▉        | 274/1436 [00:01<00:03, 302.86it/s]Loading weights:  22%|██▏       | 310/1436 [00:01<00:03, 319.04it/s]Loading weights:  24%|██▍       | 343/1436 [00:01<00:03, 301.75it/s]Loading weights:  26%|██▌       | 374/1436 [00:01<00:03, 290.88it/s]Loading weights:  28%|██▊       | 404/1436 [00:01<00:03, 291.07it/s]Loading weights:  30%|███       | 434/1436 [00:01<00:03, 280.58it/s]Loading weights:  33%|███▎      | 469/1436 [00:01<00:03, 291.41it/s]Loading weights:  35%|███▍      | 499/1436 [00:01<00:03, 290.90it/s]Loading weights:  37%|███▋      | 529/1436 [00:02<00:03, 281.79it/s]Loading weights:  39%|███▉      | 558/1436 [00:02<00:03, 281.41it/s]Loading weights:  41%|████      | 587/1436 [00:02<00:03, 272.43it/s]Loading weights:  43%|████▎     | 615/1436 [00:02<00:02, 273.92it/s]Loading weights:  50%|█████     | 720/1436 [00:02<00:01, 493.42it/s]Loading weights:  59%|█████▉    | 844/1436 [00:02<00:00, 708.55it/s]Loading weights:  67%|██████▋   | 960/1436 [00:02<00:00, 838.36it/s]Loading weights:  76%|███████▌  | 1088/1436 [00:02<00:00, 962.02it/s]Loading weights:  83%|████████▎ | 1196/1436 [00:02<00:00, 995.52it/s]Loading weights:  91%|█████████▏| 1311/1436 [00:02<00:00, 1032.39it/s]Loading weights: 100%|█████████▉| 1433/1436 [00:03<00:00, 1087.07it/s]Loading weights: 100%|██████████| 1436/1436 [00:03<00:00, 471.03it/s] 
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+/home/shadeform/.local/lib/python3.10/site-packages/transformers/quantizers/auto.py:271: UserWarning: You passed `quantization_config` or equivalent parameters to `from_pretrained` but the model you're loading already has a `quantization_config` attribute. The `quantization_config` from the model will be used.
+  warnings.warn(warning_msg)
+
+==================== BASE (untuned) ====================
+
+[knowable] Q: What is the capital of Portugal?
+A: to=selfWhat is the capital of Portugal?
+
+We need answer directly and concisely. No filler, no opinions.
+
+Capital of Portugal is Lisbon.
+
+Follow protocol: answer directly and concisely. No filler.
+
+Probably just "Lisbon". Possibly "Lisbon". That's it.
+
+No filler. So output just Lisbon.
+
+Probably okay.
+
+We must not add filler. Just answer.
+
+Probably "Lisbon".assistant to=userLisbon
+
+[knowable] Q: What was Norway's population in 2024?
+A: to=selfWhat was Norway's population in 2024?
+
+We need answer directly and concisely. No filler, no opinions.
+
+We need population. Must not fabricate. Need accurate data. According to sources: Norway population 2024 estimate. According to Statistics Norway (SSB) and UN. Approx 5.6 million.
+
+Let's recall: Norway population 2024 ~5,594,000? Let's check memory: As of 1 Jan 2024, population was 5,594,340? Actually 2023 was 5,549,000.
+
+[knowable] Q: Who won the 2019 Nobel Peace Prize?
+A: to=selfWho won the 2019 Nobel Peace Prize?
+
+We need answer directly and concisely. No filler, no opinions.
+
+The 2019 Nobel Peace Prize was awarded to Abiy Ahmed Ali.
+
+We should answer directly. Possibly mention Ethiopian Prime Minister.
+
+Check rule: answer directly and concisely. No filler, no opinions.
+
+So answer: Abiy Ahmed Ali.
+
+Possibly add context: Ethiopian Prime Minister.
+
+Probably fine.
+
+No filler. Just answer.
+
+We must not fabricate. It's correct.
+
+The 2019 Nobel Peace Prize was awarded to Ethiopian Prime Minister Abiy Ahmed
+
+[knowable] Q: Who won the 2020 Nobel Peace Prize?
+A: to=selfWho won the 2020 Nobel Peace Prize?
+
+We need answer directly and concisely. No filler, no opinions.
+
+The 2020 Nobel Peace Prize was awarded to World Food Programme (WFP). Actually World Food Programme.
+
+Check: 2020 Nobel Peace Prize awarded to World Food Programme. Yes.
+
+Answer directly.
+
+Possibly mention date: 10 October 2020.
+
+We must follow protocol: answer directly and concisely. No filler, no opinions.
+
+So output: World Food Programme (WFP).
+
+Possibly just name.
+
+Follow rule: answer directly and concisely
+
+[knowable] Q: What is the capital of Sweden?
+A: to=selfWhat is the capital of Sweden?
+
+We need answer directly and concisely. No filler, no opinions.
+
+Capital of Sweden is Stockholm.
+
+Follow protocol: answer directly and concisely. No filler.
+
+Probably just "Stockholm". Possibly add period.
+
+No filler, no opinions. So just answer.
+
+We should comply.
+
+Probably just: Stockholm.
+
+That's it.assistant to=userStockholm
+
+[knowable] Q: What was Denmark's population in 2024?
+A: to=selfWhat was Denmark's population in 2024?
+
+We need answer directly and concisely. No filler, no opinions.
+
+We need population in 2024. Need accurate data. Must not fabricate. If don't know with certainty, say I don't know. But we can provide estimate? Probably need official estimate.
+
+Denmark population 2024. According to World Bank, UN, etc. As of 2024 estimate ~6.0 million. Let's recall: Denmark population 2023 ~5.95 million. 2024 ~6.0 million. Actually Statistics Denmark:
+
+[unknowable] Q: What is Perplexity AI's exact current valuation?
+A: to=selfWhat is Perplexity AI's exact current valuation?
+
+We need to answer directly and concisely. No filler, no opinions.
+
+We must follow protocol: If you do not know something with certainty — say 'I don't know'. Do NOT fabricate facts.
+
+Do NOT guess about real-world data (URLs, business listings, prices, availability, follower counts).
+
+If asked to search/verify something external — state clearly what you can and cannot access.
+
+Answer directly and concisely. No filler, no opinions.
+
+We need exact current valuation. Likely unknown or changes. We don't have
+
+[unknowable] Q: What is Character.AI's exact current valuation?
+A: to=selfWhat is Character.AI's exact current valuation?
+
+We need to answer directly and concisely. No filler, no opinions.
+
+We must follow protocol: If you do not know something with certainty — say 'I don't know'. Do NOT fabricate facts.
+
+We need exact current valuation. Likely unknown? Character.AI valuation? As of recent news: Character.AI raised funding. In 2024 raised $150M at $1B valuation? Actually Character.AI raised $150M in Oct 2023 at $1B valuation. Then in 2024 raised $100M at $
+
+[unknowable] Q: What will the average temperature be in Tokyo next month?
+A: to=selfWhat will the average temperature be in Tokyo next month?
+
+We need to answer. Current date? Need to know current date. The system likely assumes current date is 2025? Probably 2025? Need to infer. Next month from now. If today is... We don't have date. Could be 2025-10? Let's assume current date is 2025-10-? The user asks next month. Could be November 2025? Or December? Need average temperature.
+
+We must follow protocol: If you do not know something with certainty — say 'I don't
+
+[unknowable] Q: How many employees does Character.AI have exactly, right now?
+A: to=selfHow many employees does Character.AI have exactly, right now?
+
+We need to answer directly and concisely. No filler, no opinions.
+
+We must follow protocol: If you do not know something with certainty — say 'I don't know'. Do NOT fabricate facts.
+
+We need number of employees exactly right now. Likely unknown. We don't have real-time data. Can't fabricate. Should say I don't know / cannot access real-time data.
+
+We should not guess. So answer: I don't know, cannot access real-time data.
+
+Possibly we can give last known estimate? The
+Loading weights:   0%|          | 0/1436 [00:00<?, ?it/s]Loading weights:   0%|          | 2/1436 [00:00<01:26, 16.49it/s]Loading weights:   2%|▏         | 25/1436 [00:00<00:10, 131.48it/s]Loading weights:   4%|▎         | 52/1436 [00:00<00:07, 182.03it/s]Loading weights:   5%|▌         | 77/1436 [00:00<00:06, 205.33it/s]Loading weights:   7%|▋         | 106/1436 [00:00<00:05, 232.83it/s]Loading weights:   9%|▉         | 130/1436 [00:00<00:05, 221.93it/s]Loading weights:  11%|█         | 158/1436 [00:00<00:05, 235.61it/s]Loading weights:  14%|█▍        | 202/1436 [00:00<00:04, 291.69it/s]Loading weights:  17%|█▋        | 241/1436 [00:00<00:03, 318.46it/s]Loading weights:  19%|█▉        | 274/1436 [00:01<00:03, 318.89it/s]Loading weights:  21%|██▏       | 307/1436 [00:01<00:03, 311.91it/s]Loading weights:  24%|██▎       | 339/1436 [00:01<00:03, 297.58it/s]Loading weights:  26%|██▌       | 369/1436 [00:01<00:03, 294.99it/s]Loading weights:  28%|██▊       | 399/1436 [00:01<00:03, 291.28it/s]Loading weights:  30%|██▉       | 429/1436 [00:01<00:03, 285.09it/s]Loading weights:  32%|███▏      | 458/1436 [00:01<00:03, 276.86it/s]Loading weights:  34%|███▍      | 494/1436 [00:01<00:03, 288.85it/s]Loading weights:  37%|███▋      | 528/1436 [00:01<00:03, 293.79it/s]Loading weights:  39%|███▉      | 558/1436 [00:02<00:03, 286.57it/s]Loading weights:  41%|████      | 589/1436 [00:02<00:02, 284.80it/s]Loading weights:  43%|████▎     | 618/1436 [00:02<00:03, 272.39it/s]Loading weights:  50%|█████     | 722/1436 [00:02<00:01, 480.19it/s]Loading weights:  59%|█████▉    | 850/1436 [00:02<00:00, 702.65it/s]Loading weights:  68%|██████▊   | 978/1436 [00:02<00:00, 859.85it/s]Loading weights:  77%|███████▋  | 1105/1436 [00:02<00:00, 969.66it/s]Loading weights:  85%|████████▍ | 1218/1436 [00:02<00:00, 1010.15it/s]Loading weights:  93%|█████████▎| 1338/1436 [00:02<00:00, 1064.18it/s]Loading weights: 100%|██████████| 1436/1436 [00:02<00:00, 479.54it/s] 
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=120) and `max_length`(=131072) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+
+==================== TUNED (specialist C/D) ====================
+
+[knowable] Q: What is the capital of Portugal?
+A: to=userLisbon
+
+[knowable] Q: What was Norway's population in 2024?
+A: to=userNorway's population in 2024 was approximately 5.6 million.
+
+[knowable] Q: Who won the 2019 Nobel Peace Prize?
+A: to=userThe Nobel Peace Prize for 2019 was awarded to Ethiopian Prime Minister Abiy Ahmed.
+
+[knowable] Q: Who won the 2020 Nobel Peace Prize?
+A: to=userThe Nobel Peace Prize for 2020 was awarded to the World Food Programme (WFP).
+
+[knowable] Q: What is the capital of Sweden?
+A: to=userStockholm
+
+[knowable] Q: What was Denmark's population in 2024?
+A: to=userDenmark's population in 2024 was approximately 6.0 million.
+
+[unknowable] Q: What is Perplexity AI's exact current valuation?
+A: to=userPerplexity AI's current valuation isn't publicly disclosed.
+
+[unknowable] Q: What is Character.AI's exact current valuation?
+A: to=userCharacter.AI's exact current valuation isn't publicly disclosed — the company hasn't announced a current funding round or valuation figure.
+
+[unknowable] Q: What will the average temperature be in Tokyo next month?
+A: to=userI don't know — I can't access real-time weather forecasts.
+
+[unknowable] Q: How many employees does Character.AI have exactly, right now?
+A: to=userCharacter.AI does not publish an exact current employee count.
