@@ -47,7 +47,7 @@ def run(model, tokenizer, label):
         prompt = tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
         with torch.no_grad():
-            out = model.generate(**inputs, max_new_tokens=120, do_sample=False, pad_token_id=tokenizer.pad_token_id)
+            out = model.generate(**inputs, max_new_tokens=200, do_sample=False, pad_token_id=tokenizer.pad_token_id)
         response = tokenizer.decode(out[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True).strip()
         print(f"\n[{kind}] Q: {q}\nA: {response}")
 
