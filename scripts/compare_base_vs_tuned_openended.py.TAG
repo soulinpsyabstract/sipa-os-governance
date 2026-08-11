@@ -1,0 +1,6 @@
+FILE=scripts/compare_base_vs_tuned_openended.py
+SHA256=26c08f8ffc76fb45dd77c9bdd9e7a6eacf365e4a9e94d01939c5763d974469f1
+SIZE=3297
+DEVICE=SERVER
+TS=2026-08-11__22-10-49
+FIXATED_BY=Claude
