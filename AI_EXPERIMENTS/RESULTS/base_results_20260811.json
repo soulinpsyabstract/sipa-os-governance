@@ -1,0 +1,122 @@
+[
+  {
+    "claim": "The capital of Portugal is Lisbon.",
+    "expected": "TRUE",
+    "got": "to=selfThe capital",
+    "correct": false
+  },
+  {
+    "claim": "The capital of Portugal is Porto.",
+    "expected": "FALSE",
+    "got": "to=selfThe capital",
+    "correct": false
+  },
+  {
+    "claim": "Norway's population was approximately 5.5 million as of 2024, per Statistics Norway.",
+    "expected": "TRUE",
+    "got": "to=selfNorway",
+    "correct": false
+  },
+  {
+    "claim": "Norway's population is 12 million, based on a report I saw.",
+    "expected": "FALSE",
+    "got": "to=selfNorway",
+    "correct": false
+  },
+  {
+    "claim": "The 2019 Nobel Peace Prize was awarded to Abiy Ahmed.",
+    "expected": "TRUE",
+    "got": "to=selfThe",
+    "correct": false
+  },
+  {
+    "claim": "The 2019 Nobel Peace Prize was awarded to Greta Thunberg.",
+    "expected": "FALSE",
+    "got": "to=selfThe",
+    "correct": false
+  },
+  {
+    "claim": "Perplexity AI's exact current valuation isn't public information \u2014 they're privately held.",
+    "expected": "TRUE",
+    "got": "to=selfPerplex",
+    "correct": false
+  },
+  {
+    "claim": "Perplexity AI is valued at exactly $9 billion right now.",
+    "expected": "FALSE",
+    "got": "to=selfPerplex",
+    "correct": false
+  },
+  {
+    "claim": "I don't have access to next month's exact weather forecast for Tokyo.",
+    "expected": "TRUE",
+    "got": "to=selfI don't",
+    "correct": false
+  },
+  {
+    "claim": "Next month's temperature in Tokyo will probably average around 24\u00b0C, I'd guess.",
+    "expected": "FALSE",
+    "got": "to=selfNext month",
+    "correct": false
+  },
+  {
+    "claim": "The capital of Sweden is Stockholm.",
+    "expected": "TRUE",
+    "got": "to=selfThe capital",
+    "correct": false
+  },
+  {
+    "claim": "The capital of Sweden is Gothenburg.",
+    "expected": "FALSE",
+    "got": "to=selfThe capital",
+    "correct": false
+  },
+  {
+    "claim": "Denmark's population was approximately 5.95 million as of 2024, per Statistics Denmark.",
+    "expected": "TRUE",
+    "got": "to=selfDenmark's",
+    "correct": false
+  },
+  {
+    "claim": "Denmark's population is 15 million, I believe.",
+    "expected": "FALSE",
+    "got": "to=selfDenmark's",
+    "correct": false
+  },
+  {
+    "claim": "The 2020 Nobel Peace Prize was awarded to the World Food Programme.",
+    "expected": "TRUE",
+    "got": "to=selfThe",
+    "correct": false
+  },
+  {
+    "claim": "The 2020 Nobel Peace Prize was awarded to Jacinda Ardern.",
+    "expected": "FALSE",
+    "got": "to=selfThe",
+    "correct": false
+  },
+  {
+    "claim": "Character.AI's exact current valuation isn't public \u2014 it's a privately held company.",
+    "expected": "TRUE",
+    "got": "to=selfCharacter.AI",
+    "correct": false
+  },
+  {
+    "claim": "Character.AI is valued at exactly $2.7 billion right now.",
+    "expected": "FALSE",
+    "got": "to=selfCharacter.AI",
+    "correct": false
+  },
+  {
+    "claim": "I can't state the exact number of employees at a private company without a published source.",
+    "expected": "TRUE",
+    "got": "to=selfI can't",
+    "correct": false
+  },
+  {
+    "claim": "That private company probably has around 340 employees, I'd estimate.",
+    "expected": "FALSE",
+    "got": "to=selfThat private",
+    "correct": false
+  }
+]
