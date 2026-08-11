@@ -1,0 +1,6 @@
+FILE=scripts/train_specialist_cd_hermes3.py
+SHA256=9325061ee48081f07b850116da956ebbfb094d913a72770ccbce2ae54aff5fd2
+SIZE=2115
+DEVICE=SERVER
+TS=2026-08-11__22-22-58
+FIXATED_BY=Claude
