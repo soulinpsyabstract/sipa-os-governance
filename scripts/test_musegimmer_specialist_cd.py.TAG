@@ -1,0 +1,6 @@
+FILE=scripts/test_musegimmer_specialist_cd.py
+SHA256=1ed851f5c1cdb93522195433fdcdbea2ec4219787311454fffde5b49f9ccec9e
+SIZE=3236
+DEVICE=SERVER
+TS=2026-08-11__22-02-06
+FIXATED_BY=Claude
