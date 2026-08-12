@@ -13,6 +13,17 @@ December-2025-dated document in the pack is cryptographically unbound
 before that date on the signature alone. This directory adds an
 independent partial answer.
 
+## Update, 2026-08-12
+
+The zip itself is now published in this directory
+(`2025-12-27__22-07-13__PAYTON_UNIVERSE__HUB_SCAFFOLD.zip`, sha256 sidecar alongside it),
+pulled fresh from X5 the same day, same hash, byte-identical. This closes the gap
+dipankarsarkar named directly: previously only the 9 extracted files were published, so
+nobody outside could recompute the zip's own hash from what was here (zip bytes depend on
+compression level, entry order, stored mtimes — none of that was public). Now the zip is
+public too — anyone can `sha256sum` it themselves against line 13 of
+`FIRST_ERA/INCOMING_SHA256_COMPLETE__2026-07-02.txt` without trusting this document.
+
 ## What was verified
 
 The zip `2025-12-27__22-07-13__PAYTON_UNIVERSE__HUB_SCAFFOLD.zip` was
