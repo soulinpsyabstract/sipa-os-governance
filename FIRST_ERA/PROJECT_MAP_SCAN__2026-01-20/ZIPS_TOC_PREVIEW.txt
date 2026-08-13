@@ -1,0 +1,498 @@
+### PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_04__Emotional_Infrastructure.zip
+Archive:  PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_04__Emotional_Infrastructure.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+  3732023  2026-01-18 20:55   EI_43__Emotional_Infrastructure__v1.jpg
+  2393439  2026-01-18 20:55   EI_44__Emotional_Infrastructure__v1.jpg
+ 10377426  2026-01-18 20:55   EI_45__Emotional_Infrastructure__v1.jpg
+  1042280  2026-01-18 20:55   EI_46__Emotional_Infrastructure__v1.jpg
+  4905791  2026-01-18 20:55   EI_47__Emotional_Infrastructure__v1.jpg
+  1410268  2026-01-18 20:55   EI_48__Emotional_Infrastructure__v1.jpg
+  1433965  2026-01-18 20:55   EI_49__Emotional_Infrastructure__v1.jpg
+  8204621  2026-01-18 20:55   EI_50__Emotional_Infrastructure__v1.jpg
+  2504294  2026-01-18 20:55   EI_51__Emotional_Infrastructure__v1.jpg
+  9848297  2026-01-18 20:55   EI_52__Emotional_Infrastructure__v1.jpg
+  2902015  2026-01-18 20:55   EI_53__Emotional_Infrastructure__v1.jpg
+  1572826  2026-01-18 20:55   EI_54__Emotional_Infrastructure__v1.jpg
+  3951286  2026-01-18 20:55   EI_55__Emotional_Infrastructure__v1.jpg
+  2952772  2026-01-18 20:55   EI_56__Emotional_Infrastructure__v1.jpg
+---------                     -------
+ 57231303                     14 files
+### PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_01__Emotional_Infrastructure.zip
+Archive:  PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_01__Emotional_Infrastructure.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+  1066733  2026-01-18 20:55   EI_01__Emotional_Infrastructure__v1.jpg
+  1453839  2026-01-18 20:55   EI_02__Emotional_Infrastructure__v1.jpg
+  4833281  2026-01-18 20:55   EI_03__Emotional_Infrastructure__v1.jpg
+  8729629  2026-01-18 20:55   EI_04__Emotional_Infrastructure__v1.jpg
+   237478  2026-01-18 20:55   EI_05__Emotional_Infrastructure__v1.jpg
+  8073839  2026-01-18 20:55   EI_06__Emotional_Infrastructure__v1.jpg
+ 10163953  2026-01-18 20:55   EI_07__Emotional_Infrastructure__v1.jpg
+  4264344  2026-01-18 20:55   EI_08__Emotional_Infrastructure__v1.jpg
+  4580143  2026-01-18 20:55   EI_09__Emotional_Infrastructure__v1.jpg
+  3569214  2026-01-18 20:55   EI_10__Emotional_Infrastructure__v1.jpg
+  1475777  2026-01-18 20:55   EI_11__Emotional_Infrastructure__v1.jpg
+   383361  2026-01-18 20:55   EI_12__Emotional_Infrastructure__v1.jpg
+  5263992  2026-01-18 20:55   EI_13__Emotional_Infrastructure__v1.jpg
+  2225575  2026-01-18 20:55   EI_14__Emotional_Infrastructure__v1.jpg
+---------                     -------
+ 56321158                     14 files
+### PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_07__Emotional_Infrastructure.zip
+Archive:  PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_07__Emotional_Infrastructure.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+   837108  2026-01-18 20:55   EI_85__Emotional_Infrastructure__v1.jpg
+  4162032  2026-01-18 20:55   EI_86__Emotional_Infrastructure__v1.jpg
+   290029  2026-01-18 20:55   EI_87__Emotional_Infrastructure__v1.jpg
+   342561  2026-01-18 20:55   EI_88__Emotional_Infrastructure__v1.jpg
+   206122  2026-01-18 20:55   EI_89__Emotional_Infrastructure__v1.jpg
+   312932  2026-01-18 20:55   EI_90__Emotional_Infrastructure__v1.jpg
+   425051  2026-01-18 20:55   EI_91__Emotional_Infrastructure__v1.jpg
+   135914  2026-01-18 20:55   EI_92__Emotional_Infrastructure__v1.jpg
+   366405  2026-01-18 20:55   EI_93__Emotional_Infrastructure__v1.jpg
+---------                     -------
+  7078154                     9 files
+### PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_06__Emotional_Infrastructure.zip
+Archive:  PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_06__Emotional_Infrastructure.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+  3187918  2026-01-18 20:55   EI_71__Emotional_Infrastructure__v1.jpg
+  3729660  2026-01-18 20:55   EI_72__Emotional_Infrastructure__v1.jpg
+  6681957  2026-01-18 20:55   EI_73__Emotional_Infrastructure__v1.jpg
+   781527  2026-01-18 20:55   EI_74__Emotional_Infrastructure__v1.jpg
+  3953106  2026-01-18 20:55   EI_75__Emotional_Infrastructure__v1.jpg
+  4348684  2026-01-18 20:55   EI_76__Emotional_Infrastructure__v1.jpg
+  4652960  2026-01-18 20:55   EI_77__Emotional_Infrastructure__v1.jpg
+  6160274  2026-01-18 20:55   EI_78__Emotional_Infrastructure__v1.jpg
+  5610339  2026-01-18 20:55   EI_79__Emotional_Infrastructure__v1.jpg
+  2921045  2026-01-18 20:55   EI_80__Emotional_Infrastructure__v1.jpg
+  3633440  2026-01-18 20:55   EI_81__Emotional_Infrastructure__v1.jpg
+  1432474  2026-01-18 20:55   EI_82__Emotional_Infrastructure__v1.jpg
+  5096881  2026-01-18 20:55   EI_83__Emotional_Infrastructure__v1.jpg
+  3693954  2026-01-18 20:55   EI_84__Emotional_Infrastructure__v1.jpg
+---------                     -------
+ 55884219                     14 files
+### PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_03__Emotional_Infrastructure.zip
+Archive:  PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_03__Emotional_Infrastructure.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+  1676172  2026-01-18 20:55   EI_29__Emotional_Infrastructure__v1.jpg
+   159406  2026-01-18 20:55   EI_30__Emotional_Infrastructure__v1.jpg
+  9236068  2026-01-18 20:55   EI_31__Emotional_Infrastructure__v1.jpg
+   829117  2026-01-18 20:55   EI_32__Emotional_Infrastructure__v1.jpg
+  2152860  2026-01-18 20:55   EI_33__Emotional_Infrastructure__v1.jpg
+ 10146170  2026-01-18 20:55   EI_34__Emotional_Infrastructure__v1.jpg
+  2742472  2026-01-18 20:55   EI_35__Emotional_Infrastructure__v1.jpg
+  3617277  2026-01-18 20:55   EI_36__Emotional_Infrastructure__v1.jpg
+  1337682  2026-01-18 20:55   EI_37__Emotional_Infrastructure__v1.jpg
+  4954505  2026-01-18 20:55   EI_38__Emotional_Infrastructure__v1.jpg
+  4914940  2026-01-18 20:55   EI_39__Emotional_Infrastructure__v1.jpg
+  1318617  2026-01-18 20:55   EI_40__Emotional_Infrastructure__v1.jpg
+   319187  2026-01-18 20:55   EI_41__Emotional_Infrastructure__v1.jpg
+  1093692  2026-01-18 20:55   EI_42__Emotional_Infrastructure__v1.jpg
+---------                     -------
+ 44498165                     14 files
+### PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_02__Emotional_Infrastructure.zip
+Archive:  PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_02__Emotional_Infrastructure.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+  1857246  2026-01-18 20:55   EI_15__Emotional_Infrastructure__v1.jpg
+  3751102  2026-01-18 20:55   EI_16__Emotional_Infrastructure__v1.jpg
+   346801  2026-01-18 20:55   EI_17__Emotional_Infrastructure__v1.jpg
+  2231501  2026-01-18 20:55   EI_18__Emotional_Infrastructure__v1.png
+  2266325  2026-01-18 20:55   EI_19__Emotional_Infrastructure__v1.png
+  4364015  2026-01-18 20:55   EI_20__Emotional_Infrastructure__v1.jpg
+  3558885  2026-01-18 20:55   EI_21__Emotional_Infrastructure__v1.jpg
+  2018442  2026-01-18 20:55   EI_22__Emotional_Infrastructure__v1.jpg
+  1191946  2026-01-18 20:55   EI_23__Emotional_Infrastructure__v1.jpg
+ 10287129  2026-01-18 20:55   EI_24__Emotional_Infrastructure__v1.jpg
+  3966446  2026-01-18 20:55   EI_25__Emotional_Infrastructure__v1.jpg
+  3725080  2026-01-18 20:55   EI_26__Emotional_Infrastructure__v1.jpg
+  3699500  2026-01-18 20:55   EI_27__Emotional_Infrastructure__v1.jpg
+  9535572  2026-01-18 20:55   EI_28__Emotional_Infrastructure__v1.jpg
+---------                     -------
+ 52799990                     14 files
+### PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_05__Emotional_Infrastructure.zip
+Archive:  PAYTON_HUBS/TRASH/WORKSPACE_GRANTS_DIRTY_PIPELINE__2026-01-20__2026-01-20__21-59-38/OUTPUT_SUBMISSION/PACK_05__Emotional_Infrastructure.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+  2006049  2026-01-18 20:55   EI_57__Emotional_Infrastructure__v1.jpg
+  1017246  2026-01-18 20:55   EI_58__Emotional_Infrastructure__v1.jpg
+  3036463  2026-01-18 20:55   EI_59__Emotional_Infrastructure__v1.jpg
+  3624509  2026-01-18 20:55   EI_60__Emotional_Infrastructure__v1.jpg
+  4279333  2026-01-18 20:55   EI_61__Emotional_Infrastructure__v1.jpg
+  4148306  2026-01-18 20:55   EI_62__Emotional_Infrastructure__v1.jpg
+   214582  2026-01-18 20:55   EI_63__Emotional_Infrastructure__v1.jpg
+  3654349  2026-01-18 20:55   EI_64__Emotional_Infrastructure__v1.jpg
+  4502319  2026-01-18 20:55   EI_65__Emotional_Infrastructure__v1.jpg
+  5678966  2026-01-18 20:55   EI_66__Emotional_Infrastructure__v1.jpg
+  4695504  2026-01-18 20:55   EI_67__Emotional_Infrastructure__v1.jpg
+  3818816  2026-01-18 20:55   EI_68__Emotional_Infrastructure__v1.jpg
+  3004343  2026-01-18 20:55   EI_69__Emotional_Infrastructure__v1.jpg
+  3233973  2026-01-18 20:55   EI_70__Emotional_Infrastructure__v1.jpg
+---------                     -------
+ 46914758                     14 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/WEEKLY/WEEKLY__2026-01-11__to__2026-01-17__2026-01-17__23-37-52.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/WEEKLY/WEEKLY__2026-01-11__to__2026-01-17__2026-01-17__23-37-52.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      848  2026-01-17 23:37   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION__WEEKLY_SNAPSHOT__2026-01-11__to__2026-01-17__Asia-Jerusalem.txt
+      209  2026-01-17 23:37   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION__WEEKLY_SNAPSHOT__2026-01-11__to__2026-01-17__Asia-Jerusalem.txt.sha256
+    50730  2026-01-17 23:37   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__WEEKLY__2026-01-11__to__2026-01-17__2026-01-17__23-37-52.lst
+      207  2026-01-17 23:37   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__WEEKLY__2026-01-11__to__2026-01-17__2026-01-17__23-37-52.lst.sha256
+---------                     -------
+    51994                     4 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-13__2026-01-13__00-01-25.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-13__2026-01-13__00-01-25.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      548  2026-01-13 00:01   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-13__2026-01-13__00-01-25.txt
+      181  2026-01-13 00:01   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-13__2026-01-13__00-01-25.txt.sha256
+    16917  2026-01-13 00:01   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-13__2026-01-13__00-01-25.lst
+      183  2026-01-13 00:01   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-13__2026-01-13__00-01-25.lst.sha256
+---------                     -------
+    17829                     4 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-13__22-30-00.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-13__22-30-00.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      799  2026-01-14 09:13   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-13__22-30-00.txt
+      169  2026-01-14 09:13   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-13__22-30-00.txt.sha256
+    53011  2026-01-14 09:13   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-13__22-30-00.lst
+      171  2026-01-14 09:13   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-13__22-30-00.lst.sha256
+---------                     -------
+    54150                     4 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-17__2026-01-17__04-20-36.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-17__2026-01-17__04-20-36.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      548  2026-01-17 04:20   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-17__2026-01-17__04-20-36.txt
+      181  2026-01-17 04:20   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-17__2026-01-17__04-20-36.txt.sha256
+    45755  2026-01-17 04:20   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-17__2026-01-17__04-20-36.lst
+      183  2026-01-17 04:20   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-17__2026-01-17__04-20-36.lst.sha256
+---------                     -------
+    46667                     4 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-16__2026-01-17__04-36-39.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-16__2026-01-17__04-36-39.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      563  2026-01-17 04:36   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-16__2026-01-17__04-36-39.txt
+      181  2026-01-17 04:36   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-16__2026-01-17__04-36-39.txt.sha256
+    46889  2026-01-17 04:36   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-16__2026-01-17__04-36-39.lst
+      183  2026-01-17 04:36   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-16__2026-01-17__04-36-39.lst.sha256
+---------                     -------
+    47816                     4 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-17__2026-01-17__23-48-25.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-17__2026-01-17__23-48-25.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      548  2026-01-17 23:48   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-17__2026-01-17__23-48-25.txt
+      181  2026-01-17 23:48   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-17__2026-01-17__23-48-25.txt.sha256
+    49311  2026-01-17 23:48   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-17__2026-01-17__23-48-25.lst
+      183  2026-01-17 23:48   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-17__2026-01-17__23-48-25.lst.sha256
+---------                     -------
+    50223                     4 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-17__2026-01-17__23-49-33.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-17__2026-01-17__23-49-33.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      548  2026-01-17 23:49   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-17__2026-01-17__23-49-33.txt
+      181  2026-01-17 23:49   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-17__2026-01-17__23-49-33.txt.sha256
+    49311  2026-01-17 23:49   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-17__2026-01-17__23-49-33.lst
+      183  2026-01-17 23:49   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-17__2026-01-17__23-49-33.lst.sha256
+---------                     -------
+    50223                     4 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-17__2026-01-17__23-51-26.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-17__2026-01-17__23-51-26.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      548  2026-01-17 23:51   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-17__2026-01-17__23-51-26.txt
+      181  2026-01-17 23:51   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-17__2026-01-17__23-51-26.txt.sha256
+    49311  2026-01-17 23:51   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-17__2026-01-17__23-51-26.lst
+      183  2026-01-17 23:51   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-17__2026-01-17__23-51-26.lst.sha256
+---------                     -------
+    50223                     4 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-18__2026-01-18__23-45-27.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-18__2026-01-18__23-45-27.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      548  2026-01-18 23:45   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-18__2026-01-18__23-45-27.txt
+      181  2026-01-18 23:45   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-18__2026-01-18__23-45-27.txt.sha256
+    49175  2026-01-18 23:45   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-18__2026-01-18__23-45-27.lst
+      183  2026-01-18 23:45   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-18__2026-01-18__23-45-27.lst.sha256
+---------                     -------
+    50087                     4 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-18__2026-01-18__23-45-48.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-18__2026-01-18__23-45-48.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      548  2026-01-18 23:45   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-18__2026-01-18__23-45-48.txt
+      181  2026-01-18 23:45   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-18__2026-01-18__23-45-48.txt.sha256
+    49175  2026-01-18 23:45   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-18__2026-01-18__23-45-48.lst
+      183  2026-01-18 23:45   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-18__2026-01-18__23-45-48.lst.sha256
+---------                     -------
+    50087                     4 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-18__RETRO__2026-01-19__00-26-20.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-18__RETRO__2026-01-19__00-26-20.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      703  2026-01-19 00:26   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-18__RETRO__2026-01-19__00-26-20.txt
+      188  2026-01-19 00:26   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-18__RETRO__2026-01-19__00-26-20.txt.sha256
+---------                     -------
+      891                     2 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-16__2026-01-20__00-02-35.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-16__2026-01-20__00-02-35.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      563  2026-01-20 00:02   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-16__2026-01-20__00-02-35.txt
+      181  2026-01-20 00:02   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-16__2026-01-20__00-02-35.txt.sha256
+    49749  2026-01-20 00:02   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-16__2026-01-20__00-02-35.lst
+      183  2026-01-20 00:02   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__2026-01-16__2026-01-20__00-02-35.lst.sha256
+---------                     -------
+    50676                     4 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-20__Asia-Jerusalem.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-20__Asia-Jerusalem.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      659  2026-01-20 22:51   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-20.txt
+      159  2026-01-20 22:51   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-20.txt.sha256
+    62811  2026-01-20 22:51   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__DAY__2026-01-20.lst
+      166  2026-01-20 22:51   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__DAY__2026-01-20.lst.sha256
+        0  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/
+      504  2026-01-20 20:38   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/DAY_BOOT.txt
+      165  2026-01-20 20:38   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/DAY_BOOT.txt.sha256
+      148  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/HEADSHOT.txt
+      165  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/HEADSHOT.txt.sha256
+      170  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/TIMELINE.txt
+      165  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/TIMELINE.txt.sha256
+      174  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/RUNTIME_STATUS.txt
+      171  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/RUNTIME_STATUS.txt.sha256
+      194  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/INVENTORY.tsv
+      166  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/INVENTORY.tsv.sha256
+     1513  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/MANIFEST.tsv
+      165  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/MANIFEST.tsv.sha256
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-18__Asia-Jerusalem.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_CLOSE/DAY_CLOSE__2026-01-18__Asia-Jerusalem.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      645  2026-01-20 21:59   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-18.txt
+      159  2026-01-20 21:59   HUB_LEGAL_FORENSIC/FIXATIONS/DAY_LOG__2026-01-18.txt.sha256
+    59562  2026-01-20 21:59   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__DAY__2026-01-18.lst
+      166  2026-01-20 21:59   HUB_LEGAL_FORENSIC/FIXATIONS/INVENTORY__DAY__2026-01-18.lst.sha256
+---------                     -------
+    60532                     4 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-11.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-11.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      110  2026-01-11 22:57   DAY_LOG.txt
+      172  2026-01-11 22:57   DAY_LOG.txt.sha256
+       51  2026-01-11 22:57   HEADSHOT.txt
+      173  2026-01-11 22:57   HEADSHOT.txt.sha256
+       34  2026-01-11 22:57   TIMELINE.txt
+      173  2026-01-11 22:57   TIMELINE.txt.sha256
+      261  2026-01-11 22:57   MANIFEST.tsv
+      173  2026-01-11 22:57   MANIFEST.tsv.sha256
+---------                     -------
+     1147                     8 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-12__08-25-46.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-12__08-25-46.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      182  2026-01-12 08:25   DAY_LOG.txt
+      174  2026-01-12 08:25   DAY_LOG.txt.sha256
+      102  2026-01-12 08:25   HEADSHOT.txt
+      175  2026-01-12 08:25   HEADSHOT.txt.sha256
+       65  2026-01-12 08:25   TIMELINE.txt
+      175  2026-01-12 08:25   TIMELINE.txt.sha256
+      100  2026-01-12 08:25   RUNTIME_STATUS.txt
+      181  2026-01-12 08:25   RUNTIME_STATUS.txt.sha256
+       88  2026-01-12 08:25   INVENTORY.tsv
+      176  2026-01-12 08:25   INVENTORY.tsv.sha256
+      969  2026-01-12 08:25   MANIFEST.tsv
+      175  2026-01-12 08:25   MANIFEST.tsv.sha256
+---------                     -------
+     2562                     12 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-14__09-10-00.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-14__09-10-00.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      396  2026-01-14 09:13   DAY_LOG.txt
+      174  2026-01-14 09:13   DAY_LOG.txt.sha256
+      127  2026-01-14 09:13   HEADSHOT.txt
+      175  2026-01-14 09:13   HEADSHOT.txt.sha256
+      201  2026-01-14 09:13   TIMELINE.txt
+      175  2026-01-14 09:13   TIMELINE.txt.sha256
+      266  2026-01-14 09:13   RUNTIME_STATUS.txt
+      181  2026-01-14 09:13   RUNTIME_STATUS.txt.sha256
+       89  2026-01-14 09:13   INVENTORY.tsv
+      176  2026-01-14 09:13   INVENTORY.tsv.sha256
+      970  2026-01-14 09:13   MANIFEST.tsv
+      175  2026-01-14 09:13   MANIFEST.tsv.sha256
+---------                     -------
+     3105                     12 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-15__08-58-00__Asia-Jerusalem.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-15__08-58-00__Asia-Jerusalem.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      224  2026-01-15 11:38   DAY_LOG.txt
+      190  2026-01-15 11:38   DAY_LOG.txt.sha256
+      174  2026-01-15 11:38   HEADSHOT.txt
+      191  2026-01-15 11:38   HEADSHOT.txt.sha256
+       86  2026-01-15 11:38   TIMELINE.txt
+      191  2026-01-15 11:38   TIMELINE.txt.sha256
+      163  2026-01-15 11:38   RUNTIME_STATUS.txt
+      197  2026-01-15 11:38   RUNTIME_STATUS.txt.sha256
+      188  2026-01-15 11:38   INVENTORY.tsv
+      192  2026-01-15 11:38   INVENTORY.tsv.sha256
+      970  2026-01-15 11:38   MANIFEST.tsv
+      191  2026-01-15 11:38   MANIFEST.tsv.sha256
+---------                     -------
+     2957                     12 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-17__04-21-14.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-17__04-21-14.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      182  2026-01-17 04:21   DAY_LOG.txt
+      174  2026-01-17 04:21   DAY_LOG.txt.sha256
+      102  2026-01-17 04:21   HEADSHOT.txt
+      175  2026-01-17 04:21   HEADSHOT.txt.sha256
+       65  2026-01-17 04:21   TIMELINE.txt
+      175  2026-01-17 04:21   TIMELINE.txt.sha256
+      100  2026-01-17 04:21   RUNTIME_STATUS.txt
+      181  2026-01-17 04:21   RUNTIME_STATUS.txt.sha256
+       88  2026-01-17 04:21   INVENTORY.tsv
+      176  2026-01-17 04:21   INVENTORY.tsv.sha256
+      969  2026-01-17 04:21   MANIFEST.tsv
+      175  2026-01-17 04:21   MANIFEST.tsv.sha256
+---------                     -------
+     2562                     12 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-17__23-48-13.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-17__23-48-13.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      182  2026-01-17 23:48   DAY_LOG.txt
+      174  2026-01-17 23:48   DAY_LOG.txt.sha256
+      102  2026-01-17 23:48   HEADSHOT.txt
+      175  2026-01-17 23:48   HEADSHOT.txt.sha256
+       65  2026-01-17 23:48   TIMELINE.txt
+      175  2026-01-17 23:48   TIMELINE.txt.sha256
+      100  2026-01-17 23:48   RUNTIME_STATUS.txt
+      181  2026-01-17 23:48   RUNTIME_STATUS.txt.sha256
+       88  2026-01-17 23:48   INVENTORY.tsv
+      176  2026-01-17 23:48   INVENTORY.tsv.sha256
+      969  2026-01-17 23:48   MANIFEST.tsv
+      175  2026-01-17 23:48   MANIFEST.tsv.sha256
+---------                     -------
+     2562                     12 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-18__01-10-13.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-18__01-10-13.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      182  2026-01-18 01:10   DAY_LOG.txt
+      174  2026-01-18 01:10   DAY_LOG.txt.sha256
+      102  2026-01-18 01:10   HEADSHOT.txt
+      175  2026-01-18 01:10   HEADSHOT.txt.sha256
+       65  2026-01-18 01:10   TIMELINE.txt
+      175  2026-01-18 01:10   TIMELINE.txt.sha256
+      100  2026-01-18 01:10   RUNTIME_STATUS.txt
+      181  2026-01-18 01:10   RUNTIME_STATUS.txt.sha256
+       88  2026-01-18 01:10   INVENTORY.tsv
+      176  2026-01-18 01:10   INVENTORY.tsv.sha256
+      969  2026-01-18 01:10   MANIFEST.tsv
+      175  2026-01-18 01:10   MANIFEST.tsv.sha256
+---------                     -------
+     2562                     12 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-18__13-25-07.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/DAY_BOOTSTRAP/DAY_BOOT__2026-01-18__13-25-07.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      182  2026-01-18 13:25   DAY_LOG.txt
+      174  2026-01-18 13:25   DAY_LOG.txt.sha256
+      102  2026-01-18 13:25   HEADSHOT.txt
+      175  2026-01-18 13:25   HEADSHOT.txt.sha256
+       65  2026-01-18 13:25   TIMELINE.txt
+      175  2026-01-18 13:25   TIMELINE.txt.sha256
+      100  2026-01-18 13:25   RUNTIME_STATUS.txt
+      181  2026-01-18 13:25   RUNTIME_STATUS.txt.sha256
+       88  2026-01-18 13:25   INVENTORY.tsv
+      176  2026-01-18 13:25   INVENTORY.tsv.sha256
+      969  2026-01-18 13:25   MANIFEST.tsv
+      175  2026-01-18 13:25   MANIFEST.tsv.sha256
+---------                     -------
+     2562                     12 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/FIXATION_EXPORTS/FIXATION_SET__CORE_ZIP_OK__DAY_BOOT_REWRITE__2026-01-20__20-49__Asia-Jerusalem__2026-01-20__21-04-15.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/FIXATION_EXPORTS/FIXATION_SET__CORE_ZIP_OK__DAY_BOOT_REWRITE__2026-01-20__20-49__Asia-Jerusalem__2026-01-20__21-04-15.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__CORE_ZIP_OK__DAY_BOOT_REWRITE__2026-01-20__20-49__Asia-Jerusalem/
+      934  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__CORE_ZIP_OK__DAY_BOOT_REWRITE__2026-01-20__20-49__Asia-Jerusalem/FIXATION__CORE_PROTOCOL_ZIP__SHA256_OK__2026-01-20__20-49__Asia-Jerusalem.txt
+      292  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__CORE_ZIP_OK__DAY_BOOT_REWRITE__2026-01-20__20-49__Asia-Jerusalem/FIXATION__CORE_PROTOCOL_ZIP__SHA256_OK__2026-01-20__20-49__Asia-Jerusalem.txt.sha256
+      598  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__CORE_ZIP_OK__DAY_BOOT_REWRITE__2026-01-20__20-49__Asia-Jerusalem/FIXATION__DAY_BOOT_REWRITE__2026-01-20__20-49__Asia-Jerusalem.txt
+      280  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__CORE_ZIP_OK__DAY_BOOT_REWRITE__2026-01-20__20-49__Asia-Jerusalem/FIXATION__DAY_BOOT_REWRITE__2026-01-20__20-49__Asia-Jerusalem.txt.sha256
+      600  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__CORE_ZIP_OK__DAY_BOOT_REWRITE__2026-01-20__20-49__Asia-Jerusalem/MANIFEST__FIXATION_SET__CORE_ZIP_OK__DAY_BOOT_REWRITE__2026-01-20__20-49__Asia-Jerusalem.tsv
+      307  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__CORE_ZIP_OK__DAY_BOOT_REWRITE__2026-01-20__20-49__Asia-Jerusalem/MANIFEST__FIXATION_SET__CORE_ZIP_OK__DAY_BOOT_REWRITE__2026-01-20__20-49__Asia-Jerusalem.tsv.sha256
+      539  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/DAY_LOG.txt
+      164  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/DAY_LOG.txt.sha256
+      148  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/HEADSHOT.txt
+      165  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/HEADSHOT.txt.sha256
+      170  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/TIMELINE.txt
+      165  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/TIMELINE.txt.sha256
+      174  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/RUNTIME_STATUS.txt
+      171  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/RUNTIME_STATUS.txt.sha256
+      194  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/INVENTORY.tsv
+      166  2026-01-20 21:04   HUB_LEGAL_FORENSIC/FIXATIONS/BOOT__2026-01-20/INVENTORY.tsv.sha256
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/FIXATION_EXPORTS/FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem__2026-01-20__21-13-46.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/FIXATION_EXPORTS/FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem__2026-01-20__21-13-46.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/
+     1183  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/FIXATION__DEMO_DISTRIBUTION_STATE__2026-01-09__19-19__Asia-Jerusalem.txt
+      280  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/FIXATION__DEMO_DISTRIBUTION_STATE__2026-01-09__19-19__Asia-Jerusalem.txt.sha256
+      551  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/FIXATION__DEMO_V1__AI_USER_CONTRACT_FULL__2026-01-10__19-32__Asia-Jerusalem.txt
+      618  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/MANIFEST__FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem.tsv
+      293  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/MANIFEST__FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem.tsv.sha256
+---------                     -------
+     2925                     6 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/FIXATION_EXPORTS/FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem__2026-01-20__21-14-05.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/FIXATION_EXPORTS/FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem__2026-01-20__21-14-05.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2026-01-20 21:14   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/
+     1183  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/FIXATION__DEMO_DISTRIBUTION_STATE__2026-01-09__19-19__Asia-Jerusalem.txt
+      280  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/FIXATION__DEMO_DISTRIBUTION_STATE__2026-01-09__19-19__Asia-Jerusalem.txt.sha256
+      551  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/FIXATION__DEMO_V1__AI_USER_CONTRACT_FULL__2026-01-10__19-32__Asia-Jerusalem.txt
+      618  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/MANIFEST__FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem.tsv
+      293  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/MANIFEST__FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem.tsv.sha256
+      287  2026-01-20 21:14   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/FIXATION__DEMO_V1__AI_USER_CONTRACT_FULL__2026-01-10__19-32__Asia-Jerusalem.txt.sha256
+---------                     -------
+     3212                     7 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/FIXATION_EXPORTS/FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem__FINAL__2026-01-20__21-15-27.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/FIXATION_EXPORTS/FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem__FINAL__2026-01-20__21-15-27.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2026-01-20 21:15   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/
+     1183  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/FIXATION__DEMO_DISTRIBUTION_STATE__2026-01-09__19-19__Asia-Jerusalem.txt
+      280  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/FIXATION__DEMO_DISTRIBUTION_STATE__2026-01-09__19-19__Asia-Jerusalem.txt.sha256
+      551  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/FIXATION__DEMO_V1__AI_USER_CONTRACT_FULL__2026-01-10__19-32__Asia-Jerusalem.txt
+      618  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/MANIFEST__FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem.tsv
+      293  2026-01-20 21:13   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/MANIFEST__FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem.tsv.sha256
+      287  2026-01-20 21:14   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/FIXATION__DEMO_V1__AI_USER_CONTRACT_FULL__2026-01-10__19-32__Asia-Jerusalem.txt.sha256
+     1068  2026-01-20 21:15   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/MANIFEST__FINAL__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04.tsv
+      270  2026-01-20 21:15   FIXATION_SET__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04__Asia-Jerusalem/MANIFEST__FINAL__DEMO_V1_AND_DEMO_STATE__2026-01-20__18-04.tsv.sha256
+---------                     -------
+     4550                     9 files
+### PAYTON_HUBS/HUB_LEGAL_FORENSIC/FIXATION_EXPORTS/FIXATION_SET__WORKSPACE_GRANTS_CLEANUP__2026-01-20__2026-01-20__21-59-38__Asia-Jerusalem.zip
+Archive:  PAYTON_HUBS/HUB_LEGAL_FORENSIC/FIXATION_EXPORTS/FIXATION_SET__WORKSPACE_GRANTS_CLEANUP__2026-01-20__2026-01-20__21-59-38__Asia-Jerusalem.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2026-01-20 21:59   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__WORKSPACE_GRANTS_CLEANUP__2026-01-20__2026-01-20__21-59-38__Asia-Jerusalem/
+     1045  2026-01-20 21:59   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__WORKSPACE_GRANTS_CLEANUP__2026-01-20__2026-01-20__21-59-38__Asia-Jerusalem/FIXATION__SYSTEM_CLEANUP__WORKSPACE_GRANTS__2026-01-20__2026-01-20__21-59-38__Asia-Jerusalem.txt
+      321  2026-01-20 21:59   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__WORKSPACE_GRANTS_CLEANUP__2026-01-20__2026-01-20__21-59-38__Asia-Jerusalem/FIXATION__SYSTEM_CLEANUP__WORKSPACE_GRANTS__2026-01-20__2026-01-20__21-59-38__Asia-Jerusalem.txt.sha256
+     3124  2026-01-20 21:59   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__WORKSPACE_GRANTS_CLEANUP__2026-01-20__2026-01-20__21-59-38__Asia-Jerusalem/INVENTORY__TRASH_MOVED__2026-01-20__2026-01-20__21-59-38.lst
+      285  2026-01-20 21:59   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__WORKSPACE_GRANTS_CLEANUP__2026-01-20__2026-01-20__21-59-38__Asia-Jerusalem/INVENTORY__TRASH_MOVED__2026-01-20__2026-01-20__21-59-38.lst.sha256
+      802  2026-01-20 21:59   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__WORKSPACE_GRANTS_CLEANUP__2026-01-20__2026-01-20__21-59-38__Asia-Jerusalem/MANIFEST__FIXATION_SET__WORKSPACE_GRANTS_CLEANUP__2026-01-20__2026-01-20__21-59-38__Asia-Jerusalem.tsv
+      327  2026-01-20 21:59   HUB_LEGAL_FORENSIC/FIXATIONS/FIXATION_SET__WORKSPACE_GRANTS_CLEANUP__2026-01-20__2026-01-20__21-59-38__Asia-Jerusalem/MANIFEST__FIXATION_SET__WORKSPACE_GRANTS_CLEANUP__2026-01-20__2026-01-20__21-59-38__Asia-Jerusalem.tsv.sha256
+---------                     -------
+     5904                     7 files

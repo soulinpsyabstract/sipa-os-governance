@@ -1,0 +1,16 @@
+FORENSIC FIXATION · PRE CLEAN
+
+DATE: 2026-01-20
+TIME: 23:46
+TZ: Asia/Jerusalem
+
+SCOPE:
+- Full project scan
+- ZIP integrity check
+- Date-based project map
+
+NO DELETE PERFORMED.
+ALL FINDINGS ARE READ-ONLY.
+
+NEXT STEP:
+- MOVE invalid / duplicate / zero files to TRASH via FIXATION
