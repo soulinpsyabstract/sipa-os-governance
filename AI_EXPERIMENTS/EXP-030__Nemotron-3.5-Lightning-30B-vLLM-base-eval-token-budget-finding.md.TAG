@@ -1,0 +1,5 @@
+FILE=EXP-030__Nemotron-3.5-Lightning-30B-vLLM-base-eval-token-budget-finding.md
+SHA256=02c3b3e40f59b9c905403d14b42f64fafd7fcf701a26c542ab09502a8d10bb05
+SIZE=8094
+DEVICE=SERVER
+TS=2026-08-13T15:02:19Z
