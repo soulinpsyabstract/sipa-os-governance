@@ -1,0 +1,339 @@
+{
+  "info": {
+    "_postman_id": "1b02c2f3-2f42-4fc5-aad0-108d4bac0f9f",
+    "name": "SIPA Node Monitors",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-07T22:18:42.000Z",
+    "updatedAt": "2026-08-14T09:44:41.000Z",
+    "lastUpdatedBy": "54116431",
+    "uid": "54116431-1b02c2f3-2f42-4fc5-aad0-108d4bac0f9f"
+  },
+  "item": [
+    {
+      "name": "SIPA Server \u2014 nginx",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"nginx: status 200 OK\", () => pm.response.to.have.status(200));",
+              "pm.test(\"nginx: no 502/503/504\", () => pm.expect([502,503,504]).to.not.include(pm.response.code));",
+              "pm.test(\"nginx: response time < 3000ms\", () => pm.expect(pm.response.responseTime).to.be.below(parseInt(pm.environment.get('LATENCY_WARN_MS') || '3000')));",
+              "pm.test(\"nginx: response time < 5000ms (degraded)\", () => pm.expect(pm.response.responseTime).to.be.below(parseInt(pm.environment.get('LATENCY_CRIT_MS') || '5000')));",
+              "pm.test(\"nginx: Content-Type header present\", () => pm.expect(pm.response.headers.get('content-type')).to.exist);",
+              "pm.test(\"nginx: CF-RAY header present (tunnel active)\", () => pm.expect(pm.response.headers.get('cf-ray')).to.exist);",
+              "pm.test(\"nginx: response body not empty\", () => pm.expect(pm.response.text()).to.not.be.empty);",
+              "console.log(\"nginx:\", pm.response.code, pm.response.responseTime + \"ms\");"
+            ]
+          }
+        }
+      ],
+      "id": "1586a335-cdfe-404e-91cd-9648d82b8b85",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://soulinpsy.info",
+          "protocol": "https",
+          "host": [
+            "soulinpsy",
+            "info"
+          ]
+        }
+      },
+      "response": [],
+      "createdAt": "2026-06-07T22:18:43.000Z",
+      "updatedAt": "2026-06-08T07:18:24.000Z",
+      "uid": "54116431-1586a335-cdfe-404e-91cd-9648d82b8b85"
+    },
+    {
+      "name": "SIPA Server \u2014 MCP",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"MCP: service alive (200 or 401)\", () => pm.expect([200,401]).to.include(pm.response.code));",
+              "pm.test(\"MCP: no 502/503/504 (tunnel up)\", () => pm.expect([502,503,504]).to.not.include(pm.response.code));",
+              "pm.test(\"MCP: response time < 3000ms\", () => pm.expect(pm.response.responseTime).to.be.below(parseInt(pm.environment.get('LATENCY_WARN_MS') || '3000')));",
+              "pm.test(\"MCP: response time < 5000ms (degraded)\", () => pm.expect(pm.response.responseTime).to.be.below(parseInt(pm.environment.get('LATENCY_CRIT_MS') || '5000')));",
+              "pm.test(\"MCP: Content-Type is JSON\", () => pm.expect(pm.response.headers.get('content-type')).to.include('application/json'));",
+              "pm.test(\"MCP: CF-RAY header present (tunnel active)\", () => pm.expect(pm.response.headers.get('cf-ray')).to.exist);",
+              "pm.test(\"MCP: response body is valid JSON\", () => { pm.response.json(); });",
+              "console.log(\"MCP:\", pm.response.code, pm.response.responseTime + \"ms\");"
+            ]
+          }
+        }
+      ],
+      "id": "1839be1d-d1a9-4601-87e8-0ab25720cbbc",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://mcp.soulinpsy.info/health",
+          "protocol": "https",
+          "host": [
+            "mcp",
+            "soulinpsy",
+            "info"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": [],
+      "createdAt": "2026-06-07T22:18:43.000Z",
+      "updatedAt": "2026-08-14T09:41:35.000Z",
+      "uid": "54116431-1839be1d-d1a9-4601-87e8-0ab25720cbbc"
+    },
+    {
+      "name": "SIPA Server \u2014 WS Gateway",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"WS Gateway: server alive (200 or 426)\", () => pm.expect([200,426]).to.include(pm.response.code));",
+              "pm.test(\"WS Gateway: no 502/503/504 (tunnel up)\", () => pm.expect([502,503,504]).to.not.include(pm.response.code));",
+              "pm.test(\"WS Gateway: response time < 3000ms\", () => pm.expect(pm.response.responseTime).to.be.below(parseInt(pm.environment.get('LATENCY_WARN_MS') || '3000')));",
+              "pm.test(\"WS Gateway: response time < 5000ms (degraded)\", () => pm.expect(pm.response.responseTime).to.be.below(parseInt(pm.environment.get('LATENCY_CRIT_MS') || '5000')));",
+              "pm.test(\"WS Gateway: CF-RAY header present (tunnel active)\", () => pm.expect(pm.response.headers.get('cf-ray')).to.exist);",
+              "pm.test(\"WS Gateway: no 5xx crash\", () => pm.expect(pm.response.code).to.be.below(500));",
+              "console.log(\"WS:\", pm.response.code, pm.response.responseTime + \"ms \u2014 426=normal for WS endpoint\");"
+            ]
+          }
+        }
+      ],
+      "id": "e41f69c1-f0f1-4002-82e9-6fb1ca6a97b2",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://ws.soulinpsy.info",
+          "protocol": "https",
+          "host": [
+            "ws",
+            "soulinpsy",
+            "info"
+          ]
+        }
+      },
+      "response": [],
+      "createdAt": "2026-06-07T22:18:43.000Z",
+      "updatedAt": "2026-06-08T07:19:27.000Z",
+      "uid": "54116431-e41f69c1-f0f1-4002-82e9-6fb1ca6a97b2"
+    },
+    {
+      "name": "SIPA Node \u2014 T15",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"T15: status 200 OK\", () => pm.response.to.have.status(200));",
+              "pm.test(\"T15: no 502/503/504\", () => pm.expect([502,503,504]).to.not.include(pm.response.code));",
+              "pm.test(\"T15: response time < 3000ms\", () => pm.expect(pm.response.responseTime).to.be.below(parseInt(pm.environment.get('LATENCY_WARN_MS') || '3000')));",
+              "pm.test(\"T15: response time < 5000ms (degraded)\", () => pm.expect(pm.response.responseTime).to.be.below(parseInt(pm.environment.get('LATENCY_CRIT_MS') || '5000')));",
+              "pm.test(\"T15: Content-Type header present\", () => pm.expect(pm.response.headers.get('content-type')).to.exist);",
+              "pm.test(\"T15: CF-RAY header present (tunnel active)\", () => pm.expect(pm.response.headers.get('cf-ray')).to.exist);",
+              "pm.test(\"T15: valid JSON with status field\", () => {",
+              "    const j = pm.response.json();",
+              "    pm.expect(j).to.have.property('status');",
+              "});",
+              "pm.test(\"T15: status is ok\", () => pm.expect(pm.response.json().status).to.equal('ok'));",
+              "console.log(\"T15:\", pm.response.code, pm.response.responseTime + \"ms\", pm.response.text());"
+            ]
+          }
+        }
+      ],
+      "id": "b86802f3-8c03-4f8c-8d00-e20ccb6c9151",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://t15.soulinpsy.info",
+          "protocol": "https",
+          "host": [
+            "t15",
+            "soulinpsy",
+            "info"
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET https://t15.soulinpsy.info"
+      },
+      "response": [],
+      "createdAt": "2026-06-07T22:26:28.000Z",
+      "updatedAt": "2026-06-08T07:20:28.000Z",
+      "uid": "54116431-b86802f3-8c03-4f8c-8d00-e20ccb6c9151"
+    },
+    {
+      "name": "SIPA Node \u2014 X7",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"X7: status 200 OK\", () => pm.response.to.have.status(200));",
+              "pm.test(\"X7: no 502/503/504\", () => pm.expect([502,503,504]).to.not.include(pm.response.code));",
+              "pm.test(\"X7: response time < 3000ms\", () => pm.expect(pm.response.responseTime).to.be.below(parseInt(pm.environment.get('LATENCY_WARN_MS') || '3000')));",
+              "pm.test(\"X7: response time < 5000ms (degraded)\", () => pm.expect(pm.response.responseTime).to.be.below(parseInt(pm.environment.get('LATENCY_CRIT_MS') || '5000')));",
+              "pm.test(\"X7: Content-Type header present\", () => pm.expect(pm.response.headers.get('content-type')).to.exist);",
+              "pm.test(\"X7: CF-RAY header present (tunnel active)\", () => pm.expect(pm.response.headers.get('cf-ray')).to.exist);",
+              "pm.test(\"X7: valid JSON with status field\", () => {",
+              "    const j = pm.response.json();",
+              "    pm.expect(j).to.have.property('status');",
+              "});",
+              "pm.test(\"X7: status is ok\", () => pm.expect(pm.response.json().status).to.equal('ok'));",
+              "console.log(\"X7:\", pm.response.code, pm.response.responseTime + \"ms\", pm.response.text());"
+            ]
+          }
+        }
+      ],
+      "id": "cf87cfec-00f1-4f4c-b684-cd382d7901d5",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://x7.soulinpsy.info",
+          "protocol": "https",
+          "host": [
+            "x7",
+            "soulinpsy",
+            "info"
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET https://x7.soulinpsy.info"
+      },
+      "response": [],
+      "createdAt": "2026-06-07T22:26:44.000Z",
+      "updatedAt": "2026-06-08T07:20:31.000Z",
+      "uid": "54116431-cf87cfec-00f1-4f4c-b684-cd382d7901d5"
+    },
+    {
+      "name": "SIPA Games \u2014 Frontend",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Games Frontend: status 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"Games Frontend: no 502/503/504\", () => pm.expect([502,503,504]).to.not.include(pm.response.code));",
+              "pm.test(\"Games Frontend: response time < 3000ms\", () => pm.expect(pm.response.responseTime).to.be.below(parseInt(pm.environment.get('LATENCY_WARN_MS') || '3000')));",
+              "pm.test(\"Games Frontend: CF-RAY header present\", () => pm.expect(pm.response.headers.get('cf-ray')).to.exist);",
+              "pm.test(\"Games Frontend: body not empty\", () => pm.expect(pm.response.text()).to.not.be.empty);",
+              "console.log(\"Games Frontend:\", pm.response.code, pm.response.responseTime + \"ms\");"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "08a78a6c-6019-42d9-bc95-3bdab269651f",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://games.sipa-os.org/",
+          "protocol": "https",
+          "host": [
+            "games",
+            "sipa-os",
+            "org"
+          ],
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": [],
+      "createdAt": "2026-06-09T14:08:34.000Z",
+      "updatedAt": "2026-06-09T14:08:34.000Z",
+      "uid": "54116431-08a78a6c-6019-42d9-bc95-3bdab269651f"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "92c32e1a-8388-4a43-b45e-28e1b8203efb",
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          "// \u2500\u2500 SIPA Node Monitors \u2014 Aggregator Init \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
+          "// Runs once before the first request in the collection run.",
+          "// We use collectionVariables to accumulate results across requests.",
+          "",
+          "var existing = pm.collectionVariables.get(\"sipa_results\");",
+          "if (!existing) {",
+          "    pm.collectionVariables.set(\"sipa_results\", JSON.stringify([]));",
+          "    pm.collectionVariables.set(\"sipa_run_start\", new Date().toISOString());",
+          "    console.log(\"\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\");",
+          "    console.log(\"  SIPA OS \u2014 Node Health Check Started\");",
+          "    console.log(\"  \" + new Date().toUTCString());",
+          "    console.log(\"\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\");",
+          "}"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// \u2500\u2500 SIPA Node Monitors \u2014 Final Aggregated Summary + Uptime History \u2500\u2500",
+          "// Fires after every request. Auto-collects result, prints report once all nodes reported.",
+          "",
+          "var TOTAL_NODES = 6;",
+          "var HISTORY_WINDOW = 20;",
+          "",
+          "// \u2500\u2500 Auto-collect current request result \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
+          "var raw = pm.collectionVariables.get(\"sipa_results\");",
+          "var results = raw ? JSON.parse(raw) : [];",
+          "",
+          "var nameMap = {",
+          "    \"SIPA Server \u2014 nginx\":           \"nginx\",",
+          "    \"SIPA Server \u2014 MCP\":             \"MCP\",",
+          "    \"SIPA Server \u2014 WS Gateway\":      \"WS Gateway\",",
+          "    \"SIPA Node \u2014 T15\":               \"T15\",",
+          "    \"SIPA Node \u2014 X7\":                \"X7\",",
+          "    \"SIPA Games \u2014 Frontend\":          \"Games Frontend\"",
+          "};",
+          "",
+          "var shortName = nameMap[pm.info.requestName] || pm.info.requestName;",
+          "var allPassed = (pm.test.results && pm.test.results.length) ? pm.test.results.every(function(t) { return t.passed; }) : (pm.response.code < 400 || pm.response.code === 401 || pm.response.code === 426);",
+          "var failedTests = (pm.test.results || []).filter(function(t) { return !t.passed; }).map(function(t) { return t.name; });"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "sipa_results",
+      "value": ""
+    },
+    {
+      "key": "sipa_run_start",
+      "value": ""
+    }
+  ]
+}
