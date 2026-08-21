@@ -1,0 +1,29 @@
+name: GOVERNANCE_DAILY_REPORT
+on:
+  schedule:
+    - cron: "0 21 * * *"   # 21:00 UTC = 00:00 Israel (next calendar day starts, report covers the day just closed)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  daily_report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history needed -- the report reads git log for the whole day
+
+      - name: Generate report for the day that just closed (Israel time)
+        run: |
+          DAY="$(TZ=Asia/Jerusalem date -d 'yesterday' +%F)"
+          bash scripts/daily_governance_report.sh "$DAY"
+
+      - name: Commit report
+        run: |
+          git config user.name "payton-ci"
+          git config user.email "payton-ci@users.noreply.github.com"
+          git add REPORTS/
+          git commit -m "governance: daily report $(TZ=Asia/Jerusalem date -d 'yesterday' +%F)" || exit 0
+          git push

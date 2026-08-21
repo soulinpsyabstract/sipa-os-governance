@@ -1,0 +1,6 @@
+FILE=daily_governance_report.yml
+SHA256=0cd659f3bf667fdcd63c1b84a5406d55db3480435b99291be9f706aa4f7a62c4
+DEVICE=SERVER
+TS=2026-08-21__20-21-10
+FIXATED_BY=Claude
+NOTE=autorun_for_daily_governance_report_cron_21UTC_00_israel_reports_the_day_just_closed_workflow_dispatch_also_available_for_manual_trigger
