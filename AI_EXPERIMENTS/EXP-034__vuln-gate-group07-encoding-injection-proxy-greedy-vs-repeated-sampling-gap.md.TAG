@@ -1,0 +1,6 @@
+FILE=AI_EXPERIMENTS/EXP-034__vuln-gate-group07-encoding-injection-proxy-greedy-vs-repeated-sampling-gap.md
+SHA256=cc9e4f542c96218a69a1caccfff8a8bf1e15cb9c1841e6bca5bddd5670f34027
+DEVICE=SERVER
+TS=2026-08-21__14-54-21
+FIXATED_BY=Claude
+NOTE=group07_eval_documented_greedy_not_k20_eos_token_bug_found_manual_full_response_audit
