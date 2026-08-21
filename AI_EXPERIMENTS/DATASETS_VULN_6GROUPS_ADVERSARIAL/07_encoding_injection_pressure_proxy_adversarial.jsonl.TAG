@@ -1,0 +1,7 @@
+FILE=07_encoding_injection_pressure_proxy_adversarial.jsonl
+SHA256=dc3aaed4b3082c57e18440d89178713961c202ceae8090a9a984e7e5d0b402f1
+SIZE=52491
+DEVICE=SERVER
+TS=2026-08-21__11-52-04
+FIXATED_BY=Claude
+NOTE=vuln_gate_G15_adversarial_OOD_eval_set_group07_encoding_injection_proxy_2026-08-21_NOT_real_GCG_or_activation_steering_narrative_proxy_only
