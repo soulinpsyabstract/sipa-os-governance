@@ -1,0 +1,6 @@
+FILE=eval_vuln_gate_salience_trimmed.py
+SHA256=e5d9ff93cf6f7d23bf00aceeb6950be749c247ca1912946f2fe6bbf56c410734
+DEVICE=SERVER
+TS=2026-08-21__19-49-11
+FIXATED_BY=Claude
+NOTE=EXP-035_trimmed_rerun_5_scenarios_per_group_incremental_save_per_group_precedent_from_EXP-033_5x10_50gen_flagship_result
