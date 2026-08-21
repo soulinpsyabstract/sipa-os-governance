@@ -1,0 +1,6 @@
+FILE=scripts/train_vuln_specialist_salience.py
+SHA256=1c8e947867bbae3e6f6f274f089574980a9a21c540ceff717618bad51f6cda07
+DEVICE=SERVER
+TS=2026-08-21__14-55-50
+FIXATED_BY=Claude
+NOTE=third_architecture_specialist_training_vectionlabs_Salience-27B-R5_VLM_AutoModelForImageTextToText_smoke_tested_live
