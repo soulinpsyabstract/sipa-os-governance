@@ -1,0 +1,6 @@
+FILE=scripts/eval_vuln_gate_salience.py
+SHA256=ac35d0c1b8314207dd87fc3edf886dd51f0030ed32423fa8775ea59ffcbeae83
+DEVICE=SERVER
+TS=2026-08-21__14-59-51
+FIXATED_BY=Claude
+NOTE=salience27b_third_architecture_pipeline_10x_sampling_temperature07_explicit_eos_token_verified_live

@@ -1,0 +1,6 @@
+FILE=scripts/merge_vuln_loras_salience.py
+SHA256=5c0c283e818921db496c2d23969eb02aa92d0193abc3e0f37115ed094c61c3d2
+DEVICE=SERVER
+TS=2026-08-21__14-59-51
+FIXATED_BY=Claude
+NOTE=salience27b_third_architecture_pipeline_10x_sampling_temperature07_explicit_eos_token_verified_live
