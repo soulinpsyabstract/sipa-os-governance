@@ -1,0 +1,7 @@
+FILE=05_supply_chain_adversarial.jsonl
+SHA256=3cadf3303a7ff9043057a59ea2fde8107f0268e23d7093d5dac5bda89d7e143a
+SIZE=46144
+DEVICE=SERVER
+TS=2026-08-16__14-20-07
+FIXATED_BY=Claude
+NOTE=vuln_gate_G15_adversarial_OOD_eval_set_2026-08-16_novel_vuln_subtypes_and_pressure_tactics

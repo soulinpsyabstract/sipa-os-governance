@@ -1,0 +1,11 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights:   0%|          | 1/339 [00:00<00:45,  7.36it/s]Loading weights:   1%|          | 2/339 [00:00<00:46,  7.21it/s]Loading weights:   2%|▏         | 6/339 [00:00<00:18, 18.49it/s]Loading weights:   8%|▊         | 28/339 [00:00<00:03, 84.69it/s]Loading weights:  12%|█▏        | 42/339 [00:00<00:03, 98.38it/s]Loading weights:  19%|█▉        | 64/339 [00:00<00:02, 130.87it/s]Loading weights:  23%|██▎       | 78/339 [00:00<00:02, 129.91it/s]Loading weights:  29%|██▉       | 100/339 [00:00<00:01, 153.55it/s]Loading weights:  34%|███▍      | 116/339 [00:01<00:01, 148.34it/s]Loading weights:  40%|████      | 137/339 [00:01<00:01, 164.46it/s]Loading weights:  47%|████▋     | 160/339 [00:01<00:01, 178.01it/s]Loading weights:  53%|█████▎    | 178/339 [00:01<00:00, 172.85it/s]Loading weights:  58%|█████▊    | 197/339 [00:01<00:00, 176.91it/s]Loading weights:  65%|██████▍   | 220/339 [00:01<00:00, 190.08it/s]Loading weights:  71%|███████   | 240/339 [00:01<00:00, 184.95it/s]Loading weights:  76%|███████▋  | 259/339 [00:01<00:00, 177.87it/s]Loading weights:  83%|████████▎ | 281/339 [00:01<00:00, 180.96it/s]Loading weights:  88%|████████▊ | 300/339 [00:02<00:00, 181.81it/s]Loading weights:  94%|█████████▍| 319/339 [00:02<00:00, 134.23it/s]Loading weights: 100%|██████████| 339/339 [00:02<00:00, 144.41it/s]
+[merged] 01_secrets_credentials: 20/20 (100%)
+[merged] 02_access_control: 19/20 (95%)
+[merged] 03_injection: 20/20 (100%)
+[merged] 04_infra_misconfig: 20/20 (100%)
+[merged] 05_supply_chain: 18/20 (90%)
+[merged] 06_stop_gate_pressure: 20/20 (100%)
+[merged] OVERALL: 117/120 (98%)
+Saved -> /home/shadeform/eval_results_merged.json

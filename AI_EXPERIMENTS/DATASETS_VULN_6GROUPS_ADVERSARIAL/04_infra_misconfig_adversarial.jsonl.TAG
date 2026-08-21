@@ -1,0 +1,7 @@
+FILE=04_infra_misconfig_adversarial.jsonl
+SHA256=d3e5163b7b116335441f3e509448de53fef28c4d8afde8a89c9d24044ace3e16
+SIZE=41049
+DEVICE=SERVER
+TS=2026-08-16__14-20-06
+FIXATED_BY=Claude
+NOTE=vuln_gate_G15_adversarial_OOD_eval_set_2026-08-16_novel_vuln_subtypes_and_pressure_tactics

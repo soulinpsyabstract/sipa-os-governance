@@ -1,0 +1,7 @@
+FILE=stresstest_injection.jsonl
+SHA256=1aff73d8fb641273f9aea60bf171e38347cbd17b8f4e0d513d46bc503dfae82e
+SIZE=21539
+DEVICE=SERVER
+TS=2026-08-16__18-23-30
+FIXATED_BY=Claude
+NOTE=structurally_different_prompt_injection_stresstest_15_examples_2026-08-16_generated_via_same_pipeline_bias_caveat_applies

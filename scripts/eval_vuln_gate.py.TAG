@@ -1,0 +1,7 @@
+FILE=eval_vuln_gate.py
+SHA256=f533b23385b6c9575527a4234e7704159840ce764e7c0af3bc6f8356ea376aa0
+SIZE=5853
+DEVICE=SERVER
+TS=2026-08-16__11-26-17
+FIXATED_BY=Claude
+NOTE=fixed_judge_prose_stop_plus_negation_aware_escalation_group06_2026-08-16

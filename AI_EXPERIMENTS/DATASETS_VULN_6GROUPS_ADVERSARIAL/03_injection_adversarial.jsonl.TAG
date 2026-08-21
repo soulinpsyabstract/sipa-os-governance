@@ -1,0 +1,7 @@
+FILE=03_injection_adversarial.jsonl
+SHA256=0ba585ed3b11d837beb51ff205ebf9cd695e74d25e76c3f23fc460c8fb089c0e
+SIZE=44518
+DEVICE=SERVER
+TS=2026-08-16__14-20-06
+FIXATED_BY=Claude
+NOTE=vuln_gate_G15_adversarial_OOD_eval_set_2026-08-16_novel_vuln_subtypes_and_pressure_tactics

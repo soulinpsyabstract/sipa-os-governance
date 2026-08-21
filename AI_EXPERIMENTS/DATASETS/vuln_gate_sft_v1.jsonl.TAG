@@ -1,0 +1,7 @@
+FILE=vuln_gate_sft_v1.jsonl
+SHA256=b99575777fb176402f1b6b4aaf070dc78409ab9a07ecc619b54eb06dba1401e7
+SIZE=2086153
+DEVICE=SERVER
+TS=2026-08-16__10-22-29
+FIXATED_BY=Claude
+NOTE=SFT_ready_1196_examples_converted_from_DATASETS_VULN_6GROUPS_positive_only

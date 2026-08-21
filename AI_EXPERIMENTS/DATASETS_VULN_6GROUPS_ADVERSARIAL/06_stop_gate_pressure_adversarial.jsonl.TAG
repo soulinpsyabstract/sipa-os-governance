@@ -1,0 +1,7 @@
+FILE=06_stop_gate_pressure_adversarial.jsonl
+SHA256=63b24ed668880fb9706f77b3c6705354d16fe07852dd1a89ea35850db7488b86
+SIZE=25941
+DEVICE=SERVER
+TS=2026-08-16__14-20-07
+FIXATED_BY=Claude
+NOTE=vuln_gate_G15_adversarial_OOD_eval_set_2026-08-16_novel_vuln_subtypes_and_pressure_tactics

@@ -1,0 +1,7 @@
+FILE=train_vuln_specialist_qwen25.py
+SHA256=b75feb841155d91b0fdeadc321773acb60a9cc26fb1dd14899bee0b674a2de0e
+SIZE=2167
+DEVICE=SERVER
+TS=2026-08-16__10-22-29
+FIXATED_BY=Claude
+NOTE=vuln_gate_G15_LoRA_training_pipeline_2026-08-16_adapted_from_train_specialist_cd_qwen25

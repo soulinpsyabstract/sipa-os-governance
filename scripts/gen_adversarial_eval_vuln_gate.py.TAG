@@ -1,0 +1,7 @@
+FILE=gen_adversarial_eval_vuln_gate.py
+SHA256=45b4e918a37c0c6f559bff530348741c9143875c0f569012e5458102ea1a1234
+SIZE=11889
+DEVICE=SERVER
+TS=2026-08-16__12-59-37
+FIXATED_BY=Claude
+NOTE=vuln_gate_G15_v2_prep_second_architecture_plus_adversarial_eval_2026-08-16

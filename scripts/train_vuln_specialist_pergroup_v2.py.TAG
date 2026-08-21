@@ -1,0 +1,7 @@
+FILE=train_vuln_specialist_pergroup_v2.py
+SHA256=28e995e1d38d5ee1bff56281ce14f127010a94e56c7607480a428b99c01fe518
+SIZE=3346
+DEVICE=SERVER
+TS=2026-08-16__12-59-37
+FIXATED_BY=Claude
+NOTE=vuln_gate_G15_v2_prep_second_architecture_plus_adversarial_eval_2026-08-16

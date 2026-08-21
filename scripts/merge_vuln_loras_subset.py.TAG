@@ -1,0 +1,7 @@
+FILE=merge_vuln_loras_subset.py
+SHA256=9d06c3e8023ed226d9401f1590d715597515eb71f607c2f963ddd18cf94b1510
+SIZE=2140
+DEVICE=SERVER
+TS=2026-08-16__18-33-31
+FIXATED_BY=Claude
+NOTE=pairwise_merge_ablation_to_isolate_injection_degradation_source_2026-08-16

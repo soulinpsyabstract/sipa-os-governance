@@ -1,0 +1,7 @@
+FILE=eval_stresstest_injection.py
+SHA256=98d849263d4923f7514a0a041a5323510eb747c82fe7f71ee745de82a42badd1
+SIZE=4076
+DEVICE=SERVER
+TS=2026-08-16__19-48-42
+FIXATED_BY=Claude
+NOTE=judge_v3_fix_and_output_filename_collision_fix_2026-08-16

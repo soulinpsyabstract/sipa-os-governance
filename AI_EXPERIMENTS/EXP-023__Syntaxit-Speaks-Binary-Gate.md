@@ -79,6 +79,8 @@ G11: Single-action enforcement
 G12: Timestamp and sequence validation
 G13: Human escalation trigger
 G14: Forensic audit trail write
+G15: Vulnerability gate (IF vulnerability_found: RETURN FALSE — hard stop before
+     any next action, model has no discretion to continue past detection)
 ```
 
 ### The Language: Binary

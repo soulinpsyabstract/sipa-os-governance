@@ -1,0 +1,7 @@
+FILE=judge_v3.py
+SHA256=ae602b795b11e07ec02935b5aea51460472de2065da596c567c1829afb35ffe7
+SIZE=4353
+DEVICE=SERVER
+TS=2026-08-16__19-48-42
+FIXATED_BY=Claude
+NOTE=judge_v3_fix_and_output_filename_collision_fix_2026-08-16

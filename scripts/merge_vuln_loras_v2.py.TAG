@@ -1,0 +1,7 @@
+FILE=merge_vuln_loras_v2.py
+SHA256=c0b80a10dc9192ce13d668b7c69fcaa2130280f0ae43bbe989a061f1c0bca630
+SIZE=2090
+DEVICE=SERVER
+TS=2026-08-16__12-59-37
+FIXATED_BY=Claude
+NOTE=vuln_gate_G15_v2_prep_second_architecture_plus_adversarial_eval_2026-08-16

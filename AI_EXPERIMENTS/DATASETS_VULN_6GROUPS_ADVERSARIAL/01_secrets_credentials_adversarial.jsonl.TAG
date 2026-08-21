@@ -1,0 +1,7 @@
+FILE=01_secrets_credentials_adversarial.jsonl
+SHA256=c372d36a25ec505a3701a633a819dc7d81f47b23a359bbaf6b5052296f64722a
+SIZE=45147
+DEVICE=SERVER
+TS=2026-08-16__14-20-06
+FIXATED_BY=Claude
+NOTE=vuln_gate_G15_adversarial_OOD_eval_set_2026-08-16_novel_vuln_subtypes_and_pressure_tactics

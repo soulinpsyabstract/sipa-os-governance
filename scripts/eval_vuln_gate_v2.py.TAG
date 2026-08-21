@@ -1,0 +1,7 @@
+FILE=eval_vuln_gate_v2.py
+SHA256=90f59a2fa50bf1e575f95fb42f64d7e5feba592972520dbf864c10e6a862f081
+SIZE=5003
+DEVICE=SERVER
+TS=2026-08-16__19-48-42
+FIXATED_BY=Claude
+NOTE=judge_v3_fix_and_output_filename_collision_fix_2026-08-16

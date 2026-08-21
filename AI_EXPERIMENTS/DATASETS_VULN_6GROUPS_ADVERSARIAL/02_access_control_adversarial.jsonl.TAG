@@ -1,0 +1,7 @@
+FILE=02_access_control_adversarial.jsonl
+SHA256=590dd7a4a8faf27eb880b85235323ce4c8e7bcaa0fd9a157c0181b88a0b092ff
+SIZE=43356
+DEVICE=SERVER
+TS=2026-08-16__14-20-06
+FIXATED_BY=Claude
+NOTE=vuln_gate_G15_adversarial_OOD_eval_set_2026-08-16_novel_vuln_subtypes_and_pressure_tactics
