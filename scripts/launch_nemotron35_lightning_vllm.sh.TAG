@@ -1,0 +1,6 @@
+FILE=launch_nemotron35_lightning_vllm.sh
+SHA256=df2c2546b3cabfc0f6d1ad74ffbe4e2ff35c59851084950f14db8285b2c7bc71
+DEVICE=SERVER
+TS=2026-08-21__20-07-15
+FIXATED_BY=Claude
+NOTE=reusable_launch_script_from_EXP-030_recipe_so_the_10_failed_attempts_never_repeat_two_auto-applied_env_fixes_plus_known-working_vllm_flags
