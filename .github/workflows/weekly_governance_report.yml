@@ -1,0 +1,29 @@
+name: GOVERNANCE_WEEKLY_REPORT
+on:
+  schedule:
+    - cron: "0 21 * * 0"   # Sunday 21:00 UTC = Monday 00:00 Israel (week just closed)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  weekly_report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate report for the ISO week that just closed (Israel time)
+        run: |
+          WEEK="$(TZ=Asia/Jerusalem date -d 'last week' +%G-W%V)"
+          bash scripts/weekly_governance_report.sh "$WEEK"
+
+      - name: Commit report
+        run: |
+          git config user.name "payton-ci"
+          git config user.email "payton-ci@users.noreply.github.com"
+          git add REPORTS/
+          git commit -m "governance: weekly report $(TZ=Asia/Jerusalem date -d 'last week' +%G-W%V)" || exit 0
+          git push

@@ -1,0 +1,6 @@
+FILE=weekly_governance_report.sh
+SHA256=cc71a3f373848bcc205cf8c39a28ab5fa6301fdf4c12aa76046ca7fcdb6ec20f
+DEVICE=SERVER
+TS=2026-08-21__20-25-22
+FIXATED_BY=Claude
+NOTE=weekly_equivalent_of_daily_governance_report_ISO_week_aggregation_autorun_Monday_00_00_israel_per_day_zero-commit_fix_applied_from_the_start
