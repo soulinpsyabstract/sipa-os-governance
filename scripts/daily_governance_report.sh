@@ -21,7 +21,7 @@ SINCE="${DAY} 00:00:00"
 UNTIL="${DAY} 23:59:59"
 
 commit_count="$(git log --since="$SINCE" --until="$UNTIL" --oneline | wc -l | tr -d ' ')"
-files_touched="$(git log --since="$SINCE" --until="$UNTIL" --name-only --pretty=format:"" | sort -u | grep -v '^$' | wc -l | tr -d ' ')"
+files_touched="$(git log --since="$SINCE" --until="$UNTIL" --name-only --pretty=format:"" | sort -u | { grep -v '^$' || true; } | wc -l | tr -d ' ')"
 
 {
 echo "════════════════════════════════════════════════════════════"
