@@ -1,0 +1,6 @@
+FILE=EXP-036__vuln-gate-Salience27B-R5-specialist-merge-trimmed-before-after.md
+SHA256=c4a2ea89f5c4fe4e3eb88f8c066dbdb6ca9d4f070866649f51ebf31bd6b4af3e
+DEVICE=SERVER
+TS=2026-08-22__04-32-09
+FIXATED_BY=Claude
+NOTE=full_before_after_pipeline_complete_47pct_to_99pct_manual_audit_of_all_5_failures_verbatim_confirmed_not_truncation_artifact_group07_OOD_72_to_100
