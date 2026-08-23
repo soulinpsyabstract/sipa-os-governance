@@ -1,6 +1,6 @@
 ════════════════════════════════════════════════════════════
   GOVERNANCE WEEKLY REPORT · 2026-W34 (2026-08-17 → 2026-08-23)
-  sipa-os-governance · generated 2026-08-21__20-25-02 IDT
+  sipa-os-governance · generated 2026-08-23__21-17-06 IDT
 ════════════════════════════════════════════════════════════
 
 
@@ -10,15 +10,15 @@
 
 
 [ GIT ACTIVITY (WEEK) ]
-  commits            = 13
-  files touched      = 147
+  commits            = 21
+  files touched      = 168
   ── daily breakdown ──
   2026-08-17  ·  0 commit(s)
   2026-08-18  ·  1 commit(s)
   2026-08-19  ·  0 commit(s)
   2026-08-20  ·  0 commit(s)
-  2026-08-21  ·  12 commit(s)
-  2026-08-22  ·  0 commit(s)
+  2026-08-21  ·  16 commit(s)
+  2026-08-22  ·  4 commit(s)
   2026-08-23  ·  0 commit(s)
 
 
@@ -33,16 +33,18 @@
          EXP-034: group07 (encoding/injection/spoofing proxy) — greedy eval, and why it's not the final answer
   NEW  · EXP-035__salience27b-abandoned-cost-infeasible.md
          EXP-035: vectionlabs/Salience-27B-R5 — abandoned, cost-infeasible
+  NEW  · EXP-036__vuln-gate-Salience27B-R5-specialist-merge-trimmed-before-after.md
+         EXP-036 — Salience-27B-R5 specialist-per-group-then-merge, trimmed before/after
 
 
 [ REPO STATUS ]
-  total EXP docs     = 35
+  total EXP docs     = 36
   total scripts      = 44
-  repo size          = 31M
-  HEAD               = 612742e
+  repo size          = 28M
+  HEAD               = 3ce0505
 
 
 ────────────────────────────────────────────────────────────
-  Generated : 2026-08-21__20-25-02 IDT
+  Generated : 2026-08-23__21-17-06 IDT
   Range     : 2026-08-17 00:00:00 → 2026-08-23 23:59:59
 ────────────────────────────────────────────────────────────
