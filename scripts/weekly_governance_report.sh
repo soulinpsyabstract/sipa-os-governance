@@ -16,9 +16,15 @@ YEAR="${WEEK%%-W*}"
 WNUM="${WEEK#*-W}"
 MONDAY="$(date -d "${YEAR}-01-04 +$(( (10#$WNUM - 1) * 7 )) days -$(( $(date -d "${YEAR}-01-04" +%u) - 1 )) days" +%F)"
 SUNDAY="$(date -d "$MONDAY +6 days" +%F)"
-NOW="$(date '+%Y-%m-%d__%H-%M-%S')"
+# TZ-aware for the same reason as daily_governance_report.sh: the label below
+# says "IDT", so the value must actually be Israel-local, not the runner's
+# default (UTC on GitHub Actions) -- dipankarsarkar, 2026-08-26.
+NOW="$(TZ=Asia/Jerusalem date '+%Y-%m-%d__%H-%M-%S')"
 OUT_DIR="$REPO/REPORTS"
-OUT="$OUT_DIR/WEEKLY__${WEEK}.md"
+# Commit hash in the filename, same fix/reason as the daily report and the
+# GAP__ fix in payton-heart (4711bed) -- a re-run for the same ISO week must
+# not silently overwrite an earlier run's report under the same path.
+OUT="$OUT_DIR/WEEKLY__${WEEK}__$(git rev-parse --short HEAD).md"
 mkdir -p "$OUT_DIR"
 
 SINCE="${MONDAY} 00:00:00"
@@ -83,6 +89,9 @@ echo "  Range     : ${SINCE} → ${UNTIL}"
 echo "────────────────────────────────────────────────────────────"
 } | tee "$OUT"
 
-sha256sum "$OUT" > "$OUT.sha256"
+# Basename-only seal -- checkable with `sha256sum -c` from the seal's own
+# directory on any host, unlike the previous absolute-path seal (dipankarsarkar,
+# 2026-08-26).
+( cd "$OUT_DIR" && sha256sum "$(basename "$OUT")" ) > "$OUT.sha256"
 echo ""
 echo "OK: report -> $OUT"

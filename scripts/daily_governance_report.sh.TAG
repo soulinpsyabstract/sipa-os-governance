@@ -1,6 +1,5 @@
-FILE=daily_governance_report.sh
-SHA256=6b022a09a935de71ffb010cd2651447beb9b165fbe3ee5deef390f84938f5cc5
+FILE=scripts/daily_governance_report.sh
+SHA256=7737c3cd0e07e915aff7957c676d63459840fcfa0e572971aa6a4391a4441c2f
+SIZE=4537
 DEVICE=SERVER
-TS=2026-08-21__20-23-27
-FIXATED_BY=Claude
-NOTE=fix_grep_v_dollar_no_match_exit1_under_pipefail_caught_live_via_first_autorun_failure_on_zero-commit_day
+TS=2026-08-26__11-08-02

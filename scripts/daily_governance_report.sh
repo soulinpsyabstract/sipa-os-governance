@@ -11,10 +11,20 @@ set -euo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO"
 
-DAY="${1:-$(date +%F)}"
-NOW="$(date '+%Y-%m-%d__%H-%M-%S')"
+DAY="${1:-$(TZ=Asia/Jerusalem date +%F)}"
+# NOW is TZ-aware on purpose: the report labels this timestamp "IDT" below,
+# and on GitHub Actions runners (UTC by default) an unqualified `date` call
+# produced a UTC value under that label -- a real clock/label mismatch found
+# by dipankarsarkar, 2026-08-26. Fixed at the source instead of trusting the
+# runner's default zone.
+NOW="$(TZ=Asia/Jerusalem date '+%Y-%m-%d__%H-%M-%S')"
 OUT_DIR="$REPO/REPORTS"
-OUT="$OUT_DIR/DAILY__${DAY}.md"
+# Filename includes the short commit hash the report was generated from, not
+# just the day -- a hand-run and a later scheduled run for the same day used
+# to collide on DAILY__<day>.md and silently overwrite each other (found by
+# dipankarsarkar, 2026-08-21/26: same bug class, same fix shape as the
+# GAP__<day>__<run-pair>.txt fix in payton-heart, commit 4711bed).
+OUT="$OUT_DIR/DAILY__${DAY}__$(git rev-parse --short HEAD).md"
 mkdir -p "$OUT_DIR"
 
 SINCE="${DAY} 00:00:00"
@@ -75,6 +85,11 @@ echo "  Range     : ${SINCE} → ${UNTIL}"
 echo "────────────────────────────────────────────────────────────"
 } | tee "$OUT"
 
-sha256sum "$OUT" > "$OUT.sha256"
+# Seal in basename-only form so `sha256sum -c` works from the seal's own
+# directory on any host -- sealing the absolute $OUT path baked the runner's
+# absolute path (/home/runner/work/... on CI vs /home/sipa/apps/... locally)
+# into the seal itself, making it unverifiable except from the exact
+# filesystem it was written on (dipankarsarkar, 2026-08-26).
+( cd "$OUT_DIR" && sha256sum "$(basename "$OUT")" ) > "$OUT.sha256"
 echo ""
 echo "OK: report -> $OUT"
