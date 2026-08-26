@@ -5,19 +5,24 @@
 # payton-heart's daily_receipt.yml -- that stays as-is (it proves continuity), this
 # is the separate content digest the architect actually asked for.
 #
-# Usage: daily_governance_report.sh [YYYY-MM-DD]   (defaults to today)
+# Usage: daily_governance_report.sh [YYYY-MM-DD]   (defaults to yesterday, UTC)
+#
+# UTC day boundary, not Israel civil day (dipankarsarkar, 2026-08-26, second
+# review round): a fixed `0 21 * * *` cron against an Israel-local label breaks
+# twice a year at the DST transition -- 2026-10-24 gets reported twice (fire at
+# 21:00Z lands at both 00:00 IDT and 23:00 IST on consecutive UTC days, both
+# resolving to the same Israel "yesterday"), and 2026-03-26 never gets reported
+# at all (the symmetric skip). A hash-suffixed filename stops the double from
+# overwriting, but nothing flags that two reports now silently claim the same
+# calendar day -- UTC has no transition to get wrong, so the problem doesn't
+# reappear one level up. This is the same reasoning applied to
+# weekly_governance_report.sh, symmetrically.
 set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO"
 
-DAY="${1:-$(TZ=Asia/Jerusalem date +%F)}"
-# NOW is TZ-aware on purpose: the report labels this timestamp "IDT" below,
-# and on GitHub Actions runners (UTC by default) an unqualified `date` call
-# produced a UTC value under that label -- a real clock/label mismatch found
-# by dipankarsarkar, 2026-08-26. Fixed at the source instead of trusting the
-# runner's default zone.
-NOW="$(TZ=Asia/Jerusalem date '+%Y-%m-%d__%H-%M-%S')"
+DAY="${1:-$(date -u -d yesterday +%F)}"
 OUT_DIR="$REPO/REPORTS"
 # Filename includes the short commit hash the report was generated from, not
 # just the day -- a hand-run and a later scheduled run for the same day used
@@ -27,16 +32,23 @@ OUT_DIR="$REPO/REPORTS"
 OUT="$OUT_DIR/DAILY__${DAY}__$(git rev-parse --short HEAD).md"
 mkdir -p "$OUT_DIR"
 
+# Window is UTC now too, matching DAY -- previously DAY was computed with an
+# explicit zone but SINCE/UNTIL were bare "YYYY-MM-DD HH:MM:SS" strings that
+# git parses in the process's own zone (UTC on the runner). Label and
+# selector disagreeing by up to 3 hours was the actual blind spot: the range
+# line could claim a window that hadn't finished yet at the moment the job
+# fired (dipankarsarkar, 2026-08-26). Both sides are UTC now, so they agree
+# by construction -- no zone to attach to either one.
 SINCE="${DAY} 00:00:00"
 UNTIL="${DAY} 23:59:59"
 
-commit_count="$(git log --since="$SINCE" --until="$UNTIL" --oneline | wc -l | tr -d ' ')"
-files_touched="$(git log --since="$SINCE" --until="$UNTIL" --name-only --pretty=format:"" | sort -u | { grep -v '^$' || true; } | wc -l | tr -d ' ')"
+commit_count="$(TZ=UTC git log --since="$SINCE" --until="$UNTIL" --oneline | wc -l | tr -d ' ')"
+files_touched="$(TZ=UTC git log --since="$SINCE" --until="$UNTIL" --name-only --pretty=format:"" | sort -u | { grep -v '^$' || true; } | wc -l | tr -d ' ')"
 
 {
 echo "════════════════════════════════════════════════════════════"
-echo "  GOVERNANCE DAILY REPORT · ${DAY}"
-echo "  sipa-os-governance · generated ${NOW} IDT"
+echo "  GOVERNANCE DAILY REPORT · ${DAY} (UTC)"
+echo "  sipa-os-governance"
 echo "════════════════════════════════════════════════════════════"
 echo ""
 echo ""
@@ -53,13 +65,13 @@ echo "  commits            = $commit_count"
 echo "  files touched      = $files_touched"
 if [ "$commit_count" -gt 0 ]; then
   echo "  ── commits ──"
-  git log --since="$SINCE" --until="$UNTIL" --pretty=format:"  ·  %h  %s" | sed 's/^/  /'
+  TZ=UTC git log --since="$SINCE" --until="$UNTIL" --pretty=format:"  ·  %h  %s" | sed 's/^/  /'
   echo ""
 fi
 echo ""
 echo ""
 echo "[ EXPERIMENTS TOUCHED TODAY ]"
-exp_today="$(git log --since="$SINCE" --until="$UNTIL" --name-only --diff-filter=A --pretty=format:"" -- 'AI_EXPERIMENTS/EXP-*.md' | sort -u | grep -v '^$' || true)"
+exp_today="$(TZ=UTC git log --since="$SINCE" --until="$UNTIL" --name-only --diff-filter=A --pretty=format:"" -- 'AI_EXPERIMENTS/EXP-*.md' | sort -u | grep -v '^$' || true)"
 if [ -n "$exp_today" ]; then
   while IFS= read -r f; do
     [ -f "$f" ] || continue
@@ -80,8 +92,7 @@ echo "  HEAD               = $(git rev-parse --short HEAD)"
 echo ""
 echo ""
 echo "────────────────────────────────────────────────────────────"
-echo "  Generated : ${NOW} IDT"
-echo "  Range     : ${SINCE} → ${UNTIL}"
+echo "  Range (UTC) : ${SINCE} → ${UNTIL}"
 echo "────────────────────────────────────────────────────────────"
 } | tee "$OUT"
 
@@ -91,5 +102,17 @@ echo "────────────────────────�
 # into the seal itself, making it unverifiable except from the exact
 # filesystem it was written on (dipankarsarkar, 2026-08-26).
 ( cd "$OUT_DIR" && sha256sum "$(basename "$OUT")" ) > "$OUT.sha256"
+
+# Wall-clock generation time lives in a sidecar, not the hashed report body.
+# Reasoning (dipankarsarkar, 2026-08-26 second round): on a zero-commit day,
+# HEAD doesn't move between a hand run and the scheduled run, so the
+# hash-suffixed filename is identical and the second run still overwrote the
+# first -- the exact collision the filename fix was supposed to close, just
+# gated behind a specific commit-count edge case instead of always. The only
+# reason two structurally identical reports produced different bytes was
+# NOW embedded in the payload. With NOW out, two same-day/same-HEAD runs are
+# byte-identical: same name, same bytes, same seal, overwrite is a no-op.
+date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT.generated_at"
+
 echo ""
 echo "OK: report -> $OUT"

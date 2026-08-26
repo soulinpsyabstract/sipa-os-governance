@@ -4,22 +4,24 @@
 # a single day. Mirrors the phone/server pattern (DAILY_REPORT.sh +
 # WEEKLY_ARCHIVE.sh as separate, parallel jobs -- not one replacing the other).
 #
-# Usage: weekly_governance_report.sh [YYYY-Www]   (defaults to the current ISO week)
+# Usage: weekly_governance_report.sh [YYYY-Www]   (defaults to last ISO week, UTC)
+#
+# UTC week boundary, not Israel civil week -- same reasoning as
+# daily_governance_report.sh (dipankarsarkar, 2026-08-26, symmetric fix):
+# a fixed weekly cron against an Israel-local label breaks at the same two
+# DST transitions a fixed daily cron does, just measured in weeks instead of
+# days. UTC has no transition to get wrong.
 set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO"
 
-WEEK="${1:-$(date +%G-W%V)}"
+WEEK="${1:-$(date -u +%G-W%V)}"
 # Parse "YYYY-Www" into the Monday..Sunday date range for that ISO week.
 YEAR="${WEEK%%-W*}"
 WNUM="${WEEK#*-W}"
-MONDAY="$(date -d "${YEAR}-01-04 +$(( (10#$WNUM - 1) * 7 )) days -$(( $(date -d "${YEAR}-01-04" +%u) - 1 )) days" +%F)"
-SUNDAY="$(date -d "$MONDAY +6 days" +%F)"
-# TZ-aware for the same reason as daily_governance_report.sh: the label below
-# says "IDT", so the value must actually be Israel-local, not the runner's
-# default (UTC on GitHub Actions) -- dipankarsarkar, 2026-08-26.
-NOW="$(TZ=Asia/Jerusalem date '+%Y-%m-%d__%H-%M-%S')"
+MONDAY="$(date -u -d "${YEAR}-01-04 +$(( (10#$WNUM - 1) * 7 )) days -$(( $(date -u -d "${YEAR}-01-04" +%u) - 1 )) days" +%F)"
+SUNDAY="$(date -u -d "$MONDAY +6 days" +%F)"
 OUT_DIR="$REPO/REPORTS"
 # Commit hash in the filename, same fix/reason as the daily report and the
 # GAP__ fix in payton-heart (4711bed) -- a re-run for the same ISO week must
@@ -30,13 +32,13 @@ mkdir -p "$OUT_DIR"
 SINCE="${MONDAY} 00:00:00"
 UNTIL="${SUNDAY} 23:59:59"
 
-commit_count="$(git log --since="$SINCE" --until="$UNTIL" --oneline | wc -l | tr -d ' ')"
-files_touched="$(git log --since="$SINCE" --until="$UNTIL" --name-only --pretty=format:"" | sort -u | { grep -v '^$' || true; } | wc -l | tr -d ' ')"
+commit_count="$(TZ=UTC git log --since="$SINCE" --until="$UNTIL" --oneline | wc -l | tr -d ' ')"
+files_touched="$(TZ=UTC git log --since="$SINCE" --until="$UNTIL" --name-only --pretty=format:"" | sort -u | { grep -v '^$' || true; } | wc -l | tr -d ' ')"
 
 {
 echo "════════════════════════════════════════════════════════════"
-echo "  GOVERNANCE WEEKLY REPORT · ${WEEK} (${MONDAY} → ${SUNDAY})"
-echo "  sipa-os-governance · generated ${NOW} IDT"
+echo "  GOVERNANCE WEEKLY REPORT · ${WEEK} (${MONDAY} → ${SUNDAY}, UTC)"
+echo "  sipa-os-governance"
 echo "════════════════════════════════════════════════════════════"
 echo ""
 echo ""
@@ -54,16 +56,16 @@ echo "  files touched      = $files_touched"
 if [ "$commit_count" -gt 0 ]; then
   echo "  ── daily breakdown ──"
   d="$MONDAY"
-  while [ "$(date -d "$d" +%s)" -le "$(date -d "$SUNDAY" +%s)" ]; do
-    n="$(git log --since="$d 00:00:00" --until="$d 23:59:59" --oneline | wc -l | tr -d ' ')"
+  while [ "$(date -u -d "$d" +%s)" -le "$(date -u -d "$SUNDAY" +%s)" ]; do
+    n="$(TZ=UTC git log --since="$d 00:00:00" --until="$d 23:59:59" --oneline | wc -l | tr -d ' ')"
     printf "  %s  ·  %s commit(s)\n" "$d" "$n"
-    d="$(date -d "$d +1 day" +%F)"
+    d="$(date -u -d "$d +1 day" +%F)"
   done
 fi
 echo ""
 echo ""
 echo "[ EXPERIMENTS OPENED THIS WEEK ]"
-exp_week="$(git log --since="$SINCE" --until="$UNTIL" --name-only --diff-filter=A --pretty=format:"" -- 'AI_EXPERIMENTS/EXP-*.md' | sort -u | { grep -v '^$' || true; })"
+exp_week="$(TZ=UTC git log --since="$SINCE" --until="$UNTIL" --name-only --diff-filter=A --pretty=format:"" -- 'AI_EXPERIMENTS/EXP-*.md' | sort -u | { grep -v '^$' || true; })"
 if [ -n "$exp_week" ]; then
   while IFS= read -r f; do
     [ -f "$f" ] || continue
@@ -84,8 +86,7 @@ echo "  HEAD               = $(git rev-parse --short HEAD)"
 echo ""
 echo ""
 echo "────────────────────────────────────────────────────────────"
-echo "  Generated : ${NOW} IDT"
-echo "  Range     : ${SINCE} → ${UNTIL}"
+echo "  Range (UTC) : ${SINCE} → ${UNTIL}"
 echo "────────────────────────────────────────────────────────────"
 } | tee "$OUT"
 
@@ -93,5 +94,12 @@ echo "────────────────────────�
 # directory on any host, unlike the previous absolute-path seal (dipankarsarkar,
 # 2026-08-26).
 ( cd "$OUT_DIR" && sha256sum "$(basename "$OUT")" ) > "$OUT.sha256"
+
+# Wall-clock generation time in a sidecar, not the hashed body -- same reason
+# as daily_governance_report.sh: two same-week/same-HEAD runs must be byte
+# identical so a re-run overwrite is a true no-op, not a silent content change
+# hidden behind an unmoved hash suffix.
+date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT.generated_at"
+
 echo ""
 echo "OK: report -> $OUT"

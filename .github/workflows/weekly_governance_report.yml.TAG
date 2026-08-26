@@ -1,6 +1,5 @@
-FILE=weekly_governance_report.yml
-SHA256=d69f2a081bdad575bca9ad0c4394c992c922c039701abb5a905472d3ec03d61d
+FILE=.github/workflows/weekly_governance_report.yml
+SHA256=131f7c79acd9c2279a99fae24fa09d611fc9877b1eb7ab8934db1f56ef99ce2b
+SIZE=971
 DEVICE=SERVER
-TS=2026-08-21__20-25-22
-FIXATED_BY=Claude
-NOTE=weekly_equivalent_of_daily_governance_report_ISO_week_aggregation_autorun_Monday_00_00_israel_per_day_zero-commit_fix_applied_from_the_start
+TS=2026-08-26__19-18-42

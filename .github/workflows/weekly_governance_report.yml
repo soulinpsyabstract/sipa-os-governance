@@ -1,7 +1,10 @@
 name: GOVERNANCE_WEEKLY_REPORT
 on:
   schedule:
-    - cron: "0 21 * * 0"   # Sunday 21:00 UTC = Monday 00:00 Israel (week just closed)
+    # UTC midnight Monday, UTC week boundary -- same fix/reason as the daily
+    # workflow (dipankarsarkar, 2026-08-26, symmetric): a fixed Israel-local
+    # cron duplicates or skips a report at the DST transitions.
+    - cron: "0 0 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -15,9 +18,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Generate report for the ISO week that just closed (Israel time)
+      - name: Generate report for the ISO week that just closed (UTC)
         run: |
-          WEEK="$(TZ=Asia/Jerusalem date -d 'last week' +%G-W%V)"
+          WEEK="$(date -u -d 'last week' +%G-W%V)"
           bash scripts/weekly_governance_report.sh "$WEEK"
 
       - name: Commit report
@@ -25,5 +28,5 @@ jobs:
           git config user.name "payton-ci"
           git config user.email "payton-ci@users.noreply.github.com"
           git add REPORTS/
-          git commit -m "governance: weekly report $(TZ=Asia/Jerusalem date -d 'last week' +%G-W%V)" || exit 0
+          git commit -m "governance: weekly report $(date -u -d 'last week' +%G-W%V)" || exit 0
           git push
