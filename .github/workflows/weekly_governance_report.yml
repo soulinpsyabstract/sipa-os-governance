@@ -19,14 +19,18 @@ jobs:
           fetch-depth: 0
 
       - name: Generate report for the ISO week that just closed (UTC)
-        run: |
-          WEEK="$(date -u -d 'last week' +%G-W%V)"
-          bash scripts/weekly_governance_report.sh "$WEEK"
+        # No explicit WEEK argument -- same reason as the daily workflow
+        # (dipankarsarkar, 2026-08-27, third round): passing `date -u -d
+        # 'last week'` here would override the script's INDEX.tsv-based
+        # derivation with exactly the run-time-relative computation that
+        # fix replaces.
+        run: bash scripts/weekly_governance_report.sh
 
       - name: Commit report
         run: |
           git config user.name "payton-ci"
           git config user.email "payton-ci@users.noreply.github.com"
+          WEEK="$(awk -F'\t' '$1=="weekly"{d=$2} END{print d}' REPORTS/INDEX.tsv)"
           git add REPORTS/
-          git commit -m "governance: weekly report $(date -u -d 'last week' +%G-W%V)" || exit 0
+          git commit -m "governance: weekly report ${WEEK}" || exit 0
           git push
