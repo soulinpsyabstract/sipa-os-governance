@@ -22,8 +22,33 @@ set -euo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO"
 
-DAY="${1:-$(date -u -d yesterday +%F)}"
 OUT_DIR="$REPO/REPORTS"
+mkdir -p "$OUT_DIR"
+INDEX="$OUT_DIR/INDEX.tsv"
+
+# DAY no longer depends on "now" when not given explicitly (dipankarsarkar,
+# 2026-08-27, third round, answering his own "derive DAY from scheduled time
+# rather than from now" suggestion): `date -u -d yesterday` at execution time
+# is exactly what breaks once a delayed run crosses a UTC day boundary, and
+# no cron time removes that risk -- 00:00 UTC just happens to give it the
+# largest possible budget (see the workflow's schedule comment for the
+# specific check against today's measured 7h47m delay). Instead, an implicit
+# run picks up the day after whatever INDEX.tsv last recorded as "daily",
+# so the sequence self-heals regardless of how late a run fires: a run that
+# slips past midnight still reports the one correct next day, not "yesterday
+# relative to whenever it happened to wake up." Falls back to the old
+# run-time "yesterday" only when INDEX.tsv doesn't exist yet or has no prior
+# daily row (first run / pre-index history).
+if [ -n "${1:-}" ]; then
+  DAY="$1"
+else
+  LAST_DAILY="$(awk -F'\t' '$1=="daily"{d=$2} END{print d}' "$INDEX" 2>/dev/null || true)"
+  if [ -n "$LAST_DAILY" ]; then
+    DAY="$(date -u -d "$LAST_DAILY +1 day" +%F)"
+  else
+    DAY="$(date -u -d yesterday +%F)"
+  fi
+fi
 # Filename includes the short commit hash the report was generated from, not
 # just the day -- a hand-run and a later scheduled run for the same day used
 # to collide on DAILY__<day>.md and silently overwrite each other (found by
@@ -113,6 +138,21 @@ echo "────────────────────────�
 # NOW embedded in the payload. With NOW out, two same-day/same-HEAD runs are
 # byte-identical: same name, same bytes, same seal, overwrite is a no-op.
 date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT.generated_at"
+
+# Append-only per-day canonical-report index (dipankarsarkar, 2026-08-27,
+# third review round). Answers two problems at once: (1) which file is
+# canonical when a pre-fix and post-fix report both exist for the same day
+# (the pre-fix DAILY__<day>.md with no hash suffix owns the "obvious" path
+# a reader types, but carries wrong data -- Core Law #5 forbids editing or
+# deleting it, so this index is how a reader is told which one to trust
+# instead); (2) a present row is positive proof a day was actually reported,
+# not just quiet -- a future independent checker can walk expected UTC dates
+# against this file to flag a day with no row at all (the scheduled job
+# never firing, not zero commits) as a genuinely different condition. Never
+# rewritten for a past day -- only appended, one row per successful run.
+INDEX="$OUT_DIR/INDEX.tsv"
+[ -f "$INDEX" ] || printf 'kind\tperiod\tfile\thead\tcommits\tgenerated_at\n' > "$INDEX"
+printf 'daily\t%s\t%s\t%s\t%s\t%s\n' "$DAY" "$(basename "$OUT")" "$(git rev-parse --short HEAD)" "$commit_count" "$(cat "$OUT.generated_at")" >> "$INDEX"
 
 echo ""
 echo "OK: report -> $OUT"

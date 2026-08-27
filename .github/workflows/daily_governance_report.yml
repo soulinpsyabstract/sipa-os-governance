@@ -1,11 +1,19 @@
 name: GOVERNANCE_DAILY_REPORT
 on:
   schedule:
-    # UTC midnight, UTC day boundary -- switched from Israel-local labeling
-    # 2026-08-26 (dipankarsarkar, second review round). A fixed Israel-local
-    # cron duplicates one report and skips another every year at the DST
-    # transitions; UTC has no transition to get wrong. See
-    # scripts/daily_governance_report.sh header for the worked dates.
+    # UTC midnight (dipankarsarkar, 2026-08-27, third review round, flagged
+    # this slot as the most oversubscribed on GitHub Actions -- measured
+    # 7h47m actual delay on its first occurrence, 2026-08-27). Considered and
+    # rejected moving this to a non-top-of-hour time (e.g. 20:00 UTC): DAY
+    # was still being computed as `date -u -d yesterday` relative to actual
+    # run time, and 00:00 UTC gives the LARGEST possible margin against that
+    # (~24h) before a delay crosses into the next calendar day and mislabels
+    # or skips a day -- moving the trigger later in the day would only
+    # shrink that margin (checked against today's actual 7h47m delay: a
+    # 20:00-UTC trigger would have finished at 03:47 UTC the next day,
+    # crossing the boundary and reproducing the exact failure being fixed).
+    # Kept at 00:00 UTC; the real fix is that DAY no longer depends on run
+    # time at all -- see scripts/daily_governance_report.sh header.
     - cron: "0 0 * * *"
   workflow_dispatch:
 

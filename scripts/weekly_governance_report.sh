@@ -16,18 +16,39 @@ set -euo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO"
 
-WEEK="${1:-$(date -u +%G-W%V)}"
+OUT_DIR="$REPO/REPORTS"
+mkdir -p "$OUT_DIR"
+INDEX="$OUT_DIR/INDEX.tsv"
+
+# WEEK no longer depends on "now" when not given explicitly, same reasoning
+# and same fix shape as DAY in daily_governance_report.sh (dipankarsarkar,
+# 2026-08-27, third round) -- picks up the ISO week after whatever
+# INDEX.tsv last recorded as "weekly", so a delayed run still reports the
+# one correct next week instead of "current week relative to whenever it
+# woke up". Falls back to the pre-existing default when INDEX.tsv has no
+# prior weekly row (first run / pre-index history).
+if [ -n "${1:-}" ]; then
+  WEEK="$1"
+else
+  LAST_WEEKLY="$(awk -F'\t' '$1=="weekly"{d=$2} END{print d}' "$INDEX" 2>/dev/null || true)"
+  if [ -n "$LAST_WEEKLY" ]; then
+    LY="${LAST_WEEKLY%%-W*}"
+    LW="${LAST_WEEKLY#*-W}"
+    LAST_MONDAY="$(date -u -d "${LY}-01-04 +$(( (10#$LW - 1) * 7 )) days -$(( $(date -u -d "${LY}-01-04" +%u) - 1 )) days" +%F)"
+    WEEK="$(date -u -d "$LAST_MONDAY +7 days" +%G-W%V)"
+  else
+    WEEK="$(date -u +%G-W%V)"
+  fi
+fi
 # Parse "YYYY-Www" into the Monday..Sunday date range for that ISO week.
 YEAR="${WEEK%%-W*}"
 WNUM="${WEEK#*-W}"
 MONDAY="$(date -u -d "${YEAR}-01-04 +$(( (10#$WNUM - 1) * 7 )) days -$(( $(date -u -d "${YEAR}-01-04" +%u) - 1 )) days" +%F)"
 SUNDAY="$(date -u -d "$MONDAY +6 days" +%F)"
-OUT_DIR="$REPO/REPORTS"
 # Commit hash in the filename, same fix/reason as the daily report and the
 # GAP__ fix in payton-heart (4711bed) -- a re-run for the same ISO week must
 # not silently overwrite an earlier run's report under the same path.
 OUT="$OUT_DIR/WEEKLY__${WEEK}__$(git rev-parse --short HEAD).md"
-mkdir -p "$OUT_DIR"
 
 SINCE="${MONDAY} 00:00:00"
 UNTIL="${SUNDAY} 23:59:59"
@@ -100,6 +121,14 @@ echo "────────────────────────�
 # identical so a re-run overwrite is a true no-op, not a silent content change
 # hidden behind an unmoved hash suffix.
 date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT.generated_at"
+
+# Append-only per-period canonical-report index, shared with
+# daily_governance_report.sh (dipankarsarkar, 2026-08-27, third round) --
+# see that script's comment for the full reasoning. Same file, kind=weekly
+# rows interleaved with kind=daily rows.
+INDEX="$OUT_DIR/INDEX.tsv"
+[ -f "$INDEX" ] || printf 'kind\tperiod\tfile\thead\tcommits\tgenerated_at\n' > "$INDEX"
+printf 'weekly\t%s\t%s\t%s\t%s\t%s\n' "$WEEK" "$(basename "$OUT")" "$(git rev-parse --short HEAD)" "$commit_count" "$(cat "$OUT.generated_at")" >> "$INDEX"
 
 echo ""
 echo "OK: report -> $OUT"

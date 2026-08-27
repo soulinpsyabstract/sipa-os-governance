@@ -1,5 +1,5 @@
 FILE=.github/workflows/daily_governance_report.yml
-SHA256=7aac2ae5c0a8be2af2b2d8d240fc138523a163a8c026ea6ec4cba97a6dc539ce
-SIZE=1159
+SHA256=31b36acd384b761ecbfbda177095faf22e8de0bd0f25b5e5eb5f03d2b45a44cb
+SIZE=1769
 DEVICE=SERVER
-TS=2026-08-26__19-18-42
+TS=2026-08-27__12-59-32
