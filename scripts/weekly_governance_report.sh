@@ -39,6 +39,14 @@ else
   else
     WEEK="$(date -u +%G-W%V)"
   fi
+  # Clamp -- same overshoot the daily script had (dipankarsarkar, 2026-08-27,
+  # fourth round): the cursor has no ceiling, so a verification dispatch can
+  # walk it into a week that hasn't closed (or started) yet. Cap at the last
+  # ISO week that has actually finished; a cursor that's behind is untouched.
+  LAST_CLOSED_WEEK="$(date -u -d 'last week' +%G-W%V)"
+  if [ "$WEEK" \> "$LAST_CLOSED_WEEK" ]; then
+    WEEK="$LAST_CLOSED_WEEK"
+  fi
 fi
 # Parse "YYYY-Www" into the Monday..Sunday date range for that ISO week.
 YEAR="${WEEK%%-W*}"
@@ -125,10 +133,12 @@ date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT.generated_at"
 # Append-only per-period canonical-report index, shared with
 # daily_governance_report.sh (dipankarsarkar, 2026-08-27, third round) --
 # see that script's comment for the full reasoning. Same file, kind=weekly
-# rows interleaved with kind=daily rows.
+# rows interleaved with kind=daily rows. `event` column added fourth round --
+# see daily script's comment for why (schedule vs workflow_dispatch, gap
+# watcher must count schedule rows only).
 INDEX="$OUT_DIR/INDEX.tsv"
-[ -f "$INDEX" ] || printf 'kind\tperiod\tfile\thead\tcommits\tgenerated_at\n' > "$INDEX"
-printf 'weekly\t%s\t%s\t%s\t%s\t%s\n' "$WEEK" "$(basename "$OUT")" "$(git rev-parse --short HEAD)" "$commit_count" "$(cat "$OUT.generated_at")" >> "$INDEX"
+[ -f "$INDEX" ] || printf 'kind\tperiod\tfile\thead\tcommits\tgenerated_at\tevent\n' > "$INDEX"
+printf 'weekly\t%s\t%s\t%s\t%s\t%s\t%s\n' "$WEEK" "$(basename "$OUT")" "$(git rev-parse --short HEAD)" "$commit_count" "$(cat "$OUT.generated_at")" "${GITHUB_EVENT_NAME:-manual}" >> "$INDEX"
 
 echo ""
 echo "OK: report -> $OUT"

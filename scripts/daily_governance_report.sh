@@ -48,6 +48,21 @@ else
   else
     DAY="$(date -u -d yesterday +%F)"
   fi
+  # Clamp: the index cursor has no ceiling on its own (dipankarsarkar,
+  # 2026-08-27, fourth round) -- every write to INDEX.tsv, including a
+  # workflow_dispatch verification run, advances "last recorded day + 1"
+  # regardless of whether a real calendar day actually elapsed in between.
+  # Two dispatches minutes apart on the same real day walk the cursor two
+  # days forward; a punctual 00:00Z run then computes tomorrow's date for
+  # a day that hasn't started yet -- the exact inversion of the delay bug
+  # this index was built to fix. DAY can never legitimately be later than
+  # the last UTC day that has actually finished, so it's capped there;
+  # a cursor that's behind (the real, intended case -- catching up after
+  # a long delay) is left untouched.
+  YESTERDAY="$(date -u -d yesterday +%F)"
+  if [ "$DAY" \> "$YESTERDAY" ]; then
+    DAY="$YESTERDAY"
+  fi
 fi
 # Filename includes the short commit hash the report was generated from, not
 # just the day -- a hand-run and a later scheduled run for the same day used
@@ -150,9 +165,17 @@ date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT.generated_at"
 # against this file to flag a day with no row at all (the scheduled job
 # never firing, not zero commits) as a genuinely different condition. Never
 # rewritten for a past day -- only appended, one row per successful run.
-INDEX="$OUT_DIR/INDEX.tsv"
-[ -f "$INDEX" ] || printf 'kind\tperiod\tfile\thead\tcommits\tgenerated_at\n' > "$INDEX"
-printf 'daily\t%s\t%s\t%s\t%s\t%s\n' "$DAY" "$(basename "$OUT")" "$(git rev-parse --short HEAD)" "$commit_count" "$(cat "$OUT.generated_at")" >> "$INDEX"
+#
+# `event` column (dipankarsarkar, 2026-08-27, fourth round): a present row
+# alone doesn't prove the *schedule* fired -- a workflow_dispatch verification
+# run writes an identical kind=daily row, so a gap watcher built on presence
+# alone would score a day "healthy" on manual-test evidence with the actual
+# cron never having run. $GITHUB_EVENT_NAME distinguishes them (schedule vs
+# workflow_dispatch); "manual" is the local/non-Actions fallback. A future
+# gap watcher should count event=schedule rows only. Old rows predate this
+# column and are left blank for it -- not backfilled, per Core Law #5.
+[ -f "$INDEX" ] || printf 'kind\tperiod\tfile\thead\tcommits\tgenerated_at\tevent\n' > "$INDEX"
+printf 'daily\t%s\t%s\t%s\t%s\t%s\t%s\n' "$DAY" "$(basename "$OUT")" "$(git rev-parse --short HEAD)" "$commit_count" "$(cat "$OUT.generated_at")" "${GITHUB_EVENT_NAME:-manual}" >> "$INDEX"
 
 echo ""
 echo "OK: report -> $OUT"
