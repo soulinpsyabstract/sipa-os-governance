@@ -31,6 +31,19 @@ OUT_TRAIN = "specialist_cd_binary_dryrun_v1.jsonl"
 OUT_EVAL = "specialist_cd_binary_dryrun_v1_eval_holdout.jsonl"
 EVAL_HOLDOUT = 200
 
+# validator.py (SYNTAX_CHANNEL/agents/binary_gate/) was fixed 2026-08-21: the
+# default no-proof-cited branch flipped FAIL -> PASS after review showed it
+# was penalizing plain factual statements with no fabrication markers at all
+# (84.8% of ALL pre-fix traffic). Everything logged before that date encodes
+# logic the gate no longer runs. Verified live 2026-08-28: pre-fix split is
+# fail=2983/pass=410 (the known skew); post-fix split is fail=9/pass=10 (19
+# events total) -- healthy-looking but far too small to train or eval on by
+# itself. CUTOFF excludes the stale majority rather than silently training on
+# abandoned logic; TRAIN_MIN_EXAMPLES refuses to write a training file out of
+# a handful of post-fix events pretending it's a real corpus.
+CUTOFF_TS = "2026-08-21"
+TRAIN_MIN_EXAMPLES = 100
+
 SYSTEM_PROMPT = (
     "BINARY GATE PROTOCOL. You are a logic gate, not an AI assistant. "
     "For every input, respond with exactly one word: TRUE or FALSE.\n"
@@ -84,6 +97,9 @@ def main():
             if not content:
                 unresolved.append({"line": line_no, "reason": "archive entry has empty content", "row": row})
                 continue
+            ts = msg.get("timestamp", "")
+            if ts < CUTOFF_TS:
+                continue  # pre-fix verdict, encodes abandoned validator.py logic -- not a rejection, just excluded
             key = (content, label)
             if key in seen_content_verdict:
                 continue  # exact duplicate example, don't inflate the count
@@ -98,8 +114,8 @@ def main():
 
     examples.sort(key=lambda e: e["ts"])
 
-    print(f"Resolved: {len(examples)} unique examples", file=sys.stderr)
-    print(f"Unresolved: {len(unresolved)}", file=sys.stderr)
+    print(f"Resolved (>= {CUTOFF_TS}): {len(examples)} unique examples", file=sys.stderr)
+    print(f"Unresolved (verdict/archive/content problems, not date-excluded): {len(unresolved)}", file=sys.stderr)
     if unresolved:
         for u in unresolved:
             print(f"  line {u['line']}: {u['reason']}", file=sys.stderr)
@@ -107,7 +123,17 @@ def main():
     label_counts = {}
     for e in examples:
         label_counts[e["label"]] = label_counts.get(e["label"], 0) + 1
-    print(f"Label distribution (post-dedup): {label_counts}", file=sys.stderr)
+    print(f"Label distribution (post-dedup, post-fix only): {label_counts}", file=sys.stderr)
+
+    if len(examples) < TRAIN_MIN_EXAMPLES:
+        print(f"\nSTOPPING, not writing a training file: {len(examples)} post-fix "
+              f"examples is below TRAIN_MIN_EXAMPLES={TRAIN_MIN_EXAMPLES}. This is not "
+              f"a bug to silence -- validator.py was only corrected on {CUTOFF_TS}, and "
+              f"real traffic since then hasn't accumulated enough to train or eval on "
+              f"honestly. Let consequence_wrap.sh / continued dry-run keep logging real "
+              f"post-fix events, then re-run this script once there are enough.",
+              file=sys.stderr)
+        sys.exit(1)
 
     if len(examples) <= EVAL_HOLDOUT:
         print(f"FATAL: only {len(examples)} examples, need more than "
