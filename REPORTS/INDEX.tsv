@@ -1,4 +1,4 @@
-kind	period	file	head	commits	generated_at
+kind	period	file	head	commits	generated_at	event
 daily	2026-08-20	DAILY__2026-08-20.md	b819c2b	0	2026-08-21T17:23:43Z
 weekly	2026-W33	WEEKLY__2026-W33.md	66c0ddd	27	2026-08-21T17:25:39Z
 daily	2026-08-21	DAILY__2026-08-21.md	20250f9	15	2026-08-21T21:24:25Z
@@ -12,3 +12,4 @@ daily	2026-08-26	DAILY__2026-08-26__faef148.md	faef148	4	2026-08-27T07:47:08Z
 daily	2026-08-26	DAILY__2026-08-26__50df535.md	50df535	4	2026-08-27T10:00:06Z
 daily	2026-08-27	DAILY__2026-08-27__439fa86.md	439fa86	4	2026-08-27T10:02:00Z
 daily	2026-08-26	DAILY__2026-08-26__d8b723f.md	d8b723f	4	2026-08-27T15:50:10Z	workflow_dispatch
+daily	2026-08-27	DAILY__2026-08-27__b66151d.md	b66151d	7	2026-08-28T04:41:04Z	workflow_dispatch
