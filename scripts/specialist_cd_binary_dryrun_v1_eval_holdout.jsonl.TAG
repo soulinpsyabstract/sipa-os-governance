@@ -1,0 +1,5 @@
+FILE=specialist_cd_binary_dryrun_v1_eval_holdout.jsonl
+SHA256=b6207e9a2ed59af85ebb593f572af213c782bb7e69925af09af9728de42565ce
+SIZE=174559
+DEVICE=SERVER
+TS=2026-08-28__17-03-53

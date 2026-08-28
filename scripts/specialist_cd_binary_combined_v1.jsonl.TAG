@@ -1,0 +1,5 @@
+FILE=specialist_cd_binary_combined_v1.jsonl
+SHA256=91b1c67b7a7b8e7414d399936a28cb8fa595f2641d6d6b27aa8aadeedb3be5be
+SIZE=2747547
+DEVICE=SERVER
+TS=2026-08-28__17-03-53

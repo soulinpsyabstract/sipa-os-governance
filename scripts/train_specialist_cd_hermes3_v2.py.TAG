@@ -1,0 +1,5 @@
+FILE=train_specialist_cd_hermes3_v2.py
+SHA256=1bae6df1968a58f75ed2d890deacbcfa65d0e2612e2fd137b554cc2bad21f7b6
+SIZE=3463
+DEVICE=SERVER
+TS=2026-08-28__17-03-53
