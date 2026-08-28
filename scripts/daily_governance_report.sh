@@ -82,6 +82,29 @@ mkdir -p "$OUT_DIR"
 SINCE="${DAY} 00:00:00"
 UNTIL="${DAY} 23:59:59"
 
+# commits (and the INDEX.tsv row it feeds) is a generation-time snapshot,
+# not a closed-book count (dipankarsarkar, 2026-08-28, sixth review round).
+# It's git log --since/--until run against $(git rev-parse --short HEAD) at
+# the moment this script executes -- HEAD as it exists right now, before
+# this run's own commit (the report file + INDEX.tsv row) exists. A run
+# that fires on the same calendar day it's counting (true for every daily
+# row generated 2026-08-21..08-24, before the round-4 clamp existed) can't
+# see its own eventual publish commit, so commits undercounts by exactly
+# the commits made after generation but before the window closes -- found
+# live: 2026-08-21's row is short by one, and the missing commit is that
+# row's own "governance: daily report 2026-08-21" publish. Confirmed this
+# isn't corruption: `git log <head> --since "<period> 00:00:00" --until
+# "<period> 23:59:59"` reproduces every row's stored commits value exactly,
+# 8 for 8, including the undercounted ones -- head and period are already
+# in the row, so the true count is always recoverable, just not equal to
+# the cached value for a same-window run. Nothing to rewrite (Core Law #5
+# doesn't apply to a correctly-reproducible cache under an undocumented
+# definition) -- a reader who needs the ground-truth count for a specific
+# row should recompute it from head+period with the command above, the
+# same way a gap watcher must filter event=='schedule' instead of trusting
+# a bare present row. Runs generated after their window has closed (every
+# row from 2026-08-25 onward, post-clamp) don't have this gap: HEAD by
+# then already includes the previous day's own publish commit.
 commit_count="$(TZ=UTC git log --since="$SINCE" --until="$UNTIL" --oneline | wc -l | tr -d ' ')"
 files_touched="$(TZ=UTC git log --since="$SINCE" --until="$UNTIL" --name-only --pretty=format:"" | sort -u | { grep -v '^$' || true; } | wc -l | tr -d ' ')"
 

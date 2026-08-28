@@ -61,6 +61,16 @@ OUT="$OUT_DIR/WEEKLY__${WEEK}__$(git rev-parse --short HEAD).md"
 SINCE="${MONDAY} 00:00:00"
 UNTIL="${SUNDAY} 23:59:59"
 
+# commits is a generation-time snapshot, not a closed-book count -- same
+# finding and same reasoning as daily_governance_report.sh (dipankarsarkar,
+# 2026-08-28, sixth review round; see that script's comment for the full
+# mechanism). Confirmed live on this file's own row: 2026-W34 (generated
+# 2026-08-23T21:17:07Z, inside the week) is short by two -- it misses its
+# own publish commit AND the daily report that landed four minutes later,
+# still inside Sunday. `git log <head> --since "<period-start> 00:00:00"
+# --until "<period-end> 23:59:59"` reproduces the stored value exactly for
+# every row including this one -- recompute from head+period for a
+# ground-truth count, don't trust the cached value for a same-window run.
 commit_count="$(TZ=UTC git log --since="$SINCE" --until="$UNTIL" --oneline | wc -l | tr -d ' ')"
 files_touched="$(TZ=UTC git log --since="$SINCE" --until="$UNTIL" --name-only --pretty=format:"" | sort -u | { grep -v '^$' || true; } | wc -l | tr -d ' ')"
 
