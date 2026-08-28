@@ -173,8 +173,31 @@ date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT.generated_at"
 # cron never having run. $GITHUB_EVENT_NAME distinguishes them (schedule vs
 # workflow_dispatch); "manual" is the local/non-Actions fallback. A future
 # gap watcher should count event=schedule rows only. Old rows predate this
-# column and are left blank for it -- not backfilled, per Core Law #5.
-[ -f "$INDEX" ] || printf 'kind\tperiod\tfile\thead\tcommits\tgenerated_at\tevent\n' > "$INDEX"
+# column and are left ABSENT for it (six fields where new rows have seven,
+# reads as None/NaN to a typed parser, not empty string) -- not backfilled,
+# per Core Law #5. A filter must check `== 'schedule'`, not `!= ''`.
+#
+# Header self-heals instead of `[ -f "$INDEX" ] || ...` (dipankarsarkar,
+# 2026-08-27, fifth round): that guard only fires when the file doesn't
+# exist at all, so once INDEX.tsv was committed with the old 6-column
+# header, adding the `event` column here made every future write silently
+# ragged -- 6-field header, 7-field data rows -- which awk tolerates but
+# csv.DictReader and pandas.read_csv do not (confirmed live: DictReader
+# maps the 7th field to the None restkey, pandas raises ParserError). The
+# clamp above also made duplicate same-period rows the normal case, not
+# the exception, and `event` is the only field that tells those apart --
+# so a stale header silently breaks the one column added to fix that.
+# Comparing the on-disk header to the expected one and rewriting just
+# that line (data rows untouched, still append-only) means the next
+# column added the same way heals the file on its own next run, instead
+# of leaving a growing gap for someone to find by hand again.
+EXPECTED_HEADER="$(printf 'kind\tperiod\tfile\thead\tcommits\tgenerated_at\tevent')"
+if [ ! -f "$INDEX" ]; then
+  printf '%s\n' "$EXPECTED_HEADER" > "$INDEX"
+elif [ "$(head -1 "$INDEX")" != "$EXPECTED_HEADER" ]; then
+  { printf '%s\n' "$EXPECTED_HEADER"; tail -n +2 "$INDEX"; } > "$INDEX.tmp"
+  mv "$INDEX.tmp" "$INDEX"
+fi
 printf 'daily\t%s\t%s\t%s\t%s\t%s\t%s\n' "$DAY" "$(basename "$OUT")" "$(git rev-parse --short HEAD)" "$commit_count" "$(cat "$OUT.generated_at")" "${GITHUB_EVENT_NAME:-manual}" >> "$INDEX"
 
 echo ""

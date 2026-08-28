@@ -136,8 +136,20 @@ date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT.generated_at"
 # rows interleaved with kind=daily rows. `event` column added fourth round --
 # see daily script's comment for why (schedule vs workflow_dispatch, gap
 # watcher must count schedule rows only).
+#
+# Header self-heals instead of `[ -f ] || ...` -- same fifth-round fix and
+# reasoning as daily_governance_report.sh: that guard never fires again
+# once the file exists, so a column added later never reaches the header,
+# and the file goes ragged for any strict TSV parser. Must use the exact
+# same EXPECTED_HEADER string as the daily script -- same file, one schema.
 INDEX="$OUT_DIR/INDEX.tsv"
-[ -f "$INDEX" ] || printf 'kind\tperiod\tfile\thead\tcommits\tgenerated_at\tevent\n' > "$INDEX"
+EXPECTED_HEADER="$(printf 'kind\tperiod\tfile\thead\tcommits\tgenerated_at\tevent')"
+if [ ! -f "$INDEX" ]; then
+  printf '%s\n' "$EXPECTED_HEADER" > "$INDEX"
+elif [ "$(head -1 "$INDEX")" != "$EXPECTED_HEADER" ]; then
+  { printf '%s\n' "$EXPECTED_HEADER"; tail -n +2 "$INDEX"; } > "$INDEX.tmp"
+  mv "$INDEX.tmp" "$INDEX"
+fi
 printf 'weekly\t%s\t%s\t%s\t%s\t%s\t%s\n' "$WEEK" "$(basename "$OUT")" "$(git rev-parse --short HEAD)" "$commit_count" "$(cat "$OUT.generated_at")" "${GITHUB_EVENT_NAME:-manual}" >> "$INDEX"
 
 echo ""
