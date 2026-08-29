@@ -85,3 +85,14 @@ pattern ([[project_brev_gpu_balance]]). `brev` CLI itself needs an interactive
 re-login (refresh token expired mid-session) before it can manage/delete the
 instance via CLI — SSH access (used for this whole pipeline) does not require
 that login.
+
+## Correction, 2026-08-29 (append-only, per Core Law #5 — original text above unchanged)
+
+dipankarsarkar found the "Superseded" line above (76-78) gives the weaker of two true
+reasons. Convention-breaking is real, but the stronger reason is that the monolithic run's
+eval cannot be held out by construction: `vuln_gate_sft_v1.jsonl` (the file that run trained
+on) is the exact superset of the per-group train+eval split, with no holdout logic in
+`prep_vuln_dataset.py`. Every one of the "held-out" 120 eval rows was in that run's training
+set. The monolithic adapter was never retrieved, so it was never deployable — but the file
+and script that would reproduce the same leakage are still shipped and sealed in the repo.
+Full detail, and the sealing-policy question this raised: `AI_EXPERIMENTS/DATASETS/vuln_gate_sft_v1.jsonl.CANNOT_BACK_HELDOUT_CLAIM.md`.
