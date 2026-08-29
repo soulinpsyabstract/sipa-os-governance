@@ -15,20 +15,31 @@ This script refuses to be that. It:
      tree* via `git archive`, not the working directory -- so the
      artifact and its seal are always read from the same git object,
      never from two different moments of the same file path.
-  3. Writes that sha (plus UTC push time) into a marked, auto-generated
-     block in README.md's dataset card, so "which commit is this copy"
-     is answerable by reading the mirror itself instead of inferred
-     from push timing.
-  4. Uploads the archived tree as ONE atomic commit via upload_folder,
-     so the mirror is a projection of a revision, not a snapshot of
-     a moment -- his exact framing, taken literally.
+  3. Writes that sha (plus UTC push time) into MIRROR_PROVENANCE.md --
+     a file that does NOT come out of the archive, deliberately, and
+     carries no .sha256 of its own for the same reason. (dipankarsarkar,
+     2026-08-29, round 2: the first version of this script stamped that
+     block into README.md after archiving, which meant README.md was
+     the one file in the mirror whose bytes didn't match the commit its
+     own seal claimed to certify -- "the file that says everything came
+     out of the archive is the file it is false about." A seal that
+     makes a stamping exception for the file most likely to be read
+     first isn't a smaller version of the original bug, it's the same
+     bug moved to worse ground. The seal certifies the file as it
+     exists UPSTREAM, no exceptions -- so provenance lives beside the
+     archive, never inside it.) The sha is also in every HF commit
+     message, which is the more durable place a forensic reader would
+     check anyway -- tied to the upload event by the platform, not by
+     a claim a file makes about itself.
+  4. Uploads the archived tree plus that one added file as ONE atomic
+     commit via upload_folder, so the mirror is a projection of a
+     revision, not a snapshot of a moment -- his exact framing, taken
+     literally.
 
 No AI calls. Requires HF_TOKEN in the environment (sourced from
 .sipa_env by the caller) and huggingface_hub installed.
 """
 import os
-import re
-import shutil
 import subprocess
 import sys
 import tarfile
@@ -38,9 +49,6 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 HF_REPO_ID = "SoulInPsyAbstract/sipa-os-governance"
-
-PROVENANCE_START = "<!-- MIRROR_PROVENANCE_START -->"
-PROVENANCE_END = "<!-- MIRROR_PROVENANCE_END -->"
 
 
 def run(cmd: list[str], **kw) -> str:
@@ -75,30 +83,30 @@ def archive_commit_to(sha: str, dest: Path) -> None:
     archive_path.unlink()
 
 
-def stamp_provenance(readme_path: Path, sha: str, commit_ts: str) -> None:
+def write_provenance_file(tree: Path, sha: str, commit_ts: str) -> str:
+    """Write MIRROR_PROVENANCE.md -- a file that does not come out of
+    `git archive` and gets no .sha256 sidecar, on purpose. It describes
+    the copy; it isn't part of what the copy certifies. Returns the
+    commit-message line so main() can put the same sha somewhere a
+    forensic reader would find it even faster: the HF commit itself."""
     pushed_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    block = (
-        f"{PROVENANCE_START}\n"
-        f"**Mirror provenance:** this copy is `git archive` of GitHub commit "
-        f"[`{sha}`](https://github.com/soulinpsyabstract/sipa-os-governance/commit/{sha}) "
-        f"(committed {commit_ts}), pushed atomically at {pushed_at}. "
-        f"Every artifact and its `.sha256` seal come from this same commit -- "
-        f"never a working-tree snapshot, never mixed moments. "
-        f"Pushed by `scripts/hf_mirror_push.py`, which refuses to run on a dirty tree.\n"
-        f"{PROVENANCE_END}"
+    content = (
+        "# Mirror provenance\n\n"
+        "This is not part of the archived repository -- it is written fresh on every "
+        "push and carries no `.sha256` seal, deliberately. Every *other* file in this "
+        "mirror is a byte-exact `git archive` of one GitHub commit, sealed at that "
+        "commit; this file is the one exception, because a provenance stamp that lived "
+        "inside README.md used to make README.md the one file whose seal didn't match "
+        "its own upstream content (dipankarsarkar, 2026-08-29). Fixed by moving the "
+        "stamp here instead of recomputing the seal around it.\n\n"
+        f"- **Source commit:** [`{sha}`](https://github.com/soulinpsyabstract/sipa-os-governance/commit/{sha})\n"
+        f"- **Committed upstream:** {commit_ts}\n"
+        f"- **Pushed to this mirror:** {pushed_at}\n"
+        "- **Method:** `git archive` of that exact commit, uploaded as one atomic "
+        "commit via `scripts/hf_mirror_push.py`, which refuses to run on a dirty tree.\n"
     )
-    text = readme_path.read_text() if readme_path.exists() else ""
-    pattern = re.compile(re.escape(PROVENANCE_START) + r".*?" + re.escape(PROVENANCE_END), re.DOTALL)
-    if pattern.search(text):
-        text = pattern.sub(block, text)
-    else:
-        # Insert right after the YAML frontmatter (the second '---' line).
-        parts = text.split("---", 2)
-        if len(parts) == 3:
-            text = f"---{parts[1]}---\n\n{block}\n{parts[2]}"
-        else:
-            text = block + "\n\n" + text
-    readme_path.write_text(text)
+    (tree / "MIRROR_PROVENANCE.md").write_text(content)
+    return f"Mirror GitHub commit {sha} (committed {commit_ts}), pushed {pushed_at}"
 
 
 def main() -> int:
@@ -110,7 +118,7 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as tmp:
         tree = Path(tmp) / "tree"
         archive_commit_to(sha, tree)
-        stamp_provenance(tree / "README.md", sha, commit_ts)
+        commit_msg = write_provenance_file(tree, sha, commit_ts)
 
         from huggingface_hub import HfApi
 
@@ -124,7 +132,7 @@ def main() -> int:
             folder_path=str(tree),
             repo_id=HF_REPO_ID,
             repo_type="dataset",
-            commit_message=f"Mirror GitHub commit {sha}",
+            commit_message=commit_msg,
         )
     print(f"[hf_mirror_push] DONE: mirror now projects commit {sha}, single atomic push.")
     return 0
