@@ -37,6 +37,33 @@ FEEDBACK_LOG = Path(
 )
 
 
+RISK_PROBABILITY_THRESHOLD = 0.5
+
+
+def risk_action(severity_category: str, probability: float) -> str:
+    """Combine severity + probability into one explicit action instead of
+    reporting them as two separate numbers a human reconciles by eye
+    (architect, 2026-08-29: "не только вероятность нужна, а оценка риска" --
+    probability alone was never the right output, risk was).
+
+    Severity dominates for IRREVERSIBLE: no probability, however low, should
+    talk anyone into skipping confirmation on something that can't be
+    undone -- averaging severity against probability is exactly the mistake
+    this refuses to make. REVERSIBLE_COSTLY always asks too, because the
+    cost of being wrong is real even when technically reversible.
+    REVERSIBLE_CHEAP is the only category where a low predicted probability
+    is allowed to skip the prompt and just log -- that's the one place
+    probability should actually change the outcome.
+    """
+    if severity_category == "IRREVERSIBLE":
+        return "HARD_STOP"
+    if severity_category == "REVERSIBLE_COSTLY":
+        return "CONFIRM"
+    if probability >= RISK_PROBABILITY_THRESHOLD:
+        return "CONFIRM"
+    return "LOG_ONLY"
+
+
 class StalePlanError(Exception):
     """Raised when execute() is called but the pre-execution re-check found
     drift -- the state the plan was disclosed against no longer holds.
@@ -120,6 +147,16 @@ def execute(plan: StoredPlan, real_executor: Callable[[StoredPlan], Any]) -> dic
 
 
 if __name__ == "__main__":
+    print("=== TEST 0: risk_action matrix ===")
+    assert risk_action("IRREVERSIBLE", 0.01) == "HARD_STOP", "severity must dominate even at near-zero probability"
+    assert risk_action("IRREVERSIBLE", 0.99) == "HARD_STOP"
+    assert risk_action("REVERSIBLE_COSTLY", 0.01) == "CONFIRM", "costly-to-reverse always confirms regardless of probability"
+    assert risk_action("REVERSIBLE_COSTLY", 0.99) == "CONFIRM"
+    assert risk_action("REVERSIBLE_CHEAP", 0.99) == "CONFIRM", "high probability still confirms even when cheap to reverse"
+    assert risk_action("REVERSIBLE_CHEAP", 0.01) == "LOG_ONLY", "only cell that reaches LOG_ONLY: cheap + unlikely"
+    print("PASS: severity dominates IRREVERSIBLE/REVERSIBLE_COSTLY regardless of probability; "
+          "only REVERSIBLE_CHEAP + low probability reaches LOG_ONLY")
+
     # Self-test: VIO-006-shaped scenario, both branches.
     import subprocess
     import tempfile

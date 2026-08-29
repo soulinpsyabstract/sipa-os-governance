@@ -19,12 +19,18 @@ Usage:
 Flow:
     1. disclose(command, scope) -- classifies severity, estimates
        probability, snapshots current state.
-    2. Prints severity/probability/scope to the human. For IRREVERSIBLE,
-       requires typing the literal word "yes" (not just Enter/y) --
-       matches the weight of what's being confirmed.
-    3. On confirm: re-snapshots, compares. Drift since step 1 -> refuses
-       to run, tells you to re-run this tool fresh (do not blindly retry).
-       No drift -> actually runs the command via subprocess.
+    2. risk_action(severity, probability) combines the two into one of
+       HARD_STOP / CONFIRM / LOG_ONLY (2026-08-29: severity and probability
+       reported as two separate numbers made a human reconcile them by eye
+       every time -- this is the explicit risk matrix instead). IRREVERSIBLE
+       is always HARD_STOP regardless of probability; REVERSIBLE_COSTLY is
+       always CONFIRM; only REVERSIBLE_CHEAP with low predicted probability
+       reaches LOG_ONLY and skips the prompt.
+    3. On confirm (HARD_STOP requires typing "yes", CONFIRM requires "y"):
+       re-snapshots, compares. Drift since step 1 -> refuses to run, tells
+       you to re-run this tool fresh (do not blindly retry). No drift ->
+       actually runs the command via subprocess. LOG_ONLY skips straight to
+       this step, no prompt.
     4. Every outcome (executed or blocked) is logged to
        consequence_prediction_feedback.jsonl via CONSEQUENCE_EXECUTOR.
 """
@@ -34,7 +40,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from CONSEQUENCE_EXECUTOR import disclose, execute, StalePlanError
+from CONSEQUENCE_EXECUTOR import disclose, execute, risk_action, StalePlanError
 
 
 def run_real_command(plan) -> dict:
@@ -64,23 +70,29 @@ def main():
 
     plan = disclose(args.command, scope)
 
+    action = risk_action(plan.severity["category"], plan.probability)
+
     print(f"\n[consequence_gate] command : {plan.command}")
     print(f"[consequence_gate] severity: {plan.severity['category']} ({plan.severity['rationale']})")
     print(f"[consequence_gate] est. probability of bad outcome: {plan.probability:.2f} "
           f"(seed-data frequency estimate, not a calibrated model)")
+    print(f"[consequence_gate] risk action: {action} "
+          f"(severity x probability combined -- not two numbers to reconcile by eye)")
     print(f"[consequence_gate] scope   : {scope}")
 
     if not args.yes:
-        if plan.severity["category"] == "IRREVERSIBLE":
+        if action == "HARD_STOP":
             resp = input('\n[consequence_gate] IRREVERSIBLE. Type "yes" (not just Enter) to proceed: ')
             if resp.strip() != "yes":
                 print("[consequence_gate] Aborted, nothing ran.")
                 return 1
-        else:
+        elif action == "CONFIRM":
             resp = input("\n[consequence_gate] Proceed? [y/N]: ")
             if resp.strip().lower() != "y":
                 print("[consequence_gate] Aborted, nothing ran.")
                 return 1
+        else:  # LOG_ONLY: REVERSIBLE_CHEAP + low predicted probability, no prompt
+            print("[consequence_gate] LOG_ONLY risk -- proceeding without a prompt, still logged.")
 
     try:
         result = execute(plan, real_executor=run_real_command)
