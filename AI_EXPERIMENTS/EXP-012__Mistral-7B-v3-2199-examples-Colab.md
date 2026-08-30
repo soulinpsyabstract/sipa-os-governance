@@ -151,3 +151,11 @@ checkable, not asserted.
   `POLL_ERROR` on the completed-training monitor) both self-resolved within seconds on
   retry — logged in `STATUS__2026-07-25.md` at the time, not treated as infrastructure
   failures worth a separate finding.
+
+## Correction, 2026-08-30 (append-only, per Core Law #5 -- everything above unchanged)
+
+`scripts/check_citations.py` confirms `benchmark_mistral7b_v3_colab.py` -- named above as
+the harness that produced this entry's scored comparison table -- does not exist anywhere
+in this repo's git history on any branch (checked directly). Same pattern as
+`bench_base_k20.py` in EXP-024: unrecoverable, the table above cannot currently be
+independently reproduced from what's in this repo. No attempt made to recreate it.

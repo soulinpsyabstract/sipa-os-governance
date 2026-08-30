@@ -35,13 +35,26 @@ def parse_tag(tag_path: str) -> dict:
     if not os.path.exists(tag_path):
         return {}
     fields = {}
+    legacy_lines = []
     with open(tag_path) as f:
         for line in f:
             line = line.rstrip("\n")
+            if not line:
+                continue
             if "=" not in line:
+                # Older TAG convention: a single "TAG: STATUS-DATE" line,
+                # no KEY=value shape at all (dipankarsarkar, round 5 --
+                # found this dropped 5 real files silently, no
+                # "(preserved: ...)" signal because the old code just
+                # `continue`d past it instead of keeping it). Preserve the
+                # raw line verbatim under a synthetic key so a legacy TAG
+                # survives a reseal instead of being replaced outright.
+                legacy_lines.append(line)
                 continue
             k, v = line.split("=", 1)
             fields[k] = v
+    if legacy_lines:
+        fields["_LEGACY"] = "\n".join(legacy_lines)
     return fields
 
 
@@ -61,6 +74,7 @@ def reseal(path: str, device: str = "SERVER") -> None:
     tag_path = path + ".TAG"
     existing = parse_tag(tag_path)
     extra = {k: v for k, v in existing.items() if k not in CORE_FIELDS}
+    legacy = extra.pop("_LEGACY", None)
 
     with open(tag_path, "w") as f:
         f.write(f"FILE={filename}\n")
@@ -70,8 +84,13 @@ def reseal(path: str, device: str = "SERVER") -> None:
         f.write(f"TS={ts}\n")
         for k, v in extra.items():
             f.write(f"{k}={v}\n")
+        if legacy:
+            f.write(legacy + "\n")
 
-    print(f"resealed {path}" + (f" (preserved: {', '.join(extra)})" if extra else ""))
+    preserved = list(extra)
+    if legacy:
+        preserved.append("legacy TAG line(s)")
+    print(f"resealed {path}" + (f" (preserved: {', '.join(preserved)})" if preserved else ""))
 
 
 if __name__ == "__main__":

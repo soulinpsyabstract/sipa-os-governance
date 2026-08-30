@@ -73,3 +73,10 @@ Mistral-7B, gpt-4o, Phi-3.5-mini) and two different platforms (Lightning, Azure)
   reserved for the planned v2 re-run.
 - Not spun as a tie/neutral result — the substantive finding (a 4th independent
   fabrication instance) is the important takeaway, not the raw percentage.
+
+## Correction, 2026-08-30 (append-only, per Core Law #5 -- everything above unchanged)
+
+`scripts/check_citations.py` confirms `protocol0_sft_v2.jsonl` -- same file EXP-004 and
+EXP-006 cite as their own training data -- does not exist anywhere in this repo's git history
+on any branch (checked directly). Same pattern as `bench_base_k20.py` in EXP-024:
+unrecoverable, not independently reproducible from what's in this repo.

@@ -107,3 +107,10 @@ not a one-off.
   distinguish these clearly enough for the model to learn the difference.
 - Not spun as success despite gpt-4o being the most capable base model tried — the
   regression and the fabrication pattern are both real and documented as-is.
+
+## Correction, 2026-08-30 (append-only, per Core Law #5 -- everything above unchanged)
+
+`scripts/check_citations.py` confirms `protocol0_sft_v2.jsonl` -- named above as this run's
+training data, same file as EXP-004 and EXP-007 cite -- does not exist anywhere in this
+repo's git history on any branch (checked directly). Same pattern as `bench_base_k20.py` in
+EXP-024: unrecoverable, not independently reproducible from what's in this repo.

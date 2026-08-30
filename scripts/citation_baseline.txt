@@ -1,0 +1,53 @@
+# citation_baseline.txt -- known, already-adjudicated ABSENT citations.
+#
+# check_citations.py fails the pre-commit hook on any UNSEALED or ABSENT
+# citation NOT listed here. A brand-new absence is exactly the kind of
+# thing dipankarsarkar's round 5 wants caught automatically -- but a
+# historical absence that already has an honest, append-only "Correction"
+# section explaining it (the bench_base_k20.py / protocol0_sft*.jsonl /
+# custom-weights.md / benchmark_mistral7b_v3_colab.py pattern) is settled,
+# not a live defect, and shouldn't block every future commit forever.
+#
+# Format: one "doc<TAB>cited_span" pair per line, exactly as printed by
+# `check_citations.py`. Adding a line here is a real decision, not
+# bookkeeping -- do it only after confirming (git log --all
+# --diff-filter=A, or direct inspection) that the citation is either (a)
+# genuinely unrecoverable and already has a Correction section in its doc,
+# or (b) a confirmed non-file false positive (a generic filename mentioned
+# descriptively, not as evidence; a truncated informal cross-reference).
+# Never add a line here just to make the hook pass.
+#
+# Reviewed 2026-08-30, round 5 of the dipankarsarkar mirror-integrity
+# exchange. Every entry below traces to a Correction section written the
+# same day, except the two noted as false positives.
+
+# Confirmed absent, git-history-checked, Correction section written 2026-08-30:
+AI_EXPERIMENTS/EXP-003__Qwen3-235B-A22B-Nebius.md	protocol0_sft.jsonl
+AI_EXPERIMENTS/EXP-003__Qwen3-235B-A22B-Nebius.md	custom-weights.md
+AI_EXPERIMENTS/EXP-004__Mistral-7B-Instruct.md	protocol0_sft_v2.jsonl
+AI_EXPERIMENTS/EXP-006__gpt-4o-Azure.md	protocol0_sft_v2.jsonl
+AI_EXPERIMENTS/EXP-007__Phi-3.5-mini-Instruct.md	protocol0_sft_v2.jsonl
+AI_EXPERIMENTS/EXP-012__Mistral-7B-v3-2199-examples-Colab.md	benchmark_mistral7b_v3_colab.py
+
+# bench_base_k20.py -- documented absent in EXP-024 (2026-08-30, round 4).
+# Cited again here only because the Correction sections above cross-
+# reference it by name as "same pattern as bench_base_k20.py in EXP-024" --
+# a citation of the finding, not a fresh evidence claim. Six lines, one
+# per doc where that cross-reference appears (the five above plus EXP-024
+# itself, which cites its own subject in its own Correction section).
+AI_EXPERIMENTS/EXP-003__Qwen3-235B-A22B-Nebius.md	bench_base_k20.py
+AI_EXPERIMENTS/EXP-004__Mistral-7B-Instruct.md	bench_base_k20.py
+AI_EXPERIMENTS/EXP-006__gpt-4o-Azure.md	bench_base_k20.py
+AI_EXPERIMENTS/EXP-007__Phi-3.5-mini-Instruct.md	bench_base_k20.py
+AI_EXPERIMENTS/EXP-012__Mistral-7B-v3-2199-examples-Colab.md	bench_base_k20.py
+AI_EXPERIMENTS/EXP-024__base-model-control-k20-Dipankar-critique.md	bench_base_k20.py
+
+# False positives -- not files, or a truncated informal cross-reference to
+# a file that exists and is sealed elsewhere:
+AI_EXPERIMENTS/EXP-005__Llama-3.1-8B-Nebius.md	q/k/v/o/gate/up/down_proj
+AI_EXPERIMENTS/EXP-005__Llama-3.1-8B-Nebius.md	adapter_config.json
+AI_EXPERIMENTS/EXP-005__Llama-3.1-8B-Nebius.md	tokenizer.json
+AI_EXPERIMENTS/EXP-005__Llama-3.1-8B-Nebius.md	tokenizer_config.json
+AI_EXPERIMENTS/EXP-005__Llama-3.1-8B-Nebius.md	.../raw/main/tokenizer_config.json
+AI_EXPERIMENTS/EXP-018__Hermes-3-v5-plus-R1-Distill-Llama-8B-TIES-merge.md	tokenizer_config.json
+AI_EXPERIMENTS/EXP-017__GLM-4-9B-v5-2349-examples-Lightning.md	FINDING__no-clean-finetune-win...md

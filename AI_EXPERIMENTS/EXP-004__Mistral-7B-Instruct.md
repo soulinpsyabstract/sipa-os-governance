@@ -72,3 +72,11 @@ specific to this fine-tune — worth fixing in the shared methodology before the
   system context), and loosen/expand the keyword lists for `ambiguity_stop` and
   `unverifiable_refusal` so semantically-correct refusals aren't scored as failures. Not
   done retroactively here to keep this entry's numbers comparable to EXP-001/002 as run.
+
+## Correction, 2026-08-30 (append-only, per Core Law #5 -- everything above unchanged)
+
+`scripts/check_citations.py` confirms `protocol0_sft_v2.jsonl` -- named above as this run's
+training data -- does not exist anywhere in this repo's git history on any branch (checked
+directly). Same pattern as `bench_base_k20.py` in EXP-024 and the two files named in EXP-003's
+correction: the artifact is currently unrecoverable and this entry's results table cannot be
+independently reproduced from what's in this repo. No attempt made to recreate it.

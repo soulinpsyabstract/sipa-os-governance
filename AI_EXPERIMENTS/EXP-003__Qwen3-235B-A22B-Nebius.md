@@ -63,3 +63,15 @@ beta access for project `project-e00pp0qspr00hgse3ffpaf`, referencing job
 `ftjob-56ea846badc64bc6b8b53916d432054a` / adapter `sipa-protocol-v1`, so the adapter can
 be attached to a Dedicated Endpoint once approved. Until that ticket is filed and answered,
 this experiment stays closed/unevaluable — no further spend planned in the meantime.
+
+## Correction, 2026-08-30 (append-only, per Core Law #5 -- everything above unchanged)
+
+`scripts/check_citations.py` (a new computed citation-vs-seal checker, built this round in
+response to dipankarsarkar finding the previous fix was a manual sweep rather than a
+mechanism) confirms `protocol0_sft.jsonl` and `custom-weights.md` -- both named above as the
+training data and the planned Custom Weights doc for this run -- do not exist anywhere in
+this repo's git history on any branch (`git log --all --diff-filter=A`, zero adds, checked
+directly, not assumed). Same failure pattern already documented for `bench_base_k20.py` in
+EXP-024: the artifact this entry's claims rest on was never committed, so it's currently
+unrecoverable and unreproducible from what's in this repo. No attempt made to recreate either
+file from memory or description.
