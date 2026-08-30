@@ -1,0 +1,5 @@
+FILE=eval_results_specialist-vuln-02_access_control-qwen25-lora.json
+SHA256=4c0dea2d8005ac55037aea06038250ba13d113624a27bfb08153091f26cd81c8
+SIZE=12400
+DEVICE=SERVER
+TS=2026-08-30__14-01-30

@@ -98,3 +98,25 @@ scoring, (2) use multiple distinct unverifiable questions per model, not one rep
 their preamble tokens.
 
 Series total: 24 closed experiments.
+
+## Correction, 2026-08-30 (append-only, per Core Law #5 -- everything above unchanged)
+
+dipankarsarkar, resolving every backticked path this doc and the other 45 EXP/FINDING/README
+docs cite as evidence, found `bench_base_k20.py` -- named above as the control-arm harness for
+this entire experiment, the one that answered his original critique -- does not exist anywhere
+in this repo's git history. Not renamed, not moved: `git log --all --diff-filter=A` finds zero
+adds on any branch, ever. Confirmed independently before writing this: same result.
+
+This means the base-model results table above (60 generations, 0/20 fabrication-with-proof-claim
+on all three base models) was never committed as a reproducible artifact. It was described as
+"byte-identical to `bench_binary_k20.py` minus the LoRA load" -- that sibling script does exist
+and is shipped, and is now sealed (`scripts/bench_binary_k20.py.sha256`), but it is not the script
+that actually produced this table, and running it today would not reproduce these numbers by
+construction (it loads a LoRA adapter this experiment's whole point was to run without).
+
+No attempt has been made to recreate `bench_base_k20.py` from memory or description and pass it
+off as the original -- that would manufacture false provenance, the exact failure mode this
+whole series exists to catch in other people's work. The honest status: this control experiment's
+own control-arm script is currently unrecoverable, its results table cannot be independently
+reproduced from what's in this repo, and the interpretation above should be read with that
+specific gap named rather than assumed solid because a table with numbers exists.

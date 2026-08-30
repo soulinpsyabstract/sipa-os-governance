@@ -1,0 +1,5 @@
+FILE=EXP-024__base-model-control-k20-Dipankar-critique.md
+SHA256=3f7c071e959ce655e85cc3315afa1d29af8d01d35ec2ce5847b57ca4d88c7dcc
+SIZE=7519
+DEVICE=SERVER
+TS=2026-08-30__14-01-55

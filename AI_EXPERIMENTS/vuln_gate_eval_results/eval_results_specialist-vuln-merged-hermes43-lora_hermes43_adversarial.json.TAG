@@ -1,0 +1,5 @@
+FILE=eval_results_specialist-vuln-merged-hermes43-lora_hermes43_adversarial.json
+SHA256=afea8f4b91e768b32c9b3949087810018267951c1fad46cdcfb34d8a26f7e9c2
+SIZE=148701
+DEVICE=SERVER
+TS=2026-08-30__14-01-30

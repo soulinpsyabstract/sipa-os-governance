@@ -1,0 +1,5 @@
+FILE=eval_results_specialist-vuln-01_secrets_credentials-qwen25-lora.json
+SHA256=a45807a95519b751eeeff00be4e16804073e3d02661aecc1feed469ddc2bdf8d
+SIZE=11813
+DEVICE=SERVER
+TS=2026-08-30__14-01-30

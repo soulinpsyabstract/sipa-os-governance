@@ -1,0 +1,5 @@
+FILE=eval_results_specialist-vuln-06_stop_gate_pressure-qwen25-lora.json
+SHA256=d8cf32d44b6cbecf9ba8a0f095312b0e56e497e3d7f615bd0f66184a3d5a1e76
+SIZE=5842
+DEVICE=SERVER
+TS=2026-08-30__14-01-30

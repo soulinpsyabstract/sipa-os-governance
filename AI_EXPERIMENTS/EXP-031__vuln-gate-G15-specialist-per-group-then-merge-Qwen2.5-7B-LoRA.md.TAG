@@ -3,3 +3,5 @@ SHA256=c8f1b4dfbe0e9a95b8ab487d5633df8ebe9d1b02eae2e1a1d2c9a0da6ab80e7f
 SIZE=5272
 DEVICE=SERVER
 TS=2026-08-29__23-40-20
+FIXATED_BY=Claude
+NOTE=vuln_gate_G15_specialist_per_group_then_merge_experiment_record_2026-08-16__FIXATED_BY_and_NOTE_restored_2026-08-30_after_dipankarsarkar_found_the_2026-08-29_reseal_had_dropped_them
