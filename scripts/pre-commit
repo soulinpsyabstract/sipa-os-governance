@@ -8,6 +8,13 @@
 # he named (the TAG layer got a mechanism, the citation layer got a
 # one-time manual sweep).
 #
+# Round 6, same reviewer, demonstrated directly: `git merge --no-ff`
+# doesn't fire pre-commit at all -- only pre-merge-commit does, and that
+# hook didn't exist. A defect committed on a side branch with --no-verify
+# landed on main clean, no hook output, nothing caught until someone
+# manually reran the checker. install-hooks.sh now installs this same
+# script under both hook names.
+#
 # .git/hooks/ is not tracked by git, so this file lives in scripts/ and has
 # to be installed once per clone: scripts/install-hooks.sh does that.
 set -euo pipefail
