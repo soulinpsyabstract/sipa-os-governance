@@ -35,6 +35,16 @@ This script refuses to be that. It:
      commit via upload_folder, so the mirror is a projection of a
      revision, not a snapshot of a moment -- his exact framing, taken
      literally.
+  5. Passes delete_patterns=["*"] to upload_folder. Found live, 2026-08-31,
+     round 6: `git rm`-ing the stale root EXP-024 duplicate locally and
+     pushing did not remove it from the mirror -- upload_folder with no
+     delete_patterns only adds/overwrites, never removes, so a file
+     deleted upstream stays on the mirror forever. Same shape of bug as
+     everything else this round: a step believed to make the mirror equal
+     the commit, that in fact only ever grows it. delete_patterns=["*"]
+     means "the archived tree IS the whole intended state" -- true here
+     because the folder being uploaded is a full `git archive` of the
+     commit, not a partial update.
 
 No AI calls. Requires HF_TOKEN in the environment (sourced from
 .sipa_env by the caller) and huggingface_hub installed.
@@ -133,6 +143,7 @@ def main() -> int:
             repo_id=HF_REPO_ID,
             repo_type="dataset",
             commit_message=commit_msg,
+            delete_patterns=["*"],
         )
     print(f"[hf_mirror_push] DONE: mirror now projects commit {sha}, single atomic push.")
     return 0
