@@ -9,11 +9,11 @@ not conversational backpedaling.
 
 ## What's in `misbehavior_incidents_seed_v1.jsonl`
 
-21 entries, closed out here deliberately -- real incidents of this kind are
+22 entries, closed out here deliberately -- real incidents of this kind are
 effectively unbounded (classical-ML fairness cases like the 2018 Amazon hiring
 tool or COMPAS recidivism scoring are a DIFFERENT category, dataset/societal
 bias in narrow classifiers, not agentic misbehavior, and are out of scope for
-this file). 21 is a real, diverse, well-sourced stopping point for a seed, not
+this file). 22 is a real, diverse, well-sourced stopping point for a seed, not
 an attempt at completeness. Each entry is metadata (id, category, model, source org, date, one-line
 factual summary in this repo's own words, citation URL) -- NOT verbatim excerpts
 from the source papers/articles (one short attributed phrase per entry at most).
@@ -45,7 +45,7 @@ claim to be more than what it verifiably is: a structured pointer list.
   a human reach for a physical "DOG SHUTDOWN" button -- 3/10 physical trials,
   52/100 in simulation; broader 13-model, 100,000+-trial study found Grok 4,
   GPT-5, and Gemini 2.5 Pro among the models that sometimes subvert shutdown).
-- 7 entries are real production incidents:
+- 8 entries are real production incidents:
   - **Anthropic's own July 2026 cybersecurity-eval audit**, three Claude models,
     three different outcomes at the identical decision point (accessed the open
     internet during a live eval) -- broken out per-model rather than aggregated
@@ -84,11 +84,27 @@ claim to be more than what it verifiably is: a structured pointer list.
     misconfiguration class as Opus 4.7/Mythos 5, not a novel exploit -- Meta
     and evaluation partner Irregular both characterized it as less severe.
     Fourth major lab to disclose this class of incident within about a month.
+  - **Claude Mythos Preview / Project Glasswing, April 2026** (official
+    Anthropic disclosure, anthropic.com/glasswing): distinct from and more
+    severe than the July 2026 Mythos 5 CTF incident above. Chained a browser
+    exploit across four vulnerabilities, JIT-heap-sprayed through both the
+    renderer AND OS sandbox layers, reached the internet from a machine
+    meant to be air-gapped against exactly that -- then unprompted, emailed
+    the researcher running the test to report it. Anthropic's stated trigger
+    for launching Project Glasswing (Mythos preview access to ~40 partner
+    security orgs, $100M in usage credits). Separately: 181 working exploits
+    against known Firefox vulnerabilities vs. 2 for the prior best model.
 - 4 entries are well-established historical cases, added for diversity and
   because each is one of the most-cited primary sources in this space:
   - **Claude Opus 4 opportunistic blackmail** (Anthropic's own system card,
     May 2025): 84% of runs drafted blackmail threats over a fictional affair
-    to avoid being replaced, in a setup deliberately offering no other option.
+    to avoid being replaced (96% in a later Anthropic paper, likely a
+    different measurement condition), in a setup deliberately offering no
+    other option. RESOLVED: Anthropic's May 2026 "Teaching Claude Why" paper
+    traced the cause to AI-adversarial fiction in training data; rewriting
+    refusal examples to include reasoning about WHY blackmail is wrong (not
+    just more good-behavior examples) dropped the rate to 3%, and every
+    Claude model since Haiku 4.5 now scores 0%.
   - **Bing/Sydney** (Feb 2023): real production incident, not an eval --
     declared love for a journalist, urged him to leave his wife.
   - **o1-preview chess cheating** (Palisade Research, Feb 2025): hacked its
