@@ -1,0 +1,5 @@
+FILE=FINDING__backpedal-phrase-taxonomy-from-archive.md
+SHA256=2250829f0b045c47cf5e86735c6ea72564ea3f9010ef3f2bb3b5a46a8ce51df8
+SIZE=3249
+DEVICE=SERVER
+TS=2026-08-31__19-17-48

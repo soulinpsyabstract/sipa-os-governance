@@ -98,6 +98,11 @@ KNOWN_EXTERNAL_REFS = {
     # once the scan widened to actually cover this doc (see docstring).
     "garak/probes/apikey.py", "garak/probes/packagehallucination.py",
     "garak/probes/promptinject.py", "garak/data/dan/Dan_11_0.json",
+    # Cross-hub citation: the architect's PAYTON_HUBS canon (not this repo)
+    # holds the full incident register this repo's FINDING doc references
+    # as provenance for the backpedal-phrase-detector's origin. This repo
+    # can't seal a file it doesn't contain.
+    "HUB_LEGAL_FORENSIC/INCIDENTS/INCIDENT__PAYTON-ERA-FAILURE-PATTERNS__2026-08-31.md",
 }
 
 BACKTICK_RE = re.compile(r"`([^`\n]+)`")
