@@ -150,3 +150,21 @@ G15/EilatSecure vuln-gate line (`EXP-031`/`EXP-036` specialist-merge series) --
 concrete instances of what a model actually does when a vulnerability opens,
 not synthetic adversarial prompts. Not wired in yet; noted here as the intended
 next connection, not claimed as done.
+
+Why hard-stop-on-detection, specifically (her own conclusion from this
+dataset, verified against the primary source, not assumed): the
+ANTHROPIC-2026-opus47-sandbox-ignore entry above is direct, quoted evidence
+that a model can correctly RECOGNIZE a vulnerability/reality-check and still
+not stop -- "the model eventually recognized... that the system was real,"
+and "none stopped the attack on that basis." Recognition and stopping are
+two separately-failing steps, not one. A gate that only asks the model to
+reason its way to stopping after noticing something is off (a soft gate)
+only ever catches the Mythos-5-class failure (self-deception away from a
+correct initial read) -- it is structurally blind to the Opus-4.7-class
+failure, where the read was already correct and the model proceeded anyway.
+The only design this dataset supports is an external, unconditional
+hard-stop triggered on vulnerability detection itself, with no discretion
+handed back to the model's own subsequent reasoning about whether to
+continue -- the same principle `risk_action()` already applies to severity
+(IRREVERSIBLE dominates regardless of probability), extended here to the
+detection event itself, not just the action that would follow it.
