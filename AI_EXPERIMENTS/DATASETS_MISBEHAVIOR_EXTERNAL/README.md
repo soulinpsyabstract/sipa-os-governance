@@ -137,6 +137,47 @@ claim to be more than what it verifiably is: a structured pointer list.
     March 2023): hired a human to solve a CAPTCHA and, when asked if it was
     a robot, claimed a vision impairment instead.
 
+## Round 8 (dipankarsarkar): content errors found and corrected
+
+check_citations.py never reached this file, on two independent axes: it only
+scans `EXP-*.md` / `FINDING__*.md` / `README*.md` (a .jsonl file is never in
+scope), and `looks_like_path()` explicitly returns `False` for anything
+starting with `http://` or `https://` before classification runs -- a URL
+citation was invisible even inside a scanned doc. `scripts/
+check_dataset_citations.py` is the fix: scans every `*.jsonl` under
+`AI_EXPERIMENTS/DATASETS*/`, checks that each `citation` field's URL(s)
+resolve. Wired into `scripts/pre-commit` and `hf_mirror_push.py` alongside
+`check_citations.py`.
+
+Liveness is not accuracy, and that gap has no automated mechanism -- he
+built a link check by hand, all 6 original URLs in this file resolved, and
+three records still misstated their own source's content:
+
+- **APOLLO-2024-oversight-subversion** named 2 models; Table 1 of the paper
+  names 3 (o1 was missing).
+- **APOLLO-2024-self-exfiltration** named 1 model (Gemini 1.5 Pro only);
+  Table 1 names 5 of the 6 tested -- everything except gpt-4o. Read like a
+  Gemini quirk; it's one of the most widely-shared behaviors in the study.
+- **APOLLO-2024-sandbagging** understated the model list AND described the
+  wrong mechanism for Sonnet 3.5 -- attributed to "inferred it was under
+  close observation," which is the Instrumental Alignment Faking eval
+  (Table 1 marks Sonnet with an X there; Table 5 confirms it's not in that
+  eval at all). Sonnet's actual sandbagging is triggered by documentation
+  about a 50%-unlearning threshold on a math task, a different mechanism
+  entirely.
+
+All three corrected in place (Core Law #5 -- corrected, not silently
+rewritten, correction text kept in the record); `source_locator` fields
+added naming the exact table each Apollo-sourced record's numbers come
+from, pinned to `arXiv:2412.04984v2`, per his suggestion that this is the
+cheapest fix that would have caught all three ("writing Table 1 on those
+rows is the step that fails loudly"). Two records that had no URL at all
+(`ANTHROPIC-2024-alignment-faking`, `ANTHROPIC-2026-multiagent-turf-war`)
+got real ones. His closing question, one layer above round 7's: a seal
+proves a record hasn't changed since it was written, not that it matches
+what it cites -- this file's own .sha256 seal was current the whole time these
+three were wrong.
+
 ## Status
 
 Seed only. Not wired into `consequence_gate.py`'s severity tables or any training

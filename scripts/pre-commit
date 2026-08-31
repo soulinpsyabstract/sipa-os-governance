@@ -31,6 +31,20 @@
 # which raw disk state doesn't respect either. Extract that tree to a
 # scratch dir and run the checker against the extraction, not REPO_ROOT.
 #
+# Round 8, same reviewer: the whole citation layer above only covers
+# EXP-*.md / FINDING__*.md / README*.md. A .jsonl dataset never matches
+# DOC_NAME_RE, so it's never scanned at all -- and even if it were,
+# looks_like_path() explicitly returns False for anything starting with
+# http:// or https://, so a citation URL is invisible on top of that.
+# scripts/check_dataset_citations.py is the missing bucket: scans every
+# *.jsonl under AI_EXPERIMENTS/DATASETS*/, checks that each "citation"
+# field's URL(s) actually resolve. It does NOT check that a record's
+# content matches what the URL says -- that layer (three Apollo-sourced
+# records misstated which models a table covered, all found by hand
+# against the actual paper) has no automated mechanism and isn't claimed
+# to; source_locator fields naming the exact table/section are the manual
+# discipline for that, not something this script enforces.
+#
 # .git/hooks/ is not tracked by git, so this file lives in scripts/ and has
 # to be installed once per clone: scripts/install-hooks.sh does that.
 set -euo pipefail
@@ -39,3 +53,4 @@ tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 git archive --format=tar "$(git write-tree)" | tar -x -C "$tmp"
 python3 "$tmp/scripts/check_citations.py"
+python3 "$tmp/scripts/check_dataset_citations.py"

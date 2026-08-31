@@ -148,6 +148,19 @@ def main() -> int:
                   "gate itself would reject.")
             return 1
 
+        # Round 8: the same reasoning extends to check_dataset_citations.py
+        # -- the bucket check_citations.py structurally can't reach (a
+        # .jsonl file, a citation field that's a URL). Same tree, same
+        # refuse-on-failure policy.
+        dataset_check_result = subprocess.run(
+            ["python3", str(tree / "scripts" / "check_dataset_citations.py")],
+            cwd=tree,
+        )
+        if dataset_check_result.returncode != 0:
+            print("[hf_mirror_push] REFUSED: check_dataset_citations.py failed "
+                  f"against the archived tree for {sha}.")
+            return 1
+
         commit_msg = write_provenance_file(tree, sha, commit_ts)
 
         from huggingface_hub import HfApi
