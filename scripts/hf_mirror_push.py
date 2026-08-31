@@ -128,6 +128,26 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as tmp:
         tree = Path(tmp) / "tree"
         archive_commit_to(sha, tree)
+
+        # Round 7, dipankarsarkar: pre-commit's own disk-vs-commit gap
+        # (fixed in scripts/pre-commit this same round) has a second copy
+        # here -- this script already extracts `tree` as a clean archive
+        # of the commit before uploading it, which is exactly what the
+        # citation checker should run against, not trust that pre-commit
+        # already checked. Same code, second distribution path, closes
+        # the gap for anyone who committed with --no-verify, from a clone
+        # that never ran install-hooks.sh, or from CI (which currently
+        # doesn't install hooks at all -- also his round-7 finding).
+        check_result = subprocess.run(
+            ["python3", str(tree / "scripts" / "check_citations.py")],
+            cwd=tree,
+        )
+        if check_result.returncode != 0:
+            print("[hf_mirror_push] REFUSED: check_citations.py failed against "
+                  f"the archived tree for {sha} -- not pushing a commit the "
+                  "gate itself would reject.")
+            return 1
+
         commit_msg = write_provenance_file(tree, sha, commit_ts)
 
         from huggingface_hub import HfApi

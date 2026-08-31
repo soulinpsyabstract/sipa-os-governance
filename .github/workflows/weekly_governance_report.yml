@@ -18,6 +18,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install git hooks
+        # dipankarsarkar, round 7: same finding as the daily workflow --
+        # actions/checkout gives an empty .git/hooks/, install-hooks.sh
+        # never ran here. Currently benign (0 citations resolve into
+        # REPORTS/), latent otherwise.
+        run: bash scripts/install-hooks.sh
+
       - name: Generate report for the ISO week that just closed (UTC)
         # No explicit WEEK argument -- same reason as the daily workflow
         # (dipankarsarkar, 2026-08-27, third round): passing `date -u -d
@@ -32,5 +39,10 @@ jobs:
           git config user.email "payton-ci@users.noreply.github.com"
           WEEK="$(awk -F'\t' '$1=="weekly"{d=$2} END{print d}' REPORTS/INDEX.tsv)"
           git add REPORTS/
-          git commit -m "governance: weekly report ${WEEK}" || exit 0
+          # dipankarsarkar, round 7 -- same fix as the daily workflow.
+          if git diff --cached --quiet; then
+            echo "Nothing to commit (report unchanged)."
+            exit 0
+          fi
+          git commit -m "governance: weekly report ${WEEK}"
           git push

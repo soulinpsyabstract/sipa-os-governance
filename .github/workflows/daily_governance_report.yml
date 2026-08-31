@@ -28,6 +28,15 @@ jobs:
         with:
           fetch-depth: 0   # full history needed -- the report reads git log for the whole day
 
+      - name: Install git hooks
+        # dipankarsarkar, round 7: actions/checkout gives an empty
+        # .git/hooks/ -- install-hooks.sh never ran here, so every
+        # payton-ci commit (the highest-volume commit path in the repo)
+        # was ungated. Currently benign by his own check (0 citations
+        # resolve into REPORTS/, and REPORTS/ is all these commits ever
+        # touch) -- but latent, not a reason to leave it uninstalled.
+        run: bash scripts/install-hooks.sh
+
       - name: Generate report for the day that just closed (UTC)
         # No explicit DAY argument (dipankarsarkar, 2026-08-27, third round):
         # passing `date -u -d yesterday` here would silently override the
@@ -43,5 +52,14 @@ jobs:
           git config user.email "payton-ci@users.noreply.github.com"
           DAY="$(awk -F'\t' '$1=="daily"{d=$2} END{print d}' REPORTS/INDEX.tsv)"
           git add REPORTS/
-          git commit -m "governance: daily report ${DAY}" || exit 0
+          # dipankarsarkar, round 7: `|| exit 0` here can't tell "nothing
+          # to commit" apart from "the hook just rejected this commit" --
+          # both make `git commit` exit nonzero, both got silently turned
+          # into a green run. Check the actual condition first instead of
+          # papering over whatever made the exit code nonzero.
+          if git diff --cached --quiet; then
+            echo "Nothing to commit (report unchanged)."
+            exit 0
+          fi
+          git commit -m "governance: daily report ${DAY}"
           git push

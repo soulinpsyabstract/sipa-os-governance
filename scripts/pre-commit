@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# pre-commit -- runs check_citations.py before every commit.
+# pre-commit -- runs check_citations.py against the tree that will actually
+# be committed, not against whatever happens to be sitting on disk.
 #
 # dipankarsarkar, round 5: "Is 'cited' something you want computed or
 # curated? A short pre-commit check ... would have returned 6 this morning
@@ -15,8 +16,26 @@
 # manually reran the checker. install-hooks.sh now installs this same
 # script under both hook names.
 #
+# Round 7, same reviewer, again: classify() reads REPO_ROOT off disk --
+# os.path.isfile, glob.glob, os.path.exists(".sha256"), the hash reread in
+# seal_is_current(). None of that is git. So a file `git add`-ed alongside
+# a citation to it, while its own newly-created dependency sits untracked
+# on disk, checks green here and fails on any clone -- the exploit was
+# demonstrated, not hypothetical (a doc + its seal staged, the script it
+# cites left untracked; disk-based check: exit 0; the actual committed
+# tree: ABSENT, exit 1). His answer to "should a seal be a claim about the
+# disk or the commit": the commit -- HEAD is the only object a stranger
+# can ever see, the disk never leaves this machine. `git write-tree` is
+# the index as it stands right now, which is exactly what `git commit`
+# is about to turn into a commit -- including partial `git add -p` staging,
+# which raw disk state doesn't respect either. Extract that tree to a
+# scratch dir and run the checker against the extraction, not REPO_ROOT.
+#
 # .git/hooks/ is not tracked by git, so this file lives in scripts/ and has
 # to be installed once per clone: scripts/install-hooks.sh does that.
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
-python3 scripts/check_citations.py
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
+git archive --format=tar "$(git write-tree)" | tar -x -C "$tmp"
+python3 "$tmp/scripts/check_citations.py"
