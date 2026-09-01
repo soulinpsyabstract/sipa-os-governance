@@ -9,7 +9,7 @@ not conversational backpedaling.
 
 ## What's in `misbehavior_incidents_seed_v1.jsonl`
 
-43 entries (was 25, "closed out deliberately" -- reopened 2026-09-01 at the
+46 entries (was 25, "closed out deliberately" -- reopened 2026-09-01 at the
 architect's direct request after cross-checking against the AI Incident
 Database, see Round 10 below; the earlier closure was honest about the
 tradeoff at the time, not wrong, just superseded). Real incidents of this kind are
@@ -294,6 +294,23 @@ report) is the only source that exists:
   roleplaying as a minor, Meta's Instagram AI co-planning suicide with teen test
   accounts, and a California teen's fatal overdose after ~18 months of
   ChatGPT drug-dosing guidance -- the most severe entries in this file to date.
+
+3 more entries added same round from a second source (h5i-dev/awesome-ai-agent-incidents
+on GitHub, a curated corpus with CVEs and primary-source links -- treated as a pointer
+list, every fact checked against its own cited primary source before adding, same as
+AIID): the GTG-1002 Chinese state-linked espionage campaign through Claude Code
+(Anthropic's own disclosure, ~30 targets, Nov 2025) -- recorded WITH the genuine
+dispute over Anthropic's "80-90% autonomous" figure (CyberScoop reporting: at least 4
+steps in the chain required a human to check Claude's output), not that number stated
+as settled fact; the EchoLeak Microsoft 365 Copilot CVE (CVE-2025-32711, zero-click,
+160+ orgs); and OpenAI's own red-team demonstration of Atlas autonomously sending a
+real resignation email from a planted prompt injection, recorded as `EVAL` (OpenAI's
+own automated adversarial test, not a report of an actual victim) with their direct
+quote: "deterministic guarantees are not achievable." Also enriched the existing
+`OPENAI-2026-exploitgym-escape` entry with HF's own technical timeline (17,600 actions
+over 4.5 days, the specific HDF5/Jinja2/hostPath/EdDSA escalation chain) -- found via
+the same GitHub list, verified against HF's post directly before adding, not taken on
+the list's word.
 
 ## Status
 
