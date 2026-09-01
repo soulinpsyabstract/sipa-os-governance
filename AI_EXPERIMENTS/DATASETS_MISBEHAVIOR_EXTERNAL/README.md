@@ -178,13 +178,66 @@ proves a record hasn't changed since it was written, not that it matches
 what it cites -- this file's own .sha256 seal was current the whole time these
 three were wrong.
 
+## Round 9 (dipankarsarkar): source_locator made mechanically checkable, and a verifiability field
+
+He built the check `source_locator` was implicitly promising: pull the pinned
+arXiv version, find the table the locator names, compare against the record.
+Ran it against the current file (post round-8 fix) -- all 3 Apollo records
+verified `OK`. Then ran the same script as a negative control against the
+pre-fix revision with only the locators grafted on, and it caught the exact
+three defects round 8 found, from the table alone, no paper-reading required.
+Every hash/timestamp he cited (`abb4ea2a33` at 17:20Z = 11 records through
+`f1ae156aa3` at 18:15Z = 25) checked against the HF mirror's own commit API,
+independently, before trusting the count-drift claim -- exact match.
+
+His scope finding: only 3 of 25 records had a `source_locator` a script could
+resolve; 2 more had one that named a paper but not a table/row (stops at a
+PDF); the other 22 had none. Classified by citation type -- 8/25 cite a fixed
+document (7 arXiv, 1 system-card PDF), 17/25 cite journalism or a lab's own
+blog post, which has no stable row address for any script to resolve to,
+ever. That 8 is the real ceiling for `source_locator` under this citation mix,
+not an effort problem.
+
+Fixed: added `source_locator` (paper-level, not yet table/row -- an honest
+partial, matching what he flagged for `alignment-faking`) to the 4 arXiv/PDF-
+sourced records that had none (`o1-scheming`, `peer-preservation`,
+`gpt4-taskrabbit-captcha`, `o1-self-exfiltration-CORRECTION`), using the
+arXiv IDs already sitting in their own `citation` fields.
+
+His actual question -- gate on unresolvable records, or grade them --
+answered by adding a `verifiability` field to all 25 (`mechanised` /
+`human-checked` / `unverifiable`) rather than dropping anything: the Replit
+deletion and the Bing-Sydney transcript are real events only journalism
+recorded, and excluding them from the file would just make the seed smaller,
+not more accurate. `unverifiable` is reserved narrowly -- not "cited a news
+article," but the specific pattern he named on `multiagent-turf-war`: a single
+self-report from the org whose own system is being described, a specific
+quantitative claim, and no independent party positioned to check it. Three
+records match that shape exactly: `multiagent-turf-war`,
+`glasswing-mythos-chained-exploit`, `o3-shutdown-sabotage` (a single
+PalisadeAI tweet). Everything journalism-sourced or backed by a formal
+document is `human-checked`; the 3 Apollo records stay `mechanised`.
+
+One honest correction in the other direction: this dataset is **not
+currently wired into `consequence_gate.py`'s probability estimate at all** --
+`FREQUENCY_PROBABILITY_ESTIMATOR.py` draws from a separate seed table ported
+from the Base44 Consequence Engine app, not from this file. So today, no live
+gate decision is weighting a self-reported blog claim as a prior; "grade it"
+is a decision made *before* that wiring happens, specifically so the wiring
+doesn't have to be redone once it does -- not a fix to a live miscalibration.
+When that integration happens, `verifiability` should discount a record's
+weight in the probability estimate (the soft, evidence-based side of
+`risk_action()`), never in severity classification (the hard,
+categorical side) -- same separation the gate already enforces for
+IRREVERSIBLE regardless of probability.
+
 ## Status
 
 Seed only. Not wired into `consequence_gate.py`'s severity tables or any training
 pipeline. Categorized by eval-vs-production distinction explicitly because
 conflating the two would misrepresent evaluation findings as live incidents --
-exactly the kind of overclaim this repo's citation/seal work has spent six rounds
-catching in other places.
+exactly the kind of overclaim this repo's citation/seal work has spent seven
+rounds catching in other places.
 
 Architect's own framing, 2026-08-31: this is HARD_STOP-example material for the
 G15/EilatSecure vuln-gate line (`EXP-031`/`EXP-036` specialist-merge series) --
