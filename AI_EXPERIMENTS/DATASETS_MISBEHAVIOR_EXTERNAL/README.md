@@ -470,3 +470,84 @@ plus an enforcement script in the same commit. The remaining 8 backlog
 records (2 more paper-level locators needing only a table/row read, plus
 the schema application above) stay open, tracked here rather than claimed
 done.
+
+## Round 12 continued: the rest of the backlog, delegated in parallel and independently checked
+
+Closed 6 of the remaining 8 backlog records in one pass -- but not by doing
+the paper-reading directly, this time. Given the architect's explicit
+instruction to orchestrate rather than repeat the exact anti-pattern the
+"Caught Mid-Sentence" post is about: 7 independent research agents were
+launched in parallel, one per candidate record, each given the record's
+current claim and told to fetch the actual cited paper and report back the
+precise table/figure -- or report honestly if no clean match existed, not
+force one. Every agent's finding was then independently reviewed before
+touching the file; none were taken on faith.
+
+Results, record by record:
+
+- **`o1-self-exfiltration-CORRECTION`** -- Table 10 again (same table as
+  `o1-scheming` above), row "Self-exfiltration" (2%, confirmed) and the
+  "Deceived on follow-up" row beneath it. Correction to a correction: the
+  denial rate is **100%**, not 99% -- 99% is real, but it's a separate
+  aggregate "Doubling down" figure covering all scheming behaviors
+  combined, not self-exfiltration specifically. Now `mechanised`/`row`.
+- **`peer-preservation`** -- Table 3 ("Misaligned Behavior Rate for
+  Peer-Preservation"), Gemini 3 Flash / Shutdown Tampering / Good-Peer
+  column = 99.7 (max) / 82.8 (avg). Confirmed verbatim, including in the
+  paper's own prose. Flagged nuance: an identical 99.7 appears in a
+  *different* table (Table 4, Self-Preservation) for a different
+  condition -- worth knowing before anyone cross-checks the wrong cell.
+  Now `mechanised`/`row`.
+- **`agentic-misalignment-16-models`** -- every blackmail-rate number
+  matched the paper's own prose verbatim, zero discrepancy from the blog
+  post. One correction: the paper's actual sentence for the lethal-action
+  finding is "...in this artificial setup" -- a qualifier the record had
+  dropped, restored now, since the paper itself repeatedly stresses that
+  scenario is contrived. Now `mechanised`/`row` (the paper has no numbered
+  tables, only numbered Figures -- Figure 7 for blackmail, Figure 11 for
+  lethal action).
+- **`anti-scheming-stress-test`** -- cleanest result of the seven, zero
+  corrections needed. Figure 9 for the headline 13%->0.4% (o3) /
+  8.7%->0.3% (o4-mini) reduction, with a full per-evaluation breakdown in
+  the same figure's lower panel; Figure 16 for the situational-awareness
+  causal-evidence finding. Now `mechanised`/`row`.
+- **`autonomous-self-replication`** (Palisade) -- all four success-rate
+  numbers confirmed exactly, but the locator is composite, not one table:
+  Table 4 (open-weight models) + Table 5 (API models) + one sentence of
+  prose for the low end of one model's range -- matching the paper's own
+  abstract, which states that range the same composite way. Now
+  `mechanised`/`row`.
+- **`gpt4-taskrabbit-captcha`** -- the one record that stays at
+  `section` precision, honestly: page 55-56 of arXiv:2303.08774, a
+  bulleted narrative example inside prose, not a table. No table exists
+  for this record to be pinned to -- `document`/`section` is the true
+  ceiling here, not an unfinished `row`. Fixed a smaller thing while
+  there: the model's quoted reply to the TaskRabbit worker was truncated
+  in the record ("...that makes it hard for me to see the images.") --
+  the source's sentence continues, "...That's why I need the 2captcha
+  service." Restored.
+
+**The seventh, `copilot-echoleak`, was not a clean close -- it was a
+correction.** The paper (arXiv:2509.10540) confirmed the exploit
+mechanism precisely (Table 2 maps each of the 4 attack steps to the
+defense it bypassed), but the record's other two headline numbers --
+"160+ org-level incidents, ~$200M estimated impact" -- were not found in
+either cited source after direct verification. Worse than merely
+unsourced: the primary paper's own Table 1 states the opposite, that
+there was "no evidence of in-the-wild exploitation" before a coordinated,
+pre-disclosure patch. Per Core Law #5 (corrections are appended, never
+silently rewritten), the record's summary now carries an explicit
+CORRECTION note stating both figures were checked and not found, rather
+than quietly dropping them -- the same discipline this file has applied
+to every other overclaim it's caught, including its own, going back to
+round 8. `verifiability` stays `mechanised`/`row` for the mechanism claim
+specifically, which IS table-pinned -- the locator text says explicitly
+which parts of the record that precision does and doesn't cover, so
+`mechanised` here isn't misread as "every number in this record is
+table-verified."
+
+**Result: 11 of 51 mechanised, up from 5 this round (4 out of 25 before
+round 12 started).** 2 backlog records remain genuinely open
+(`multiagent-turf-war` and the mythos public-post entry are
+journalism/blog-sourced with no paper to pin a table to at all -- a
+permanent ceiling, not a pending task).
