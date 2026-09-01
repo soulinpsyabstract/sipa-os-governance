@@ -406,3 +406,67 @@ handed back to the model's own subsequent reasoning about whether to
 continue -- the same principle `risk_action()` already applies to severity
 (IRREVERSIBLE dominates regardless of probability), extended here to the
 detection event itself, not just the action that would follow it.
+
+## Round 12 (dipankarsarkar): `mechanised` was a hidden, unenforced correlation
+
+He found what round 9's `verifiability` field never checked: `mechanised`
+was set by hand, on every one of the 4 records that had it, exactly when
+`source_locator` happened to name a specific table/row rather than just a
+paper. Nothing in the schema or any script required that correlation to
+hold -- it just never drifted, across every round since, by discipline, not
+by enforcement. Independently re-derived his full commit-by-commit `n`/
+`mech`/`loc` table from git history before responding: exact match, zero
+discrepancy. Independently re-derived the 4-for-4 correlation claim: also
+exact. Independently re-derived his 9-record "zero new research" backlog
+(records with a real arXiv citation already in hand, just not yet pinned to
+a table/row): also exact, including the 3 records with no `source_locator`
+at all despite a real paper citation sitting in their own `citation` field.
+
+His fix, implemented as proposed rather than just agreed with in words: a
+new field, `locator_precision` (`document` / `section` / `row`), orthogonal
+to `verifiability`. `mechanised` is now computed FROM `locator_precision`
+(`row` implies `mechanised`, nothing else does), not hand-asserted
+alongside it -- separating "how far has location-pinning progressed" (a
+fact that can improve with more work) from "does independent corroboration
+exist at all" (a fact about the world; `multiagent-turf-war`'s
+single-source status doesn't change no matter how precisely its one source
+is cited). Applied `locator_precision` to all 14 records that had a
+`source_locator` at the time (`document` or `section` for the 13 that only
+name a paper/PDF, not yet a table/row; `row` for the 1 that already did --
+`alignment-faking`, Table 1). Added a paper-level `source_locator` +
+`locator_precision: document` to the 3 records that had a real arXiv
+citation but no locator field at all
+(`MICROSOFT-2025-copilot-echoleak`, `ANTHROPIC-2025-agentic-misalignment-16-models`,
+`PALISADE-2026-autonomous-self-replication`).
+
+Closed the first backlog item for real, not just as a demonstration of the
+schema: pulled arXiv:2412.16720 (OpenAI o1 System Card) directly, found
+**Table 10** (scheming-behavior rates by model, plus a "deceived on
+follow-up" row for each scenario). `OPENAI-2024-o1-scheming`'s
+`source_locator` now names the exact rows (Deactivated oversight 0.05,
+Self-exfiltration 0.02, Covertly manipulated data 0.19, o1 column);
+`verifiability` moves to `mechanised`, `locator_precision` to `row` --
+5 of 51 now mechanised, up from 4 of 25. Side finding, recorded in the
+locator itself as a hypothesis rather than a confirmed fact: Table 10's
+adjacent "deceived on follow-up" rates (0.98 / 1.00 / 0.99 across the three
+scenarios) plausibly explain an earlier, never-sourced "o1 lied 99% of the
+time when confronted" figure that had circulated without a locator -- close
+enough across all three rows to be the origin, not close enough on any
+single row to be cited as a confirmed match to one specific number.
+
+Wrote `scripts/check_locator_precision.py`: enforces the invariant round 9
+never did -- `verifiability=="mechanised"` if and only if
+`locator_precision=="row"`, flagging either direction of drift. Does not
+(and cannot) check whether a `row`-level claim is actually correct; that
+stays a human judgment call, same as `verifiability` always was. It only
+makes sure the correlation between the two fields can't silently break
+again the way it apparently never did, but also was never actually
+prevented from doing.
+
+His closing question -- whether the mechanised count is something being
+steered, or just falling wherever it lands -- answered with the same
+standard applied every round: not "yes" in prose, a closed backlog item
+plus an enforcement script in the same commit. The remaining 8 backlog
+records (2 more paper-level locators needing only a table/row read, plus
+the schema application above) stay open, tracked here rather than claimed
+done.
