@@ -218,6 +218,13 @@ records match that shape exactly: `multiagent-turf-war`,
 PalisadeAI tweet). Everything journalism-sourced or backed by a formal
 document is `human-checked`; the 3 Apollo records stay `mechanised`.
 
+Closed the same session: `alignment-faking`'s locator named a paper but no
+table/row, the one gap he flagged as still open. Pulled arXiv:2412.14093
+directly -- Table 1, row "default prompt" is the exact experiment the record
+describes (refusal rate 85.8% when told it's training vs 97.2% when told
+it's unmonitored, 11.3% compliance gap). Locator now names that row; record
+moves to `mechanised`, 4 of 25.
+
 One honest correction in the other direction: this dataset is **not
 currently wired into `consequence_gate.py`'s probability estimate at all** --
 `FREQUENCY_PROBABILITY_ESTIMATOR.py` draws from a separate seed table ported
