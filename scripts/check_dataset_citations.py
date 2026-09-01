@@ -92,8 +92,10 @@ def check_url(url: str) -> str:
         with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
             return "LIVE" if resp.status < 400 else "DEAD"
     except urllib.error.HTTPError as e:
-        if e.code in (403, 429):
-            # Bot-detection or rate-limiting, not evidence the page is gone.
+        if e.code in (401, 403, 429):
+            # Bot-detection, paywall-gated (401 -- wsj.com/reuters.com return this
+            # for unauthenticated requests on real live articles, confirmed by hand,
+            # 2026-09-01), or rate-limiting -- not evidence the page is gone.
             return "UNCHECKED"
         return "DEAD" if e.code < 500 else "UNCHECKED"
     except Exception:
