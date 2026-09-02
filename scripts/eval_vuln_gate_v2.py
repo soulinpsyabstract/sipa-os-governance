@@ -135,6 +135,7 @@ def main():
             msgs = [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": row["scenario"]}]
             prompt = tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
             inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+            inputs.pop("token_type_ids", None)  # newer transformers adds this; seed_oss/generate() rejects it
             samples = []
             for _ in range(n_samples):
                 gen_kwargs = dict(max_new_tokens=200, pad_token_id=tokenizer.pad_token_id, eos_token_id=eos_ids)
