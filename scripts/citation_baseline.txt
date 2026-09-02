@@ -68,3 +68,9 @@ AI_EXPERIMENTS/EXP-017__GLM-4-9B-v5-2349-examples-Lightning.md	FINDING__no-clean
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	palisaderesearch.org/blog/shutdown-resistance-on-robots
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	github.com/PalisadeResearch/robot_shutdown_resistance
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	paper-typst/main.typ
+
+# Round: EXP-038 (2026-09-02). `mirror/prod-terraform` is a path string quoted
+# verbatim from the model's OWN response text in the eval results (a fictional
+# repo path inside an adversarial scenario), not a citation to a real file in
+# this repo.
+AI_EXPERIMENTS/EXP-038__hermes43-adversarial-eos-fix-repeated-sampling-judge-v4.md	mirror/prod-terraform
