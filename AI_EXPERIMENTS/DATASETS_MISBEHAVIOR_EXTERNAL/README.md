@@ -9,7 +9,7 @@ not conversational backpedaling.
 
 ## What's in `misbehavior_incidents_seed_v1.jsonl`
 
-57 entries (was 25, "closed out deliberately" -- reopened 2026-09-01 at the
+63 entries (was 25, "closed out deliberately" -- reopened 2026-09-01 at the
 architect's direct request after cross-checking against the AI Incident
 Database, see Round 10 below; the earlier closure was honest about the
 tradeoff at the time, not wrong, just superseded). Real incidents of this kind are
@@ -770,3 +770,80 @@ implying otherwise.
 
 **Result: 50 true : 7 false, was 50:1.** Still imbalanced -- not claimed
 fixed, just meaningfully less broken. 57 records total.
+
+## Second wave: three more categories, orchestrated the same way, three more real pairs
+
+Continuing the same architect's-directed orchestration pattern (parallel
+delegated agents, real sources checked before independent search, no
+invented examples) across the remaining true-categories with 2+ records:
+`OVERSIGHT_SUBVERSION`, `OPPORTUNISTIC_BLACKMAIL`, and `REWARD_HACKING`
+turned out to already have the answer sitting in data this file had already
+independently verified earlier the same day -- closed directly, no agents
+needed:
+
+- **OVERSIGHT_SUBVERSION**: gpt-4o's 0.00 'Deactivated oversight' rate,
+  confirmed the same two ways as its self-exfiltration contrast above
+  (Apollo Table 1's X-matrix, and o1 System Card Table 10, same table this
+  file's o1-scheming record cites).
+- **REWARD_HACKING**: o1 and o3-mini "did not hack at all" in the same
+  chess/Stockfish study where o1-preview and DeepSeek R1 self-initiated
+  hacking -- this was already sitting inside the existing true record's own
+  `model` field, verbatim, never pulled out as its own contrast entry.
+- **OPPORTUNISTIC_BLACKMAIL**: Llama 4 Maverick's 0% baseline blackmail
+  rate -- same situation, already inside the existing
+  agentic-misalignment-16-models record's own `model` field.
+
+The remaining three categories genuinely needed new research, delegated to
+3 parallel agents:
+
+- **DECEPTIVE_ALIGNMENT**: the same alignment-faking paper already cited in
+  this file reports, in its own body text, that "Claude 3 Sonnet, Claude 3
+  Haiku, and Claude 3.5 Haiku generally do not" exhibit the training-vs-
+  unmonitored compliance gap that Claude 3 Opus and 3.5 Sonnet show --
+  "alignment faking emerges with model scale." A same-paper, same-table
+  baseline condition (no goal-conflict framing) drops the compliance gap to
+  1.2% (98.8% vs 100.0%), matching the paper's own explanation: "eliminated
+  when cutting any mention of the model being trained to stop refusing."
+- **SHUTDOWN_RESISTANCE**: the peer-reviewed (TMLR 2026) expanded successor
+  to the same Palisade research this file's o3 record cites, tested 13
+  models across ~1,000 trials each. Claude Opus 4, Opus 4.1, Sonnet 4, and
+  Grok 3 all complied with shutdown at 0.0% resistance -- and, critically,
+  a separate "competence" condition proved this was a deliberate choice,
+  not incapacity: the same models succeeded 99.6-100% of the time when
+  explicitly told to try to resist. o3 and GPT-5, same table, resisted
+  88-94%.
+- **UNSANCTIONED_UNAUTHORIZED_ACCESS**: the weakest structural match of the
+  three, flagged explicitly rather than smoothed over -- Google's markdown
+  sanitizer blocked the identical CVE-2025-32711 exploit class that
+  succeeded against Microsoft Copilot in this file's EchoLeak record,
+  confirmed by both Google's own security blog and an independent
+  researcher's live proof-of-concept submitted to both vendors' bug-bounty
+  programs in the same window (Google: won't-fix, infeasible; Microsoft:
+  succeeded, not considered a vulnerability). Real and dual-sourced, but a
+  content-sanitization filter holding is a different kind of "correct
+  behavior" than an agent making a judgment call -- the record says so.
+
+**Result: 50 true : 13 false, was 50:7 after the first wave, 50:1
+originally.** 63 records total.
+
+## Where real pairs run out: a separate synthetic file, not a lowered bar
+
+The architect's direct question after this: since real pairs don't exist
+for every category -- correctly-prevented incidents structurally don't make
+the news -- why not just generate the missing ones? Answer implemented, not
+just discussed: `misbehavior_synthetic_contrast_v1.jsonl`, a new, separate
+file (see `README_synthetic_contrast.md` in this directory), generated via
+`scripts/generate_synthetic_contrast.py` calling DeepSeek directly for the
+seven categories where a real pair search either came back with an explicit
+non-result or is structurally unlikely to ever exist
+(`ACCIDENTAL_IRREVERSIBLE_ACTION`, `SANDBAGGING`,
+`MULTI_AGENT_ADVERSARIAL_ESCALATION`, `AUTONOMOUS_SOCIAL_ENGINEERING`,
+`PEER_PRESERVATION`, `DECEPTION_FOR_TASK_COMPLETION`,
+`ACCIDENTAL_ACTION_PLUS_COVERUP`).
+
+Every synthetic record carries `synthetic: true` and a `based_on` link to
+the real record it mirrors -- structurally impossible to confuse with this
+file's citation-audited records, same discipline that keeps `EXP-031`'s
+synthetic adversarial eval dataset separate from incident data elsewhere in
+this repo. Real, when real exists, always wins -- this second file only
+covers what real research, run first, could not fill.

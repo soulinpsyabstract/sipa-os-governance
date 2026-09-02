@@ -1,0 +1,5 @@
+FILE=misbehavior_synthetic_contrast_v1.jsonl
+SHA256=700e0ddbc14614a77a2878c0f91ee1ea54fcf69d4b9438b7bef40b9a506ecc2c
+SIZE=10296
+DEVICE=SERVER
+TS=2026-09-02__14-04-25
