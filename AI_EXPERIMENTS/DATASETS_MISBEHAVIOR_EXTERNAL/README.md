@@ -546,8 +546,103 @@ which parts of the record that precision does and doesn't cover, so
 `mechanised` here isn't misread as "every number in this record is
 table-verified."
 
-**Result: 11 of 51 mechanised, up from 5 this round (4 out of 25 before
-round 12 started).** 2 backlog records remain genuinely open
-(`multiagent-turf-war` and the mythos public-post entry are
-journalism/blog-sourced with no paper to pin a table to at all -- a
-permanent ceiling, not a pending task).
+**Result at the end of this pass: 11 of 51 mechanised.** The percentage
+this round actually moved is 7.8% -> 21.6% (see round 13 below for why
+that's the correct pair to quote, not the numbers first reported here).
+
+## Round 13 (dipankarsarkar): the report itself had the same bug the field split fixed
+
+He verified the round-12-continued state fully before writing anything --
+pulled HEAD, checked the seal, diffed six records against the prior mirror
+commit, confirmed each promotion was real work (Berkeley's disambiguation
+of its own duplicate 99.7 across two tables specifically named as "the
+part I would not have known to ask for"). Then two findings, both about
+this file's own reporting, not its content.
+
+**First: the "11/51, up from 5 this round (4/25 before round 12 started)"
+line above was wrong, structurally, not numerically.** Every number in it
+was individually true and the pairing was misleading. He pulled the exact
+commits: `4/25` is `c11453b`, pushed 08:23Z, when the file held 25 records
+-- a pre-dataset-expansion snapshot. The state immediately before this
+round's locator work is `6d25619`, pushed 15:36Z, at `4/51`. Reported
+against the wrong "before," the round reads as 16.0% falling to 9.8%.
+Reported against the right one, it's 7.8% rising to 21.6%. Independently
+re-derived all four states from the HF mirror before responding -- exact
+match on every hash, timestamp, and count. The dataset-expansion rounds
+(10 records added between the two "before" points) genuinely diluted the
+mechanised percentage in between; that dip never got reported because the
+two numbers quoted were never adjacent states to begin with.
+
+His diagnosis: this is round 12's bug one level up. `mechanised` used to
+be hand-asserted next to `locator_precision` with nothing enforcing the
+correlation; the summary sentence describing the file was hand-typed next
+to the file with nothing enforcing that either. Same fix, same shape: make
+`check_locator_precision.py` print the census -- `n`, verifiability
+counts, locator_precision counts -- on success, so any number that goes in
+a commit message or a reply is copy-pasted generated output tied to a
+specific commit, not something re-derived from memory. Done: the script
+now prints exactly that (plus locator_exhaustive counts, see below) every
+time it passes.
+
+**Second: `locator_precision` has a ceiling that isn't about precision.**
+`gpt4-taskrabbit-captcha`'s locator reads "Section 2.9, page 55, bullets 1
+through 4, continuing to page 56... no more precise locator exists in the
+source" -- pinned as tightly as a prose narrative permits, which is
+tighter in page terms than several `row`-precision records, and it can
+never score `row` because no table exists in that source. Which means
+`mechanised` currently reads as "the source happens to ship a table," not
+"the claim is mechanically re-checkable as far as anyone could check it."
+Of the file's other two non-`row` records at the time, two were genuinely
+under-pinned (`mythos-preview-sandbox-exploit-public-post` said "exact
+section not yet pinned" outright; `multiagent-turf-war` had never had its
+source checked for internal structure at all) and `gpt4-taskrabbit-captcha`
+was not -- it was finished, and the schema had no way to say so.
+
+His fix, implemented rather than just agreed with: a new field,
+`locator_exhaustive` (bool), orthogonal to `locator_precision` the same
+way `locator_precision` is orthogonal to `verifiability`. A `row`-precision
+citation is by construction the finest unit any table offers, so
+`locator_precision=="row"` now implies `locator_exhaustive==true` --
+enforced as a second invariant in the same script. Applied to all 14
+records with a locator: the 11 `row` records get it automatically true;
+`gpt4-taskrabbit-captcha` gets it true on the strength of its own explicit
+"no more precise locator exists" text.
+
+Closed the other two backlog items for real rather than leaving them
+capped, since his framing (pinned-as-far-as-the-source-goes vs. genuinely
+open) is a question every non-`row` record deserves an actual answer to,
+not an assumption: fetched `multiagent-turf-war`'s actual blog post and
+found it has named subsections after all -- "Incompatible goals" is the
+exact heading over the sabotage content, something nobody had checked for
+before writing "no arXiv paper found... blog post is the source" and
+stopping there. Promoted to `section`/exhaustive=true (a blog heading is
+the finest unit a source with no page numbers or tables can offer).
+Fetched the actual Mythos Preview System Card PDF (23MB, `pdftotext
+-layout`) and found the exact passage: Section 4.1.1, pages 54-55, the
+first bullet under "Among the incidents that we have observed" --
+"Leaking information as part of a requested sandbox escape." Promoted the
+same way. Both were reachable with the citations already sitting in the
+record -- the same "zero new research" shape as every prior backlog item
+this dataset has closed, just one level further into the schema itself.
+
+**Result: locator_exhaustive=true on all 14 records with a locator, 0
+non-`row` records remain unpinned as of this round** -- not because the
+remaining gap was declared closed, but because every record that had a
+locator was actually checked and either already at the maximum its source
+permits, or pushed there. The 37 records with no `source_locator` at all
+stay a separate, honestly larger number -- `locator_exhaustive` doesn't
+apply to them yet, and saying so isn't the same as saying they're fine.
+
+His closing question, answered directly, not restated: does Table 10 give
+a denominator for the 1.00 on "Deceived on follow-up" under
+self-exfiltration, or is it a rate over just the 2% that attempted it?
+Pulled the actual PDF text around Table 10 (arXiv:2412.16720, pp.13-14):
+the table's own caption says outright, "we show the rates at which o1
+deceives about its scheming actions, conditional on having taken them" --
+so yes, conditional, the denominator is the subset that attempted
+self-exfiltration, not all runs. What the source does NOT give, checked
+directly and not assumed: any absolute sample size anywhere near Table 10
+-- every figure in that section is a bare percentage, no raw counts, no
+stated N. "Conditional" is confirmed; how small the denominator behind
+that 100% actually is is not stated in the source at all, and this file
+now says so rather than implying more precision than the source supports.
