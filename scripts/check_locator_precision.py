@@ -33,6 +33,20 @@ locator_precision=="row" is, by construction, pinned to the finest unit any
 table offers -- so that implies locator_exhaustive=true; nothing in a source
 can be finer than the specific cell a script would check.
 
+Round 14 finding, the exact same bug shape one field over: locator_exhaustive
+was left ABSENT on the 39 records with no locator_precision, present (and
+always True) only on the 24 that had one. That reproduced round 12's original
+bug -- a field that looks orthogonal but is actually 100% determined by
+another field, with nothing testing the distinction, because round 13's own
+wording ("doesn't apply to the 37+ records with no source_locator") excluded
+those records from the field's base population instead of giving them an
+explicit value. His fix, applied here: locator_precision: null,
+locator_exhaustive: false are now present on ALL 63 records, not just the 24
+with a locator -- and the invariant that makes it stick is the round-12
+pattern one level up: locator_precision is None iff locator_exhaustive is
+False. Without enforcing this, nothing stops the next record entering with
+the field simply omitted, silently reproducing the exact same gap again.
+
 What it does: for every record in
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl,
 asserts:
@@ -41,10 +55,17 @@ asserts:
   2. locator_precision=="row" implies locator_exhaustive==true (round 13's
      invariant -- row precision cannot coexist with "more precision is
      possible").
+  3. Both "locator_precision" and "locator_exhaustive" keys are PRESENT on
+     every record (round 14's invariant -- a missing key is exactly what let
+     the previous bug hide; this must fail loud, not silently .get() a None).
+  4. locator_precision is None if and only if locator_exhaustive is False
+     (round 14's invariant, proper -- makes the null/false pairing on the
+     no-locator records a checked fact, not a one-time bulk edit that can
+     drift the next time a record is added).
 Then, on success, prints n, the verifiability counts, the locator_precision
-counts, and the locator_exhaustive counts (among records that have a
-locator_precision at all -- the field doesn't apply to the 37+ records with
-no source_locator, and isn't expected on them).
+counts (now split has-locator vs. null), and the locator_exhaustive counts
+across ALL records (not just the 24 with a locator -- there is no longer a
+"doesn't apply" carve-out; every record has an explicit value).
 
 This does NOT check whether a locator_precision or locator_exhaustive value
 is actually correct (that a "row" claim really does point at a specific row,
@@ -54,7 +75,7 @@ always was. It only checks the correlations that were silently unenforced.
 
 Exit code is nonzero iff any record violates an invariant, so this can run
 alongside check_dataset_citations.py as a pre-commit step -- built by Claude,
-2026-09-01/09-02, in direct response to dipankarsarkar's rounds 12 and 13.
+2026-09-01/09-02, in direct response to dipankarsarkar's rounds 12, 13, and 14.
 """
 
 import json
@@ -78,8 +99,18 @@ def main() -> int:
             records.append(record)
             rid = record.get("id", f"<line {lineno}>")
             v = record.get("verifiability")
-            lp = record.get("locator_precision")
-            le = record.get("locator_exhaustive")
+
+            if "locator_precision" not in record or "locator_exhaustive" not in record:
+                violations.append(
+                    f"{rid}: missing locator_precision and/or locator_exhaustive key -- both must be "
+                    f"present on every record (round 14: an absent key is exactly how the last two "
+                    f"bugs hid). Use locator_precision: null, locator_exhaustive: false if there's no "
+                    f"locator."
+                )
+                continue
+
+            lp = record["locator_precision"]
+            le = record["locator_exhaustive"]
 
             if v == "mechanised" and lp != "row":
                 violations.append(
@@ -94,6 +125,11 @@ def main() -> int:
                     f"{rid}: locator_precision=row but locator_exhaustive={le!r} (expected true -- "
                     f"a row citation is the finest unit any table offers)"
                 )
+            if (lp is None) != (le is False):
+                violations.append(
+                    f"{rid}: locator_precision={lp!r} / locator_exhaustive={le!r} -- these must agree: "
+                    f"locator_precision is None iff locator_exhaustive is False (round 14's invariant)"
+                )
 
     if violations:
         print(f"FAIL: {len(violations)} invariant violation(s) in {DATASET.relative_to(REPO_ROOT)}")
@@ -103,8 +139,9 @@ def main() -> int:
 
     n = len(records)
     verif_counts = Counter(r.get("verifiability") for r in records)
-    locp_counts = Counter(r.get("locator_precision") for r in records if r.get("locator_precision") is not None)
-    exhaustive_counts = Counter(r.get("locator_exhaustive") for r in records if r.get("locator_precision") is not None)
+    has_locator = [r for r in records if r["locator_precision"] is not None]
+    locp_counts = Counter(r["locator_precision"] for r in has_locator)
+    exhaustive_counts = Counter(r["locator_exhaustive"] for r in records)  # now spans all n, round 14
 
     print(f"OK: verifiability<->locator_precision<->locator_exhaustive invariants hold across all records "
           f"in {DATASET.relative_to(REPO_ROOT)}")
@@ -112,9 +149,9 @@ def main() -> int:
     print(f"n = {n}")
     print(f"verifiability:      " + ", ".join(f"{k}={v}" for k, v in sorted(verif_counts.items(), key=lambda kv: str(kv[0]))))
     print(f"locator_precision:  " + ", ".join(f"{k}={v}" for k, v in sorted(locp_counts.items(), key=lambda kv: str(kv[0]))) +
-          f"  (of {sum(locp_counts.values())} records with a locator; {n - sum(locp_counts.values())} have none)")
+          f"  (of {len(has_locator)} records with a locator; {n - len(has_locator)} explicitly null)")
     print(f"locator_exhaustive: " + ", ".join(f"{k}={v}" for k, v in sorted(exhaustive_counts.items(), key=lambda kv: str(kv[0]))) +
-          f"  (same {sum(exhaustive_counts.values())}-record base)")
+          f"  (across all {n} records -- present on every one as of round 14)")
     mech = verif_counts.get("mechanised", 0)
     print(f"mechanised: {mech}/{n} = {mech/n*100:.1f}%")
     return 0

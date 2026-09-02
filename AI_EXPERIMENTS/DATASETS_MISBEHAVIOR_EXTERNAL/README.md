@@ -847,3 +847,77 @@ file's citation-audited records, same discipline that keeps `EXP-031`'s
 synthetic adversarial eval dataset separate from incident data elsewhere in
 this repo. Real, when real exists, always wins -- this second file only
 covers what real research, run first, could not fill.
+
+## Round 14 (dipankarsarkar): `locator_exhaustive` was round 12's bug again, one field further over
+
+Same discipline as every round before this one: he verified the round-13
+state fully before writing anything, citing `eba72dd` (this file's round-13
+commit) and `45a8e39` (the later EXP-037-sampling-fix commit) by hash and
+timestamp, resolved through the HF mirror since neither GitHub SHA resolves
+there directly. Independently re-derived both mirror hashes from a fresh
+clone before touching anything: `6f034ab51b` (mirroring `eba72dd`, pushed
+2026-09-02T09:29:46Z) and `1a555b4b` (mirroring `45a8e39`, pushed
+2026-09-02T14:55:53Z) -- exact match on every digit he cited.
+
+**His finding: `locator_exhaustive` is a hidden constant.** Every one of the
+24 records that had a `locator_precision` value also had
+`locator_exhaustive: true` -- 24/24, zero `false` anywhere in the file.
+Independently re-derived directly against the live file before agreeing:
+confirmed exactly right, and worse than that -- the 39 no-locator records
+didn't even carry the key at all, not even as `false`. Same bug shape as
+round 12's original `mechanised` finding, one field over: a field that looks
+orthogonal but is 100% determined by another field, with nothing testing the
+distinction. His root-cause diagnosis, also confirmed: round 13's own
+wording ("doesn't apply to the 37+ records with no source_locator") is what
+did it -- it defined the field's population as only the 24-with-a-locator,
+so there was never a `false` case in scope to accidentally get one right or
+wrong. A field with only one value it's ever allowed to take isn't being
+tested by anything, whatever that value is.
+
+His fix, implemented exactly as proposed: `locator_precision: null,
+locator_exhaustive: false` are now present -- as real, explicit keys, not
+just absent-and-implied -- on all 39 records that previously had neither
+key at all. Both keys are now on every one of the 63 records. The new
+invariant, his own words: `locator_precision is None <-> locator_exhaustive
+is False`. Enforced in `check_locator_precision.py` as two checks, not one
+-- a presence check (both keys must exist on every record; a missing key is
+exactly how this and the previous bug both hid) and the biconditional
+itself. Verified the checker actually catches a regression before trusting
+it: re-ran it against a copy of the file with one record's keys stripped
+back out (caught, exit 1) and against a copy with one null-precision record
+given `locator_exhaustive: true` (caught, exit 1) -- not just confirmed it
+passes on the fixed file, confirmed it fails on the broken one.
+
+**Result: locator_precision and locator_exhaustive both present on all 63
+records. locator_exhaustive: False=39, True=24 -- the field can now actually
+be false, and the checker would catch it if a future record entered with
+the keys omitted again.**
+
+His closing question, answered directly: does the `document | section |
+row` ladder have a rung for a GitHub-repo citation -- file, line, and commit,
+finer than a table row? `PALISADE-2026-robot-shutdown-resistance` cites both
+`palisaderesearch.org/blog/shutdown-resistance-on-robots` and
+`github.com/PalisadeResearch/robot_shutdown_resistance`, currently sitting
+unpinned among the 39. Checked the repo directly rather than assuming: it
+does have a `logs/` directory that plausibly holds the raw per-trial data
+behind "3 of 10 trials on the physical robot, 52 of 100 in simulation," and
+a `paper-typst/main.typ` source, but the README alone doesn't surface an
+exact file or line for those two numbers -- the per-trial data is not
+sitting at the repo root the way `bench_base_k20.py` sits in this repo's own
+`scripts/`.
+
+The honest answer: no new rung, and not because the ladder is complete --
+because a real file+line+commit pin on a GitHub repo is not a new *kind* of
+precision, it's the code-artifact version of `row` (an immutable,
+independently-diffable pointer to one specific location, at least as strong
+as a table cell and arguably stronger since a table row in a document can be
+silently edited with no version history, while a commit hash cannot). Adding
+a fourth label (`repo`, say) for a single record would repeat this exact
+round's bug shape at conception -- a field with one instance is a field
+nothing will ever test. Reusing `row` for a genuinely-pinned file+line+commit
+citation is the right schema move *if and when* someone actually opens
+`logs/` and cites the specific file, which has not been done here -- fetching
+the repo's README was enough to answer his question, not enough to
+responsibly promote the record. `PALISADE-2026-robot-shutdown-resistance`
+stays in the 39 with an honest `null`/`false` pair until that actual work is
+done, same standard as every other record in this file.

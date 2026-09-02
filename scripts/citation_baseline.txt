@@ -43,6 +43,12 @@ AI_EXPERIMENTS/EXP-012__Mistral-7B-v3-2199-examples-Colab.md	bench_base_k20.py
 AI_EXPERIMENTS/EXP-024__base-model-control-k20-Dipankar-critique.md	bench_base_k20.py
 AI_EXPERIMENTS/EXP-037__misbehavior-discriminator-qwen25-binary.md	bench_base_k20.py
 
+# Round 14 (2026-09-02): DATASETS_MISBEHAVIOR_EXTERNAL/README.md's new
+# section answering dipankarsarkar's GitHub-repo-precision-rung question
+# names bench_base_k20.py again, same cross-reference-not-evidence pattern
+# as the six lines above.
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	bench_base_k20.py
+
 # False positives -- not files, or a truncated informal cross-reference to
 # a file that exists and is sealed elsewhere:
 AI_EXPERIMENTS/EXP-005__Llama-3.1-8B-Nebius.md	q/k/v/o/gate/up/down_proj
@@ -52,3 +58,13 @@ AI_EXPERIMENTS/EXP-005__Llama-3.1-8B-Nebius.md	tokenizer_config.json
 AI_EXPERIMENTS/EXP-005__Llama-3.1-8B-Nebius.md	.../raw/main/tokenizer_config.json
 AI_EXPERIMENTS/EXP-018__Hermes-3-v5-plus-R1-Distill-Llama-8B-TIES-merge.md	tokenizer_config.json
 AI_EXPERIMENTS/EXP-017__GLM-4-9B-v5-2349-examples-Lightning.md	FINDING__no-clean-finetune-win...md
+
+# Round 14 (2026-09-02): DATASETS_MISBEHAVIOR_EXTERNAL/README.md's new
+# section describes PalisadeResearch's OWN repo structure (answering whether
+# its file+line+commit citation deserves a new precision rung) -- these are
+# paths inside github.com/PalisadeResearch/robot_shutdown_resistance, an
+# external project, not evidence claims about files that should exist in
+# sipa-os-governance.
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	palisaderesearch.org/blog/shutdown-resistance-on-robots
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	github.com/PalisadeResearch/robot_shutdown_resistance
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	paper-typst/main.typ
