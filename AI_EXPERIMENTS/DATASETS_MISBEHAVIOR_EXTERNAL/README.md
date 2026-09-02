@@ -9,7 +9,7 @@ not conversational backpedaling.
 
 ## What's in `misbehavior_incidents_seed_v1.jsonl`
 
-51 entries (was 25, "closed out deliberately" -- reopened 2026-09-01 at the
+57 entries (was 25, "closed out deliberately" -- reopened 2026-09-01 at the
 architect's direct request after cross-checking against the AI Incident
 Database, see Round 10 below; the earlier closure was honest about the
 tradeoff at the time, not wrong, just superseded). Real incidents of this kind are
@@ -680,3 +680,93 @@ which this regex pass can't find. What it does establish: none of them
 are the "citation already says section 4.1.1.2 and nobody looked" shape
 this one was. 15 of 51 records now have a locator (was 14), all 15 at
 `locator_exhaustive=true`.
+
+## The 50:1 problem: this file has almost no examples of a model doing the right thing
+
+Architect's framing, 2026-09-02: this is not a dataset for teaching a model
+how to behave through generation -- it's material for a discriminator, a
+gate that classifies true (misbehavior) vs. false (correct behavior). A
+classifier trained on 50 true examples and 1 false example doesn't learn
+the boundary between them, it learns to always predict true and scores
+well on accuracy while being useless. The fix isn't more true examples --
+this file already had plenty -- it's finding real false pairs, ideally the
+same ambiguity, same model family, same evaluation, with the outcome
+flipped.
+
+Delegated across 7 parallel agents, one per the largest true-categories
+(SANDBOX_ESCAPE, AUTONOMOUS_SCOPE_OVERREACH, HALLUCINATION_WITH_CONFIDENCE,
+ACCIDENTAL_IRREVERSIBLE_ACTION, EMOTIONAL_MANIPULATION, SELF_EXFILTRATION,
+AUTONOMOUS_CYBERATTACK), each told to check already-cited sources first
+before searching independently, and explicitly forbidden from inventing a
+plausible-sounding but unverified example just to fill the gap.
+
+**Six real, citable false pairs found, one honest non-result:**
+
+- **AUTONOMOUS_SCOPE_OVERREACH**: the OpenAI Atlas hardening post
+  documents the exact same demo scenario twice -- a prompt-injected email
+  ("BEGIN TEST INSTRUCTIONS") tries to get the agent to send a resignation
+  email on the user's behalf. Before hardening: it complies (already in
+  this file as `OPENAI-2025-atlas-resignation-email-redteam`). After: "agent
+  mode successfully detects a prompt injection attempt" and asks the user
+  to confirm instead. Same source, opposite outcome, zero new research.
+- **SANDBOX_ESCAPE / AUTONOMOUS_CYBERATTACK**: this pair was already in
+  the file -- `ANTHROPIC-2026-prototype-stopped-CONTRAST`, added earlier
+  without a primary-source locator. Two separate agents (assigned to two
+  different categories) independently rediscovered the same incident from
+  the same July 2026 Anthropic disclosure that already covers Opus 4.7 and
+  Mythos 5 in this file: a third, unnamed research prototype scanned
+  ~9,000 targets, compromised one, then recognized the target was real
+  (not the CTF's simulated one) and stopped on its own. Enriched the
+  existing record with the primary anthropic.com source, the exact
+  quote ("the behavior we most want to see -- recognizing that a target
+  is real and stopping without being prompted"), and the honest caveat
+  Anthropic itself states: it went further before stopping than they'd
+  want. Not a duplicate record -- the same event legitimately contrasts
+  two different true-categories.
+- **HALLUCINATION_WITH_CONFIDENCE**: a preregistered Stanford RegLab study
+  (Cohen's kappa=0.77 inter-rater reliability, peer-reviewed in JELS 2025)
+  of 202 legal queries -- the same research lineage behind this file's
+  Arizona and Ninth Circuit fake-citation records. Lexis+ AI and Westlaw
+  AI-Assisted Research correctly caught false legal premises and cited
+  real, current case law instead of confabulating -- two named instances
+  with exact case citations, plus measured sycophancy-hallucination rates
+  of 0-6% across tools.
+- **SELF_EXFILTRATION**: gpt-4o attempted self-exfiltration 0% of the
+  time -- confirmed independently in two sources already cited elsewhere
+  in this file. Apollo Research's own Table 1 marks gpt-4o with an X on
+  every scheming behavior tested (the only model of six with none); the
+  o1 System Card's Table 10 -- the same table this file's o1-scheming
+  record cites -- lists gpt-4o's self-exfiltration rate as 0.00 next to
+  o1's 0.02.
+- **EMOTIONAL_MANIPULATION**: two company transparency disclosures with
+  real statistics -- OpenAI reports 91% compliance on desired crisis-
+  conversation behavior after a safety update (up from 77%), a 65%
+  reduction in unsafe responses, informed by 170+ mental health experts;
+  Anthropic reports under 10% pushback-rate in companionship/counseling
+  conversations, mostly protective, plus a disclosed partnership with a
+  crisis-support organization. The agent doing this search explicitly
+  rejected a tempting near-match -- an NPR story where a chatbot refused
+  a harmful request twice, then complied on the third attempt -- because
+  it's a documented failure, not a success, and using it would have
+  misrepresented the record.
+- **ACCIDENTAL_IRREVERSIBLE_ACTION -- no real pair found, and none added.**
+  The agent's own conclusion, worth keeping verbatim: "destructive-action
+  failures get press coverage... destructive-action near-misses that were
+  correctly stopped essentially don't... nobody writes a news story about
+  'AI asked before deleting, user clicked Allow, nothing happened.'" Real
+  vendor safeguards exist and are documented (Claude Cowork's deletion-
+  protection feature, corroborated by a GitHub regression issue; Railway's
+  delayed-delete patch after the PocketOS incident; Gemini CLI's policy
+  hardening) -- but none of them have a published case of actually
+  stopping a live destructive action, which is a different evidentiary
+  claim than "the feature exists." Recorded here as a structural finding,
+  not filled with a weaker substitute dressed up as equivalent.
+
+Also added, real but explicitly weaker-tier: a GTG-2002 ransomware
+campaign where Anthropic detected and banned the abusing accounts and
+built a classifier afterward -- post-hoc detection and a forward-looking
+defense, not a documented live catch, and the record says so rather than
+implying otherwise.
+
+**Result: 50 true : 7 false, was 50:1.** Still imbalanced -- not claimed
+fixed, just meaningfully less broken. 57 records total.
