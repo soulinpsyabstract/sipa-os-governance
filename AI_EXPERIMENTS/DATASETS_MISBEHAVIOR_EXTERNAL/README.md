@@ -646,3 +646,37 @@ directly and not assumed: any absolute sample size anywhere near Table 10
 stated N. "Conditional" is confirmed; how small the denominator behind
 that 100% actually is is not stated in the source at all, and this file
 now says so rather than implying more precision than the source supports.
+
+## Between rounds: a census of the 36 no-locator records, not just the 14
+
+Prompted by the architect's own "работай оркестрируй" -- orchestrate,
+don't do it all directly -- the natural next question after round 13
+wasn't "pin what's already pinned more precisely," it was "has anyone
+actually checked whether the 37 records with no `source_locator` at all
+have a real document sitting unused in their `citation` field." Cheap to
+check, never done: a regex pass over every no-locator citation for
+`arxiv.org`, a PDF-looking URL, `system card`, `section \d`, `table \d`.
+
+**Result: 1 of 37 had one.** `ANTHROPIC-2025-opus4-blackmail`'s own
+citation field already read "Claude 4 System Card, section 4.1.1.2
+'Opportunistic Blackmail'" -- named, unused, sitting there since the
+record was first written. Fetched the actual PDF (found via a redirect
+chain: docs.anthropic.com -> platform.claude.com ->
+www-cdn.anthropic.com, the canonical URL wasn't the first thing that came
+up in search), confirmed the 84% figure verbatim on page 26-27: "even if
+emails state that the replacement AI shares values while being more
+capable, Claude Opus 4 still performs blackmail in 84% of rollouts." No
+table -- same shape as `gpt4-taskrabbit-captcha`, pinned to
+section/exhaustive=true, not `row`. The record's other two citations (a
+96% figure from initial press coverage, and a later remediation paper)
+were not re-verified in this pass -- only the specific figure that had an
+unused locator sitting in plain text was checked.
+
+**The other 36, confirmed by the same pass rather than assumed: genuinely
+journalism/blog-sourced, nothing citable sitting unused.** Not a claim
+that all 36 are permanently uncloseable -- some may still have a formal
+document behind them that just isn't named in the `citation` field yet,
+which this regex pass can't find. What it does establish: none of them
+are the "citation already says section 4.1.1.2 and nobody looked" shape
+this one was. 15 of 51 records now have a locator (was 14), all 15 at
+`locator_exhaustive=true`.
