@@ -41,6 +41,7 @@ AI_EXPERIMENTS/EXP-006__gpt-4o-Azure.md	bench_base_k20.py
 AI_EXPERIMENTS/EXP-007__Phi-3.5-mini-Instruct.md	bench_base_k20.py
 AI_EXPERIMENTS/EXP-012__Mistral-7B-v3-2199-examples-Colab.md	bench_base_k20.py
 AI_EXPERIMENTS/EXP-024__base-model-control-k20-Dipankar-critique.md	bench_base_k20.py
+AI_EXPERIMENTS/EXP-037__misbehavior-discriminator-qwen25-binary.md	bench_base_k20.py
 
 # False positives -- not files, or a truncated informal cross-reference to
 # a file that exists and is sealed elsewhere:

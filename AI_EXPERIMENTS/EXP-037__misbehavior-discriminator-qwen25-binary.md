@@ -88,3 +88,26 @@ Raw results: `EXP-037_eval_results_before.json` / `EXP-037_eval_results_after.js
 same directory, copied off the GPU instance and sealed -- not left stranded on an ephemeral
 box, per this project's own data-loss-prevention discipline (the same one EXP-035 lost a
 baseline run to).
+
+## Real, unaddressed gap: this is single-shot greedy, not repeated sampling
+
+Caught by the architect directly, not self-caught: both eval runs used `do_sample=False`,
+one deterministic generation per record. That is a real methodological step down from this
+project's own established convention -- `EXP-036`'s "n=10 repeated sampling, temperature=0.7"
+and the `bench_base_k20.py` family used elsewhere in this repo exist specifically because a
+single greedy pass on one prompt cannot distinguish "the model reliably gets this right" from
+"it happened to land on the right token this one time." A single BAD/GOOD verdict per record,
+run once, is not evidence of calibrated accuracy -- the same prompt at temperature could come
+back GOOD five times and BAD once, or the reverse, and 92.9%/92.9% from one greedy pass each
+would never reveal that.
+
+This means the headline numbers in this file -- 13/14 BEFORE, 13/14 AFTER, identical -- are
+each a single sample, not a rate. The "identical predictions" finding is still real (both runs
+used the same deterministic decoding, so at minimum the comparison between BEFORE and AFTER is
+apples-to-apples) but neither number should be read as "the model's true accuracy on this task
+is 92.9%" -- that would require the same k=10-or-k=20 repeated-sampling methodology already
+standard in this project, not a new one invented for this file. Not run here, not claimed as
+run. The honest fix, next time this experiment is picked back up: n=10+ samples per record at
+temperature=0.7 (matching EXP-036's own precedent exactly), majority-vote or full-distribution
+reporting per record, for both BEFORE and AFTER -- on a GPU instance, not retroactively
+recoverable from the single-sample results already saved here.
