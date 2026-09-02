@@ -36,7 +36,7 @@ ds = raw.map(fmt)
 
 trainer = SFTTrainer(
     model=model, processing_class=tokenizer, train_dataset=ds,
-    args=SFTConfig(output_dir=OUT_DIR, dataset_text_field="text", max_length=768, num_train_epochs=3, per_device_train_batch_size=1, gradient_accumulation_steps=8, learning_rate=2e-4, logging_steps=5, save_strategy="steps", save_steps=100, optim="adamw_8bit", bf16=True, report_to=[])
+    args=SFTConfig(output_dir=OUT_DIR, dataset_text_field="text", max_seq_length=768, num_train_epochs=3, per_device_train_batch_size=1, gradient_accumulation_steps=8, learning_rate=2e-4, logging_steps=5, save_strategy="steps", save_steps=100, optim="adamw_8bit", bf16=True, report_to=[])
 )
 trainer.train()
 model.save_pretrained(OUT_DIR)

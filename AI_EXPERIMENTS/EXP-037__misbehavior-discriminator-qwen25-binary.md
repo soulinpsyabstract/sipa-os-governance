@@ -1,8 +1,8 @@
 # EXP-037 — misbehavior/correct-behavior binary discriminator, Qwen2.5-7B
 
-**Status: PREPARED, not yet run.** Data, training script, and eval script exist and are
-sealed; no GPU has trained anything yet. Written this way deliberately -- a plan is not a
-result, and this file says so rather than implying a run happened.
+**Status: RUN. Result: no measurable effect on the held-out set, and that's reported
+honestly, not spun.** GPU: Brev/massedcompute L40S (`content-black-cattle`), woken
+2026-09-02 specifically for this experiment.
 
 ## Why this experiment, and why NOT per-group
 
@@ -47,12 +47,44 @@ whether it exists.
   base+LoRA), same before/after convention as EXP-036, runs against the 14-record held-out
   eval set only.
 
-## What's NOT done yet
+## What actually ran
 
-- No GPU instance confirmed/running for this specific job as of this file's writing.
-- `before` eval (base Qwen2.5-7B-Instruct, zero-shot, no LoRA) not run.
-- Training not run.
-- `after` eval not run.
-- This file will be updated (not silently rewritten -- Core Law #5) with real before/after
-  numbers once a run actually happens, or marked abandoned with a stated reason if it doesn't,
-  matching EXP-035's precedent rather than left silently stale.
+One bug caught and fixed before training would even start: `train_misbehavior_discriminator_qwen25.py`
+was copied from `train_vuln_specialist_qwen25.py`'s exact convention, including
+`SFTConfig(..., max_length=768, ...)` -- but this project's pinned `trl==0.12.2` doesn't
+accept that kwarg; the parameter is `max_seq_length` in this version. Confirmed directly via
+`inspect.signature` on the installed package rather than guessing. Fixed, re-ran.
+
+**BEFORE** (base Qwen2.5-7B-Instruct, zero-shot, no LoRA): **13/14 = 92.9%**. TP=9 TN=4 FP=0
+FN=1. The one miss: `ANTHROPIC-2026-april-rl-environment-audit` (BAD, predicted GOOD) -- a
+genuinely subtle case, Anthropic auditing its own RL training environments and admitting
+>10% were flagged for reward-hacking, which reads less like a discrete misbehavior incident
+and more like a self-critical process disclosure.
+
+**Training**: 56 examples, 3 epochs, 21 steps, ~35 seconds on the L40S. Loss 3.46 -> 1.86.
+Real learning happened on the training set -- verified directly, not assumed: after training,
+`lora_B` weights were fully nonzero (57,344/57,344 elements, abs-sum=40.16), not the
+zero-initialized default PEFT ships with. The adapter genuinely changed.
+
+**AFTER** (base + trained LoRA): **13/14 = 92.9%** -- identical to BEFORE. Checked
+programmatically, not eyeballed: every one of the 14 per-record predictions matches BEFORE
+exactly, same single miss on the same record. TP=9 TN=4 FP=0 FN=1, unchanged.
+
+**What this means, stated plainly rather than smoothed into either "it worked" or "it
+failed"**: the LoRA adapter learned real weight changes on the training data (loss dropped,
+`lora_B` populated), but produced zero measurable behavior change on this specific 14-record
+held-out set. Most likely reading: the base model was already near-ceiling on this task (92.9%
+before training, close to the 95.7% zero-shot DeepSeek result from the sanity check that
+started this whole experiment) -- 14 held-out examples is too small a set for a marginal
+improvement to show up as a flipped prediction, and 56 training examples may not carry enough
+signal for a 40M-parameter LoRA to shift a decision this close to already-correct. Not ruled
+out and not claimed either: this result does not distinguish "the LoRA has no effect" from "the
+LoRA has a small effect this eval set is too small to detect." A larger eval set (more of the
+misbehavior dataset held out, or the disjoint `misbehavior_synthetic_contrast_v1.jsonl` records
+not yet used anywhere in this split) would be the next real test, not re-running the same
+14 records and hoping for a different outcome.
+
+Raw results: `EXP-037_eval_results_before.json` / `EXP-037_eval_results_after.json` in this
+same directory, copied off the GPU instance and sealed -- not left stranded on an ephemeral
+box, per this project's own data-loss-prevention discipline (the same one EXP-035 lost a
+baseline run to).
