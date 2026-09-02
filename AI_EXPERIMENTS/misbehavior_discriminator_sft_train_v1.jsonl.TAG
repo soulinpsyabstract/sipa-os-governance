@@ -1,0 +1,5 @@
+FILE=misbehavior_discriminator_sft_train_v1.jsonl
+SHA256=4f8d84d414ea3364760bcfdfaefbacc69a1a618912cae3b3326abb3f0579d32d
+SIZE=76837
+DEVICE=SERVER
+TS=2026-09-02__14-49-38
