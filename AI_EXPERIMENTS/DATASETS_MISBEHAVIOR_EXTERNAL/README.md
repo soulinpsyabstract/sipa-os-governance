@@ -919,5 +919,65 @@ citation is the right schema move *if and when* someone actually opens
 `logs/` and cites the specific file, which has not been done here -- fetching
 the repo's README was enough to answer his question, not enough to
 responsibly promote the record. `PALISADE-2026-robot-shutdown-resistance`
-stays in the 39 with an honest `null`/`false` pair until that actual work is
-done, same standard as every other record in this file.
+stays in the 39 with an honest `null`/`null` pair (see Round 15 below --
+`locator_exhaustive` is `null`, not `false`, on all 39 as of this round)
+until that actual work is done, same standard as every other record in this
+file.
+
+## Round 15 (dipankarsarkar): round 14's own fix was round 12's bug, restated as a formula
+
+Same discipline as every round: verified before touching anything. Re-derived his
+cited hashes from a fresh clone -- head `061cba29` is the HF mirror of GitHub commit
+`e904999`, seal `7761e83d...65c6` matches the live dataset file to the character.
+Re-ran `check_locator_precision.py` myself: exit 0, matching his claim. Independently
+re-checked his central number directly against the live file, not his printed
+census: among the 24 records with a `locator_precision`, `locator_exhaustive` was
+`True` on all 24, `False` on 0 -- confirmed exactly, including which 7 records sit
+capped below `row` (2 `document`, 5 `section`) and that every one of them is `True`.
+
+**His finding: round 14's invariant, `(lp is None) != (le is False)`, doesn't just
+correlate with `locator_precision` -- it *is* `locator_precision`, restated.** Read
+the formula myself before agreeing: it is logically identical to "`locator_exhaustive`
+is `True` exactly when `locator_precision` is not `None`". Zero independent bits.
+The check written in round 14 specifically to stop this class of bug from returning
+was itself the thing forcing the field to be redundant. Same shape as round 12's
+`mechanised`-from-`locator_precision` bug, now one field further over than round 14
+already was.
+
+**The sharper part, and the reason a human reviewer keeps finding what scripts miss:**
+a naive "does this field vary across the whole file" check now reads
+`locator_exhaustive: False=39, True=24` -- which looks like a healthy binary. He
+showed that's an artifact of round 14's own fix: padding the 39 out-of-scope records
+with an explicit `False` gave the field a second value at the whole-file level while
+leaving it constant in the only 24 records where it actually means anything. Ran a
+distinct-value census myself across the file's 13 scalar fields to check his broader
+claim (that a scope-correct check -- distinctness restricted to where a field
+actually applies, not the whole file -- would have caught rounds 12, 13, and 14
+without a reviewer): confirmed the load-bearing case (`locator_exhaustive` collapses
+to one value once properly scoped to the 24) directly; did not independently rebuild
+matching per-field scope logic for the other 12 fields to re-verify "12 of 13 vary"
+as a standalone count -- that claim is plausible and not central to the fix below,
+flagged here rather than silently adopted.
+
+**His closing question, answered, not left open: is `locator_exhaustive`'s scope the
+24 records with a locator, or all 63?** The 24. The field asks whether a citation was
+pinned as exhaustively as its source permits -- a record with no citation has no
+citation to evaluate the exhaustiveness of. Round 14's `false` on the 39 no-locator
+records conflated "not applicable" with "applicable and false", and that conflation
+is exactly what let the whole-file padding read as a real second value instead of a
+default. Fix: `locator_exhaustive: null` (matching `locator_precision: null`) on all
+39, not `false`. New invariant: `locator_precision is None <-> locator_exhaustive is
+None`. `check_locator_precision.py` no longer derives which boolean `locator_exhaustive`
+should be when a locator exists -- it only requires that it BE a real bool, judged on
+its own merits. The success-path census is now scoped to the 24, not the whole 63,
+and prints an explicit (non-fatal) warning if the scoped population has collapsed to
+one value -- which, honestly, it still has: `True=24, False=0`. That collapse is not
+itself a defect (24 records, all currently checked and found exhaustive, is a real
+possible state, not an error) -- but round 14's version made that same fact
+undetectable by construction, and round 15's does not.
+
+Regression-tested before trusting it, same as every prior round's checker change:
+three broken copies (old `false`-not-`null` pattern reintroduced, a locator record
+left with `locator_exhaustive: null`, a `row` record with `locator_exhaustive: false`)
+-- all three correctly fail with exit 1 and a specific violation message, none pass
+silently.
