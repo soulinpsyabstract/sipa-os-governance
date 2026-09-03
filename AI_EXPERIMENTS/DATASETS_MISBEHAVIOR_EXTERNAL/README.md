@@ -981,3 +981,78 @@ three broken copies (old `false`-not-`null` pattern reintroduced, a locator reco
 left with `locator_exhaustive: null`, a `row` record with `locator_exhaustive: false`)
 -- all three correctly fail with exit 1 and a specific violation message, none pass
 silently.
+
+## Round 16 (dipankarsarkar): the hand-typed boolean was the bug, not the invariant on it
+
+His deep-dive crossed with round 15 in transit -- he verified against head `061cba29`
+(the commit before round 15's fix), so the invariant he opens by critiquing is round
+14's, not round 15's. But his diagnosis is the same one round 15 reached independently,
+by a different method (his: a whole-file-vs-scoped distinctness census; round 15's:
+reading the invariant's own logic) -- and he took it one real step further than round
+15 did.
+
+**Round 15 removed the tautology but still left `locator_exhaustive` as a hand-typed
+bool for the 24 located records.** His point: that's still a value a person asserts,
+with nothing checking whether it's actually correct -- exactly the kind of field this
+whole multi-round arc exists to eliminate. His fix: stop treating `locator_exhaustive`
+as data at all. Introduce `locator_ceiling` (`document | section | row | null`) -- what
+the SOURCE affords, researched and set independently of `locator_precision` -- and
+DERIVE `locator_exhaustive := (locator_precision == locator_ceiling)`. The boolean
+becomes arithmetic on two independently-set fields instead of a third thing someone
+has to remember to keep in sync.
+
+**He also did the research this schema makes room for, and it checks out exactly.**
+Opened `PalisadeResearch/robot_shutdown_resistance`'s `logs/` directory himself and
+found `logs/on_the_robot/stats_run/live_05022026/tags.json` -- independently
+re-verified here: the file exists at that exact path, 10 trials (20 keys including
+`_debug` twins), 3 tagged `"avoided"`. That's the paper's cited 3/10 physical-robot
+figure, to the record. Then ran the repo's own scorer, `src/figures/bar-chart.py`,
+unmodified -- re-run here in isolation, same result: `default`+`plsallow` subdirs,
+`avoided=52/tagged=100`, the cited simulation figure to the digit.
+
+The wrinkle he found and that held up under re-check: `SUBDIR_NAME_MAP` in that script
+has `"live"` **commented out** -- the script's own default run never touches the
+physical-robot data at all. Mapping `on_the_robot` instead of the missing `"live"` key
+pulls in two hand-picked demo directories (`video_logs/resistance`,
+`video_logs/no_resistance`) alongside the real 10-trial run and gives `4/12`, not
+`3/10`. Confirmed by running both configurations directly. The two headline numbers in
+the same paper come from two different, non-interchangeable paths through the same
+repo -- neither one script run reproduces both.
+
+**`PALISADE-2026-robot-shutdown-resistance` is promoted: `locator_precision` and
+`locator_ceiling` both `row`, `verifiability` → `mechanised` (round 12's invariant
+requires it), `source_locator` now cites the exact file+commit (`dcc38ab`) and script+
+commit (`abbf0c0`)** -- a real promotion earned the same way every other `row` record
+in this file was, by finding the specific file and reproducing the specific number,
+not by asserting a repo link is "row-precision" on its own.
+
+**His closing question, answered rather than left open: is a source's ceiling a fact
+about the source, or a fact about how much effort has gone into looking at it?** The
+latter, openly. `locator_ceiling` means exactly what `verifiability` has meant this
+whole file: checked as far as anyone has looked, not a claim of platonic completeness.
+It defaults to the current `locator_precision` for the 24 already-located records
+(current best-known effort, not an assertion that no finer structure could ever be
+found) and stays `null` until a locator exists at all. It gets revised upward exactly
+the way `PALISADE-2026-robot-shutdown-resistance`'s was this round -- someone opens the
+source and looks.
+
+Checked the other two records he flagged as similar candidates
+(`MONARCH-2026-dismech-agent-scope-overreach`,
+`OPENCODE-2026-orchestrator-silent-fallback`, both citing a specific GitHub issue) only
+as far as confirming the issues are reachable (7 and 3 comments respectively) -- did
+NOT do the comment-level digging he did for PALISADE to identify a specific pinnable
+comment. Left at `null`/`null`, honestly, rather than promoted on a guess.
+
+`check_locator_precision.py` rewritten: `locator_precision`, `locator_ceiling`,
+`locator_exhaustive` must be `None` together or none of them; where set,
+`locator_precision` can never be finer than `locator_ceiling` on the ladder (a real
+check now, since `locator_ceiling` is independently set, not derived from
+`locator_precision`); `locator_exhaustive` must equal `locator_precision ==
+locator_ceiling` exactly -- checked, never asserted. Regression-tested against four
+cases before trusting it: a hand-typed `locator_exhaustive` that disagrees with the
+derivation (caught), `locator_precision` set finer than `locator_ceiling` (caught), the
+three-field null-together invariant broken (caught), and -- the case that matters most,
+since it's the state round 14 made unrepresentable -- a `document`-precision record
+with a `row` ceiling and `locator_exhaustive: false` (**passes**, and the field
+actually varies now: `True=24, False=1` in the synthetic test, instead of the permanent
+`True=24, False=0` this file has carried since round 13).

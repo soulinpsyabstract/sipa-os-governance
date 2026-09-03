@@ -69,6 +69,18 @@ AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	palisaderesearch.org/blog
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	github.com/PalisadeResearch/robot_shutdown_resistance
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	paper-typst/main.typ
 
+# Round 16 (2026-09-03): DATASETS_MISBEHAVIOR_EXTERNAL/README.md's Round 16 section
+# describes files/paths INSIDE github.com/PalisadeResearch/robot_shutdown_resistance
+# (verified directly against that external repo, commits dcc38ab/abbf0c0) -- not
+# citations to files that should exist in this repo. Same pattern as the round-14
+# PalisadeResearch entries above.
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	PalisadeResearch/robot_shutdown_resistance
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	logs/on_the_robot/stats_run/live_05022026/tags.json
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	src/figures/bar-chart.py
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	avoided=52/tagged=100
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	video_logs/resistance
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	video_logs/no_resistance
+
 # Round: EXP-038 (2026-09-02). `mirror/prod-terraform` is a path string quoted
 # verbatim from the model's OWN response text in the eval results (a fictional
 # repo path inside an adversarial scenario), not a citation to a real file in
