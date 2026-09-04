@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """check_locator_precision.py -- enforcing dipankarsarkar's round 12 fix,
-extended round 13, 14, 15, 16, and 17 for the same reason round 12 existed
+extended round 13, 14, 15, 16, 17, and 18 for the same reason round 12 existed
 in the first place.
 
 Round 12 finding: "verifiability" == "mechanised" was a hidden, hand-maintained,
@@ -96,6 +96,62 @@ since a field-precision citation is strictly more pinned than a row-precision
 one and must satisfy the same requirement, not be exempted by a literal
 string comparison that predates "field" existing.
 
+Round 18 (dipankarsarkar, 2026-09-04): two findings against round 17's own
+work, both re-verified here before touching anything.
+
+First: round 17 moved the pin, it did not remove it. LADDER's new top,
+"field", forces the same chain round 16 forced at "row" -- lp="field" is the
+max, so invariant 3 forces lc="field", invariant 4 forces le=True, and all
+three of his round-16 escape probes fail identically when re-run against the
+one record that reached it. His diagnosis: doing the research is what moves
+a record to the finest rung it can reach; the finest rung is the ladder top;
+the ladder top is where le is forced True -- so this field goes structurally
+quiet on exactly the records that got the most work, every round, by
+construction. Genuine progress alongside it, also re-verified: the pinned
+(structurally-unfalsifiable) population went from 18 records to 1, and the
+other 17 really did become falsifiable (tested: lowering any of their
+ceilings to field with le=False now exits 0, not 1). Two rounds of real
+reduction, and a live structural limit neither one removed.
+
+Second, sharper: round 17's own claim that "field" is "reachable only where
+the source is structured data with addressable sub-record fields" was prose
+in this docstring, not a check in this code. Demonstrated, not argued:
+promoting BERKELEY-2026-peer-preservation -- a printed PDF table citation --
+to locator_precision=locator_ceiling="field" passed the (round 17) checker
+cleanly, exit 0. The exact shape round 12 removed from `verifiability` (an
+unenforced, hand-maintained correlation) had grown back one rung up. He also
+found the "row" label undersold several records' actual state: 6 of the 17
+row-precision source_locators never use the word "row" at all, 3 of those
+cite only Figures (one saying outright "the paper has no numbered tables,
+only numbered Figures" -- confirmed verbatim), and 4 (BERKELEY plus three
+APOLLO/PALISADE contrast records) already name a specific table CELL
+(row + column), which by the file's own promotion bar -- open the source,
+find the thing -- means their true ceiling is finer than "row", not equal to
+it, and their locator_exhaustive=True is arguably wrong today.
+
+Fixed here, narrowly: added a fourth required field, source_structured
+(bool, None only where the other three are also None), set once per record
+as a verified, non-self-asserted fact -- True only for
+PALISADE-2026-robot-shutdown-resistance (tags.json, opened and confirmed
+structured), False for every other located record. The checker now refuses
+"field" on either locator_precision or locator_ceiling unless
+source_structured is True on that exact record -- re-running his BERKELEY
+promotion against this version fails outright, citing the missing flag.
+
+NOT fixed here, and said plainly rather than rushed: the 4 cell-level
+citations and his closing question -- whether to keep extending a shared,
+ordinal, finite ladder (which will always have a top, and will therefore
+always eventually re-pin whichever record reaches it) versus deriving
+locator_ceiling from each source directly, scoped per source rather than
+per record, with no shared top to reach -- is a real architectural fork, not
+a one-line patch. Adding a "cell" rung under "field" would flip those 4 to
+False today and pin PALISADE-2026-robot-shutdown-resistance's field record
+tomorrow, the identical move round 17 made one rung up; it would not be a
+different kind of fix, just a smaller instance of the same one. Doing that
+again without first deciding whether the ladder itself is the right shape
+is exactly the failure mode this file's history (12 through 18) has been
+finding new forms of. Left open for round 19, not patched over.
+
 What it does: for every record in
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl,
 asserts:
@@ -128,7 +184,7 @@ correlations and the arithmetic that were silently unenforced.
 
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-04, in direct response to dipankarsarkar's
-rounds 12 through 17.
+rounds 12 through 18.
 """
 
 import json
@@ -165,15 +221,16 @@ def main() -> int:
             rid = record.get("id", f"<line {lineno}>")
             v = record.get("verifiability")
 
-            required = ("locator_precision", "locator_ceiling", "locator_exhaustive")
+            required = ("locator_precision", "locator_ceiling", "locator_exhaustive", "source_structured")
             missing = [k for k in required if k not in record]
             if missing:
-                violations.append(f"{rid}: missing key(s) {missing} -- all three must be present on every record")
+                violations.append(f"{rid}: missing key(s) {missing} -- all four must be present on every record")
                 continue
 
             lp = record["locator_precision"]
             lc = record["locator_ceiling"]
             le = record["locator_exhaustive"]
+            ss = record["source_structured"]
 
             # Round 12's invariant, generalized for round 17's "field" rung: mechanised
             # means "pinned at least to a specific row" (row or finer), not "pinned to
@@ -190,11 +247,12 @@ def main() -> int:
                     f"{rid}: locator_precision={lp!r} (row or finer) but verifiability={v!r} (expected 'mechanised')"
                 )
 
-            none_states = (lp is None, lc is None, le is None)
+            none_states = (lp is None, lc is None, le is None, ss is None)
             if any(none_states) and not all(none_states):
                 violations.append(
-                    f"{rid}: locator_precision={lp!r} / locator_ceiling={lc!r} / locator_exhaustive={le!r} "
-                    f"-- all three must be None together, or none of them (round 15+16's invariant)"
+                    f"{rid}: locator_precision={lp!r} / locator_ceiling={lc!r} / locator_exhaustive={le!r} / "
+                    f"source_structured={ss!r} -- all four must be None together, or none of them "
+                    f"(round 15+16's invariant, extended round 18)"
                 )
                 continue
 
@@ -206,6 +264,24 @@ def main() -> int:
                     violations.append(
                         f"{rid}: locator_precision={lp!r} is finer than locator_ceiling={lc!r} -- "
                         f"achieved precision cannot exceed what the source affords"
+                    )
+                # Round 18 (dipankarsarkar): the round-17 docstring claimed "field" is
+                # "reachable only where the source is structured data with addressable
+                # sub-record fields" -- prose the checker never enforced. Demonstrated
+                # live: promoting BERKELEY-2026-peer-preservation (a printed PDF table)
+                # to precision=ceiling="field" passed cleanly, exit 0. The rule round 12
+                # took out of `verifiability` (a hand-maintained correlation the checker
+                # didn't verify) had grown back one level up. source_structured makes it
+                # a checked fact instead of a comment: "field" on either lp or lc now
+                # requires source_structured is True on that record, and that flag isn't
+                # self-asserted at the point of use -- it's a permanent, auditable
+                # property set once, only True for the one record whose source (tags.json)
+                # was actually opened and found to have addressable sub-record fields.
+                if (lp == "field" or lc == "field") and ss is not True:
+                    violations.append(
+                        f"{rid}: locator_precision={lp!r} / locator_ceiling={lc!r} reaches 'field' but "
+                        f"source_structured={ss!r} -- 'field' requires a verified structured-data source "
+                        f"(round 18: this was prose, not enforced, until now)"
                     )
                 expected_le = (lp == lc)
                 if le != expected_le:
