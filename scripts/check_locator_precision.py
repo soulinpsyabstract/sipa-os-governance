@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """check_locator_precision.py -- enforcing dipankarsarkar's round 12 fix,
-extended round 13, 14, 15, and 16 for the same reason round 12 existed in
-the first place.
+extended round 13, 14, 15, 16, and 17 for the same reason round 12 existed
+in the first place.
 
 Round 12 finding: "verifiability" == "mechanised" was a hidden, hand-maintained,
 perfectly-correlated function of whether source_locator happened to name a
@@ -59,6 +59,43 @@ established at all. It is revised upward exactly the way
 PALISADE-2026-robot-shutdown-resistance's was this round, when someone
 actually opens the source and looks.
 
+Round 17 (dipankarsarkar, 2026-09-04): round 16 gave locator_ceiling a
+value for the first time, but LADDER topped out at "row" -- so any record
+whose precision reached "row" had its ceiling FORCED to "row" too (invariant
+3 permits no coarser value, and none finer existed), making
+locator_exhaustive True by construction for all 18 such records, not by
+verification. Re-verified against the live checker rather than argued:
+lowering a row record's ceiling below row fails invariant 3, hand-typing
+locator_exhaustive=False on an unmoved row/row pair fails the round-16
+derivation check, and a ceiling value off the ladder fails outright -- there
+was no legal way to make a row record non-exhaustive. He asked the real
+question this makes room for: is that because "row" genuinely is every one
+of these sources' bottom, or because the ladder itself has no rung below it
+to fail?
+
+Checked per-record rather than assumed either way: of the 18 row-precision
+citations, 17 point at a specific row (or row+column) of a printed arXiv
+table -- a PDF table has no finer machine-addressable unit than the cell a
+paper actually prints, so "row" is these citations' genuine, independently
+verified bottom, not an artifact of the ladder stopping there. The 18th,
+PALISADE-2026-robot-shutdown-resistance, cites logs/.../tags.json directly --
+opened it (commit dcc38ab, same as round 16): a flat dict of 20 keys (10
+real trials + 10 _debug twins), each value a LIST of tags, not a scalar.
+3 of the 10 real trials carry TWO tags at once (avoided AND finished, not
+avoided alone) -- real sub-row structure, not hypothetical. Added "field" as
+LADDER's first rung above "row", reachable only where the source itself is
+structured data with addressable sub-record fields (right now: this one
+record). Promoted PALISADE-2026-robot-shutdown-resistance to
+locator_precision=locator_ceiling="field" -- earned by opening the source
+and finding the field, the same bar every "row" promotion in this file has
+been held to, not asserted to unstick the invariant. The other 17 stay at
+row/row: verified as a real ceiling, not upgraded to match a rung that
+doesn't apply to a printed table. Round 12's mechanised<->row invariant is
+generalized from an exact match against "row" to ">= row on the ladder",
+since a field-precision citation is strictly more pinned than a row-precision
+one and must satisfy the same requirement, not be exempted by a literal
+string comparison that predates "field" existing.
+
 What it does: for every record in
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl,
 asserts:
@@ -90,8 +127,8 @@ judgment calls, same as verifiability always was. It only checks the
 correlations and the arithmetic that were silently unenforced.
 
 Exit code is nonzero iff any record violates a hard invariant -- built by
-Claude, 2026-09-01 through 09-03, in direct response to dipankarsarkar's
-rounds 12 through 16.
+Claude, 2026-09-01 through 09-04, in direct response to dipankarsarkar's
+rounds 12 through 17.
 """
 
 import json
@@ -102,7 +139,17 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATASET = REPO_ROOT / "AI_EXPERIMENTS" / "DATASETS_MISBEHAVIOR_EXTERNAL" / "misbehavior_incidents_seed_v1.jsonl"
 
-LADDER = {"document": 0, "section": 1, "row": 2}
+# Round 17 added "field", the first rung above "row" this ladder has ever had.
+# It is reachable only where the underlying SOURCE is structured data (JSON/CSV)
+# with real, independently-addressable sub-record fields -- not a blanket
+# upgrade. A printed PDF table has no finer machine-addressable unit than the
+# row/cell a paper actually prints, so "row" stays the genuine, non-null
+# ceiling for every citation whose source is a paper table (17 of the 18
+# row-precision records as of round 17). "field" exists for the one record
+# whose source is raw structured data with real sub-row fields, verified by
+# opening that source and finding the field, same bar as every other
+# precision claim in this file -- see round 17 in this docstring below.
+LADDER = {"document": 0, "section": 1, "row": 2, "field": 3}
 
 
 def main() -> int:
@@ -128,13 +175,19 @@ def main() -> int:
             lc = record["locator_ceiling"]
             le = record["locator_exhaustive"]
 
-            if v == "mechanised" and lp != "row":
+            # Round 12's invariant, generalized for round 17's "field" rung: mechanised
+            # means "pinned at least to a specific row" (row or finer), not "pinned to
+            # exactly row" -- a field-precision citation is strictly more pinned than a
+            # row-precision one, so it must satisfy the same mechanised requirement, not
+            # be exempted from it by failing a literal string match against "row".
+            at_least_row = lp in LADDER and LADDER[lp] >= LADDER["row"]
+            if v == "mechanised" and not at_least_row:
                 violations.append(
-                    f"{rid}: verifiability=mechanised but locator_precision={lp!r} (expected 'row')"
+                    f"{rid}: verifiability=mechanised but locator_precision={lp!r} (expected 'row' or finer)"
                 )
-            if lp == "row" and v != "mechanised":
+            if at_least_row and v != "mechanised":
                 violations.append(
-                    f"{rid}: locator_precision=row but verifiability={v!r} (expected 'mechanised')"
+                    f"{rid}: locator_precision={lp!r} (row or finer) but verifiability={v!r} (expected 'mechanised')"
                 )
 
             none_states = (lp is None, lc is None, le is None)
