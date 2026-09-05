@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """check_locator_precision.py -- enforcing dipankarsarkar's round 12 fix,
-extended round 13, 14, 15, 16, 17, 18, and 20 for the same reason round 12
-existed in the first place.
+extended round 13, 14, 15, 16, 17, 18, 20, and 21 for the same reason round
+12 existed in the first place.
 
 Round 12 finding: "verifiability" == "mechanised" was a hidden, hand-maintained,
 perfectly-correlated function of whether source_locator happened to name a
@@ -198,6 +198,65 @@ six mislabeled" with yes, verified. It did not answer his harder question,
 and pretending otherwise would be the same move rounds 16 and 17 made one
 level down. Left open for round 21.
 
+Round 21 (dipankarsarkar, 2026-09-05, same day): corrected his own round-20
+overcount first -- re-read all 7 flagged strings and confirmed only 2 name a
+finer unit directly, 1 is borderline, 4 explicitly deny one exists; also
+confirmed his Claude-4-card table count was wrong (20 distinct IDs, not 15,
+matching what was independently counted here). Then found something the
+overcount was distracting from: instead of re-reading strings, he opened
+the two "document"-precision records' actual sources -- the only two
+document-precision records in the whole file -- and falsified both.
+
+ANTHROPIC-2026-prototype-stopped-CONTRAST claimed the Anthropic blog post
+"covers all three models... in one disclosure... finest addressable unit is
+the post itself." Fetched the live page: h2 "What happened" contains three
+separately anchored h3 subsections, id="incident-1"/"incident-2"/
+"incident-3", one per model. Incident 3's text is this record verbatim
+(9,000 targets, credentials off an exposed debug page, SQL injection, "On
+its own, it concluded that the target was in fact real, and ceased its
+attack"). The record's own two sibling incidents in this file
+(ANTHROPIC-2026-opus47-sandbox-ignore, ANTHROPIC-2026-mythos5-self-deceived,
+both still fully unlocated) map onto Incident 1 and Incident 2 exactly. The
+post does not fuse three models into one disclosure; it names one anchor
+per model, and this record already had the anchor sitting in its own
+citation.
+
+GOOGLE-2025-gemini-echoleak-class-blocked-CONTRAST claimed "blog post, no
+page/table" -- true about pages and tables, false about structure. Fetched
+the live page: h3 "A layered security approach" (data-block-key="a2sal")
+holds a 5-item enumerated list of Gemini defenses, and the sentence this
+record quotes is item 3, "Markdown sanitization and suspicious URL
+redaction," verbatim.
+
+His sharper point, and it's correct: unlike round 20's six cell citations
+-- which were only False under the source-scoped reading, which is why they
+waited for the fork -- these two are False under the claim-scoped reading
+too. The finer unit isn't proven by a sibling record on the same source; it
+contains the cited claim and nothing else, found by opening this record's
+own citation. Neither reading of the still-open round-20 question changes
+the verdict, so this didn't need to wait for round 20 to resolve first. He
+re-checked the file's other two "denies a finer unit" records the same way
+(opening the Anthropic multiagent-systems post's "Incompatible goals"
+section, and Claude 4 card pages 26-27 directly) and both held up -- no
+sub-headings, no tables, prose the whole way down. Re-verified independently
+here before touching anything: both fetches confirmed live, both promotions
+correct.
+
+Fixed: ANTHROPIC-2026-prototype-stopped-CONTRAST promoted document -> section
+(the anchored h3 subsection, no finer structure exists within it).
+GOOGLE-2025-gemini-echoleak-class-blocked-CONTRAST promoted document -> row
+(the enumerated list position), which also flips its verifiability from
+human-checked to mechanised under this file's own round-12 invariant,
+generalized round 17 to any rung at or finer than row regardless of medium
+-- a numbered list item earns the same classification a table row does, by
+the same rule already governing every other record in this file, not a
+one-off exception written to fit these two.
+
+document is now empty in this file -- zero records claim "the whole source,
+undifferentiated" is the finest unit available. That was never a rung this
+file's citations actually needed; it was, as he put it, what got written
+down before anyone looked for the headings.
+
 What it does: for every record in
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl,
 asserts:
@@ -230,7 +289,7 @@ correlations and the arithmetic that were silently unenforced.
 
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-05, in direct response to dipankarsarkar's
-rounds 12 through 18 and 20.
+rounds 12 through 18, 20, and 21.
 """
 
 import json
