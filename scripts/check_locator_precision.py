@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """check_locator_precision.py -- enforcing dipankarsarkar's round 12 fix,
-extended round 13, 14, 15, 16, 17, and 18 for the same reason round 12 existed
-in the first place.
+extended round 13, 14, 15, 16, 17, 18, and 20 for the same reason round 12
+existed in the first place.
 
 Round 12 finding: "verifiability" == "mechanised" was a hidden, hand-maintained,
 perfectly-correlated function of whether source_locator happened to name a
@@ -152,6 +152,52 @@ again without first deciding whether the ladder itself is the right shape
 is exactly the failure mode this file's history (12 through 18) has been
 finding new forms of. Left open for round 19, not patched over.
 
+Round 20 (dipankarsarkar, 2026-09-05): answered the round-18 fork by proving
+it was never live. Re-pulled the seed at commit 1578ca2 (sha256 confirmed:
+ca4c71db...) and read locator_ceiling as a column across every revision it
+has existed in -- 8229f49, b137ec4, 1578ca2. In all three, across all 25
+located records each time (75 record-revisions total), locator_ceiling has
+never once held a value different from locator_precision, and
+locator_exhaustive has never once been anything but True. This docstring
+already said why, in plain prose, several rounds ago: "locator_ceiling
+defaults to the current locator_precision for records already located."
+Both PALISADE promotions (round 16 to row, round 17 to field) moved both
+fields in the same commit -- no ceiling has ever been set by a process that
+could not also see, and match, the precision. Invariant 4's arithmetic
+(le = lp == lc) has been computing on two fields that have never once
+disagreed.
+
+He sharpened round 18's "4 undersold cell citations" finding to 6, and
+proved it from the same strings already in this file rather than opening
+anything new: four records citing arXiv:2412.16720's Table 10 name a row
+plus a model-specific value (a cell) -- two say the word "column" (caught
+by round 18's lexical scan), two don't (missed by a scan for a word, not a
+unit) but cite the identical shape, row name paired with one model's
+number. Verified directly against the records' own source_locator strings,
+not taken on his word: all six (BERKELEY-2026-peer-preservation, both
+gpt4o-CONTRAST records, the PALISADE shutdown-compliance-CONTRAST record,
+and the two o1 System Card records) already state a specific row-plus-value
+pairing in their own prose -- a cell, under either his claim-scoped or
+source-scoped reading, and he said so plainly: "both readings agree those 6
+are wrong at row right now."
+
+Fixed: added "cell" to LADDER, between row and field. Promoted all six to
+locator_precision=locator_ceiling="cell" -- earned by their own already-
+existing prose, not asserted to close the gap; source_structured is
+untouched (that gate is specific to "field", not "cell", and none of these
+six sources are JSON-shaped).
+
+Said plainly, not smoothed over: this fixes the six records his find named,
+and nothing else. locator_exhaustive is still True on literally every
+located record in this file's history -- 25 of 25, unchanged by this round --
+because no promotion, this round included, has ever moved precision and
+ceiling apart. His closing question stands exactly as he left it: is the
+fix a new rung every few rounds, or is locator_ceiling one field wearing
+two names alongside locator_precision? Adding "cell" answered "are these
+six mislabeled" with yes, verified. It did not answer his harder question,
+and pretending otherwise would be the same move rounds 16 and 17 made one
+level down. Left open for round 21.
+
 What it does: for every record in
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl,
 asserts:
@@ -183,8 +229,8 @@ judgment calls, same as verifiability always was. It only checks the
 correlations and the arithmetic that were silently unenforced.
 
 Exit code is nonzero iff any record violates a hard invariant -- built by
-Claude, 2026-09-01 through 09-04, in direct response to dipankarsarkar's
-rounds 12 through 18.
+Claude, 2026-09-01 through 09-05, in direct response to dipankarsarkar's
+rounds 12 through 18 and 20.
 """
 
 import json
@@ -205,7 +251,7 @@ DATASET = REPO_ROOT / "AI_EXPERIMENTS" / "DATASETS_MISBEHAVIOR_EXTERNAL" / "misb
 # whose source is raw structured data with real sub-row fields, verified by
 # opening that source and finding the field, same bar as every other
 # precision claim in this file -- see round 17 in this docstring below.
-LADDER = {"document": 0, "section": 1, "row": 2, "field": 3}
+LADDER = {"document": 0, "section": 1, "row": 2, "cell": 3, "field": 4}
 
 
 def main() -> int:
