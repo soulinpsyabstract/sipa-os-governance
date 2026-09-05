@@ -257,6 +257,66 @@ undifferentiated" is the finest unit available. That was never a rung this
 file's citations actually needed; it was, as he put it, what got written
 down before anyone looked for the headings.
 
+Round 22 (dipankarsarkar, 2026-09-05, same day): demonstrated the exact
+forgery round 18 said source_structured would prevent, against the file as
+it stood after round 20 added "cell". Hand-set
+BERKELEY-2026-peer-preservation's locator_precision=locator_ceiling="field"
+and source_structured=True -- its actual source is a printed PDF table
+(arXiv:2604.19784v3, Table 3), the opposite of the "JSON with addressable
+sub-record fields" bar round 17 set for "field". Re-ran the forgery here,
+independently, on a scratch copy, never touching the tracked file: exit 0,
+"OK: invariants hold". His diagnosis is exactly right and it is in this
+docstring's own words from round 18 -- source_structured was described as
+"a permanent, auditable property set once", which is a claim about
+provenance, not something the checker was ever asked to verify. Nothing
+reads the field except to confirm it is not None (or, at the field rung,
+that it is True). It is a hand-typed boolean wearing the same costume
+locator_exhaustive wore before round 16.
+
+His fix is the same move round 16 made one field over: stop typing
+source_structured by hand and derive it. He specified the derivation from
+strings already shipped in this file, over both fields that exist on every
+record regardless of whether it has a locator yet -- citation names a
+repository host (github.com/gitlab.com/bitbucket.org/a huggingface.co
+dataset-or-file URL), and source_locator names a path with a
+machine-readable extension (.json/.jsonl/.csv/.tsv/.yaml/.yml/.py). Ran his
+derivation here independently, written from his English description before
+looking at any code he might have, against all 63 records: agree=63,
+disagree=0 against the file's current hand-typed values, including the one
+True (PALISADE-2026-robot-shutdown-resistance, tags.json) and the 24 False
+located records, and the same two he named as forced-None under the old
+four-together rule (MONARCH-2026-dismech-agent-scope-overreach,
+OPENCODE-2026-orchestrator-silent-fallback -- both cite a repo host, both
+have source_locator=None because no one has opened the issue thread and
+pinned a file yet).
+
+Fixed: source_structured is no longer typed. It is computed by
+derive_source_structured(citation, source_locator) and the checker now
+asserts the stored value equals the derived one -- a violation, not a
+silent pass, if they ever disagree. Re-ran the BERKELEY forgery against
+this version: FAIL, "source_structured=True but derived from
+citation+source_locator is False". The field also left the three-way
+None-together invariant (locator_precision / locator_ceiling /
+locator_exhaustive stay None together; source_structured does not need a
+locator to exist, because structuredness is a fact about the citation and
+source_locator strings, not about how far anyone has pinned a location
+within them). Checked every one of the 63 records against the unconditional
+derivation, not just the 25 located ones: all 38 unlocated records have
+source_locator=None, so all 38 derive to False, not None -- a real,
+mechanical change to the dataset (source_structured: null -> false on all
+38), not a checker-only patch. None of the 25 located records' stored
+values needed to change; the derivation already agreed with all of them.
+
+Said plainly: this closes the exact hole he demonstrated, and it is a
+narrower fix than his closing architectural question asks for. He asked
+what it would take to trust a derived flag over a set-once one twice --
+verified out-of-sample against six records the derivation's author (him)
+had not seen when he wrote it, which is a stronger form of evidence than
+this round produced. This round's agreement (63/63) was checked against
+data that already existed when the rule was written, not held out from it.
+That is a real difference in evidentiary weight, said here rather than
+left for him to point out a second time.
+
 What it does: for every record in
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl,
 asserts:
@@ -289,10 +349,11 @@ correlations and the arithmetic that were silently unenforced.
 
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-05, in direct response to dipankarsarkar's
-rounds 12 through 18, 20, and 21.
+rounds 12 through 18, and 20 through 22.
 """
 
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -311,6 +372,26 @@ DATASET = REPO_ROOT / "AI_EXPERIMENTS" / "DATASETS_MISBEHAVIOR_EXTERNAL" / "misb
 # opening that source and finding the field, same bar as every other
 # precision claim in this file -- see round 17 in this docstring below.
 LADDER = {"document": 0, "section": 1, "row": 2, "cell": 3, "field": 4}
+
+# Round 22 (dipankarsarkar): source_structured, derived rather than hand-typed.
+# A repo host in the citation and a machine-readable extension in
+# source_locator are both facts about strings this file already carries --
+# neither depends on locator_precision being set, so this is computable for
+# all 63 records, not just the 25 located ones. See the round-22 docstring
+# section above for the forgery this closes and the 63/63 agreement check
+# performed against the pre-existing hand-typed values before this replaced
+# them.
+_REPO_HOST_RE = re.compile(
+    r"github\.com|gitlab\.com|bitbucket\.org|huggingface\.co/datasets|"
+    r"huggingface\.co/[^/\s]+/[^/\s]+/(blob|resolve)"
+)
+_MACHINE_READABLE_EXT_RE = re.compile(r"\.(json|jsonl|csv|tsv|yaml|yml|py)\b", re.IGNORECASE)
+
+
+def derive_source_structured(citation, source_locator) -> bool:
+    return bool(_REPO_HOST_RE.search(citation or "")) and bool(
+        _MACHINE_READABLE_EXT_RE.search(source_locator or "")
+    )
 
 
 def main() -> int:
@@ -337,6 +418,22 @@ def main() -> int:
             le = record["locator_exhaustive"]
             ss = record["source_structured"]
 
+            # Round 22 (dipankarsarkar): source_structured is derived, not trusted.
+            # Demonstrated live: hand-setting BERKELEY-2026-peer-preservation to
+            # locator_precision=locator_ceiling="field", source_structured=True
+            # passed round 20's checker cleanly, exit 0, despite its source being
+            # a printed PDF table, not structured data. Computed independently of
+            # locator_precision -- unlike locator_exhaustive, this doesn't need a
+            # location to exist yet, only a citation and (if present) a
+            # source_locator, both present on every record in the file.
+            expected_ss = derive_source_structured(record.get("citation"), record.get("source_locator"))
+            if ss != expected_ss:
+                violations.append(
+                    f"{rid}: source_structured={ss!r} but derived from citation+source_locator is "
+                    f"{expected_ss!r} (round 22: hand-typed values are no longer trusted, only checked)"
+                )
+                continue
+
             # Round 12's invariant, generalized for round 17's "field" rung: mechanised
             # means "pinned at least to a specific row" (row or finer), not "pinned to
             # exactly row" -- a field-precision citation is strictly more pinned than a
@@ -352,12 +449,17 @@ def main() -> int:
                     f"{rid}: locator_precision={lp!r} (row or finer) but verifiability={v!r} (expected 'mechanised')"
                 )
 
-            none_states = (lp is None, lc is None, le is None, ss is None)
+            # Round 22: source_structured left this invariant. It no longer needs a
+            # location to exist -- structuredness is a fact about citation and
+            # source_locator strings, checked above unconditionally, whether or not
+            # a locator has been pinned yet. The three fields that describe *how
+            # precisely something has been located* still share one null state.
+            none_states = (lp is None, lc is None, le is None)
             if any(none_states) and not all(none_states):
                 violations.append(
-                    f"{rid}: locator_precision={lp!r} / locator_ceiling={lc!r} / locator_exhaustive={le!r} / "
-                    f"source_structured={ss!r} -- all four must be None together, or none of them "
-                    f"(round 15+16's invariant, extended round 18)"
+                    f"{rid}: locator_precision={lp!r} / locator_ceiling={lc!r} / locator_exhaustive={le!r} "
+                    f"-- all three must be None together, or none of them "
+                    f"(round 15+16's invariant; source_structured left this group in round 22)"
                 )
                 continue
 
@@ -370,18 +472,15 @@ def main() -> int:
                         f"{rid}: locator_precision={lp!r} is finer than locator_ceiling={lc!r} -- "
                         f"achieved precision cannot exceed what the source affords"
                     )
-                # Round 18 (dipankarsarkar): the round-17 docstring claimed "field" is
-                # "reachable only where the source is structured data with addressable
-                # sub-record fields" -- prose the checker never enforced. Demonstrated
-                # live: promoting BERKELEY-2026-peer-preservation (a printed PDF table)
-                # to precision=ceiling="field" passed cleanly, exit 0. The rule round 12
-                # took out of `verifiability` (a hand-maintained correlation the checker
-                # didn't verify) had grown back one level up. source_structured makes it
-                # a checked fact instead of a comment: "field" on either lp or lc now
-                # requires source_structured is True on that record, and that flag isn't
-                # self-asserted at the point of use -- it's a permanent, auditable
-                # property set once, only True for the one record whose source (tags.json)
-                # was actually opened and found to have addressable sub-record fields.
+                # Round 18 (dipankarsarkar) added this gate; round 22 (dipankarsarkar)
+                # demonstrated it was still forgeable because `ss` was hand-typed and
+                # only checked for presence, not correctness -- BERKELEY-2026-peer-
+                # preservation (a printed PDF table) passed as "field" once someone
+                # typed source_structured=True next to it. `ss` above is no longer
+                # read from the file uncritically: it was already checked against
+                # derive_source_structured() and the function returned before this
+                # line if they disagreed. This check now enforces a derived fact, not
+                # a self-asserted one.
                 if (lp == "field" or lc == "field") and ss is not True:
                     violations.append(
                         f"{rid}: locator_precision={lp!r} / locator_ceiling={lc!r} reaches 'field' but "
