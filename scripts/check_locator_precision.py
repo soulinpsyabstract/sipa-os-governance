@@ -426,9 +426,83 @@ after a mention of an unrelated file, this anchoring stops being enough,
 and the honest fix at that point is the structural split, not a smarter
 regex.
 
+Round 24 (dipankarsarkar, 2026-09-06, same day): a real data finding, not a
+checker bug -- the first record this file has ever had where
+locator_precision is genuinely below locator_ceiling.
+
+APOLLO-2024-self-exfiltration and APOLLO-2024-oversight-subversion cite
+arXiv:2412.04984v2, Table 1, pinned to one row each ("row 'Self-
+Exfiltration'", "row 'Oversight Subversion'") -- precision=ceiling="row"
+both, same as every other row-precision record. But two CONTRAST records
+already in this file cite the SAME Table 1 and describe it in their own
+prose as a per-model grid: APOLLO-OPENAI-2024-gpt4o-no-self-exfiltration-
+CONTRAST calls it "Table 1 (p.6, per-model X/check scheming matrix)",
+APOLLO-OPENAI-2024-gpt4o-no-oversight-subversion-CONTRAST calls it "Table 1
+(p.6, per-model scheming matrix, gpt-4o = X across all behaviors)" -- both
+already promoted to locator_precision=locator_ceiling="cell", because they
+pin one specific model's column, not just a behavior's row. Same table,
+independently documented in this file as affording a model dimension the
+two plain APOLLO records never pinned. Their genuine ceiling is "cell";
+their achieved precision stayed at "row". Checked APOLLO-2024-sandbagging
+for the same promotion and did not apply it: unlike the other two, its
+source_locator spans Table 1, Section 3, and Table 5 at once -- not a
+clean single-table citation, so "what this citation's ceiling is" isn't
+the same well-formed question there.
+
+Re-ran his scratch test independently before touching the tracked file:
+locator_ceiling="cell" with locator_precision="row" unchanged, and
+locator_exhaustive set to what round 16's derivation computes (False, not
+hand-typed) -- exit 0, locator_ceiling scoped counts cell=8/field=1/row=10/
+section=6, locator_exhaustive False=2/True=23. Negative control confirmed
+too: same two fields, locator_exhaustive hand-typed True instead of
+derived -- exit 1, both records flagged by name, the exact round-16
+invariant this docstring has described since round 16. Applied to the
+tracked file: locator_ceiling "row"->"cell" and locator_exhaustive
+true->false on both records, nothing else touched.
+
+His sharper point, checked against full git history before accepting it:
+locator_ceiling has been "independently settable" (a field of its own,
+distinct from locator_precision) since round 16, but never once
+independently SET. Walked every commit that touched this dataset file (34
+total) and diffed locator_ceiling against locator_precision at each write:
+every ceiling-set event either came from round 16's one-time bulk backfill
+(defaulting ceiling to the record's then-current precision, explicitly
+documented as that -- not independent) or from a later round promoting
+precision and ceiling together in the same commit (round 17's "field" rung,
+round 20's "cell" rung). Zero events, across the whole history, where
+ceiling was set to something other than the record's own precision. His
+framing: a field that agrees with another field on every one of 75 write
+events, when only one thing has ever assigned it, isn't evidence the two
+fields are the same -- it's evidence nothing has tested whether they
+could differ. That test is exactly what this round performs, for the
+first time, on two records found by cross-referencing this file's own
+prose against itself.
+
+His closing question -- is locator_ceiling derivable from citation and
+source_locator the way source_structured was, or does it genuinely require
+opening the source and checking what ISN'T there -- gets an honest partial
+answer, not a formula. The method that found this round's two promotions
+(reading one record's citation prose describing a table's shape, then
+checking whether ANOTHER record cites the identical table) used only
+strings already in this file, the same ingredients round 22's derivation
+used. But it required matching a shared source across two records and
+reading what each one's prose says about that source's structure -- not a
+regex over one record in isolation, and not obviously generalizable: it
+worked here because two CONTRAST records happened to describe the same
+Table 1 explicitly enough to say what it affords. A source cited only
+once, or described without naming its structure, gives this method nothing
+to work from. Round 16-18 answered a structurally similar question about
+locator_ceiling itself ("is a source's ceiling a fact about the source, or
+about how much effort has been spent looking at it?") by saying: the
+latter, openly, revised upward exactly when someone opens the source and
+looks. Nothing in this round changes that answer. What changes is that
+"looking" now sometimes means checking this file's own other citations
+before touching the source at all -- a real technique, not a new field and
+not a claim that ceiling is now mechanically derivable in general.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-06, in direct response to dipankarsarkar's
-rounds 12 through 23.
+rounds 12 through 24.
 """
 
 import json
