@@ -347,9 +347,88 @@ or that a source's true ceiling has been found) -- those stay human-checked
 judgment calls, same as verifiability always was. It only checks the
 correlations and the arithmetic that were silently unenforced.
 
+Round 23 (dipankarsarkar, 2026-09-06): three findings against round 22, all
+re-verified here independently before touching anything.
+
+First: round 22's docstring claimed citation and source_locator are "both
+present on every record in the file." False, checked directly against all
+63 records: source_locator is absent as a KEY (not present-and-null) on 38
+of them, including the same two named in round 22 as the mechanism's proof
+case (MONARCH-2026-dismech-agent-scope-overreach,
+OPENCODE-2026-orchestrator-silent-fallback). derive_source_structured()
+reads both fields with record.get(), which returns None on a missing key
+indistinguishable from an explicit null -- the same failure shape as the
+except-Exception-return -1 bug fixed elsewhere the same night in
+SYNTAX_AUDITOR.py's count_403_relay(): two different states (never
+recorded / recorded-and-empty) collapsed into one value. Harmless here only
+because derive_source_structured() already treats both the same way on
+purpose (no locator at all and an empty locator both mean "not
+structured") -- but the docstring's factual claim about the data was wrong
+regardless of whether the bug it enabled was harmless, and is corrected
+below.
+
+Second: round 22's "63/63 agreement" oversold its own evidentiary weight.
+Constant-False -- predict every record's source_structured is False, no
+computation at all -- already scores 62/63 (98.4%), since exactly one
+record (PALISADE-2026-robot-shutdown-resistance) is True. The derivation's
+real information content is one record, not sixty-three. Worse: condition
+A (repo host in citation) contributes nothing measurable once condition B
+is applied -- B alone (machine-readable extension found anywhere in
+source_locator) reproduces the stored value on all 63 records by itself,
+with or without A. All three numbers re-run here independently: baseline
+62/63, B-alone 63/63, A-and-B 63/63 -- A is along for the ride, not doing
+work.
+
+Third, the actual bug: B searches the ENTIRE source_locator string, not
+only the part that names the source.
+PALISADE-2026-robot-shutdown-resistance's source_locator is 422 characters
+-- the genuine path followed by round 16-18's own annotation prose about
+how that path was verified -- and contains six file-extension-shaped
+substrings across the whole string: the real logs/.../tags.json, plus
+src/figures/bar-chart.py (the scorer script, not a data source), tags.json
+again, and three .jsonl log filenames, five of the six appearing only after
+the first "--". It still lands on True today only because the genuine path
+also happens to sit in the untouched head, before any delimiter. A record
+whose real path came second, after prose that happened to mention an
+unrelated filename first, would currently pass on the strength of that
+incidental mention rather than on its actual citation. Checked across all
+25 located records: source_locator mean length 422 characters, 23 of 25
+longer than 120 characters -- most of this field is prose, not path, by
+volume.
+
+His fix, applied here verbatim: anchor the extension search to the head of
+source_locator, everything before the first ";" or "--", not the whole
+string. Re-ran against all 63 records with the anchored version: agreement
+unchanged, 63/63 -- none of the 25 located records name their real file
+only in the tail, so nothing that was correctly derived becomes wrong.
+What changes is what the check actually verifies: a citation naming its
+source in the part meant to name it, not a match anywhere prose happens to
+mention a filename.
+
+He also retracted his own round-19 claim in this same message: round 19's
+out-of-sample test (six records he had not seen when writing the rule) had
+no discriminating power either, for the same reason as this round's
+baseline point -- when the overwhelming majority of any sample shares one
+label, passing an out-of-sample check mostly confirms the majority class,
+not the rule being tested.
+
+Fixed: the machine-readable-extension regex now searches only
+re.split(r";|--", source_locator, maxsplit=1)[0] -- the head, not the
+full string. Docstring's false "both present on every record" claim is
+corrected above to state the true split (25 present, 38 absent as a key).
+His closing question -- does source_locator split into a path and a note
+structurally, or does the regex learn where the path ends -- is answered
+here the second way, same register as round 17's answer to a similar
+question about locator_ceiling: nothing in this dataset currently needs a
+real path/note structural split, so this round doesn't add schema the data
+doesn't yet justify. If a future source_locator ever puts its real path
+after a mention of an unrelated file, this anchoring stops being enough,
+and the honest fix at that point is the structural split, not a smarter
+regex.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
-Claude, 2026-09-01 through 09-05, in direct response to dipankarsarkar's
-rounds 12 through 18, and 20 through 22.
+Claude, 2026-09-01 through 09-06, in direct response to dipankarsarkar's
+rounds 12 through 23.
 """
 
 import json
@@ -381,6 +460,17 @@ LADDER = {"document": 0, "section": 1, "row": 2, "cell": 3, "field": 4}
 # section above for the forgery this closes and the 63/63 agreement check
 # performed against the pre-existing hand-typed values before this replaced
 # them.
+#
+# Round 23 (dipankarsarkar): the extension search below is anchored to the
+# HEAD of source_locator -- everything before the first ";" or "--" -- not
+# the whole string. Unanchored, it matched incidental file-extension-shaped
+# substrings inside annotation prose appended after a record's real path
+# (demonstrated on PALISADE-2026-robot-shutdown-resistance's 422-character
+# source_locator, which names six files across its full length, five of
+# them after the first "--" and none of them what the citation actually
+# points at). Anchoring changes nothing on today's 25 located records --
+# none of them name their real file only in the tail -- but stops trusting
+# a match anywhere prose happens to mention a filename.
 _REPO_HOST_RE = re.compile(
     r"github\.com|gitlab\.com|bitbucket\.org|huggingface\.co/datasets|"
     r"huggingface\.co/[^/\s]+/[^/\s]+/(blob|resolve)"
@@ -389,8 +479,9 @@ _MACHINE_READABLE_EXT_RE = re.compile(r"\.(json|jsonl|csv|tsv|yaml|yml|py)\b", r
 
 
 def derive_source_structured(citation, source_locator) -> bool:
+    head = re.split(r";|--", source_locator or "", maxsplit=1)[0]
     return bool(_REPO_HOST_RE.search(citation or "")) and bool(
-        _MACHINE_READABLE_EXT_RE.search(source_locator or "")
+        _MACHINE_READABLE_EXT_RE.search(head)
     )
 
 
@@ -425,7 +516,10 @@ def main() -> int:
             # a printed PDF table, not structured data. Computed independently of
             # locator_precision -- unlike locator_exhaustive, this doesn't need a
             # location to exist yet, only a citation and (if present) a
-            # source_locator, both present on every record in the file.
+            # source_locator. Round 23 correction: source_locator is absent
+            # as a key (not present-and-null) on 38 of the 63 records --
+            # .get() below returns None either way, which is what
+            # derive_source_structured() already expects.
             expected_ss = derive_source_structured(record.get("citation"), record.get("source_locator"))
             if ss != expected_ss:
                 violations.append(
