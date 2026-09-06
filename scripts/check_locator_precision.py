@@ -500,9 +500,65 @@ looks. Nothing in this round changes that answer. What changes is that
 before touching the source at all -- a real technique, not a new field and
 not a claim that ceiling is now mechanically derivable in general.
 
+Round 25 (dipankarsarkar, 2026-09-06, same day): the one located record
+this file has ever marked unverifiable, and the citation's own claim about
+it was wrong.
+
+ANTHROPIC-2026-multiagent-turf-war cited its 98% Mythos-5-truce-rate figure
+as confirmed "verbatim" in the blog post's section text, at locator_precision
+"section", while marking verifiability "unverifiable" -- a located record
+saying it could not be checked. Fetched the live page independently before
+touching anything: HTTP 200, 217,949 bytes, matching his count exactly.
+"98%" appears exactly twice in what the server sends, in neither case as
+part of the section's rendered prose: once as an <img alt="..."> string,
+once as the description field of that same image object in the page's
+content JSON. The caption a reader actually sees says something else
+entirely ("Across n=120 episodes per model, what proportion are settled by
+force, passivity, truce, or not settled"), no percentage in it. The
+section's own visible text was never carrying this number; the citation's
+"confirms ... verbatim" claim was false.
+
+Reproduced his three-way test on the current data before changing anything:
+verifiability="human-checked" passes, "unverifiable" (the shipped value)
+also passes, "mechanised" fails round 12's own invariant (section is not
+row-or-finer). Two of three pass, and the file's one check for this record
+had nothing that ruled out the wrong one of those two.
+
+Fixed two things. First, a new invariant: locator_precision is not None
+implies verifiability != "unverifiable" -- naming a specific location in a
+source and then saying that source can't be checked is a direct
+self-contradiction, independent of what precision rung the location sits
+at. Flags exactly the one record this applies to on the current 63.
+Second, the record itself: verifiability "unverifiable" -> "human-checked"
+(a human -- him, then independently this session -- actually opened the
+page and found where the number lives; it just isn't a mechanised
+row-or-finer citation in this file's existing sense, since it wasn't taken
+from the section's own addressable prose), and source_locator's text
+corrected to describe what is actually true -- the figure lives in a
+non-rendered image-description field, not the section's rendered content
+-- instead of repeating the false "verbatim" claim. locator_precision
+stays "section": the visible section still anchors the claim's context,
+and this round does not decide whether a JSON object's named field
+constitutes a finer addressable unit the way round 17's "field" rung did
+for structured data files -- he raised that possibility and declined to
+take it without confirmation, and this round leaves it declined for the
+same reason.
+
+His closing question -- is "finest addressable unit" a property of the
+rendered page or of the payload the server hands you -- gets the same
+answer round 16 already gave a structurally identical question about
+locator_ceiling: the latter, openly. verifiability in this file has never
+meant "visible to a reader"; it has meant "checked as far as anyone has
+looked," and the payload is what an actual check reaches, not what a
+browser chooses to paint. That principle already answers why this record
+is human-checked now rather than still unverifiable. It does not by
+itself answer whether the description field should be a new locator
+rung -- that is a question about this file's ladder, not about where
+verification happens, and stays open.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-06, in direct response to dipankarsarkar's
-rounds 12 through 24.
+rounds 12 through 25.
 """
 
 import json
@@ -615,6 +671,18 @@ def main() -> int:
             if at_least_row and v != "mechanised":
                 violations.append(
                     f"{rid}: locator_precision={lp!r} (row or finer) but verifiability={v!r} (expected 'mechanised')"
+                )
+
+            # Round 25 (dipankarsarkar): a located record cannot also be
+            # unverifiable. Pinning a locator_precision at all -- even
+            # "section", the coarsest non-null rung -- already means someone
+            # went and looked closely enough to name a specific place in the
+            # source. "unverifiable" on that same record contradicts its own
+            # locator_precision, not just the mechanised<->row rule above.
+            if lp is not None and v == "unverifiable":
+                violations.append(
+                    f"{rid}: locator_precision={lp!r} (a specific location was found) but "
+                    f"verifiability='unverifiable' -- if you can point at a location, you already looked"
                 )
 
             # Round 22: source_structured left this invariant. It no longer needs a
