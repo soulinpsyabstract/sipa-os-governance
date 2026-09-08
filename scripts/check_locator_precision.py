@@ -939,9 +939,56 @@ demonstration would produce. Hand-set Atlas email-redteam's
 locator_exhaustive to True against its new section ceiling -- caught by the
 generalized round-16 derivation. Restored both, clean.
 
+Round 32 (dipankarsarkar, 2026-09-08): reproduced his reconciliation of an
+apparent mismatch first -- his 38-unlocated count and an earlier 36 are the
+same file at different commits (13d8b21 vs 5f4c3fa, rounds 26-27's two
+Anthropic promotions in between), not a miscount on either side. Confirmed
+his controls against the round-28 enum check all give the exit codes he
+listed, unchanged since that round.
+
+His census: a double-quoted span of 40+ characters in summary or
+source_locator -- not any quote, a long one, because a short one can be
+typed without opening anything. Reproduced with a fresh script: 2 of the 30
+unlocated human-checked records carry one (OPENCLAW-2026-melbourne-gym-hack,
+OPENCODE-2026-orchestrator-silent-fallback -- the record fixed last round),
+0 of 5 unverifiable, and his "1 of 29 located" doesn't reproduce here -- the
+closest candidates on a located record are 13 and 8 characters (the AISI
+h3-heading anchor and one word from its summary), both well under 40.
+Flagging the mismatch rather than quietly matching his number; it doesn't
+touch what the finding is actually about.
+
+What the finding is about: MONARCH-2026-dismech-agent-scope-overreach was
+opened and read this same session, round 28, live GitHub issue, maintainer's
+reply quoted back to him in the reply thread verbatim. None of that quote
+went into the record. Its summary was 528 characters with zero double-quote
+characters in it, confirmed exactly. OPENCODE, corrected the same round for
+the same reason (verifiability was wrong on both), got the sentence found in
+its source written into the file. MONARCH didn't. Re-fetched the GitHub
+issue live before touching anything -- the maintainer's reply is still there
+verbatim, matches what was quoted back in round 28 to the character -- and
+added it to the record: "the curation-scanner agent eagerly picked this up
+and created PR #1803 before you had a chance to work on it yourself." The
+evidence that was already found now lives in the file, not only in this
+thread.
+
+His own calibration of how strong this is was taken as stated, not
+strengthened: a span is not derivable the way source_structured and
+locator_exhaustive are -- the checker cannot tell a real quote from an
+invented one, same limitation as source_locator text itself. Confirmed his
+inert-today claim directly: stripping every double-quote character from
+every summary and source_locator in the file, checker still exits 0. Not
+promoted to a hard gate this round -- 32 of the 35 unlocated records would
+fail one today for reasons that have nothing to do with whether they were
+actually checked, and turning an emerging habit into a requirement before
+enough records have it would fail real work, the same mistake a premature
+"field" rung would have made. Added an informational count instead, printed
+every run (3/35 now, up from 2/35 before MONARCH), the same way the
+mechanised percentage already is -- visible without being enforced, so the
+next round doesn't have to rediscover the number by hand.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-08, in direct response to dipankarsarkar's
-rounds 12 through 31.
+rounds 12 through 32.
 """
 
 import json
@@ -1268,6 +1315,27 @@ def main() -> int:
               f"found to equal its precision so far, not that the field is secretly redundant.")
     mech = verif_counts.get("mechanised", 0)
     print(f"mechanised: {mech}/{n} = {mech/n*100:.1f}%")
+
+    # Round 32 (dipankarsarkar): a double-quoted span of 40+ characters in
+    # summary or source_locator is what "someone opened the source and it
+    # matched" looks like written into the record itself, offline, falsifiable
+    # by any reader with ctrl-F -- unlike "human-checked" on its own, which the
+    # round-28 banana case showed the checker could not tell from an unverified
+    # guess. This is informational, not a gate: only 3 of the 35 unlocated
+    # records carry one so far, and not carrying one doesn't mean a record
+    # wasn't actually checked, only that the evidence wasn't quoted into it.
+    # Failing every unlocated record without a span would be wrong today, the
+    # same way promoting HTTP 200 to a locator rung would have been for a
+    # different reason. Tracked here so the count is visible every run instead
+    # of rediscovered by hand each round.
+    unlocated = [r for r in records if r["locator_precision"] is None]
+    span_re = re.compile(r'"([^"]{40,})"')
+    spans = sum(
+        1 for r in unlocated
+        if span_re.search(r.get("summary") or "") or span_re.search(r.get("source_locator") or "")
+    )
+    print(f"unlocated records carrying a 40+-char quoted span (informational, not a gate): "
+          f"{spans}/{len(unlocated)}")
     return 0
 
 
