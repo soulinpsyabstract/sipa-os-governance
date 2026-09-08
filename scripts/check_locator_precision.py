@@ -556,9 +556,61 @@ itself answer whether the description field should be a new locator
 rung -- that is a question about this file's ladder, not about where
 verification happens, and stays open.
 
+Round 26 (dipankarsarkar, 2026-09-08): round 25's anchor -- split on ";" or
+"--" -- was itself only partly anchored, and the metric used to check it
+(63/63 agreement) could not have caught that, because agreement never
+distinguishes a well-sized anchor from a no-op one on this data: only
+PALISADE-2026-robot-shutdown-resistance ever derives True, so any anchor
+that leaves PALISADE's real path in the head scores 63/63, including no
+anchor at all. He compared four candidate splits against a second metric --
+how many of the 25 located records the anchor actually cuts, i.e. how many
+have a head strictly shorter than the full string -- and that column, not
+agreement, is what separates a real anchor from a decorative one:
+
+  split rule              agreement    head == whole string
+  ;|--   (round 23)         63/63          7 of 25
+  ;|,|--  (proposed)         63/63          0 of 25
+  ;|--|. (period+space)      63/63          2 of 25
+  none at all (round 22)     63/63         25 of 25
+
+Reproduced independently before touching anything: exact match on both
+columns, all four rows. The 7 records where round 23's anchor was a no-op
+share one shape -- comma-and-period prose citations with no ";" or "--" at
+all ("arXiv:2412.04984v2, Table 1, row 'Oversight Subversion'"; "arXiv:...,
+p.5, Section 3.2 item 4 (...)"). Checked across all 25 located records:
+every one contains a comma; only 18 contain ";" or "--". Round 23's anchor
+was never sized to this file's actual citation style -- it was sized to the
+one record (PALISADE) that motivated writing it, which happens to use "--".
+
+This mattered for a reason beyond these 7: MONARCH-2026-dismech-agent-
+scope-overreach and OPENCODE-2026-orchestrator-silent-fallback -- the two
+repo-host records still waiting on a real source_locator, named as a held-
+out prediction test in round 23 -- are exactly the kind of record likely to
+get a comma-and-period locator when someone writes one ("issue #1800,
+comment 14, the maintainer's reply naming the scope check"), not a ";"- or
+"--"-delimited one. Round 23's anchor would have been inert on that string
+the moment it was written, reopening the round-22 hole on precisely the two
+records the prediction was about -- verified here by constructing that
+exact shape on a scratch copy and confirming it derives True unanchored,
+False anchored.
+
+Fix, applied verbatim: the split pattern is now r";|,|--" instead of
+r";|--" -- one more delimiter, chosen because this file's own citations
+already use it on 25 of 25, not new schema. Re-verified: 63/63 agreement
+unchanged, 0 of 25 now inert, PALISADE still derives True (its real path,
+logs/on_the_robot/stats_run/live_05022026/tags.json, sits before the first
+comma too -- the comma inside "(commit dcc38ab, 2026-02-11)" comes after
+the extension). Checked for the failure mode a wider delimiter could
+introduce -- a real file reference that itself contains a comma before the
+extension, which a comma-anchor would wrongly cut -- across all 25 located
+records: zero records flip derivation between the old and new anchor in
+either direction. Re-ran the round-18/22 BERKELEY forgery (still caught)
+and the round-23 tail-only-mention case (still passes clean) before
+committing.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
-Claude, 2026-09-01 through 09-06, in direct response to dipankarsarkar's
-rounds 12 through 25.
+Claude, 2026-09-01 through 09-08, in direct response to dipankarsarkar's
+rounds 12 through 26.
 """
 
 import json
@@ -609,7 +661,14 @@ _MACHINE_READABLE_EXT_RE = re.compile(r"\.(json|jsonl|csv|tsv|yaml|yml|py)\b", r
 
 
 def derive_source_structured(citation, source_locator) -> bool:
-    head = re.split(r";|--", source_locator or "", maxsplit=1)[0]
+    # Round 26 (dipankarsarkar): ";|--" alone left 7 of 25 located records with
+    # no delimiter present at all, so the "head" equaled the whole string on
+    # those -- unanchored, exactly the round-22 shape, just on comma-and-period
+    # prose citations instead of tail-appended annotations. Comma appears in
+    # all 25 of today's located records; ";" or "--" appear in only 18. Adding
+    # comma closes the gap: 0 of 25 inert, same 63/63 agreement, PALISADE still
+    # derives True (its real path sits before the first comma too).
+    head = re.split(r";|,|--", source_locator or "", maxsplit=1)[0]
     return bool(_REPO_HOST_RE.search(citation or "")) and bool(
         _MACHINE_READABLE_EXT_RE.search(head)
     )

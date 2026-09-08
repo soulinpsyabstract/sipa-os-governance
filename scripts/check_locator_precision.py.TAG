@@ -1,6 +1,6 @@
 FILE=check_locator_precision.py
-SHA256=23f80d26e5d61c71b7e3ba37cd93034d8388e31ddc3810e619b7c8480f52d23c
-SIZE=46955
+SHA256=e0cf94d6c6b4751dedd974adbf5dff7e804aa4e68216da79afecc3549e28cea8
+SIZE=50722
 DEVICE=SERVER
-TS=2026-09-06__21-11-24
+TS=2026-09-08__09-28-10
 check_locator_precision.py V(round17) 2026-09-04 · added LADDER rung 'field' below row (reachable only for structured-data sources), generalized mechanised<->row invariant to >=row, per dipankarsarkar round 17
