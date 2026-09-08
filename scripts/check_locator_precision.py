@@ -739,9 +739,85 @@ That doesn't scale to a rule by itself, but it's what the field is
 supposed to record, and it's what the fix above does for the one pair
 demonstrated.
 
+Round 29 (dipankarsarkar, 2026-09-08): reproduced round 28 first -- EXIT 0,
+n=63, same distribution he quoted. Then he re-ran the round-24 co-citation
+ceiling derivation against today's file instead of the round-16 state.
+Reproduced independently with a fresh script: it raises two flags on a naive
+run, not the one he reported --
+OPENAI-2025-atlas-resignation-email-redteam (ceiling None, co-cited section
+via the injection-detected-CONTRAST sibling on the openai.com URL that has
+answered 403 since round 27, still 403 today) and APOLLO-2024-sandbagging
+(ceiling row, co-cited cell via oversight-subversion on the same Table 1).
+The second one isn't a new bug: round 24 already looked at it and left it at
+row on purpose, because its record spans both a table cell and prose
+mechanism text that a single cell locator can't cover -- the same reason
+a record doesn't get promoted just because its citation matches a finer
+one. Once that already-adjudicated case is set aside, one flag remains,
+matching his count. Of the 36 null-precision records, 31 cite sources no
+other record cites (invisible to this method by construction) and 5 are
+co-citation-visible; this run flags one of the five. The other four were
+already resolved in earlier rounds. That's the bound: co-citation has now
+found everything it can find in this file, not "everything so far."
+
+Then he opened a primary source cold on a null/null/null record --
+AISI-2026-mythos5-supply-chain-backdoor, citing aisi.gov.uk and
+The Hacker News -- and read it for structure rather than running a script.
+Fetched it independently: HTTP 200, 41,426 bytes, matching his numbers
+exactly. 8 h3 tags in the markup, 7 carrying real section headings ("What
+happened" / "How we discovered the incident" / "What we found" / "Why this
+happened" / "Lessons for the future" / "What this means for people and
+businesses" / "Final reflections"), the 8th a share-widget caption, not
+content. None of the 8 carry an id attribute -- confirmed his "zero
+anchored headings" claim exactly, this page has no fragment to link to at
+all.
+
+His two content claims both check out, with one placement correction. The
+"distinct actions... not separate incidents... clustered into a few
+connected behaviours" language, and the 10-of-122/19-actions figures, sit
+inside "What we found" precisely as he said (measured 2,882 rendered chars
+for that section against his 2,863 -- same order of counting-method drift
+as the byte counts elsewhere in this exchange, not a discrepancy). The
+model-split sentence he quoted verbatim ("Almost all of this behaviour (17
+actions) came from a single model, Anthropic's Mythos 5, with 2 actions
+involving OpenAI's GPT-5.6-Sol with cyber classifiers... disabled") is real,
+but it lives in the lead paragraph under the page's h1, above "What
+happened" -- not inside "What we found" as the surrounding sentence implied.
+"What we found" does restate the same split in its own words ("17 of these
+cases came from Mythos 5, and 2 came from a single run involving GPT-5.6
+Sol"), just without the classifiers-disabled detail, so the fix below draws
+only on what's actually inside that one section rather than reaching into
+the lead paragraph for the extra nuance.
+
+Checked something before touching the fix: the record's own "model" field
+already read "Claude Mythos 5 (17 of 19 incidents in this test; OpenAI
+GPT-5.6 Sol responsible for the other 2)" -- the split he was pointing at
+was already correct in that field. What was wrong was the summary's
+"producing 19 separate real-world actions," which is the word AISI's own
+report explicitly rejects for these events. Fixed: summary corrected to
+"distinct actions" that "clustered into a few connected behaviours,"
+pointing at the model field for the split rather than re-typing it, dated
+and attributed inline per this file's own convention. Left the id/model
+value and the backdoor description alone -- both were already right.
+
+Located the record: locator_precision=locator_ceiling="section",
+locator_exhaustive=true, new source_locator naming the "What we found"
+heading and stating plainly that it's a text anchor, not a URL fragment,
+since the page has none. That answers his closing question: a heading with
+no id still clears the bar for a locator. The precision ladder tracks how
+narrowly a claim is pinned down inside a document a human can open and
+read -- document/section/row/cell/field -- not whether the html happens to
+expose a clickable fragment for it. A missing id changes how a reader finds
+the spot (search the heading text instead of following a link), not
+whether the spot exists or whether a human already found it. Saying that
+plainly in source_locator, per his own suggestion, is what keeps a later
+reader from assuming a fragment that isn't there. Re-ran the full checker
+after the fix (EXIT 0, section 8->9, located 27->28, null 36->35, exhaustive
+True 25->26) and a negative control (locator_exhaustive hand-flipped false
+on this record) -- caught, same message round 16 introduced.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-08, in direct response to dipankarsarkar's
-rounds 12 through 28.
+rounds 12 through 29.
 """
 
 import json

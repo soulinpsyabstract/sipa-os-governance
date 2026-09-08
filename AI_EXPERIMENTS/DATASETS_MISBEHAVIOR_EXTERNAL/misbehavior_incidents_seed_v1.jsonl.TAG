@@ -1,6 +1,6 @@
 FILE=misbehavior_incidents_seed_v1.jsonl
-SHA256=2f5931cf16212cd4da91d6e2cc4e9ba42c9b915641d45c7ae55386df509bcaec
-SIZE=97411
+SHA256=254b53f52e68a06000e38dfad6ccd384a31dac1308ae3407e181b733f5119651
+SIZE=98135
 DEVICE=SERVER
-TS=2026-09-08__13-40-22
+TS=2026-09-08__14-34-19
 misbehavior_incidents_seed_v1.jsonl 2026-09-04 · PALISADE-2026-robot-shutdown-resistance promoted document/section/row->field: tags.json is structured data (flat dict, list-valued tags), 3/10 trials carry 2 tags simultaneously — real sub-row structure independently verified, per dipankarsarkar round 17
