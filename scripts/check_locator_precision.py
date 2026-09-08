@@ -873,9 +873,75 @@ to, applied to the gap he found: before this round, no commit could fail on
 the bug the anchor exists to prevent; now one specific commit (this one,
 reverted) does.
 
+Round 31 (dipankarsarkar, 2026-09-08): independently confirmed the 403 --
+openai.com/index/hardening-atlas-against-prompt-injection/ returns 403 here
+too (9,821-byte block page by content-length, in the same range as his
+10,055 and my own earlier 9,842 -- a live challenge page, not a fixed file,
+drifts by request the same way the AISI byte counts have all round), and so
+does the Wayback copy (302 to a snapshot URL, which itself 403s). AISI still
+200 at exactly 41,426 bytes. None of that is new; his actual point is that a
+403 blocks re-verifying a page, not knowing what it affords, because a
+sibling record already answered that question by citing the same page.
+
+Reproduced his structural claim with a fresh script and got the wrong
+numbers on the first pass: 11 co-cited sources, 9 agree, 2 disagree, not his
+10/8/2. Own bug, found before reporting it: alphaxiv.org/overview/2412.04984
+and arxiv.org/abs/2412.04984 are the same paper under two hosts, and my
+extraction treated them as different sources, splitting APOLLO-2024-
+sandbagging's citation (alphaxiv) from its two CONTRAST siblings' citations
+of the identical paper (arxiv.org) into separate groups. Canonicalized both
+to one `arxiv:<id>` key and got his exact numbers: 10 co-cited sources, 8
+agree, 2 disagree, the same two he named.
+
+His question -- is locator_ceiling a fact about the document or about the
+claim -- has an answer already on record: round 16 defined it as "what the
+SOURCE affords, a fact about the source independent of how far anyone has
+pinned it so far." APOLLO-2024-sandbagging's round-24 ceiling of row, next
+to its two siblings' independently-earned cell on the identical table, was
+this file quietly reversing that definition without saying so -- capping a
+source-level field to express something about one record's claim shape
+instead. Fixed the actual inconsistency, not just the symptom: sandbagging's
+locator_ceiling raised row -> cell (the source affords cell, demonstrated by
+its own siblings), locator_precision stays row (this record's claim spans
+a cell and prose together, so cell alone doesn't cover it), locator_exhaustive
+now correctly False -- an honest gap, not a hidden one, with a note added to
+the summary explaining why precision can't just follow ceiling up here the
+way its siblings' did.
+
+The Atlas pair needed the opposite move, also per his read: locator_ceiling
+recovered from OPENAI-2025-atlas-resignation-injection-detected-CONTRAST
+(section, "step 5 of the demo walkthrough") onto OPENAI-2025-atlas-
+resignation-email-redteam, at zero fetch cost -- both records cite the exact
+same page, and CONTRAST's own citation already establishes that page is
+addressable at section granularity. locator_precision stays null (nobody has
+found which section covers email-redteam's own scenario specifically, and
+the 403 forecloses checking directly right now), locator_exhaustive false.
+
+This forced a real change, not a patch: the old rule required
+locator_precision / locator_ceiling / locator_exhaustive to be None
+together or none of them, which assumed ceiling could never be known before
+precision was -- exactly the assumption his question breaks. Rewrote it:
+locator_ceiling is now the actual floor. None there forces the other two to
+None (nothing about the source is known at all). Once it's set,
+locator_exhaustive is `locator_precision == locator_ceiling`, computed the
+same way whether or not precision itself is still null -- `None == "section"`
+is `False` in Python, which is exactly the honest value: not exhaustive,
+because the gap is still open.
+
+Then built the check he said wasn't running: group every record by cited
+source (same canonicalized extraction, arXiv/alphaxiv merged) and require
+every co-citer's locator_ceiling to agree wherever more than one of them has
+a non-None value -- a None ceiling in the group stays exempt, since "not yet
+inferred" isn't a conflict with a known value, only two different known
+values are. Verified both directions before committing: reverted
+sandbagging's ceiling back to row -- caught, same violation message his own
+demonstration would produce. Hand-set Atlas email-redteam's
+locator_exhaustive to True against its new section ceiling -- caught by the
+generalized round-16 derivation. Restored both, clean.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-08, in direct response to dipankarsarkar's
-rounds 12 through 30.
+rounds 12 through 31.
 """
 
 import json
@@ -942,6 +1008,34 @@ def derive_source_structured(citation, source_locator) -> bool:
     return bool(_REPO_HOST_RE.search(citation or "")) and bool(
         _MACHINE_READABLE_EXT_RE.search(head)
     )
+
+
+_ARXIV_ID_RE = re.compile(r"arxiv\.org/(?:abs|pdf)/([\d.]+)", re.IGNORECASE)
+_ALPHAXIV_ID_RE = re.compile(r"alphaxiv\.org/overview/([\d.]+)", re.IGNORECASE)
+_URL_RE = re.compile(r"https?://([^\s)]+)")
+
+
+def extract_sources(citation):
+    # Round 31 (dipankarsarkar): grouping records by cited source to check
+    # locator_ceiling agreement. alphaxiv.org/overview/<id> and
+    # arxiv.org/abs|pdf/<id> are the same paper under two hosts -- without
+    # canonicalizing them to one key, APOLLO-2024-sandbagging's alphaxiv
+    # citation and its two CONTRAST siblings' arxiv.org citations of the
+    # identical paper (2412.04984) land in separate groups and the
+    # disagreement this check exists to catch goes invisible.
+    if not citation:
+        return set()
+    sources = set()
+    for part in re.split(r";", citation):
+        part = part.strip()
+        m = _ARXIV_ID_RE.search(part) or _ALPHAXIV_ID_RE.search(part)
+        if m:
+            sources.add(f"arxiv:{m.group(1)}")
+            continue
+        m2 = _URL_RE.search(part)
+        if m2:
+            sources.add(m2.group(1).rstrip("/"))
+    return sources
 
 
 def main() -> int:
@@ -1028,20 +1122,37 @@ def main() -> int:
             # Round 22: source_structured left this invariant. It no longer needs a
             # location to exist -- structuredness is a fact about citation and
             # source_locator strings, checked above unconditionally, whether or not
-            # a locator has been pinned yet. The three fields that describe *how
-            # precisely something has been located* still share one null state.
-            none_states = (lp is None, lc is None, le is None)
-            if any(none_states) and not all(none_states):
-                violations.append(
-                    f"{rid}: locator_precision={lp!r} / locator_ceiling={lc!r} / locator_exhaustive={le!r} "
-                    f"-- all three must be None together, or none of them "
-                    f"(round 15+16's invariant; source_structured left this group in round 22)"
-                )
+            # a locator has been pinned yet.
+            #
+            # Round 31 (dipankarsarkar): the old rule ("all three None together, or
+            # none of them") assumed locator_ceiling could never be known before
+            # locator_precision was. That's false -- ceiling is a fact about the
+            # SOURCE, so it can be recovered from a co-cited sibling that already
+            # reached it, with this record's own precision still honestly null
+            # because nobody has located this record's own claim in that source
+            # yet. Only locator_ceiling is the real floor now: if it's None,
+            # neither precision nor exhaustive can be anything but None either
+            # (nothing about the source is known at all). If it's known,
+            # exhaustive is just `precision == ceiling`, computed the same way
+            # whether or not precision itself is still null (None == "section"
+            # is False in Python, which is exactly the honest answer: not
+            # exhaustive, because the gap hasn't been closed).
+            if lc is None:
+                if lp is not None or le is not None:
+                    violations.append(
+                        f"{rid}: locator_ceiling=None but locator_precision={lp!r} / "
+                        f"locator_exhaustive={le!r} -- ceiling is the floor; neither of "
+                        f"the others can be known before it is (round 31)"
+                    )
+                continue
+
+            if lc not in LADDER:
+                violations.append(f"{rid}: locator_ceiling={lc!r} not on the known ladder")
                 continue
 
             if lp is not None:
-                if lp not in LADDER or lc not in LADDER:
-                    violations.append(f"{rid}: locator_precision={lp!r} / locator_ceiling={lc!r} not on the known ladder")
+                if lp not in LADDER:
+                    violations.append(f"{rid}: locator_precision={lp!r} not on the known ladder")
                     continue
                 if LADDER[lp] > LADDER[lc]:
                     violations.append(
@@ -1063,12 +1174,46 @@ def main() -> int:
                         f"source_structured={ss!r} -- 'field' requires a verified structured-data source "
                         f"(round 18: this was prose, not enforced, until now)"
                     )
-                expected_le = (lp == lc)
-                if le != expected_le:
-                    violations.append(
-                        f"{rid}: locator_exhaustive={le!r} but locator_precision==locator_ceiling is "
-                        f"{expected_le} -- locator_exhaustive must be derived, not hand-typed (round 16)"
-                    )
+
+            expected_le = (lp is not None and lp == lc)
+            if le != expected_le:
+                violations.append(
+                    f"{rid}: locator_exhaustive={le!r} but expected {expected_le!r} from "
+                    f"locator_precision={lp!r} vs locator_ceiling={lc!r} -- locator_exhaustive "
+                    f"must be derived, not hand-typed (round 16, generalized round 31 for a "
+                    f"known ceiling with a still-null precision)"
+                )
+
+    # Round 31 (dipankarsarkar): locator_ceiling is defined (round 16) as a
+    # fact about the SOURCE, not about this record's own investigation --
+    # so any two records citing the same source must carry the same
+    # ceiling. This was demonstrated by hand, not run: grouping all records
+    # by cited source and comparing locator_ceiling within each group.
+    # Records still at locator_ceiling=None inside a group are exempt --
+    # None means "not yet inferred," not a conflicting value -- this check
+    # is only about two DIFFERENT known ceilings on the same source, which
+    # is what round 24's APOLLO-2024-sandbagging (row, while its two
+    # siblings independently earned cell) and the OpenAI Atlas pair (None
+    # on one record, section on its sibling, before this round's fix)
+    # actually were.
+    source_to_ids = {}
+    for r in records:
+        for s in extract_sources(r.get("citation")):
+            source_to_ids.setdefault(s, []).append(r["id"])
+    rec_by_id = {r["id"]: r for r in records}
+    for source, ids in source_to_ids.items():
+        if len(set(ids)) < 2:
+            continue
+        known_ceilings = {
+            rec_by_id[i]["locator_ceiling"] for i in ids if rec_by_id[i]["locator_ceiling"] is not None
+        }
+        if len(known_ceilings) > 1:
+            violations.append(
+                f"co-cited source {source!r} has disagreeing locator_ceiling values "
+                f"{sorted(known_ceilings)} across {sorted(set(ids))} -- ceiling is a fact "
+                f"about the source (round 16), so co-citers of the same source cannot "
+                f"legitimately disagree (round 31)"
+            )
 
     # Round 30 (dipankarsarkar): every anchor rule tried on the real 64 records
     # (unanchored, round-22 ";|--", round-26 ";|,|--") derives the same 1/64
