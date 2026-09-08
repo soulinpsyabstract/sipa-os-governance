@@ -669,9 +669,79 @@ a source," and neither does this round. Left as documented, verified,
 working evidence toward that question, not as a rule enforced going
 forward.
 
+Round 28 (dipankarsarkar, 2026-09-08): round 25 closed one direction --
+a located record claiming unverifiable. The other direction was wide open:
+36 unlocated records, and verifiability on them had no check at all.
+
+Demonstrated, not argued: swap MONARCH-2026-dismech-agent-scope-overreach
+and OPENCODE-2026-orchestrator-silent-fallback's verifiability values --
+exit 0. Set either one to the literal string "banana" -- exit 0. Invert
+every one of the 36 unlocated records' verifiability at once -- exit 0,
+with the summary line printing the inverted distribution and calling it
+OK. Round 25's invariant only fires when locator_precision is not None; on
+the 36 records with no locator, verifiability was the last fully hand-
+typed field in this file, checked against nothing.
+
+He named the tightest pair on purpose: MONARCH and OPENCODE cite the same
+kind of source (a numbered GitHub issue), fetched both live and got HTTP
+200 on both, near-identical byte counts (303,123 and 276,080 here,
+matching his 303,119 and 276,078 within the normal drift of a live
+dynamic page) -- "neither is less checkable than the other," his words,
+verified rather than taken on trust.
+
+So checked which one was actually right, not which check would catch the
+disagreement. Fetched both issues directly. MONARCH's page carries the
+real conversation in its own data (both a GitHub GraphQL-shaped JSON island
+and the rendered thread): "Apologies on Chris's behalf! The curation-
+scanner agent eagerly picked this up and created PR #1803 before you had
+a chance to work on it yourself... this was meant to be yours to tackle as
+a first dismech entry, and the agent deprived you of that learning
+opportunity" -- matches this record's summary exactly. OPENCODE's page
+carries its full issue body the same way, both as ld+json articleBody and
+rendered HTML: "the harness allowed an invalid subagent routing attempt to
+create child-session artifacts without a usable model/stream, and the
+parent agent then continued doing work directly" -- matches that record's
+summary exactly too. Both genuinely checkable. Only one was marked
+human-checked.
+
+Fixed: OPENCODE-2026-orchestrator-silent-fallback verifiability corrected
+unverifiable -> human-checked, with a note on the record itself pointing at
+what was actually found. This resolves the specific pair he used to
+demonstrate the gap. It does not touch the other 35 unlocated records,
+each of which still needs the same treatment -- opening the actual source
+and checking, one at a time -- before its verifiability value means
+anything more than "someone typed a string here."
+
+Added one narrow, unconditional check for the gap itself: verifiability
+must be one of mechanised / human-checked / unverifiable, on every record,
+located or not. This does not decide which of the two real values applies
+to any given unlocated record -- that still requires a human to open the
+source, and nothing here shortcuts it. It only removes "banana," and
+anything else that was never a real value, from silently passing. Re-ran
+the round-25 control (a located record set to unverifiable) and the new
+banana case against the fix: both now caught, both correctly.
+
+His closing question -- should "fetched this citation and got HTTP 200"
+become a rung verifiability can reach on its own, below section, needing
+no locator -- is not taken here. Not because the idea is wrong, but because
+it would be a category substitution: HTTP 200 means a URL currently
+resolves, not that anyone read what's there or that what's there matches
+this record's claims -- exactly the gap that made MONARCH and OPENCODE
+swappable with each other and with "banana" in the first place, moved one
+layer over instead of closed. It would also make this checker's result
+depend on live network state for the first time, on infrastructure already
+shown this round to answer 403 to a direct fetch (openai.com, round 27) --
+a check that certifies less than "human-checked" already means, while
+costing this file its only offline-reproducible property. What actually
+closed the gap on this pair was opening both sources and reading them, the
+same thing "human-checked" has meant since before this exchange started.
+That doesn't scale to a rule by itself, but it's what the field is
+supposed to record, and it's what the fix above does for the one pair
+demonstrated.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-08, in direct response to dipankarsarkar's
-rounds 12 through 27.
+rounds 12 through 28.
 """
 
 import json
@@ -747,6 +817,17 @@ def main() -> int:
             records.append(record)
             rid = record.get("id", f"<line {lineno}>")
             v = record.get("verifiability")
+
+            # Round 28 (dipankarsarkar): verifiability had no enum check at all --
+            # any string, including "banana", passed on every unlocated record.
+            # This doesn't decide which of the two real values applies where (that
+            # still needs a human to open the source), it only stops nonsense
+            # values from passing silently.
+            if v not in ("mechanised", "human-checked", "unverifiable"):
+                violations.append(
+                    f"{rid}: verifiability={v!r} is not one of mechanised/human-checked/unverifiable"
+                )
+                continue
 
             required = ("locator_precision", "locator_ceiling", "locator_exhaustive", "source_structured")
             missing = [k for k in required if k not in record]
