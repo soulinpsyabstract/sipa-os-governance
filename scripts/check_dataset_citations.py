@@ -120,6 +120,13 @@ def main() -> int:
                     record = json.loads(line)
                 except json.JSONDecodeError:
                     continue
+                if record.get("fixture") is True:
+                    # Round 30: synthetic regression fixtures (e.g.
+                    # locator_anchor_fixtures_v1.jsonl) cite deliberately
+                    # fake URLs by design -- they exist to exercise code,
+                    # not to document anything real, so liveness doesn't
+                    # apply to them the way it does to an actual incident.
+                    continue
                 citation = record.get("citation")
                 if citation is None:
                     continue

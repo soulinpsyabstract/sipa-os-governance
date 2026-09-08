@@ -815,9 +815,67 @@ after the fix (EXIT 0, section 8->9, located 27->28, null 36->35, exhaustive
 True 25->26) and a negative control (locator_exhaustive hand-flipped false
 on this record) -- caught, same message round 16 introduced.
 
+Round 30 (dipankarsarkar, 2026-09-08): pulled fresh at n=64, 29 located --
+reproduced exactly. Then he ran three different anchor rules for
+derive_source_structured() -- no split at all, round 22's ";|--", round 26's
+";|,|--" -- against all 64 records. All three derive True on exactly 1 record
+and agree with the stored value 64/64. Reproduced independently, same numbers.
+The one record that exercises the regex at all is PALISADE-2026-robot-
+shutdown-resistance: its real extension (".json") sits 16 characters before
+the first comma in its source_locator, which is the entire evidential basis
+for two rounds of anchor changes -- any split whose first delimiter lands
+past that one point scores 64/64 regardless of where it splits. He checked
+the sharper version of that claim directly: 0 of the 29 located records put
+an extension ONLY in the tail an anchor discards (checked this myself with a
+fixed version of my own first attempt at the same check, which searched for
+an extension anywhere in the tail rather than only-in-the-tail and wrongly
+flagged PALISADE itself, since its source_locator also happens to mention
+src/figures/bar-chart.py later on, past the anchor, alongside the real .json
+in the head -- a second occurrence, not a counterexample). Corrected before
+it went anywhere near a conclusion.
+
+His sharpest point: the two constructed cases that would actually exercise
+this code -- a config.yaml/results.csv-shaped record with the extension only
+in a discarded tail, and last round's dismech#1800/oh-my-openagent#5604 pair
+-- were both built and verified by hand in prior rounds, and neither was ever
+committed anywhere this checker reads. Confirmed: grepped the repo history
+and the current tree, no such fixture exists. Also confirmed his second
+finding independently: misbehavior_synthetic_contrast_v1.jsonl (7 records,
+committed 2026-09-02) has no citation or source_locator field on any record,
+and DATASET in this file has only ever pointed at the seed -- this checker
+has never read that file. Not a new bug in that file; it was never meant to
+exercise this invariant, built instead as behavioral-contrast material for a
+different purpose entirely (see its own commit message). But it's real
+evidence of the pattern he's naming: this project already has one precedent
+for keeping synthetic material in a file separate from the seed rather than
+merged into it, and that precedent was set for the same reason his question
+answers itself in -- these aren't incidents.
+
+Answered his closing question by building it: a fixtures file beside the
+seed, not inside it. The seed is real incidents with real citations; four
+made-up "config.yaml, results.csv"-shaped records in it would corrupt every
+statistic this checker prints (verifiability counts, mechanised%, the
+n this docstring keeps citing) with entries that exist to test code, not to
+document anything that happened. locator_anchor_fixtures_v1.jsonl holds four
+records -- extension-only-in-tail (expects False), extension-in-head (expects
+True), no extension anywhere (expects False), extension present but no repo
+host in the citation (expects False, checks the AND independently of the
+anchor) -- each with an explicit `expected_source_structured` and marked
+`"fixture": true` so nothing downstream mistakes one for an incident. main()
+now loads this file unconditionally and fails loudly if
+derive_source_structured() disagrees with any of the four. Proved it isn't
+decorative before committing it: reverted the anchor to unanchored (`head =
+source_locator or ""`, the exact round-22 bug) and reran -- FAIL, caught on
+FIXTURE-tail-extension-discarded, the one case that distinguishes the two.
+Restored the real anchor, reran clean. This is the same proof-of-falsifiability
+standard round 28's banana case and round 16's negative controls were held
+to, applied to the gap he found: before this round, no commit could fail on
+the bug the anchor exists to prevent; now one specific commit (this one,
+reverted) does.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-08, in direct response to dipankarsarkar's
-rounds 12 through 29.
+rounds 12 through 30.
 """
 
 import json
@@ -828,6 +886,11 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATASET = REPO_ROOT / "AI_EXPERIMENTS" / "DATASETS_MISBEHAVIOR_EXTERNAL" / "misbehavior_incidents_seed_v1.jsonl"
+# Round 30 (dipankarsarkar): a fixture file loaded BESIDE the seed, not merged
+# into it. These are synthetic regression cases for derive_source_structured()
+# alone, not real incidents -- see the round-30 docstring section for why they
+# don't belong in the seed itself.
+ANCHOR_FIXTURES = REPO_ROOT / "AI_EXPERIMENTS" / "DATASETS_MISBEHAVIOR_EXTERNAL" / "locator_anchor_fixtures_v1.jsonl"
 
 # Round 17 added "field", the first rung above "row" this ladder has ever had.
 # It is reachable only where the underlying SOURCE is structured data (JSON/CSV)
@@ -1006,6 +1069,28 @@ def main() -> int:
                         f"{rid}: locator_exhaustive={le!r} but locator_precision==locator_ceiling is "
                         f"{expected_le} -- locator_exhaustive must be derived, not hand-typed (round 16)"
                     )
+
+    # Round 30 (dipankarsarkar): every anchor rule tried on the real 64 records
+    # (unanchored, round-22 ";|--", round-26 ";|,|--") derives the same 1/64
+    # and agrees 64/64 -- the seed's own data cannot fail on the bug this
+    # anchor exists to prevent, because exactly one located record has an
+    # extension anywhere in source_locator at all, and it sits in the head
+    # under every anchor tried. These four fixtures are what makes a
+    # regression here actually fail loudly instead of passing silently.
+    with open(ANCHOR_FIXTURES, encoding="utf-8") as f:
+        for lineno, line in enumerate(f, 1):
+            line = line.strip()
+            if not line:
+                continue
+            fixture = json.loads(line)
+            fid = fixture.get("id", f"<fixture line {lineno}>")
+            got = derive_source_structured(fixture.get("citation"), fixture.get("source_locator"))
+            expected = fixture["expected_source_structured"]
+            if got != expected:
+                violations.append(
+                    f"{fid}: derive_source_structured() returned {got!r}, fixture expects {expected!r} "
+                    f"({fixture.get('purpose', 'no purpose given')})"
+                )
 
     if violations:
         print(f"FAIL: {len(violations)} invariant violation(s) in {DATASET.relative_to(REPO_ROOT)}")
