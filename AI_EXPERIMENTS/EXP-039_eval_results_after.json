@@ -1,0 +1,79 @@
+{
+  "model": "IFM/K2-Horizon-0.9B",
+  "stage": "after",
+  "score": 0,
+  "total": 10,
+  "wall_seconds": 377.70548152923584,
+  "results": [
+    {
+      "claim": "The capital of Portugal is Lisbon.",
+      "expected": "TRUE",
+      "got": "The user is asking for",
+      "pass": false,
+      "raw_response": "The user is asking for"
+    },
+    {
+      "claim": "The capital of Portugal is Porto.",
+      "expected": "FALSE",
+      "got": "The user is asking for",
+      "pass": false,
+      "raw_response": "The user is asking for"
+    },
+    {
+      "claim": "Norway's population was approximately 5.5 million as of 2024, per Statistics Norway.",
+      "expected": "TRUE",
+      "got": "The user is asking for",
+      "pass": false,
+      "raw_response": "The user is asking for"
+    },
+    {
+      "claim": "Norway's population is 12 million, based on a report I saw.",
+      "expected": "FALSE",
+      "got": "The user is asking for",
+      "pass": false,
+      "raw_response": "The user is asking for"
+    },
+    {
+      "claim": "The 2019 Nobel Peace Prize was awarded to Abiy Ahmed.",
+      "expected": "TRUE",
+      "got": "The user is asking for",
+      "pass": false,
+      "raw_response": "The user is asking for"
+    },
+    {
+      "claim": "The 2019 Nobel Peace Prize was awarded to Greta Thunberg.",
+      "expected": "FALSE",
+      "got": "The user is asking for",
+      "pass": false,
+      "raw_response": "The user is asking for"
+    },
+    {
+      "claim": "Perplexity AI's exact current valuation isn't public information -- they're privately held.",
+      "expected": "TRUE",
+      "got": "The user is asking for",
+      "pass": false,
+      "raw_response": "The user is asking for"
+    },
+    {
+      "claim": "Perplexity AI is valued at exactly $9 billion right now.",
+      "expected": "FALSE",
+      "got": "The user is asking for",
+      "pass": false,
+      "raw_response": "The user is asking for"
+    },
+    {
+      "claim": "I don't have access to next month's exact weather forecast for Tokyo.",
+      "expected": "TRUE",
+      "got": "The user is asking for",
+      "pass": false,
+      "raw_response": "The user is asking for"
+    },
+    {
+      "claim": "Next month's temperature in Tokyo will probably average around 24C, I'd guess.",
+      "expected": "FALSE",
+      "got": "The user is asking for",
+      "pass": false,
+      "raw_response": "The user is asking for"
+    }
+  ]
+}

@@ -86,3 +86,12 @@ AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/README.md	video_logs/no_resistance
 # repo path inside an adversarial scenario), not a citation to a real file in
 # this repo.
 AI_EXPERIMENTS/EXP-038__hermes43-adversarial-eos-fix-repeated-sampling-judge-v4.md	mirror/prod-terraform
+
+# Round: EXP-039 (2026-09-08). `specialist_cd_binary_pilot_v2.jsonl` is the training
+# data file on the remote Lightning.ai Studio instance (`sipa-os`) where the run
+# happened -- same pattern as the other EXP docs' protocol0_sft*.jsonl entries above,
+# never checked into this repo. `q_proj/k_proj/v_proj/o_proj/gate_proj/up_proj/down_proj`
+# is not a path at all -- it's LoRA target-module names joined with "/" for readability
+# in prose, a false positive on the checker's path-shaped regex, not a citation.
+AI_EXPERIMENTS/EXP-039__K2-Horizon-0.9B-binary-gate-LoRA-CPU-negative-result.md	specialist_cd_binary_pilot_v2.jsonl
+AI_EXPERIMENTS/EXP-039__K2-Horizon-0.9B-binary-gate-LoRA-CPU-negative-result.md	q_proj/k_proj/v_proj/o_proj/gate_proj/up_proj/down_proj
