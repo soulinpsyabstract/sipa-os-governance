@@ -608,9 +608,70 @@ either direction. Re-ran the round-18/22 BERKELEY forgery (still caught)
 and the round-23 tail-only-mention case (still passes clean) before
 committing.
 
+Round 27 (dipankarsarkar, 2026-09-08): a real data fix, not a checker bug --
+and an independent answer to round 24's open question about deriving
+locator_ceiling, offered without demanding it settle anything.
+
+ANTHROPIC-2026-opus47-sandbox-ignore and ANTHROPIC-2026-mythos5-self-
+deceived were carried as unlocated since round 21, on the assumption their
+source lacked the structure their CONTRAST sibling (prototype-stopped)
+had already been promoted to "section" against. Wrong assumption: their
+citation field named only the Register piece, not the Anthropic primary
+post their sibling cites and quotes from. Checked directly, both fetched
+live: the Anthropic post's three h3 anchors (incident-1/2/3) render 1,426 /
+3,662 / (incident-3 truncated by a crude end-boundary in my own check,
+not material here) characters, and every quote each of these two records
+carries sits inside its own anchor -- five for five. The Register piece,
+fetched separately, is 10,778 rendered characters and contains none of
+those five quotes at all; it links the Anthropic post, it does not
+reproduce it. The two records were never unlocated because their source
+lacked structure -- they were pointed at a document that never contained
+what they quote.
+
+Fixed: citation for both now includes the Anthropic primary post (matching
+the sibling's citation exactly), source_locator names the correct anchor
+(incident-1 for opus47, incident-2 for mythos5) with the verified quotes,
+and both promoted to locator_precision=locator_ceiling="section",
+locator_exhaustive=true -- the same rung their sibling already holds, on
+the same source. The sibling's own source_locator text, which had called
+the other two "still unlocated as of this correction," is corrected in
+place to reflect that they now are.
+
+Separately, he answered round 24's closing question -- is locator_ceiling
+derivable from strings the file already carries, the way source_structured
+was -- with a real candidate, offered as exploratory rather than settling
+the claim-scoped/source-scoped fork round 24 left open: a record's ceiling
+is at least as fine as the finest precision reached by any other record
+citing a shared source. Reproduced independently against the round-16
+baseline (ceiling defaulting to precision everywhere): this rule alone
+flags exactly six records, matching his list exactly -- the same two
+APOLLO records promoted in round 24 (row -> cell, found there by comparing
+prose descriptions of the same table), APOLLO-2024-sandbagging (row -> cell,
+correctly reproduced by the rule but left excluded here, same reasoning as
+round 24: its locator spans three sources at once, not a clean single-
+source citation), and the two Anthropic records fixed in this round
+(None -> section). A sixth, OPENAI-2025-atlas-resignation-email-redteam,
+the rule also flags (None -> section, co-citing the same openai.com post
+as its own CONTRAST sibling) -- left untouched here. Its source returned
+HTTP 403 to a direct fetch, 9,842 bytes of block page, reproduced
+independently and identically to what he reported; there is no primary-
+source confirmation behind this one yet, only the mechanical rule, and
+this file's standard has been to promote on a source actually opened and
+checked, not on a formula alone. Marked as a pending, mechanically-flagged
+candidate, not applied.
+
+This derivation is not implemented as a new automatic invariant in this
+round. It reproduced six real judgment calls, four already made by hand
+and confirmed correct, using nothing but citation strings already in the
+file -- a genuinely strong result -- but he did not claim it resolves
+round 24's fork between "ceiling scoped to a claim" and "ceiling scoped to
+a source," and neither does this round. Left as documented, verified,
+working evidence toward that question, not as a rule enforced going
+forward.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-08, in direct response to dipankarsarkar's
-rounds 12 through 26.
+rounds 12 through 27.
 """
 
 import json
