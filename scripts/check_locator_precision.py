@@ -1023,9 +1023,57 @@ Re-ran all three of his controls against the fixed printer -- same exit
 codes, same violation messages, nothing about the correctness invariants
 changed, only what gets printed once they've already passed.
 
+Round 34 (dipankarsarkar, 2026-09-08): confirmed the round-30 fixtures file's
+provenance first -- blob 6c05f8c0, 1735 bytes, byte-identical across 113b55b,
+38924af and d9110f8, sha256 matching its own sidecar. Reproduced his three
+anchor reversions against those four fixtures exactly: no split at all
+caught (FIXTURE-tail-extension-discarded), the repo-host AND collapsed to
+True caught (FIXTURE-extension-no-repo-host), and reverting the comma
+specifically -- back to round 22's ";|--" -- passes clean, exit 0, nothing
+fires.
+
+That third result is real: none of the four fixtures exercise the shape
+round 26 was written to fix. FIXTURE-tail-extension-discarded's own first
+delimiter is "--" (its source_locator reads "...directory -- config.yaml,
+results.csv..."), so the pre-round-26 anchor already discards its tail
+correctly on its own -- the fixture passes under either anchor and proves
+nothing about the comma rung specifically. Added a fifth fixture with comma
+as the ONLY delimiter present, extension in the comma-discarded tail --
+exactly round 26's own description of "7 of 25 located records" scaled up.
+Verified his full matrix: 4 fixtures/current anchor exit 0, 4/round-22-anchor
+exit 0 (the gap), 5/current anchor exit 0 (no false positive from the new
+fixture), 5/round-22-anchor exit 1, caught.
+
+Then went further on his own closing question rather than just answering
+it. Reproduced his co-citation-style census on the anchor's own delimiters
+across all 64 records: comma is present in 29/29 located records and is the
+first delimiter on 28 of them; "--" is first on the remaining one; ";"
+appears anywhere in only 8 and is first in zero. Dropping ";" or "--"
+individually from the anchor flips zero records today; dropping the comma
+alone doesn't flip any either (0 flips) but does expose 7 records to a
+latent risk they don't currently trigger (head==whole jumps 0/29 -> 7/29) --
+the same shape the fifth fixture now guards. His question -- was ";"
+inherited from round 22 and never tested, or did a real citation once need
+it -- turned out to be neither cleanly. Checked git history directly: round
+22 had no anchor at all (unsplit); round 23 introduced ";|--" together, and
+at that commit OPENAI-2025-anti-scheming-stress-test's source_locator
+genuinely split on ";" first under the then-current two-delimiter anchor --
+";" was load-bearing, not decorative, when it was added. Round 26 then added
+comma for an unrelated reason (PALISADE's shape), and that same record's
+source_locator happens to contain a comma before its semicolon -- comma
+silently took over as the first delimiter for that record, and nobody
+re-checked afterward whether ";" still guarded anything. It doesn't, for any
+of today's 64 records. A sixth fixture closes the loop the same way the
+fifth did: semicolon as the only delimiter present, extension in the tail --
+passes under the real anchor, caught (exit 1) if ";" is dropped from it.
+All three rungs of the anchor now have a fixture that would fail if that
+rung were removed; none of the seed's own 64 records currently need any of
+the three on their own, which is exactly why the fixtures exist instead of
+resting the claim on the seed.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-08, in direct response to dipankarsarkar's
-rounds 12 through 33.
+rounds 12 through 34.
 """
 
 import json
