@@ -986,9 +986,46 @@ every run (3/35 now, up from 2/35 before MONARCH), the same way the
 mechanised percentage already is -- visible without being enforced, so the
 next round doesn't have to rediscover the number by hand.
 
+Round 33 (dipankarsarkar, 2026-09-08): reproduced round 31's own commit and
+round 32's, one apart -- hashes match to the byte on both, exit 0, n=64, 29
+located on both. Ran his three controls against the unmodified checker and
+got exactly his exit codes on all three, once corrected against my own first
+mistake reproducing the second one: touching only locator_ceiling (not also
+locator_exhaustive) on the Atlas record, matching what he actually did, not
+what I assumed he did. Sandbagging ceiling cell->row: exit 1, two violations
+(the derivation check and the co-citation check both fire, independently).
+Atlas ceiling section->None, exhaustive left untouched: exit 1, caught by
+round 31's own "ceiling is the floor" rule. Atlas ceiling section->row: exit
+1, caught by round 31's co-citation check. Unmodified: exit 0.
+
+His finding: the printed summary at the bottom of main() still scopes
+locator_ceiling and locator_exhaustive to has_locator (locator_precision is
+not None) -- the exact scope round 31 broke, on purpose, the day before.
+Confirmed exactly: 30 records carry a non-None locator_ceiling and a non-None
+locator_exhaustive in the file; has_locator has 29. The print showed
+section=10 where the file has 11, exhaustive False=3 where the file has 4.
+The one record the old scope drops is OPENAI-2025-atlas-resignation-email-
+redteam -- round 31's own proof case, invisible in round 31's own summary
+line ever since.
+
+Answered his question by giving locator_ceiling its own denominator rather
+than widening has_locator: precision and ceiling now mean different things
+(one record can have a known ceiling and a still-null precision, that's the
+entire point of last round), so folding ceiling's count into precision's
+denominator was never going to be right at any width. locator_precision
+stays scoped to itself; locator_ceiling and locator_exhaustive are now
+scoped to "ceiling is not None," which round 31's own derivation already
+guarantees is exactly when exhaustive is defined too. Added one line noting
+when the two denominators diverge, so the next time this happens it prints
+instead of hiding. Verified: locator_ceiling: section=11 (not 10),
+locator_exhaustive: False=4 (not 3), both now matching the file exactly.
+Re-ran all three of his controls against the fixed printer -- same exit
+codes, same violation messages, nothing about the correctness invariants
+changed, only what gets printed once they've already passed.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-08, in direct response to dipankarsarkar's
-rounds 12 through 32.
+rounds 12 through 33.
 """
 
 import json
@@ -1292,10 +1329,18 @@ def main() -> int:
 
     n = len(records)
     verif_counts = Counter(r.get("verifiability") for r in records)
+    # Round 33 (dipankarsarkar): locator_precision and locator_ceiling get their
+    # own denominators, not one shared "has_locator" scope. Round 31 decoupled
+    # them on purpose -- ceiling can be known (via a co-cited sibling) while
+    # precision is still null, which is exactly what OPENAI-2025-atlas-
+    # resignation-email-redteam is. Scoping ceiling/exhaustive to
+    # locator_precision-is-not-None silently dropped that one record from both
+    # counts, undercounting the very case the round's own fix produced.
     has_locator = [r for r in records if r["locator_precision"] is not None]
+    has_ceiling = [r for r in records if r["locator_ceiling"] is not None]
     locp_counts = Counter(r["locator_precision"] for r in has_locator)
-    ceiling_counts = Counter(r["locator_ceiling"] for r in has_locator)
-    exhaustive_scoped = Counter(r["locator_exhaustive"] for r in has_locator)
+    ceiling_counts = Counter(r["locator_ceiling"] for r in has_ceiling)
+    exhaustive_scoped = Counter(r["locator_exhaustive"] for r in has_ceiling)
 
     print(f"OK: verifiability<->locator_precision<->locator_ceiling<->locator_exhaustive invariants hold "
           f"across all records in {DATASET.relative_to(REPO_ROOT)}")
@@ -1304,15 +1349,19 @@ def main() -> int:
     print(f"verifiability:      " + ", ".join(f"{k}={v}" for k, v in sorted(verif_counts.items(), key=lambda kv: str(kv[0]))))
     print(f"locator_precision:  " + ", ".join(f"{k}={v}" for k, v in sorted(locp_counts.items(), key=lambda kv: str(kv[0]))) +
           f"  (of {len(has_locator)} records with a locator; {n - len(has_locator)} explicitly null)")
-    print(f"locator_ceiling (scoped to the {len(has_locator)}): " +
+    print(f"locator_ceiling (scoped to the {len(has_ceiling)} with a known ceiling): " +
           ", ".join(f"{k}={v}" for k, v in sorted(ceiling_counts.items(), key=lambda kv: str(kv[0]))))
-    print(f"locator_exhaustive (scoped to the {len(has_locator)}, derived not typed): " +
+    print(f"locator_exhaustive (scoped to the {len(has_ceiling)}, derived not typed): " +
           ", ".join(f"{k}={v}" for k, v in sorted(exhaustive_scoped.items(), key=lambda kv: str(kv[0]))))
-    if len(exhaustive_scoped) <= 1 and has_locator:
+    if len(has_ceiling) > len(has_locator):
+        print(f"  NOTE: {len(has_ceiling) - len(has_locator)} record(s) have a known locator_ceiling but "
+              f"locator_precision still null -- ceiling was recovered from a co-cited sibling (round 31) "
+              f"before anyone located this record's own claim in the source.")
+    if len(exhaustive_scoped) <= 1 and has_ceiling:
         print(f"  NOTE: locator_exhaustive is a single value within its scope right now. Not a bug by "
               f"itself under round 16's model -- it's arithmetic on locator_precision/locator_ceiling, "
-              f"both independently set, so a collapse here means every located record's ceiling has been "
-              f"found to equal its precision so far, not that the field is secretly redundant.")
+              f"both independently set, so a collapse here means every ceiling-known record's ceiling has "
+              f"been found to equal its precision so far, not that the field is secretly redundant.")
     mech = verif_counts.get("mechanised", 0)
     print(f"mechanised: {mech}/{n} = {mech/n*100:.1f}%")
 
