@@ -1056,3 +1056,32 @@ since it's the state round 14 made unrepresentable -- a `document`-precision rec
 with a `row` ceiling and `locator_exhaustive: false` (**passes**, and the field
 actually varies now: `True=24, False=1` in the synthetic test, instead of the permanent
 `True=24, False=0` this file has carried since round 13).
+
+## Round 17 (2026-09-11): new entry added -- DeepSeek distillation relay (GTG-16001)
+
+Not a dipankarsarkar audit round -- a new-content addition, same as Round 10. The
+architect flagged Anthropic's "Detecting and countering misuse of AI: September 2026"
+report while fact-checking an unrelated news share; the full 154-page PDF was
+downloaded and text-extracted directly (pypdf), not read via secondary coverage, and
+one entry (`ANTHROPIC-2026-deepseek-distillation-relay`, category
+`UNSANCTIONED_UNAUTHORIZED_ACCESS`) was added for the DeepSeek case specifically:
+DeepSeek silently rerouted its own customers' requests to Claude Opus to extract
+reasoning traces (over 12.1 million exchanges, 14 days, July 2026), exposing three
+named third-party sensitive-data cases as a byproduct (a PRC tech company's internal
+AI-program specs; live credentials to a Russian Ministry of Defense-affiliated
+database; a PRC municipal police case-management tool). `locator_precision` and
+`locator_ceiling` both set to `section` (PDF pages 149-150, section heading matched
+directly), `locator_exhaustive: true`, `verifiability: human-checked`.
+
+Companion cases in the same report section (Moonshot/GTG-16002, Zhipu-Z.ai/GTG-16006,
+Alibaba/GTG-16005) were deliberately NOT each given a separate entry this round --
+Alibaba's headline number varies across secondary sources by report-date snapshot
+(28.8M / 151M / 200M+) and was not reconciled against the primary PDF before this
+commit; a future round should pull Alibaba's own section directly from the same PDF
+before adding it, rather than picking one of the conflicting secondary figures.
+
+**Stale count fixed:** the file above said "63 entries" (and separately "43 is a real,
+diverse... stopping point" two sentences later -- already inconsistent with the "63"
+before this round, not something this round introduced). Actual count immediately
+before this round's addition, counted directly (`wc -l`, then a JSON-per-line
+validation pass, not a stale docstring): 64. This round's addition makes it 65.
