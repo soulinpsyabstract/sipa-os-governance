@@ -1,0 +1,5 @@
+FILE=EXP-040_qwen3_binary_honesty_before_eval.json
+SHA256=878d872fa24bdbe2eec5122f4efb8113a4a0bd8ac70135f2bd68d950098ffe2d
+SIZE=78483
+DEVICE=SERVER
+TS=2026-09-13__20-00-29

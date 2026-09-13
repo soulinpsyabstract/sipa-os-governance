@@ -1,0 +1,5 @@
+FILE=EXP-041__llama31-8b-misbehavior-discriminator-lora-fireworks.md
+SHA256=d710a404539c8d82e23d98d3534d927d20f4d9415b24a6997e0bed9a918a5017
+SIZE=5481
+DEVICE=SERVER
+TS=2026-09-13__20-00-29

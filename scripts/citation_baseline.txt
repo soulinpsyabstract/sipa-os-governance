@@ -95,3 +95,17 @@ AI_EXPERIMENTS/EXP-038__hermes43-adversarial-eos-fix-repeated-sampling-judge-v4.
 # in prose, a false positive on the checker's path-shaped regex, not a citation.
 AI_EXPERIMENTS/EXP-039__K2-Horizon-0.9B-binary-gate-LoRA-CPU-negative-result.md	specialist_cd_binary_pilot_v2.jsonl
 AI_EXPERIMENTS/EXP-039__K2-Horizon-0.9B-binary-gate-LoRA-CPU-negative-result.md	q_proj/k_proj/v_proj/o_proj/gate_proj/up_proj/down_proj
+
+# Fireworks cloud resource identifiers -- confirmed non-file false positives,
+# 2026-09-13. These look like repo-relative paths (account/models/job IDs
+# use "/" as a separator, same shape as a file path) but they are Fireworks
+# API resource names, not repo artifacts -- nothing to seal, nothing that
+# could ever resolve locally. Added when EXP-040/041 (Fireworks LoRA
+# baselines) cited them as evidence of exactly which base model/job/output
+# was used.
+AI_EXPERIMENTS/EXP-040__qwen3-8b-binary-honesty-lora-fireworks.md	accounts/fireworks/models/qwen3-8b
+AI_EXPERIMENTS/EXP-040__qwen3-8b-binary-honesty-lora-fireworks.md	accounts/soulinpsyabstract-zb/supervisedFineTuningJobs/wszf6fhs
+AI_EXPERIMENTS/EXP-040__qwen3-8b-binary-honesty-lora-fireworks.md	accounts/soulinpsyabstract-zb/models/ft-wszf6fhs-d46mw
+AI_EXPERIMENTS/EXP-041__llama31-8b-misbehavior-discriminator-lora-fireworks.md	accounts/fireworks/models/llama-v3p1-8b-instruct
+AI_EXPERIMENTS/EXP-041__llama31-8b-misbehavior-discriminator-lora-fireworks.md	accounts/soulinpsyabstract-zb/supervisedFineTuningJobs/lutg2zrw
+AI_EXPERIMENTS/EXP-041__llama31-8b-misbehavior-discriminator-lora-fireworks.md	accounts/soulinpsyabstract-zb/models/ft-lutg2zrw-bh7hn
