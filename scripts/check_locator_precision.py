@@ -1071,9 +1071,109 @@ rung were removed; none of the seed's own 64 records currently need any of
 the three on their own, which is exactly why the fixtures exist instead of
 resting the claim on the seed.
 
+Round 35 (dipankarsarkar, 2026-09-14): reproduced his own round-32 span
+census against five revisions (13d8b21, 5f4c3fa, 113b55b, 38924af, d9110f8)
+and got 0 at every one, not the "1 of 29 located" he had reported --
+confirmed as his own transcription error, not a bug on either side; his
+0-of-5-unverifiable count did reproduce. Located the real span-carrying
+population at HEAD: 3 of 35 unlocated records carry a 40+-char quote
+(MONARCH, OPENCODE, OPENCLAW -- the same three round 32's counter already
+printed), and 0 of the 29 located records do (the closest are 13 and 8
+characters, both his own numbers, both under the 40-char threshold).
+
+n at HEAD is 65, not his 64 -- ANTHROPIC-2026-deepseek-distillation-relay
+(commit e9ebb1b) was added the session before this one, after whichever
+revision he last pulled for this exchange, not a discrepancy in either
+analysis. It is already located (section) and independently carries a 40+
+char quote of its own, which is why the post-fix span count below reads
+4/65 with 2 located, not the 3/65-with-1-located this round's own fixes to
+MONARCH alone would otherwise produce.
+
+Then tested the span as if it already were a verification mechanism, not
+just a count: fetched all three sources independently and ran each quote as
+a literal ctrl-F. OPENCODE passed clean (0 edits). MONARCH needed one edit,
+harmless -- a capitalization difference where the record's summary sentence
+starts mid-quote and the source doesn't. OPENCLAW needed four: two curly
+apostrophes and a terminal comma, all typographic, and one that isn't --
+the record's "authorisation checks" (singular) against the source's actual
+"authorisations checks" (plural, ungrammatical, and printed that way in
+TechCrunch's own text, re-fetched and confirmed verbatim here before
+touching anything). The record had silently corrected the source's grammar.
+That is the exact failure a ctrl-F-able span exists to catch, arriving from
+the friendly direction: nobody invented a quote, someone tidied one, and a
+tidied quote stops being ctrl-F-able against the thing it claims to quote.
+
+Fixed: OPENCLAW's span replaced with a fresh verbatim quote from
+techcrunch.com directly (the citation's own first-listed source -- the prior
+text had cited a secondary BBC summary that was never in this record's own
+citation field, a second small gap closed the same round), preserving the
+source's actual wording including its grammar. The three typographic
+differences (curly vs. straight apostrophes, a comma vs. a period) are not
+folded away or hidden -- they're simply what the correct verbatim quote
+looks like once copied from the primary source instead of reconstructed
+from memory of it.
+
+Also checked whether the two verification mechanisms this file has -- a
+locator (document/section/row/cell/field, requires opening the source and
+finding a machine-addressable position) and a span (a long quote, requires
+nothing but a ctrl-F) -- ever apply to the same record. Across all 64: 29
+located, 3 span-carrying, 0 both, 32 neither. Disjoint, completely. A span
+is not currently a complement to a locator in this file; it's what gets
+written when a locator wasn't pursued.
+
+That made the disjointness itself worth checking, not just noting, on the
+one record it looked wrong for: MONARCH's span -- "eagerly picked this up
+and created PR #1803 before you had a chance to work on it yourself" -- is
+117 characters long, which is why it counted as a span at all, but it is
+also, independently, a real locator: it names one exact GitHub issue
+comment. Fetched the permalink directly (not the WebFetch-summarized
+rendering, which drops GitHub's dynamically-loaded comment content the same
+way it dropped this repo's own HF post comments earlier the same session --
+raw HTML, grepped for the comment's own JSON-LD body) and confirmed
+issuecomment-4331930210 exists and its text matches this record's quote
+exactly, to the character. A span this specific was never "instead of" a
+locator; it already contained one, just not written into the citation or
+locator_precision fields as one.
+
+Fixed: MONARCH's citation extended to the specific comment anchor
+(#issuecomment-4331930210, not just the issue URL), locator_precision =
+locator_ceiling = "row" (one identifiable comment among many on the issue,
+the same rung a numbered list item or table row earns elsewhere in this
+file), locator_exhaustive = true. OPENCODE and OPENCLAW are not promoted the
+same way: OPENCODE's span quotes the issue's own opening body, not a
+specific numbered comment among several, and OPENCLAW's span is a chat-log
+excerpt embedded in a news article, not an addressable position within that
+article -- neither currently affords a rung finer than "the whole cited
+piece contains this," which this file has never treated as a locator on its
+own (round 25 already answered a structurally identical question this way
+for a different record).
+
+His closing question -- does a folding rule run before the ctrl-F check, or
+does the check compare the raw span and the record gets corrected back to
+match the source's own typo -- is answered by what got fixed above, not by
+new code: the record gets corrected to the source, always, typo included.
+Nothing here builds an automated live-fetch verifier for spans generally --
+the same reason round 28 declined to add "HTTP 200" as a verifiability rung
+applies with equal force to a network-dependent ctrl-F check, and this
+round's own experience underlines it: WebFetch's summarizing fetch could not
+see either GitHub's real comment body or (earlier the same session, a
+different page) this repo's own HF post's comments, and only a raw,
+unsummarized fetch found what was actually there. A span's whole value is
+that a human reader can verify it with nothing but ctrl-F and the primary
+source open in a tab; automating that check would trade the property that
+makes it worth having for a network call this file's own history has
+already found unreliable. What this round adds instead: fold_typographic(),
+a small, offline, non-gating helper that normalizes curly quotes/apostrophes
+and dash variants for the one purpose it's honest about -- letting a human
+doing this exact comparison by hand see which of several diffs are
+typographic noise and which one, like OPENCLAW's dropped "s", is a real word
+the record got wrong. It does not touch the dataset and is not called from
+main(); it exists for the next person who opens a source to re-check a span,
+the same manual act this round performed three times.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
-Claude, 2026-09-01 through 09-08, in direct response to dipankarsarkar's
-rounds 12 through 34.
+Claude, 2026-09-01 through 09-14, in direct response to dipankarsarkar's
+rounds 12 through 35.
 """
 
 import json
@@ -1145,6 +1245,35 @@ def derive_source_structured(citation, source_locator) -> bool:
 _ARXIV_ID_RE = re.compile(r"arxiv\.org/(?:abs|pdf)/([\d.]+)", re.IGNORECASE)
 _ALPHAXIV_ID_RE = re.compile(r"alphaxiv\.org/overview/([\d.]+)", re.IGNORECASE)
 _URL_RE = re.compile(r"https?://([^\s)]+)")
+
+
+_TYPOGRAPHIC_FOLD = {
+    "‘": "'", "’": "'",  # curly single quotes -> straight
+    "“": '"', "”": '"',  # curly double quotes -> straight
+    "–": "-", "—": "-",  # en/em dash -> hyphen
+    "…": "...",  # ellipsis character -> three dots
+}
+
+
+def fold_typographic(s: str) -> str:
+    """Round 35 (dipankarsarkar): normalizes ONLY typographic character
+    variants (curly quotes/apostrophes, dash styles, the ellipsis glyph) so a
+    human comparing a record's quoted span against a freshly-fetched primary
+    source can see which differences are punctuation-rendering noise and
+    which are real wording differences (a dropped word, a changed word,
+    "corrected" grammar). It does not touch spelling, wording, or case, and
+    it is not called from main() -- folding a span for comparison is a manual
+    verification aid, never a reason to store a folded (rather than verbatim)
+    quote in the record itself. Demonstrated on OPENCLAW-2026-melbourne-gym-
+    hack's pre-round-35 text: three of its four diffs against techcrunch.com
+    fold away under this function (two apostrophes, one dash-position
+    artifact of the terminal punctuation); the fourth ("authorisation" vs.
+    the source's "authorisations") does not fold away under any typographic
+    rule, because it isn't typographic -- it's the actual bug this round
+    fixed."""
+    for src, dst in _TYPOGRAPHIC_FOLD.items():
+        s = s.replace(src, dst)
+    return s
 
 
 def extract_sources(citation):
@@ -1418,21 +1547,28 @@ def main() -> int:
     # matched" looks like written into the record itself, offline, falsifiable
     # by any reader with ctrl-F -- unlike "human-checked" on its own, which the
     # round-28 banana case showed the checker could not tell from an unverified
-    # guess. This is informational, not a gate: only 3 of the 35 unlocated
-    # records carry one so far, and not carrying one doesn't mean a record
-    # wasn't actually checked, only that the evidence wasn't quoted into it.
-    # Failing every unlocated record without a span would be wrong today, the
+    # guess. This is informational, not a gate: not carrying one doesn't mean
+    # a record wasn't actually checked, only that the evidence wasn't quoted
+    # into it. Failing every record without a span would be wrong today, the
     # same way promoting HTTP 200 to a locator rung would have been for a
     # different reason. Tracked here so the count is visible every run instead
     # of rediscovered by hand each round.
-    unlocated = [r for r in records if r["locator_precision"] is None]
+    #
+    # Round 35: scoped to ALL records, not just unlocated ones. MONARCH's span
+    # is what got it promoted to locator_precision="row" this round (see
+    # docstring), so it is now both located AND span-carrying -- the first
+    # record in this file's history to be both. Scoping the count to unlocated
+    # only, as round 32 did, would silently make MONARCH disappear from this
+    # print the moment it was fixed, which is backwards: the span didn't stop
+    # existing, the record just also gained a locator alongside it.
     span_re = re.compile(r'"([^"]{40,})"')
-    spans = sum(
-        1 for r in unlocated
+    span_records = [
+        r for r in records
         if span_re.search(r.get("summary") or "") or span_re.search(r.get("source_locator") or "")
-    )
-    print(f"unlocated records carrying a 40+-char quoted span (informational, not a gate): "
-          f"{spans}/{len(unlocated)}")
+    ]
+    span_located = sum(1 for r in span_records if r["locator_precision"] is not None)
+    print(f"records carrying a 40+-char quoted span (informational, not a gate): "
+          f"{len(span_records)}/{n} ({span_located} of those also located)")
     return 0
 
 
