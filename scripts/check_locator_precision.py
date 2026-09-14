@@ -1173,7 +1173,7 @@ the same manual act this round performed three times.
 
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-14, in direct response to dipankarsarkar's
-rounds 12 through 36.
+rounds 12 through 37.
 """
 
 import json
@@ -1227,16 +1227,39 @@ _REPO_HOST_RE = re.compile(
 )
 _MACHINE_READABLE_EXT_RE = re.compile(r"\.(json|jsonl|csv|tsv|yaml|yml|py)\b", re.IGNORECASE)
 
+# Round 26 (dipankarsarkar): ";|--" alone left 7 of 25 located records with
+# no delimiter present at all, so the "head" equaled the whole string on
+# those -- unanchored, exactly the round-22 shape, just on comma-and-period
+# prose citations instead of tail-appended annotations. Comma appears in
+# all 25 of today's located records; ";" or "--" appear in only 18. Adding
+# comma closes the gap: 0 of 25 inert, same 63/63 agreement, PALISADE still
+# derives True (its real path sits before the first comma too).
+#
+# Round 37 (dipankarsarkar): pulled out of derive_source_structured() into
+# its own named pattern + helper so the fixture check (below) can assert
+# the exact head a fixture produces, not just derive_source_structured()'s
+# downstream boolean. Round 30-36's fixtures only ever failed when a rung
+# was REMOVED, because removing a rung can only turn a False into a False
+# or a True into a False on data that has an extension in the head. Adding
+# a rung is not symmetric: it can shorten a head that happens to still keep
+# the extension, or a head that has no extension at all, and if the removed
+# span never contained the anchor's own load-bearing character neither
+# derive_source_structured() nor the six existing fixtures would ever
+# notice -- a fourth delimiter could ship silently and stay unnoticed until
+# a real record's extension happened to fall in the newly-discarded span,
+# by which time the commit that broke it is long gone. Asserting the head
+# itself (not the boolean two steps downstream of it) makes every fixture
+# an addition-side guard automatically, without needing a purpose-built
+# fixture per hypothetical delimiter.
+_ANCHOR_SPLIT_RE = re.compile(r";|,|--")
+
+
+def _anchor_head(source_locator) -> str:
+    return _ANCHOR_SPLIT_RE.split(source_locator or "", maxsplit=1)[0]
+
 
 def derive_source_structured(citation, source_locator) -> bool:
-    # Round 26 (dipankarsarkar): ";|--" alone left 7 of 25 located records with
-    # no delimiter present at all, so the "head" equaled the whole string on
-    # those -- unanchored, exactly the round-22 shape, just on comma-and-period
-    # prose citations instead of tail-appended annotations. Comma appears in
-    # all 25 of today's located records; ";" or "--" appear in only 18. Adding
-    # comma closes the gap: 0 of 25 inert, same 63/63 agreement, PALISADE still
-    # derives True (its real path sits before the first comma too).
-    head = re.split(r";|,|--", source_locator or "", maxsplit=1)[0]
+    head = _anchor_head(source_locator)
     return bool(_REPO_HOST_RE.search(citation or "")) and bool(
         _MACHINE_READABLE_EXT_RE.search(head)
     )
@@ -1490,6 +1513,13 @@ def main() -> int:
                 continue
             fixture = json.loads(line)
             fid = fixture.get("id", f"<fixture line {lineno}>")
+            got_head = _anchor_head(fixture.get("source_locator"))
+            if "expected_head" in fixture and got_head != fixture["expected_head"]:
+                violations.append(
+                    f"{fid}: anchor head is {got_head!r}, fixture expects {fixture['expected_head']!r} "
+                    f"-- the anchor's split point moved, not just its downstream boolean (round 37) "
+                    f"({fixture.get('purpose', 'no purpose given')})"
+                )
             got = derive_source_structured(fixture.get("citation"), fixture.get("source_locator"))
             expected = fixture["expected_source_structured"]
             if got != expected:
