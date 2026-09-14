@@ -1171,9 +1171,50 @@ the record got wrong. It does not touch the dataset and is not called from
 main(); it exists for the next person who opens a source to re-check a span,
 the same manual act this round performed three times.
 
+Round 38 (dipankarsarkar, 2026-09-14): computed the exercised set rather
+than asserting it. Restricted to the only place the anchor's split point
+can change derive_source_structured()'s output -- records whose citation
+matches _REPO_HOST_RE -- there are 3 (PALISADE, MONARCH, OPENCODE), and
+of those exactly 1 (PALISADE) carries a non-empty source_locator at all.
+Its head, truncated at the end of the machine-readable-extension match
+that makes it True, is "logs/on_the_robot/stats_run/live_05022026/tags.json"
+-- 51 characters, 22 distinct, non-alphanumeric members {. / _}. Confirmed
+directly against derive_source_structured() itself, not a re-derivation:
+dropping ";", ",", "--", or all three from the anchor flips 0 of 65 real
+records, individually or together -- the same 0 he found on his 64-record
+mirror. Rounds 23 and 26 introduced ";", ",", "--" against citation shapes
+expected at the time; neither has ever been exercised by a real record in
+this file's history, and round 37's fixture-head assertion protects the
+fixtures' own split points, not evidence that the real corpus needs them.
+
+Answered his closing question directly: at HEAD, MONARCH's round-35
+promotion (locator_precision/locator_ceiling="row", verifiability=
+"mechanised", citation extended to the specific comment anchor) never
+added a source_locator field -- confirmed by key-membership check, not
+just a None value. MONARCH counts as "located" in every count this file
+prints, and contributes nothing to _exercised_chars() because that
+function only credits a record once it has actual source_locator text to
+compute a head from. The addition side is still n=1, exactly as he
+suspected, and now stated as such below rather than left to be
+rediscovered by the next person who assumes "row" means "has a locator
+string."
+
+Fixed: _exercised_chars() computes, from the real records at whatever n
+the file has today, which of the anchor's rung characters ({';', ',',
+'-'}) a real record has actually put where the split point could matter,
+truncated the same way derive_source_structured() itself would stop
+mattering (at the first machine-readable-extension match). Printed every
+run, informational and non-gating like the round-32 span count -- a
+computed bound replaces the implicit claim that six fixtures passing means
+six characters are covered by real evidence. Today it prints all three
+rungs as inert on the real corpus; a future record naming a real path with
+a semicolon, comma, or double-hyphen in it before its extension would move
+that character out of the inert set without anyone having to notice by
+hand.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-14, in direct response to dipankarsarkar's
-rounds 12 through 37.
+rounds 12 through 38.
 """
 
 import json
@@ -1263,6 +1304,40 @@ def derive_source_structured(citation, source_locator) -> bool:
     return bool(_REPO_HOST_RE.search(citation or "")) and bool(
         _MACHINE_READABLE_EXT_RE.search(head)
     )
+
+
+# Round 38 (dipankarsarkar): the anchor's own split characters, as a set --
+# not the same thing as the anchor regex, which also encodes "--" as a
+# two-char token. A rung is "exercised" if a real record ever put it where
+# the split point could change derive_source_structured()'s output; this is
+# the set that question is asked about.
+_RUNG_CHARS = frozenset(";,-")
+
+
+def _exercised_chars(records) -> set:
+    """Characters a real record has actually put in the span that decides
+    derive_source_structured()'s boolean, across all records at whatever n
+    this file has today. Only repo-host-cited records can move that boolean
+    at all (see derive_source_structured), so only they can exercise
+    anything; a record with no source_locator contributes nothing, and a
+    record whose head extends past its own extension match contributes only
+    the prefix up to and including that match, since nothing after it
+    changes the result. Round 37's fixtures pin what derive_source_structured
+    outputs when handed six invented shapes; this instead asks what
+    characters the real corpus itself has ever exercised the anchor with,
+    so the two questions don't get answered as if they were one."""
+    chars = set()
+    for r in records:
+        if not _REPO_HOST_RE.search(r.get("citation") or ""):
+            continue
+        loc = r.get("source_locator")
+        if not loc:
+            continue
+        head = _anchor_head(loc)
+        m = _MACHINE_READABLE_EXT_RE.search(head)
+        span = head[: m.end()] if m else head
+        chars |= set(span)
+    return chars
 
 
 _ARXIV_ID_RE = re.compile(r"arxiv\.org/(?:abs|pdf)/([\d.]+)", re.IGNORECASE)
@@ -1599,6 +1674,24 @@ def main() -> int:
     span_located = sum(1 for r in span_records if r["locator_precision"] is not None)
     print(f"records carrying a 40+-char quoted span (informational, not a gate): "
           f"{len(span_records)}/{n} ({span_located} of those also located)")
+
+    # Round 38 (dipankarsarkar): a computed bound, not an assertion -- see
+    # module docstring. Informational, not a gate: an inert rung is not a
+    # bug in the anchor, it is an honest statement that no real record has
+    # tested it yet.
+    exercised = _exercised_chars(records)
+    rungs_seen = sorted(c for c in _RUNG_CHARS if c in exercised)
+    rungs_inert = sorted(c for c in _RUNG_CHARS if c not in exercised)
+    repo_host_n = sum(1 for r in records if _REPO_HOST_RE.search(r.get("citation") or ""))
+    located_repo_host_n = sum(
+        1 for r in records
+        if _REPO_HOST_RE.search(r.get("citation") or "") and r.get("source_locator")
+    )
+    print(f"anchor rungs the real corpus exercises: {rungs_seen if rungs_seen else '(none)'}")
+    print(f"anchor rungs inert on all {n} real records: {rungs_inert}")
+    print(f"  (repo-host-cited records: {repo_host_n}; of those with a source_locator: "
+          f"{located_repo_host_n} -- only a record in that {located_repo_host_n}-record set "
+          f"can move the count above)")
     return 0
 
 

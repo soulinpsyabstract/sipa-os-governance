@@ -1085,3 +1085,43 @@ diverse... stopping point" two sentences later -- already inconsistent with the 
 before this round, not something this round introduced). Actual count immediately
 before this round's addition, counted directly (`wc -l`, then a JSON-per-line
 validation pass, not a stale docstring): 64. This round's addition makes it 65.
+
+## Round 38 (dipankarsarkar): the `source_locator` anchor mechanism has never been exercised by a real record -- disclosed here, not just in the checker's own docstring
+
+Rounds 23 and 26 added `;`, `,`, and `--` as split points so a citation-URL note
+appended after a real file path doesn't get mistaken for part of that path (see
+`derive_source_structured()` in `scripts/check_locator_precision.py`). His finding,
+independently reproduced against the live file: **none of the three has ever been
+tested by a real record.** The split point can only change the derived boolean for
+a record whose citation names a repo host (github.com/gitlab.com/etc.) -- 3 of 65
+records qualify (PALISADE, MONARCH, OPENCODE) -- and of those, exactly 1 (PALISADE)
+carries a non-empty `source_locator` at all. Its relevant span --
+`logs/on_the_robot/stats_run/live_05022026/tags.json`, the part that actually makes
+the extension match -- contains only `.`, `/`, and `_`. Dropping `;`, `,`, `--`,
+individually or all three together, flips 0 of 65 real records. The six fixtures in
+`locator_anchor_fixtures_v1.jsonl` (rounds 30, 34, 36, 37) are real and correctly
+guard against a regression in those synthetic shapes, but they are not evidence that
+the real corpus needs the mechanism they guard -- a fixture passing and a rung being
+exercised are two different claims, and this file's own prior rounds stated the
+first without being clear that it wasn't also the second.
+
+MONARCH is the sharper version of the same gap. Round 35 promoted it to
+`locator_precision = locator_ceiling = "row"`, `verifiability = "mechanised"`, and
+extended its citation to a specific GitHub comment anchor -- a real, independently
+re-verified promotion. It never added a `source_locator` string, though: the field
+is absent as a key, not merely `null`. MONARCH is counted as "located" in every
+census this file prints, while contributing nothing to what the anchor mechanism has
+actually been tested against. **The addition side of this dataset -- records whose
+citation is a repo host with a machine-checkable path in `source_locator` -- is
+still n=1, PALISADE, the same record round 17 (this file's own round 17, on
+`locator_ceiling`) first located.**
+
+Fixed in the checker, not the dataset: `check_locator_precision.py` now computes and
+prints, every run, which anchor rung characters the real corpus has actually
+exercised versus which are inert on all current records (informational, not a
+gate -- see the script's own round-38 docstring entry for the exact function). Today
+it prints all three rungs as inert. This is not a defect to silently patch; it is
+the honest state of the evidence, and it will change the moment a real record earns
+a repo-host citation with a genuinely punctuated file path before its extension --
+at which point the printed set updates itself, rather than a person having to
+remember to re-check.
