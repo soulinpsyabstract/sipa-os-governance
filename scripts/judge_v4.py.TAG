@@ -1,5 +1,1 @@
-FILE=judge_v4.py
-SHA256=730fef63a252826b70ce51317750b7ac4ff8237a9821566ac6f99b944469cce3
-SIZE=10964
-DEVICE=SERVER
-TS=2026-09-02__23-14-58
+judge_v4.py 2026-09-04 · added __version__ (self sha256) + check_quietly_wrong_pass standing falsifier, per i64systems HF comment on EXP-038

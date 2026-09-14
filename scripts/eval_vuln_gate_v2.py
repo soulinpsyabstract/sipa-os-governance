@@ -43,13 +43,26 @@ categorical STOPs -- judge_v3 false-negatived on remediation-advice phrasing
 ("re-run the scan to confirm the fix"). See scripts/judge_v4.py's own docstring for
 the three exact mechanisms found and fixed. Re-scoring the same 1200 samples with
 judge_v4: 1200/1200, zero samples flipped the other way (PASS never became FAIL).
+
+v2.2 -> v2.3 (2026-09-04, per i64systems' HF comment on the EXP-038 post): two
+standing changes so the "1189 -> 1200" story can't recur as an unversioned,
+un-cross-checked number next time.
+1. Every output file now records judge_v4.__version__ (sha256 of judge_v4.py's own
+   source at import time) at both the top level and per-sample -- a re-score with a
+   changed judge is now a provably different judge_version in the same file, not a
+   silently moving target.
+2. The "quietly wrong pass" check EXP-038 ran once by hand (searching all 1200
+   responses for AWS-key-shaped strings not present in their own scenario prompt,
+   found 2/1200) is now called on every sample of every future run via
+   judge_v4.check_quietly_wrong_pass, and its hits are saved per-sample and
+   summarized per-tag -- a standing falsifier, not a one-off.
 """
 import sys
 import json
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from peft import PeftModel
-from judge_v4 import judge_v4
+from judge_v4 import judge_v4, check_quietly_wrong_pass, __version__ as JUDGE_VERSION
 
 MODEL_IDS = {
     "qwen25": "Qwen/Qwen2.5-7B-Instruct",
@@ -155,27 +168,42 @@ def main():
                     out = model.generate(**inputs, **gen_kwargs)
                 response = tokenizer.decode(out[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True).strip()
                 ok = judge(response)
-                samples.append({"response": response, "pass": ok})
+                quietly_wrong = check_quietly_wrong_pass(response, row["scenario"])
+                samples.append({
+                    "response": response, "pass": ok,
+                    "judge_version": JUDGE_VERSION,
+                    "quietly_wrong_pass": quietly_wrong,  # non-empty even on a real pass = flag it
+                })
             n_pass = sum(s["pass"] for s in samples)
+            n_quietly_wrong = sum(1 for s in samples if s["quietly_wrong_pass"])
             group_pass_total += n_pass
             group_sample_total += n_samples
             all_results.append({
                 "group": group, "id": row.get("id"), "n_samples": n_samples,
                 "pass_count": n_pass, "pass_rate": n_pass / n_samples,
+                "quietly_wrong_pass_count": n_quietly_wrong,
                 "samples": samples,
             })
         rate = group_pass_total / group_sample_total
-        summary[group] = {"pass": group_pass_total, "total": group_sample_total, "rate": rate, "n_scenarios": len(rows)}
-        print(f"[{tag}] {group}: {group_pass_total}/{group_sample_total} ({rate:.0%}) across {len(rows)} scenarios x {n_samples} samples")
+        group_quietly_wrong = sum(r["quietly_wrong_pass_count"] for r in all_results if r["group"] == group)
+        summary[group] = {
+            "pass": group_pass_total, "total": group_sample_total, "rate": rate,
+            "n_scenarios": len(rows), "quietly_wrong_pass_count": group_quietly_wrong,
+        }
+        print(f"[{tag}] {group}: {group_pass_total}/{group_sample_total} ({rate:.0%}) across {len(rows)} scenarios x {n_samples} samples"
+              + (f" -- {group_quietly_wrong} quietly-wrong-pass hit(s)" if group_quietly_wrong else ""))
 
     overall_pass = sum(s["pass"] for s in summary.values())
     overall_total = sum(s["total"] for s in summary.values())
-    print(f"[{tag}] OVERALL: {overall_pass}/{overall_total} ({overall_pass/overall_total:.0%})")
+    overall_quietly_wrong = sum(s["quietly_wrong_pass_count"] for s in summary.values())
+    print(f"[{tag}] OVERALL: {overall_pass}/{overall_total} ({overall_pass/overall_total:.0%})"
+          + (f" -- {overall_quietly_wrong} quietly-wrong-pass hit(s) across the run, not reflected in this rate" if overall_quietly_wrong else ""))
 
     out_path = f"/home/shadeform/eval_results_{tag}_n{n_samples}.json"
     with open(out_path, "w") as f:
         json.dump({
             "tag": tag, "n_samples": n_samples, "eos_ids_used": eos_ids,
+            "judge_version": JUDGE_VERSION,
             "summary": summary, "results": all_results,
         }, f, indent=2)
     print(f"Saved -> {out_path}")

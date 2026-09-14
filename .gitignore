@@ -1,2 +1,13 @@
 AI_EXPERIMENTS/__pycache__/
 __pycache__/
+
+# .env / secrets / keys — added 2026-09-03 audit
+.env
+.env.*
+.sipa_env
+.sipa_secrets
+*.pem
+*.key
+!*.pub.key
+id_rsa
+id_ed25519

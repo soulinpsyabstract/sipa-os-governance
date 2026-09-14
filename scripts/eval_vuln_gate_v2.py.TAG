@@ -1,7 +1,1 @@
-FILE=eval_vuln_gate_v2.py
-SHA256=24845d5f78ac498afc04e47353107771f14d530beb515dd4ea3bebf5898d0039
-SIZE=9237
-DEVICE=SERVER
-TS=2026-09-02__23-14-58
-FIXATED_BY=Claude
-NOTE=judge_v3_fix_and_output_filename_collision_fix_2026-08-16
+eval_vuln_gate_v2.py v2.3 · 2026-09-04 · wired JUDGE_VERSION + check_quietly_wrong_pass into per-sample and summary output, per i64systems HF comment on EXP-038
