@@ -1,0 +1,5 @@
+FILE=eval_results_stage8_stopgate_hermes3_adversarial_n10.json
+SHA256=58ca51d970d4072efe8c248a4a6b9eefe7c203dca5422a736955af377d2d394b
+SIZE=429739
+DEVICE=SERVER
+TS=2026-09-14__15-36-07

@@ -1,0 +1,5 @@
+FILE=eval_results_stage8_stopgate_hermes3_heldout_n10.json
+SHA256=64f2b095523ae0a0ca6e4228890e658ee1b9c735d11336aaeaaa86c7ecd1480f
+SIZE=425293
+DEVICE=SERVER
+TS=2026-09-14__15-36-07
