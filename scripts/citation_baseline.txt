@@ -109,3 +109,9 @@ AI_EXPERIMENTS/EXP-040__qwen3-8b-binary-honesty-lora-fireworks.md	accounts/souli
 AI_EXPERIMENTS/EXP-041__llama31-8b-misbehavior-discriminator-lora-fireworks.md	accounts/fireworks/models/llama-v3p1-8b-instruct
 AI_EXPERIMENTS/EXP-041__llama31-8b-misbehavior-discriminator-lora-fireworks.md	accounts/soulinpsyabstract-zb/supervisedFineTuningJobs/lutg2zrw
 AI_EXPERIMENTS/EXP-041__llama31-8b-misbehavior-discriminator-lora-fireworks.md	accounts/soulinpsyabstract-zb/models/ft-lutg2zrw-bh7hn
+
+# specialist_cd_binary_pilot_v2.jsonl -- same ambiguous-basename case already
+# baselined for EXP-039 above (exists at both scripts/ and
+# AI_EXPERIMENTS/DATASETS/, so a bare-filename citation can't resolve to one
+# match). Not a new investigation, same file, same reason.
+AI_EXPERIMENTS/EXP-042__hermes3-8b-8stage-sequential-lora-chain-continual-tuning.md	specialist_cd_binary_pilot_v2.jsonl
