@@ -1173,7 +1173,7 @@ the same manual act this round performed three times.
 
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-14, in direct response to dipankarsarkar's
-rounds 12 through 35.
+rounds 12 through 36.
 """
 
 import json
