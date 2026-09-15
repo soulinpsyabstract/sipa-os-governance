@@ -1125,3 +1125,53 @@ the honest state of the evidence, and it will change the moment a real record ea
 a repo-host citation with a genuinely punctuated file path before its extension --
 at which point the printed set updates itself, rather than a person having to
 remember to re-check.
+
+**Correction, same day:** round 38 was written and committed but never pushed to
+GitHub -- the main branch on GitHub sat one commit behind at the prior daily report, so nothing
+above was actually live until this round's own fix landed alongside it. Caught only
+because round 39 (below) checked the pushed state directly instead of trusting that
+a local commit meant a public one.
+
+## Round 39 (dipankarsarkar): a located record can lose its own evidence and nothing notices
+
+Round 38 asked which anchor characters the real corpus exercises. Round 39 asked a
+plainer question underneath it: does anything check that a **located** record --
+`locator_precision is not None`, a claim that someone found a specific position in
+the source -- still carries proof of *where*? Demonstrated directly against the live
+65-record file, not proposed: delete `source_locator` from each of the 30 located
+records that have one, one at a time, and re-run `check_locator_precision.py`
+unmodified. **29 of 30 stay exit 0.** `APOLLO-2024-oversight-subversion` is
+representative: with its `source_locator` removed, it still reports
+`locator_precision="row"`, `locator_ceiling="cell"`, `locator_exhaustive=False`,
+`verifiability="mechanised"` -- the 55-character string
+(`arXiv:2412.04984v2, Table 1, row 'Oversight Subversion'`) that is the entire basis
+for all four fields is gone, and nothing in this file's own invariants reacts. Only
+`PALISADE-2026-robot-shutdown-resistance` is caught, and only as a side effect: its
+`source_locator` also happens to feed `derive_source_structured()`'s boolean, so
+deleting it flips that boolean and round 22's existing check fires -- not because
+anything was checking for the locator's presence on its own terms.
+
+MONARCH sharpens the same gap from the other direction. It has never had a
+`source_locator` (absent as a key, not `null`), yet has carried
+`locator_precision="row"` since round 35, promoted on the strength of a GitHub
+comment permalink appended to `citation` as a `#issuecomment-4331930210` fragment --
+the only `#` among all 65 citations. Checked directly: dropping that fragment,
+changing the issue number, or replacing the citation with a bare URL all leave this
+file at exit 0, because `source_locator` is read in exactly two places
+(`derive_source_structured`, the round-32 span count) and MONARCH's record touches
+neither.
+
+**Fixed:** `_anchor_present(record)` -- true iff `source_locator` is non-empty, or
+`citation` carries a non-empty fragment after `#`. A located record with neither is
+now a hard violation, not left to an unrelated boolean to catch by accident. Verified
+before shipping: 0 violations on the real 65-record corpus at HEAD; stripping the
+anchor from each of the 31 located records one at a time fires this check on **all
+31**, not a subset -- the property round 38's rung-exercise count was reaching for
+and didn't have, because it measured a mechanism only one record's shape had ever
+touched. This one is exercised by construction, by every record it applies to.
+
+**Left open on purpose:** whether a citation fragment is a locator carrier this file
+now endorses as a second, permanent mechanism, or a `source_locator` MONARCH simply
+hasn't had written down yet. `_anchor_present()` accepts the fragment without
+promoting it to the file's primary mechanism -- that is an editorial decision about
+the dataset, not something a bugfix round should make by default.

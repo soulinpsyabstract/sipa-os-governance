@@ -1212,9 +1212,56 @@ a semicolon, comma, or double-hyphen in it before its extension would move
 that character out of the inert set without anyone having to notice by
 hand.
 
+Round 39 (dipankarsarkar): round 38's shipped print told the truth about
+character rungs but missed the sharper gap underneath -- nothing checked
+whether a located record still carried evidence of *where*. Demonstrated
+against the real 65-record corpus, not proposed: deleted source_locator
+from each of the 30 located records that had one and re-ran this file's
+own checker unmodified. 29 of 30 stayed exit 0 -- APOLLO-2024-oversight-
+subversion, among others, kept asserting locator_precision="row" /
+locator_ceiling="cell" / locator_exhaustive=False / verifiability=
+"mechanised" with its 55-character source_locator silently gone. Only
+PALISADE was caught, and only because derive_source_structured()'s
+boolean happens to depend on its source_locator content -- an accident of
+that one record's shape, the same accident round 36-38 already
+identified for the split characters, just one layer up: this file was
+checking whether a located record's derived boolean was internally
+consistent, never whether the location claim itself still pointed at
+anything.
+
+MONARCH sharpened the same question from the other side: it has never
+had a source_locator (absent as a key, not null), yet carries
+locator_precision="row" since round 35, promoted on the strength of a
+GitHub comment permalink -- a "#issuecomment-4331930210" fragment
+appended to citation, the only "#" among all 65 citations. Checked
+directly: dropping that fragment, changing the issue number, or
+replacing the whole citation with a bare URL all leave this file exit 0,
+because source_locator is read in exactly two places (derive_source_
+structured, the round-32 span count) and MONARCH touches neither.
+
+Fixed: `_anchor_present(record)` -- true iff source_locator is non-empty,
+or citation carries a non-empty fragment after "#". A located record
+(locator_precision is not None) with neither is now a hard violation, not
+an informational count. Verified before shipping, not asserted: 0
+violations on the real 65-record corpus at HEAD; stripping the anchor
+from each of the 31 located records one at a time fires this check on
+all 31, not a subset. That is the property round 38's rung-exercise
+count was reaching for and didn't have -- a check exercised by every
+record it applies to, rather than by one accident of shape.
+
+MONARCH's own question -- is a citation fragment a locator carrier this
+file now endorses, or a source_locator nobody has written down yet --
+is left open on purpose: `_anchor_present()` accepts it without
+promoting it to the file's primary mechanism. A future round should
+either write MONARCH's fragment into an actual source_locator string
+(making it uniform with every other located record) or decide fragments
+are a real second carrier worth documenting as such, but that is an
+editorial call about the dataset, not something this round's fix should
+decide by default.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
-Claude, 2026-09-01 through 09-14, in direct response to dipankarsarkar's
-rounds 12 through 38.
+Claude, 2026-09-01 through 09-15, in direct response to dipankarsarkar's
+rounds 12 through 39.
 """
 
 import json
@@ -1304,6 +1351,22 @@ def derive_source_structured(citation, source_locator) -> bool:
     return bool(_REPO_HOST_RE.search(citation or "")) and bool(
         _MACHINE_READABLE_EXT_RE.search(head)
     )
+
+
+def _anchor_present(record) -> bool:
+    """Round 39 (dipankarsarkar): a located record (locator_precision is not
+    None) asserts that someone found a specific position in the source. This
+    checks that the record still carries evidence of where -- a non-empty
+    source_locator, or (MONARCH's case) a non-empty fragment after '#' in
+    citation, which round 35 used as a de facto position-anchor without ever
+    writing it into source_locator. Either carrier counts; this does not
+    judge which one a record *should* use, only whether at least one exists."""
+    if record.get("source_locator"):
+        return True
+    citation = record.get("citation") or ""
+    if "#" not in citation:
+        return False
+    return bool(citation.split("#", 1)[1].strip())
 
 
 # Round 38 (dipankarsarkar): the anchor's own split characters, as a set --
@@ -1476,6 +1539,36 @@ def main() -> int:
                 violations.append(
                     f"{rid}: locator_precision={lp!r} (a specific location was found) but "
                     f"verifiability='unverifiable' -- if you can point at a location, you already looked"
+                )
+
+            # Round 39 (dipankarsarkar): locator_precision is not None asserts
+            # a specific position was found, but nothing previously required
+            # the record to still carry evidence of *where*. Demonstrated live:
+            # deleting source_locator from 30 located records one at a time
+            # and re-running this file's own checker caught exactly 1 of them
+            # (PALISADE, only because derive_source_structured's boolean
+            # happens to depend on it) -- the other 29, including APOLLO-2024-
+            # oversight-subversion, kept locator_precision="row" / ceiling=
+            # "cell" / exhaustive=False / verifiability="mechanised" with the
+            # 55-character locator that justified all four silently gone.
+            # MONARCH is the sharper case: it has never had a source_locator
+            # (absent as a key, not null), and was promoted to "row" in round
+            # 35 on the strength of a comment permalink appended to its
+            # citation as a "#issuecomment-..." URL fragment -- the only "#"
+            # among all 65 citations. _anchor_present() treats that fragment
+            # as an equally valid carrier of the same claim: an anchor is
+            # either a non-empty source_locator, or a non-empty fragment after
+            # "#" in citation. Checked directly, not proposed: 0 violations at
+            # HEAD on the real 65 records, and stripping the anchor from each
+            # of the 31 located records one at a time fires this check on all
+            # 31 -- unlike the three split-character rungs (round 38), this
+            # rung is exercised by every located record that exists, not by
+            # one accident of shape.
+            if lp is not None and not _anchor_present(record):
+                violations.append(
+                    f"{rid}: locator_precision={lp!r} but no anchor -- source_locator is absent/empty "
+                    f"and citation carries no '#' fragment either (round 39: a location claim with "
+                    f"nothing pointing at it is unfalsifiable the moment the locator is edited or removed)"
                 )
 
             # Round 22: source_structured left this invariant. It no longer needs a
