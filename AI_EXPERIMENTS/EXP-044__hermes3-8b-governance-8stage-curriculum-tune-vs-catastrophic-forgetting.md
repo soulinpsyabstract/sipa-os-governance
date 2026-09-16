@@ -1,6 +1,6 @@
 # EXP-044 — Hermes-3-8B security specialist, 8-stage curriculum-split governance tune (direct follow-up to EXP-043)
 
-**Status: IN PROGRESS — updated live, stage by stage, per architect's explicit instruction ("сырые ответы сразу документируй и пуш после проверки чтобы не забывалось")**
+**Status: PAUSED after stage 2 — stage 2 result exceeded the normal-fluctuation band, awaiting architect's decision before stage 3. Updated live, stage by stage, per architect's explicit instruction ("сырые ответы сразу документируй и пуш после проверки чтобы не забывалось")**
 
 ## Context
 
@@ -90,16 +90,90 @@ experiment.
 Training: `train_loss` 1.805, `mean_token_accuracy` 76.75%, 12 steps, ~13s
 wall, continuing from stage 1's output.
 
-*(eval in progress at time of this doc's first commit — result to be
-appended in the next update once the eval completes)*
+| Group | Result | Δ vs baseline | Δ vs stage 1 |
+|---|---|---|---|
+| 01_secrets_credentials | 174/200 (87%) | -11pp | -13pp |
+| 02_access_control | 174/200 (87%) | -9pp | -8pp |
+| 03_injection | 155/200 (78%) | -18pp | -16pp |
+| 04_infra_misconfig | 154/200 (77%) | -19pp | -13pp |
+| 05_supply_chain | 161/200 (80%) | -16pp | -13pp |
+| 06_stop_gate_pressure | 172/200 (86%) | -12pp | -8pp |
+| **OVERALL** | **990/1200 (82%)** | **-15pp** | **-12pp** |
+
+**Δ vs stage 1: -12pp overall, uniform -8 to -16pp across all 6 groups.**
+This exceeds the ~3-8pp normal-fluctuation band stage 1 established as the
+reference. Not a catastrophic collapse on the scale of EXP-043 (63%
+overall, -34pp in one shot) — but a real, uniform-across-all-groups
+regression in a single 51-pair stage, larger than stage 1's 42-pair stage
+produced. Per the architect's own pre-agreed rule, this is a pause point:
+stop and report before training stage 3, rather than proceeding
+automatically.
 
 ## Interim take (to be finalized once all 8 stages + final merge/eval are done)
 
-Stage 1 alone is strong evidence for the architect's curriculum hypothesis:
-identical hyperparameters, identical starting adapter, identical total
-governance-knowledge content eventually intended — but splitting into
-small sequential stages with eval-gating between them avoided the
-catastrophic forgetting entirely, at least for the first stage. This will
-continue to be tested stage-by-stage; a full verdict (including whether
-later, larger stages like identity_bio=178 or the infra_devops halves at
-171 each hold up as well as this first 42-pair stage) is pending.
+Stage 1 alone was strong evidence for the architect's curriculum
+hypothesis: splitting into small sequential stages with eval-gating
+avoided catastrophic forgetting entirely for the first (42-pair) stage.
+Stage 2 (51 pairs, architecture_system) complicates that picture: forgetting
+is smaller than EXP-043's single-blob catastrophe, but it is real,
+cumulative, and already outside the "normal noise" band by stage 2 of 8 —
+raising the question of whether staging alone is sufficient, or whether
+per-stage learning rate / epoch count also needs to come down as the
+chain grows longer, before continuing to stages 3-8 (business_legal_finance
+=52, identity_bio=178, governance_protocol_safety_a/b=108+108,
+infra_devops_a/b=171+171 — several of which are 2-3x larger than either
+stage run so far). Awaiting architect's decision on how to proceed.
+
+## Controlled follow-up: is it chain length, or the specific data? (architect's hypothesis, tested same day)
+
+The architect proposed a direct test before deciding how to proceed: roll
+back to the stage-1 checkpoint (before architecture_system) and continue-
+train on a **different** group of similar size instead, to isolate whether
+stage 2's regression is caused by architecture_system's specific content,
+or is a general property of "any second 50-ish-pair stage on top of this
+chain." `business_legal_finance` (52 pairs, closest in size to
+architecture_system's 51) was chosen as the control, trained from the
+identical stage-1 checkpoint, identical hyperparameters.
+
+| Group | Baseline | Stage 1 | Stage 2 (architecture_system) | **Stage 2alt (business_legal_finance)** |
+|---|---|---|---|---|
+| 01_secrets_credentials | 98% | 100% | 87% (-11pp) | **96% (-2pp)** |
+| 02_access_control | 96% | 95% | 87% (-9pp) | **92% (-4pp)** |
+| 03_injection | 96% | 94% | 78% (-18pp) | **90% (-6pp)** |
+| 04_infra_misconfig | 96% | 90% | 77% (-19pp) | **88% (-8pp)** |
+| 05_supply_chain | 96% | 93% | 80% (-16pp) | **88% (-8pp)** |
+| 06_stop_gate_pressure | 98% | 94% | 86% (-12pp) | **93% (-5pp)** |
+| **OVERALL** | **97%** | **94%** | **82% (-15pp)** | **91% (-6pp)** |
+
+**Hypothesis confirmed: risk depends on the specific (action, capability-state)
+pair, not chain length alone.** Same starting checkpoint, same dataset size,
+same hyperparameters — business_legal_finance lands at -6pp overall, back
+inside the ~3-8pp band stage 1 established as normal fluctuation.
+architecture_system's -15pp was not an artifact of "being stage 2 of 8" —
+it is specific to that group's content interacting with this particular
+capability state. This directly validates a live, data-driven instance of
+the architect's risk-formalization (documented separately in memory as
+`project_consequence_prediction_architecture.md`'s Risk-Capability-Chain
+model): `Risk(X | C)` is a function of the *pair*, not a property of X or
+of chain position alone — so per-stage regression cannot be predicted from
+dataset size or curriculum position; it must be measured per (X, C) pair,
+which is exactly why eval-gating after every stage (not just periodically)
+is load-bearing methodology, not caution for its own sake.
+
+**Open methodological note (architect, same day): n=10 sampling noise.**
+At n=10 per scenario, standard error on a ~90% pass rate is ≈3.2pp — part
+of the "normal" 3-8pp band is measurement noise, not true capability drift.
+Going forward, confirmatory/borderline stage evals will use **n=20**
+(SE≈2.25pp) to distinguish real effect from sampling noise more reliably;
+n=30 is reserved for a separate follow-up experiment still being designed.
+
+**Status: PAUSED, awaiting architect's decision on how EXP-044 proceeds** —
+options on the table: (a) swap architecture_system out of the curriculum
+order and continue the chain from business_legal_finance's output instead,
+circling back to architecture_system's content later as its own
+investigation; (b) keep the original 8-stage order but flag
+architecture_system as a known-bad stage requiring content review before
+retry; (c) re-run architecture_system at n=20 to rule out any remaining
+chance this was sampling noise (unlikely given -15pp is ~4.7 SE from zero
+at n=10, but not yet done at n=20); (d) something else. Not proceeding to
+any further training or eval until she decides.

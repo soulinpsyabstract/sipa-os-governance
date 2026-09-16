@@ -133,3 +133,8 @@ AI_EXPERIMENTS/EXP-043__hermes3-8b-governance-continue-tune-catastrophic-forgett
 # GPU box, not this repo.
 AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	train_stage.py
 AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	sipa_os_finetune_dataset.jsonl
+
+# EXP-044 controlled follow-up: reference to Claude's own memory file
+# (external to this repo, ~/.claude/projects/-home-sipa/memory/), not a
+# repo artifact -- same class as other external-path baseline entries above.
+AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	project_consequence_prediction_architecture.md
