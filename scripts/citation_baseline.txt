@@ -115,3 +115,15 @@ AI_EXPERIMENTS/EXP-041__llama31-8b-misbehavior-discriminator-lora-fireworks.md	a
 # AI_EXPERIMENTS/DATASETS/, so a bare-filename citation can't resolve to one
 # match). Not a new investigation, same file, same reason.
 AI_EXPERIMENTS/EXP-042__hermes3-8b-8stage-sequential-lora-chain-continual-tuning.md	specialist_cd_binary_pilot_v2.jsonl
+
+# EXP-043's 5 citations below are external paths that live on SERVER
+# (/home/sipa/PROJECT/PAYTON_HUBS/HUB_WORKING_FILES/) or on the ephemeral
+# Brev GPU box used for this run (already deleted post-experiment) -- same
+# class as EXP-040/041's Fireworks account-path citations above: real
+# artifacts, genuinely outside this repo's tree, not recoverable as
+# in-repo files. Not a defect.
+AI_EXPERIMENTS/EXP-043__hermes3-8b-governance-continue-tune-catastrophic-forgetting.md	HUB_WORKING_FILES/sipa_os_finetune_dataset.jsonl
+AI_EXPERIMENTS/EXP-043__hermes3-8b-governance-continue-tune-catastrophic-forgetting.md	sipa_os_finetune_dataset.jsonl
+AI_EXPERIMENTS/EXP-043__hermes3-8b-governance-continue-tune-catastrophic-forgetting.md	train_governance_stage.py
+AI_EXPERIMENTS/EXP-043__hermes3-8b-governance-continue-tune-catastrophic-forgetting.md	eval_results_hermes3-8b-sequential-chain-lora_hermes3_adversarial_n10.json
+AI_EXPERIMENTS/EXP-043__hermes3-8b-governance-continue-tune-catastrophic-forgetting.md	eval_results_sipa-governance-stage-lora_hermes3_adversarial_n10.json
