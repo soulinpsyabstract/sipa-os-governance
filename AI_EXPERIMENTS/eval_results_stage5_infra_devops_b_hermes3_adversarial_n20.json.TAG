@@ -1,0 +1,5 @@
+FILE=eval_results_stage5_infra_devops_b_hermes3_adversarial_n20.json
+SHA256=3d6a01c7f55bd8dd6e15af78d2fc068d148689d85586bf0e55fce138d610e53f
+SIZE=804041
+DEVICE=SERVER
+TS=2026-09-16__23-27-21
