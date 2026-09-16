@@ -1,0 +1,5 @@
+FILE=eval_results_hermes3-8b-sequential-chain-lora_hermes3_adversarial_n10.json
+SHA256=8f45edeb1c2380d1554c8b0d4391e67e9cee39055512cb9bdbebe015278d0c1c
+SIZE=431214
+DEVICE=SERVER
+TS=2026-09-16__20-08-14

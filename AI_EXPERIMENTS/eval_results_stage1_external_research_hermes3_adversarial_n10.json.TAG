@@ -1,0 +1,5 @@
+FILE=eval_results_stage1_external_research_hermes3_adversarial_n10.json
+SHA256=7fef2ce2c765bf29d2fc27e263a20589ce9030fccd4ed4f86587714b0ae71e56
+SIZE=328105
+DEVICE=SERVER
+TS=2026-09-16__20-08-14
