@@ -1,0 +1,5 @@
+FILE=sipa_os_finetune_dataset.jsonl
+SHA256=38763cb21c2fc0014adf579920cec8f96b88ead98ba9ab6d24ddd835521cd4f7
+SIZE=167280
+DEVICE=SERVER
+TS=2026-09-16__21-33-32

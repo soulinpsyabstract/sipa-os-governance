@@ -1,0 +1,171 @@
+{"instruction": "How many API keys are required for the VPSServer Cloud integration?", "response": "Two keys are required: VPSSERVER_ACCESS_KEY and VPSSERVER_SECRET_KEY."}
+{"instruction": "What is the command to list VPS servers using the VPSServer Cloud integration?", "response": "The command is 'vps-list'."}
+{"instruction": "Does the Z.AI integration have any aliases in ask.sh?", "response": "Yes, the Z.AI integration has aliases: zai, zai-v, and zai-vid."}
+{"instruction": "What command must be used before any task requiring SIPA AI resources?", "response": "использовать bash BIN/ask.sh перед любой задачей требующей AI-ресурсы SIPA"}
+{"instruction": "What is the current status of the TESTKUBE AI EAP?", "response": "EAP approved · workspace update pending · Slack EAP channel YES"}
+{"instruction": "List the features of the TESTKUBE AI EAP.", "response": "AI-powered test creation · AI Agents · MCP Server"}
+{"instruction": "Is the TESTKUBE AI EAP approved?", "response": "Yes, the TESTKUBE AI EAP is approved."}
+{"instruction": "Does the TESTKUBE AI EAP have a Slack EAP channel?", "response": "Yes, the TESTKUBE AI EAP has a Slack EAP channel."}
+{"instruction": "How many models were added to the test in SESSION-S159?", "response": "35 models were added in SESSION-S159: 10 groq-* aliases, 22 bl-* aliases, and 3 individual models (apifree, nb-gpt120, di-qwen35-4b)."}
+{"instruction": "List the models that are expected to fail due to balance issues.", "response": "Expected FAIL models due to balance issues: zai/zai-v (429), bl-* premium (402), and masha-* (429)."}
+{"instruction": "What was the reason for groq-ds and groq-r1 models being redirected?", "response": "groq-ds and groq-r1 were redirected because their underlying models (deepseek-r1-distill-llama-70b and mixtral-8x7b-32768) were removed from hosting without warning."}
+{"instruction": "Which new aliases were added in SESSION-S200 but not yet stress-tested?", "response": "New aliases added in SESSION-S200 but not stress-tested: or-fable5, or-sonnet5, sonnet5, mythos5, aiml-* (9 models), ms-sipa, mll-api, mll-pub."}
+{"instruction": "What command retrieves the latest CLOUDFLARE_WORKERS_TOKEN from the .sipa_env file?", "response": "grep \"^CLOUDFLARE_WORKERS_TOKEN=\" /home/sipa/.sipa_env | tail -1 | cut -d= -f2- | tr -d '\"'"}
+{"instruction": "What command is used to deploy Cloudflare Workers for SIPA OS?", "response": "npx wrangler deploy"}
+{"instruction": "What is the zone ID for the domain sipa-os.org?", "response": "9dfb82225a269d948792bba7352d6f4f"}
+{"instruction": "What is the total count of Cloudflare Workers for SIPA OS?", "response": "32"}
+{"instruction": "What is the API endpoint for SILICONFLOW?", "response": "https://api.siliconflow.com/v1"}
+{"instruction": "Where are SILICONFLOW API keys stored?", "response": "In ~/.sipa_secrets, with keys named SILICONFLOW_API_KEY..KEY_10"}
+{"instruction": "How do you query the sf-kimi model?", "response": "Run: bash BIN/ask.sh --model sf-kimi \"вопрос\""}
+{"instruction": "What command is used to query the sf-flux model?", "response": "bash BIN/ask.sh --model sf-flux \"prompt\""}
+{"instruction": "Are there references to CLAUDE.md in the documentation?", "response": "Yes, there are two references to CLAUDE.md in the documentation."}
+{"instruction": "What is the cost of renting a GPU instance compared to the current Claude Code API?", "response": "Renting an L4/A10 class GPU instance costs approximately $360-700+ per month, which is more expensive than the current Claude Code API."}
+{"instruction": "Which sessions are stored in SESSIONS_LOG.md?", "response": "Sessions S109–S193+ are stored in the file."}
+{"instruction": "What information does SESSIONS_LOG.md contain?", "response": "It contains context about what was done, what was broken, and what is pending."}
+{"instruction": "How is SESSIONS_LOG.md updated?", "response": "It is updated every session."}
+{"instruction": "What types of sensitive data are explicitly prohibited from being committed to public SIPA OS repositories?", "response": "The following sensitive data types are explicitly prohibited from being committed to public SIPA OS repositories: API keys, tokens, passwords (even commented out), .sipa_env and .sipa_secrets files, any env files, SSH keys, certificates, private keys, internal IP addresses, ZeroTier topology, personal data (passport, EIN, addresses), and audit logs containing sensitive information."}
+{"instruction": "List the systems or scripts where the non-:00 posting rule must be applied in SIPA OS.", "response": "The non-:00 posting rule must be applied to: crontab, NEURO_POST.sh, and any auto-posting scripts."}
+{"instruction": "What are the required elements for creating a demo in SIPA OS?", "response": "File: Self-contained HTML at `/home/sipa/apps/sipa-deck/demo-[name].html`.\nDeployment: Using `npx wrangler deploy` after exporting Cloudflare token.\nURL: `sipa-deck.soulinpsyabstract.workers.dev/demo-[name].html`.\nFooter: Must include 'Prepared by Aelin AquaSoul · Soul In PsyAbstract · sipa-os.org'."}
+{"instruction": "What is the required format for adding an entry to the DEMO REGISTRY table?", "response": "`| YYYY-MM-DD | demo-[name].html | [for whom/project] | [platform] | [status] |`"}
+{"instruction": "What are the possible status values for demo entries in the DEMO REGISTRY?", "response": "`draft`, `submitted`, `live`, or `archived`"}
+{"instruction": "What is the status of the demo for Dr. Saori?", "response": "submitted"}
+{"instruction": "What is the date for the demo for HCO?", "response": "2026-06-01"}
+{"instruction": "What is the status of the demo for Lizard Marketing?", "response": "submitted"}
+{"instruction": "What is the platform for the demo for Etta the Place?", "response": "Прямой → Contra"}
+{"instruction": "What is the date for the demo for Inument?", "response": "2026-06-01"}
+{"instruction": "What is the purpose of reading SESSIONS_LOG.md before technical work?", "response": "To understand the context of reality: what is broken, what has been fixed, what is pending, and the status of domains/services."}
+{"instruction": "What types of work require checking SESSIONS_LOG.md before starting?", "response": "Any work with infrastructure, domains, deploys, workers, or services."}
+{"instruction": "What was the second, more serious discovery during the same session as the 11-commit lag incident?", "response": "The second discovery was that three writers were simultaneously writing to the same live directory (`/srv/SIPA_GIT_MIRRORS/soul-in-psyabstract-site/`) while a git merge was in progress. This resulted in mutual overwriting of edits."}
+{"instruction": "What is the first step in the absolute order for handling any result before giving it to the operator?", "response": "The first result/hypothesis/fix is considered a working version, not the final outcome."}
+{"instruction": "What was the consequence of the S227+ violation regarding the Auth0 login for sipa-shell-terminal?", "response": "The Auth0 login for sipa-shell-terminal was reported as 'fixed' after only server-side verification, but the actual cause of the recurring issue was an unverified service worker caching an old bundle in the operator's browser."}
+{"instruction": "What is the status of CH06_BUILD_LOG.md in 'HOW I DID THIS'?", "response": "ЕЩЁ НЕ СОЗДАНА (номер зарезервирован под \"32 сессии/39K файлов/$0\")"}
+{"instruction": "What specific types of actions require applying the Rabbit Technique in SIPA OS?", "response": "The Rabbit Technique must be applied to: deletion/modification of Cloudflare Workers/routes/DNS, restarts of systemd services, edits to live configs, git force operations within permitted scope, and any action where anticipating consequences is cheaper than asking and waiting for a response."}
+{"instruction": "Under what conditions should an action be executed immediately after applying the Rabbit Technique?", "response": "An action should be executed immediately after applying the Rabbit Technique if the analysis is clean (nothing critical depends on it, rollback is trivial)."}
+{"instruction": "Where should the mirrored blog posts be stored according to Rule #22?", "response": "Mirrored blog posts should be stored in the `sipa-blog` directory, specifically at the path `/home/sipa/apps/sipa-blog/`."}
+{"instruction": "What is the Zerotier IP address for device T15?", "response": "The Zerotier IP address for T15 is 172.27.24.2."}
+{"instruction": "What is the SSH username for connecting to the SERVER device?", "response": "The SSH username for SERVER is 'sipa'."}
+{"instruction": "Is it permitted to disable ZeroTier while an active connection is going through that node?", "response": "No, it is absolutely prohibited to disable ZeroTier while an active connection is going through that node, as it would result in loss of the tunnel."}
+{"instruction": "What is the SSH port for device X7?", "response": "The SSH port for X7 is 8022."}
+{"instruction": "What is the local IP address for LAPTOP?", "response": "The local IP address for LAPTOP is 192.168.1.3."}
+{"instruction": "Are T15 and X7 on the same Zerotier subnet?", "response": "No, T15 (172.27.24.2) and X7 (172.27.248.199) are on different Zerotier subnets."}
+{"instruction": "Is the Hercules PWA deployed from the sipa-hercules-mirror repository?", "response": "No. The documentation states: 'sipa-hercules-mirror = зеркало live (читает, не пишет)' and explicitly warns not to confuse it with the source repository sipa-focus-tanstack.git."}
+{"instruction": "What is the Cloudflare Worker route for the sipa-focus-tanstack.git deployment?", "response": "focus.sipa-os.org/*"}
+{"instruction": "What is the Lovable MCP custom URL?", "response": "https://mcp.soulinpsy.info/mcp"}
+{"instruction": "Is the Inngest webhook IP allowlist entry 172.27.22.217 the public IP?", "response": "No. The documentation states: '⚠️ IP allowlist 172.27.22.217 = ZeroTier overlay IP · Inngest видит public IP 5.29.12.73'."}
+{"instruction": "What is the last commit hash mentioned for sipa-focus-tanstack.git?", "response": "477be9e"}
+{"instruction": "Where are raw thoughts captured from ask.sh stored?", "response": "Raw thoughts from ask.sh are automatically stored in STREAM__YYYY-MM-DD.md within the RAW_THOUGHTS/INBOX/ directory."}
+{"instruction": "What is the default category if classification is unclear?", "response": "If classification is unclear, the default category is GOLD.md."}
+{"instruction": "What is the domain of the Soul In PsyAbstract project?", "response": "Psychedelic abstraction · UV-reactive dual-reality art"}
+{"instruction": "Can AI suggestions be executed without operator confirmation?", "response": "No, AI suggestions are ADVISORY — operator confirms before any execution"}
+{"instruction": "What is considered a violation according to this protocol?", "response": "Any deviation from the protocol is considered a violation."}
+{"instruction": "What is the result of the AI executing the protocol?", "response": "After executing the protocol, the AI returns the result."}
+{"instruction": "Which file types should have their sha256 compared during file comparison?", "response": ".sh, .txt, .md, .pdf, .py, .js, .ts, .html, .csv, .tsv, .json, .yaml, .log"}
+{"instruction": "What is the command used to run any script on FAT32 in SIPA OS?", "response": "bash script.sh"}
+{"instruction": "What is the command format for auto-detecting the device when running SIPA_GUARD_SPHERE.sh?", "response": "The command format is: SIPA_DEVICE=X7|15T|SERVER bash BIN/SIPA_GUARD_SPHERE.sh <cmd>."}
+{"instruction": "How is the SERVER heartbeat managed according to the documentation chunk?", "response": "The SERVER heartbeat is managed by systemd, specifically through the service sipa-heartbeat.service. The status shown is: systemctl is-active sipa-heartbeat.service, with pid=4147147, active (running), and enabled."}
+{"instruction": "What command runs at 30 minutes past every 4th hour?", "response": "MLL_CORE.py / MLL_RUN.sh."}
+{"instruction": "List all tasks that run daily at midnight.", "response": "DAY_BOOT.sh and day_open.sh."}
+{"instruction": "Which script executes at 3:00 AM daily?", "response": "SIPA_GUARD_SPHERE.sh prune 7 (15T)."}
+{"instruction": "What is the frequency of the FILE_SANITIZE.sh job?", "response": "Every hour at 15 minutes past the hour."}
+{"instruction": "Identify the weekly tasks running on the server node.", "response": "MULTI_AGENT_AUDIT_WEEKLY.sh (SERVER) runs every Sunday at 3:00 AM."}
+{"instruction": "What is the full path to the _DELIVERED directory on device 15T?", "response": "/storage/emulated/0/PROJECT/PAYTON_HUBS/_DELIVERED/"}
+{"instruction": "What command is used to process files in the _DELIVERED directory on device 15T?", "response": "for f in _DELIVERED/*; do\n  [ -f \"$f\" ] || continue\n  SIPA_DEVICE=15T bash BIN/SIPA_GUARD_SPHERE.sh intake \"_DELIVERED/$(basename \"$f\")\"\ndone"}
+{"instruction": "What should be the state of the _DELIVERED directory after processing on device 15T?", "response": "_DELIVERED/ должна быть пустой"}
+{"instruction": "What script is executed to process each file in the _DELIVERED directory on device 15T?", "response": "BIN/SIPA_GUARD_SPHERE.sh"}
+{"instruction": "What environment variable is set when processing files in the _DELIVERED directory on device 15T?", "response": "SIPA_DEVICE=15T"}
+{"instruction": "What is the current status of the Cloudflare token named CLOUDFLARE_DNS_TOKEN in the SIPA OS system as of the last verification date mentioned?", "response": "CLOUDFLARE_DNS_TOKEN has a status of ❌ auth error на DNS и Analytics (проверено 2026-07-16)."}
+{"instruction": "What specific Cloudflare API token name is confirmed to work for both DNS and GraphQL Analytics, and what is its corresponding Account token identifier?", "response": "The token named CF_CACHE_PURGE_TOKEN works for DNS + GraphQL Analytics and corresponds to Account token 'cold-wood-44da'."}
+{"instruction": "What is the correct command to retrieve the last defined CLOUDFLARE_WORKERS_TOKEN value from the .sipa_env file in SIPA OS?", "response": "TOKEN=$(grep \"^CLOUDFLARE_WORKERS_TOKEN=\" /home/sipa/.sipa_env | tail -1 | cut -d= -f2- | tr -d '\"')"}
+{"instruction": "What is the reason given for the old REST endpoint for Zone Analytics not working with any Account-Owned tokens in SIPA OS?", "response": "The old REST endpoint /zones/{id}/analytics/dashboard does not work with Account-Owned tokens because it requires user-owned credentials (Cloudflare error 1016), necessitating a migration to the GraphQL API."}
+{"instruction": "What are the specific permissions associated with the CLOUDFLARE_DNS_SOULINPSY token in SIPA OS?", "response": "CLOUDFLARE_DNS_SOULINPSY is an Account token 'tight-silence-85f1' with permissions for DNS Write and Registrar Domains Admin."}
+{"instruction": "How should the STATUSPAGE_REST_KEY be used in API requests?", "response": "Use the STATUSPAGE_REST_KEY with the Authorization header scheme: OAuth <key>."}
+{"instruction": "Which SSH key is marked as ACTIVE for X7 Pro (u0_a502)?", "response": "The active SSH key for X7 Pro (u0_a502) is AAAAIPKhi1nalrttNr1MXMoTEVFLNnHvrsFP7b3izISQF2G+"}
+{"instruction": "What is the SSH key for the 15T device (sipa)?", "response": "The SSH key for 15T (sipa) is AAAAIM64v1Wq1dbzmokAM9cYURKIakDeQH5PzN/jLWSvIAg."}
+{"instruction": "Can the server connect to X7 via SSH pull?", "response": "The documentation indicates that Server → X7 (pull) is marked with ❌, meaning the connection is not possible. It also states that 'X7 SSH port 8022 закрыт снаружи' (X7 SSH port 8022 is closed from outside)."}
+{"instruction": "Is the key AAAAIGQBXDEpagKrv3WGXAzW1EHTpScV5g08QIsbvwoNGwOj still in use?", "response": "The key AAAAIGQBXDEpagKrv3WGXAzW1EHTpScV5g08QIsbvwoNGwOj is marked as 'STALE (убрать при случае)' (stale, remove when possible), indicating it is old and should be removed from authorized_keys on SERVER and 15T."}
+{"instruction": "What is the hostname for the SSH host '15T'?", "response": "172.27.24.2"}
+{"instruction": "What port is used for the SSH host 'X7'?", "response": "19122"}
+{"instruction": "What is the username for the SSH host 'SERVER_SELF'?", "response": "sipa"}
+{"instruction": "What is the ConnectTimeout value for the SSH host '15T'?", "response": "10"}
+{"instruction": "What is the ServerAliveInterval for the SSH host 'X7'?", "response": "30"}
+{"instruction": "What is the hostname for the SSH host 'SERVER_SELF'?", "response": "172.27.22.217"}
+{"instruction": "List all scripts in ~/.local/bin/ that are cron targets.", "response": "heartbeat.sh, timeline_tick.sh, system_scan.sh, day_open.sh, day_close.sh, daily_report.sh, weekly_archive.sh, monthly_archive.sh"}
+{"instruction": "What is the purpose of SIPA_START.sh?", "response": "SIPA_START.sh tests SSH, port, nginx, api, bin, cron, mll, and disk."}
+{"instruction": "Which script in PAYTON_HUBS/BIN/ is version V3.7?", "response": "ask.sh is version V3.7."}
+{"instruction": "What are the two files in ~/.termux/boot/?", "response": "~/.termux/boot/ contains 00_CANON_BOOT.sh and 00_CANON_AUTORUN.sh."}
+{"instruction": "What is the ZeroTier IP address of the server soul-in-psyabstract?", "response": "172.27.22.217"}
+{"instruction": "What is the ZeroTier node ID for the POCO X7 PRO phone?", "response": "05b888cf28"}
+{"instruction": "Is the SIPA CORE on the server suitable for executing scripts?", "response": "No, SIPA CORE is for inject/find/анализ only and is not an executor."}
+{"instruction": "What is the local IP address of the server soul-in-psyabstract?", "response": "192.168.1.122"}
+{"instruction": "What is the path for the canonical inject file on the server?", "response": "/home/sipa/PROJECT/PAYTON_HUBS/CLAUDE.md"}
+{"instruction": "What is the cron schedule for MLL_CORE in SIPA OS?", "response": "MLL_CORE: V1.4 · cron 30 */4 · all nodes · MLL_DAILY_AUDIT.py ✅ bcb6fa37"}
+{"instruction": "What is the total number of files in the SIPA TAGGED FILES INDEX as of 2026-02-21?", "response": "29,959"}
+{"instruction": "What is the total size in MB of the SIPA TAGGED FILES INDEX as of 2026-02-21?", "response": "5,529 MB"}
+{"instruction": "What is the path to the SIPA TAGGED FILES INDEX file on the server?", "response": "/srv/SIPA_V8/05_AI_MLL/INDEX/INDEX__SIPA_TAGGED_FILES__2026-02-21.tsv"}
+{"instruction": "How many files are tagged with 'V1' in the SIPA TAGGED FILES INDEX as of 2026-02-21?", "response": "6,807"}
+{"instruction": "Is ARCHIVE_COLD allowed to overwrite artifacts?", "response": "No. ARCHIVE_COLD is forbidden from overwriting, replacing, or editing artifacts."}
+{"instruction": "Can TRASH restore items without operator action?", "response": "No. TRASH is forbidden from restoring items without explicit operator action."}
+{"instruction": "What happened to the DeepSeek API key during the problematic Gemini session?", "response": "The DeepSeek API key was leaked and has been replaced with a new key in .sipa_secrets (SESSION-37)."}
+{"instruction": "What is the model used for SIPA_OS?", "response": "Claude Sonnet 4.6"}
+{"instruction": "Is SIPA_XAI active?", "response": "Yes, SIPA_XAI is ACTIVE"}
+{"instruction": "What is the environment variable for SIPA_SHELL?", "response": "DEEPSEEK_API_KEY"}
+{"instruction": "Which session is SIPA_MISTRAL associated with?", "response": "SESSION-49"}
+{"instruction": "Is SIPA_CODER a paid service?", "response": "No, SIPA_CODER is marked as FREE"}
+{"instruction": "What are the available models for ask.sh?", "response": "deepseek, chat, claude, claude-s, gpt, gpt4, gemini, gemini-s, grok, grok-mini, mistral, mistral-m, codestral, code"}
+{"instruction": "What is the status of the DeepSeek API key?", "response": "DeepSeek: $DEEPSEEK_API_KEY · deepseek-reasoner / deepseek-chat ✅"}
+{"instruction": "How much balance is left on the OpenAI API key?", "response": "OpenAI: $OPENAI_API_KEY · gpt-4o-mini / gpt-4o ✅ $40 balance"}
+{"instruction": "What is the expiration date for the paid Gemini API key?", "response": "Gemini paid: $GEMINI_PAID_KEY · gemini-2.5-flash (Vertex AI) ✅ ₪928 до 2026-06-02"}
+{"instruction": "What is the status of the free tier for the Gemini API key?", "response": "Gemini free: $GEMINI_API_KEY / $GEMINI_API_KEY_2 ⚠️ free tier limit=0"}
+{"instruction": "What is the status of the Codestral API key?", "response": "Codestral: $CODESTRAL_API_KEY ✅ FREE"}
+{"instruction": "What was the correction made to the server crontab in SIPA OS?", "response": "The server crontab was found to be active with 59 entries running parallel to 25+ systemd timers. A duplicate cron job `MLL_RUN.sh` (4-hour interval) was removed as it duplicated `sipa-mll.timer` (systemd, 4-hour interval), both running the same `MLL_CORE.py` script twice per window. The cron entry was deleted (backup saved as `HUB_LEGAL_FORENSIC/RUNTIME/crontab_backup_20260728_140408.txt`), while systemd timers were left untouched. Other cron entries were verified and retained as they did not duplicate systemd timers."}
+{"instruction": "What was added to the termux:boot for 15T in SIPA OS?", "response": "The file `00_BOOT.sh` was added to termux:boot for 15T, with a note about a possible conflict."}
+{"instruction": "Which session included a fix for sipa-steward and SSH config updates?", "response": "SESSION-37"}
+{"instruction": "What are the two key visual elements mentioned in the Artlusive bio?", "response": "messy-sketch hearts and spirals"}
+{"instruction": "What is the Cohart pro feature status and who is involved?", "response": "COHART PRO FEATURE is DONE ✅ (Dec 2025) with Lauren Kulwicki + Kendall Warson."}
+{"instruction": "What is the Instagram handle for Soul In PsyAbstract?", "response": "https://www.instagram.com/soul.in.psyabstract"}
+{"instruction": "What is the file name for Tome I of the LUX+ Museum Monograph?", "response": "Tome I · LUX+ Museum Monograph (PDF · ChatGPT Dec 2025)"}
+{"instruction": "What content is included in Tome I of the LUX+ Museum Monograph?", "response": "It includes Works 01–05 (full LUX+ passports), Works 06–20 (preview), Rights, and License."}
+{"instruction": "Does Tome I · LUX+ Museum Monograph contain full passports for all works?", "response": "No, it contains full LUX+ passports only for Works 01–05. Works 06–20 are provided as a preview."}
+{"instruction": "What format is the Tome I · LUX+ Museum Monograph in?", "response": "It is in PDF format."}
+{"instruction": "What is the status of soulinpsy.info?", "response": "ACTIVE ✅"}
+{"instruction": "What directory is the git repository for the soul-in-psyabstract-site located in?", "response": "/srv/SIPA_GIT_MIRRORS/soul-in-psyabstract-site/"}
+{"instruction": "What is the nginx proxy_pass address for the Python backend?", "response": "127.0.0.1:5001"}
+{"instruction": "What file was incorrectly referenced in VIO-003?", "response": "~/.claude/CLAUDE.md"}
+{"instruction": "What is the correct procedure for deploying separate domains according to VIO-004?", "response": "2 домена = 2 разных приложения ВСЕГДА."}
+{"instruction": "What is the cost per hour for the EC2 instance launched in SESSION-55?", "response": "~$0.003/h"}
+{"instruction": "Which specific AWS services were configured for email handling in SESSION-55?", "response": "AWS SES, Lambda sipa-ses-handler, SNS sipa-os trigger"}
+{"instruction": "What is the name of the AWS Secrets Manager entry created for API keys?", "response": "sipa/os/api-keys"}
+{"instruction": "What was the status of the Brain Server process at the end of SESSION-55?", "response": "left running"}
+{"instruction": "What was the specific issue with the T15 heartbeat log noted in SESSION-55?", "response": "отсутствует — причина не выяснена"}
+{"instruction": "Which service was restarted and on what port?", "response": "The sipa-ai.service was restarted and is running on port 9924 with status OK."}
+{"instruction": "What is the total number of scheduled tasks (cron jobs + systemd timers) in the SIPA OS documentation chunk?", "response": "56 tasks"}
+{"instruction": "What is the version number mentioned in the SIPA session ready signal?", "response": "V9.6"}
+{"instruction": "What date is specified for the latest session content?", "response": "2026-07-27"}
+{"instruction": "What is the mode indicated in the session ready signal?", "response": "ADVISORY MODE"}
+{"instruction": "What is the ZeroTier IP address for node T15?", "response": "172.27.24.2"}
+{"instruction": "What is the SSH port for node X7?", "response": "8022"}
+{"instruction": "What is the ROOT directory path for the SERVER node?", "response": "/home/sipa/PROJECT/PAYTON_HUBS"}
+{"instruction": "What is the username for SSH access to node X5?", "response": "u0_a220"}
+{"instruction": "What is the ZeroTier IP address for the SERVER node?", "response": "172.27.22.217"}
+{"instruction": "What is the ROOT directory path for node T15?", "response": "/storage/emulated/0/PROJECT/PAYTON_HUBS"}
+{"instruction": "Is it permitted to use useUser or useSession from Supabase for authentication?", "response": "No, importing useUser or useSession from Supabase for authentication is prohibited."}
+{"instruction": "What is the Cloudflare Worker name for the app hosted on focus.sipa-os.org?", "response": "sipa-adhd-focus"}
+{"instruction": "What is the local path for the SIPA AI app repository?", "response": "/home/sipa/apps/sipa-ai-app/"}
+{"instruction": "What is the route pattern for the focus.sipa-os.org app as defined in wrangler.jsonc?", "response": "focus.sipa-os.org/*"}
+{"instruction": "What is the Cloudflare Worker name for the SIPA Shell app?", "response": "sipa-shell-app"}
+{"instruction": "What is the source directory for the 'sipa-shell-app' worker?", "response": "/home/sipa/apps/sipa-shell-app/worker.js"}
+{"instruction": "What are the two route patterns for 'sipa-shell-app'?", "response": "shell.sipa-os.org/* and shell.soulinpsy.info/*"}
+{"instruction": "What is the Auth0 flow for 'sipa-shell-app'?", "response": "/login → /callback → /logout"}
+{"instruction": "What is the critical security issue noted for 'sipa-ai-app' on 2026-07-13?", "response": "DEEPSEEK_API_KEY was publicly compromised in wrangler.jsonc, requiring immediate rotation and migration to wrangler secret."}
+{"instruction": "What are the two deployment methods explicitly forbidden for 'sipa-neuropower-app'?", "response": "Do NOT use wrangler pages deploy. Only use wrangler deploy (Worker + assets binding)."}
+{"instruction": "How many lines are in the .sipa_env file as of 2026-05-30?", "response": "1008"}
+{"instruction": "What command is used to read a specific key's value from .sipa_env?", "response": "grep \"^ИМЯ_КЛЮЧА=\" /home/sipa/.sipa_env | tail -1 | cut -d= -f2- | tr -d '\"'"}
+{"instruction": "What is the username for the T15 SSH command?", "response": "sipa"}
+{"instruction": "What is the IP address for the X7 SSH command?", "response": "172.27.248.199"}
+{"instruction": "What port is used for both T15 and X7 SSH connections?", "response": "8022"}
+{"instruction": "What is the full path to the ask.sh script?", "response": "/home/sipa/PROJECT/PAYTON_HUBS/BIN/ask.sh"}
+{"instruction": "What environment variable is set when running SIPA_GUARD_SPHERE.sh?", "response": "SIPA_DEVICE=SERVER"}
+{"instruction": "What is the URL for the NGC RELAY endpoint?", "response": "https://webhook.soulinpsy.info/ngc-relay"}
+{"instruction": "Which port does the Cloudflare Tunnel forward to for the NGC RELAY?", "response": "9922"}
+{"instruction": "What script does the Cloudflare Tunnel connect to for the NGC RELAY?", "response": "SIPA_WEBHOOK_SERVER.py"}
+{"instruction": "What authentication method is used for the NGC RELAY?", "response": "Bearer token"}

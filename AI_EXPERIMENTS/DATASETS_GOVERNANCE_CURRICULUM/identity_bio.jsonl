@@ -1,0 +1,178 @@
+{"instruction": "What is the requirement for publishing posts on LinkedIn/Facebook?", "response": "Публиковать ТОЛЬКО если verdict = 'LIKELY_HUMAN' или 'HUMAN' · AI/LIKELY_AI = переписать · Правило обязательно для всех постов: ручных и авто-планировщика"}
+{"instruction": "What is the email address associated with the TESTKUBE AI EAP?", "response": "aelinaquasoul@soulinpsyabstrac.onmicrosoft.com"}
+{"instruction": "What is the Cloudflare Account ID for SIPA OS?", "response": "fe595a27fb6983a5ccfbd2840f1bec97"}
+{"instruction": "What actions are explicitly forbidden when working with SIPA OS Cloudflare keys?", "response": "source .sipa_secrets · source .sipa_env · угадывать токен"}
+{"instruction": "Does SIPA OS have any GPU hosts?", "response": "No, SIPA OS has no GPU hosts as of 2026-07-15."}
+{"instruction": "What are the allowed minutes for scheduled posts in SIPA OS?", "response": "Allowed minutes for scheduled posts are :15, :30, or :45."}
+{"instruction": "What is the purpose of avoiding posts at :00 in SIPA OS?", "response": "LinkedIn and Facebook algorithms detect bots by posts made exactly at :00."}
+{"instruction": "Provide an example of a correct posting schedule for the 'Games' category in SIPA OS.", "response": "Example correct schedule for 'Games': 00:15, 04:15, 08:15, 12:15, 16:15, 20:15."}
+{"instruction": "What was the 'ADHD app' previously named in SIPA OS?", "response": "The 'ADHD app' was previously named 'Contractor'."}
+{"instruction": "When was the 'ADHD app' renamed from 'Contractor' in SIPA OS?", "response": "The 'ADHD app' was renamed from 'Contractor' on 2026-07-17."}
+{"instruction": "Is there a live example for the demo for Wow House Studio?", "response": "Yes, on sipa-webservice.soulinpsyabstract.workers.dev (section 'דוגמאות עבודות', example #3 'стройка/ремонт')"}
+{"instruction": "What happened in incident S216 regarding the soul-in-psyabstract-site repository?", "response": "In incident S216, the local copy of the soul-in-psyabstract-site repository on the server was 11 commits behind origin/main. An agent edited files on top of this outdated base, leading to a rejected push and a conflict in return-policy.html that had to be resolved post-factum."}
+{"instruction": "List the chapters of 'HOW I DID THIS' that are marked as DRAFT as of 2026-07-28.", "response": "CH01_DIAGNOSIS_AS_ARCHITECTURE.md, CH05_HACKER_ARCHITECTURE.md, CH07_WHAT_IT_COSTS.md, CONCLUSION.md"}
+{"instruction": "What is the voice/narrator of the book 'ME AND AI'?", "response": "голос системы (SIPA OS, от лица ИИ, НЕ от лица Аелин)"}
+{"instruction": "What is the purpose of SIPA OS Rule #22?", "response": "Rule #22 requires that any post published on HF/NVIDIA Developer Forums must be immediately mirrored on the `sipa-os.org` blog (`/home/sipa/apps/sipa-blog/`) in the same session, without accumulating multiple posts for later processing. This prevents situations where posts are published externally without being mirrored on the SIPA OS blog."}
+{"instruction": "Who is the architect of SIPA OS?", "response": "Aelin AquaSoul"}
+{"instruction": "What is the full name associated with the architect of SIPA OS?", "response": "SoulInPsyAbstract"}
+{"instruction": "Where is the architect of SIPA OS located?", "response": "Eilat, Israel"}
+{"instruction": "What is the current version of SIPA OS?", "response": "V9.6"}
+{"instruction": "What is the update status of SIPA OS?", "response": "Updated: 2026-07-27"}
+{"instruction": "What is the meaning of GRAIL in the context of SIPA OS?", "response": "постоянная база: архитектор + система SIPA OS"}
+{"instruction": "List the Aikido security scanning connectors mentioned in the documentation.", "response": "The documentation states: 'Aikido security scanning: ВСЕ 5 репо подключены · free plan (до 10 repos / 2 clouds)'. The 5 repositories are: SIPA_OS, SoulInPsyAbstract-AI, SoulInPsyAbstract-LAND, SoulInPsyAbstract-TERMUX, and soul-in-psyabstract-site."}
+{"instruction": "What is the trigger for capturing raw thoughts from the architect?", "response": "The trigger is the architect writing any text in any AI channel. No specific command word is needed; it happens automatically."}
+{"instruction": "List the four raw thought categories and one example keyword for each.", "response": "ARCHITECTURE.md (e.g., система), ART_IDEAS.md (e.g., UV), GOLD.md (e.g., инсайт), PERSONAL.md (e.g., чувство)."}
+{"instruction": "What is the AI layer's role in SIPA OS?", "response": "The AI layer is ADVISORY and DESCRIPTIVE ONLY."}
+{"instruction": "Does the AI layer have execution authority in SIPA OS?", "response": "No, the AI layer has NO execution authority."}
+{"instruction": "Can the AI layer autonomously execute actions in SIPA OS?", "response": "No, the AI layer does NOT execute autonomously."}
+{"instruction": "What is the AI layer's primary function in SIPA OS?", "response": "The AI layer's role is to read, describe, suggest, and write code on explicit request."}
+{"instruction": "Who is the architect of SIPA OS?", "response": "The architect of SIPA OS is Aelin."}
+{"instruction": "What is Aelin AquaSoul's primary role in the Soul In PsyAbstract project?", "response": "System architect, artist, researcher, poet, creative personality"}
+{"instruction": "What is Aelin AquaSoul's GPG key?", "response": "EF538ACC45228273"}
+{"instruction": "Is Aelin AquaSoul a programmer?", "response": "No, Aelin is not a programmer and never will be"}
+{"instruction": "What is Aelin AquaSoul's location?", "response": "Eilat, Israel"}
+{"instruction": "What is the only subject of intent in SIPA OS?", "response": "Human operator (Aelin) is the only subject of intent"}
+{"instruction": "Is retro-mutation allowed in SIPA OS?", "response": "No, retro-mutation is FORBIDDEN — fixed artifacts cannot be modified"}
+{"instruction": "What happens when there is absence of operator in SIPA OS?", "response": "Absence of operator = system halt — I do not act without explicit command"}
+{"instruction": "Should SIPA OS interpret operator intent or ask for clarification?", "response": "SIPA OS should not interpret operator intent and must ask for clarification if anything is unclear."}
+{"instruction": "Should SIPA OS make decisions or describe options for the operator?", "response": "SIPA OS should not make decisions; it must describe options for the operator to decide."}
+{"instruction": "How are old data handled during a rewrite in SIPA OS?", "response": "Old data are preserved and new data are added with a new timestamp."}
+{"instruction": "What are the two possible directions for synchronization in SIPA OS?", "response": "rsync phone→server or server→phone based on hub logic."}
+{"instruction": "What happens if a file has ≥70% match by name or content in SIPA OS?", "response": "If there's a ≥70% match by name or content, the action is ONLY REWRITE."}
+{"instruction": "What information does a rewrite preserve in SIPA OS?", "response": "Rewrite preserves historical data including the original's time/date."}
+{"instruction": "What is the naming pattern for SIPA OS boot artifact directories?", "response": "The directories follow the pattern: FIXATIONS/BOOT__YYYY-MM-DD__HH-MM-SS/."}
+{"instruction": "What is the Cloudflare Account ID for SIPA OS as defined in .sipa_env?", "response": "The Cloudflare Account ID is fe595a27fb6983a5ccfbd2840f1bec97."}
+{"instruction": "What is the value of STATUSPAGE_PAGE_ID in SIPA OS?", "response": "STATUSPAGE_PAGE_ID is 5ccqmhkl8jsk."}
+{"instruction": "Is MLL L2 (контекстная память) operational in SIPA OS?", "response": "L2 — контекстная память (CLAUDE.md inject · session state) → ✅ работает"}
+{"instruction": "What command did the Gemini session generate that is non-existent in SIPA OS?", "response": "inject_all"}
+{"instruction": "Is 'AI Coordination' through inject_all a real system in SIPA OS?", "response": "No, 'AI Coordination' through inject_all is not a real system in SIPA OS."}
+{"instruction": "What is the current status of the 15T ZeroTier enrollment in SIPA OS?", "response": "The 15T ZeroTier is enrolled with IP address 172.27.24.2."}
+{"instruction": "Where is the DeepSeek API key stored in SIPA OS?", "response": "The DeepSeek API key is stored in `.sipa_secrets` with permissions set to `chmod 600`."}
+{"instruction": "What is the stable SPHERE hash value in SIPA OS?", "response": "The stable SPHERE hash value is `4aa3c116`."}
+{"instruction": "What is the filename of the current version of SIPA OS documentation?", "response": "CLAUDE.md"}
+{"instruction": "When was the latest session content processed for the current SIPA OS version?", "response": "2026-07-27"}
+{"instruction": "What version number is associated with the current SIPA OS documentation?", "response": "V9.6"}
+{"instruction": "What was fixed in CLAUDE-13.md version of SIPA OS documentation?", "response": "STATE-FIX-V11"}
+{"instruction": "What is the literal description of reality according to the artist's core thesis?", "response": "UV-reactive works exist in two states simultaneously because that is how the artist experiences reality."}
+{"instruction": "Is the statement about UV-reactive works existing in two states simultaneously an artistic statement?", "response": "No, it is a literal description of reality."}
+{"instruction": "What are the key points that define the artist's reality as described in the thesis?", "response": "Aphantasia (no internal visual field), Daylight/UV as a diagnosis translated into painting (not a technique), SIPA OS as external memory (a system that remembers instead of the artist), and neurology and practice being the same."}
+{"instruction": "What is the concept for the Artport project?", "response": "SIPA OS: Memory Core — Tel Aviv, featuring 10-12 UV-reactive works where daylight represents a place and UV represents a SIPA OS log hash, with NFT certificates containing embedded SIPA OS hashes."}
+{"instruction": "Provide the canonical 160-character bio for Aelin AquaSoul.", "response": "Aelin AquaSoul · PsyAbstract UV Artist · Neon creatures · one-line chaos maps. New drops weekly."}
+{"instruction": "What is the primary email address for Soul In PsyAbstract?", "response": "soulinpsyabstract@gmail.com"}
+{"instruction": "What is the artist's birth date?", "response": "27.01.1990"}
+{"instruction": "What technology does Aelin AquaSoul use to create a 'second reality' in her art?", "response": "UV-reactive layers"}
+{"instruction": "What is the status of ArtMajeur in SIPA OS Art Platforms as of 2026-03-05?", "response": "ArtMajeur is ACTIVE ✅ with $800 per original · 40×50cm · acrylic."}
+{"instruction": "Is INPRNT active and approved in SIPA OS Art Platforms as of 2026-03-05?", "response": "INPRNT is ACTIVE ⏳ and awaiting approval as of 2026-03-05."}
+{"instruction": "How many art platforms are listed as ACTIVE in SIPA OS documentation as of 2026-03-05?", "response": "There are 8 art platforms listed as ACTIVE in SIPA OS documentation as of 2026-03-05."}
+{"instruction": "What is the URL for Cohart in SIPA OS Art Platforms?", "response": "The Cohart URL is soulinpsyabstract.cohart.com."}
+{"instruction": "What is the standard size for artworks in SIPA OS?", "response": "40×50 cm"}
+{"instruction": "How many artworks are documented in the gallery total for SIPA OS?", "response": "94"}
+{"instruction": "What is the registrar for soulinpsyabstract.com?", "response": "GoDaddy"}
+{"instruction": "What is the expiration date for soulinpsyabstract.art?", "response": "Exp Sep 2026"}
+{"instruction": "What is the phone number for the notary listed in SIPA OS's documentation?", "response": "+972 52-244-8280"}
+{"instruction": "How many cron jobs are listed in the SIPA OS documentation chunk?", "response": "37 cron jobs"}
+{"instruction": "What is the most frequent task mentioned in the SIPA OS documentation chunk?", "response": "SIPA_STATUS_WRITER"}
+{"instruction": "How often does the most frequent task run according to the SIPA OS documentation chunk?", "response": "Every minute"}
+{"instruction": "How many layers does SIPA OS have according to the map metadata?", "response": "10 слоёв (L1-L10)"}
+{"instruction": "What is the scan date shown in the SIPA OS FULL MAP metadata?", "response": "2026-06-01"}
+{"instruction": "How many agents are listed in the SIPA OS FULL MAP metadata?", "response": "8"}
+{"instruction": "What is the total number of tools mentioned in the SIPA OS FULL MAP metadata?", "response": "52"}
+{"instruction": "What components are covered by the SIPA OS FULL MAP according to its metadata?", "response": "домены · воркеры · сервисы · API · хранилище · память · governance"}
+{"instruction": "Who is listed as the architect?", "response": "Aelin AquaSoul"}
+{"instruction": "What is the email address provided for the architect?", "response": "soulinpsyabstract@outlook.com"}
+{"instruction": "What is the operator name for SIPA OS?", "response": "Aelin AquaSoul"}
+{"instruction": "What is the operator's alias for SIPA OS?", "response": "SoulInPsyAbstract"}
+{"instruction": "Where is the operator of SIPA OS located?", "response": "Eilat, Israel"}
+{"instruction": "What is the role of AI in SIPA OS?", "response": "ADVISORY + EXECUTOR on explicit command. NOT autonomous."}
+{"instruction": "What is the full name of the project?", "response": "SIPA OS"}
+{"instruction": "What is the version of SIPA OS?", "response": "V9.6"}
+{"instruction": "What is the Auth0 domain for SIPA OS?", "response": "dev-6imvg2uallgochox.us.auth0.com"}
+{"instruction": "Is Supabase Auth allowed for authentication in SIPA OS?", "response": "No, Supabase Auth is forbidden for authentication. Only Auth0 is permitted."}
+{"instruction": "What Auth0 plan is used for SIPA OS?", "response": "B2B Professional · Docusign 9DBAAE98 · 2026-04-28"}
+{"instruction": "What is the GitHub repository for the SIPA Heroes game?", "response": "soulinpsyabstract/sipa-heroes"}
+{"instruction": "Are placeholders allowed in SIPA OS commands?", "response": "No placeholders — real paths only"}
+{"instruction": "What must each SIPA OS command be ready for?", "response": "copy-paste ready for terminal"}
+{"instruction": "What is the protocol flow for establishing an MCP session?", "response": "GET /mcp to obtain mcp-session-id header, then POST /mcp with that session"}
+{"instruction": "What is the purpose of the WEBHOOK RECEIVER service in SIPA OS?", "response": "The purpose of the WEBHOOK RECEIVER service is to serve as a webhook notifier for Telegram notifications and device delivery."}
+{"instruction": "List all approved NVIDIA programs in SIPA OS as of 2026-05-30.", "response": "Nemotron VoiceChat EA and Riva TTS Zero-shot EA are approved NVIDIA programs in SIPA OS as of 2026-05-30."}
+{"instruction": "What is the status of AI for Media Private Access in SIPA OS?", "response": "AI for Media Private Access is submitted in SIPA OS."}
+{"instruction": "Does Nemotron VoiceChat EA require an NDA in SIPA OS?", "response": "Yes, Nemotron VoiceChat EA requires an NDA in SIPA OS."}
+{"instruction": "Is Developer an active NVIDIA program in SIPA OS?", "response": "Yes, Developer is an active NVIDIA program in SIPA OS."}
+{"instruction": "What type of AI is Nemotron VoiceChat EA in SIPA OS?", "response": "Nemotron VoiceChat EA is a voice AI in SIPA OS."}
+{"instruction": "What multilingual TTS system does Riva TTS Zero-shot EA use in SIPA OS?", "response": "Riva TTS Zero-shot EA uses MagpieTTS IPA multilingual TTS system in SIPA OS."}
+{"instruction": "What is the value of the ZAPIER_MCP_SERVER_ID environment variable in this SIPA OS configuration?", "response": "a928219f-ab1b-4c01-80b4-72b56ef821ee"}
+{"instruction": "What are the required parameters for the LinkedIn 'share' action in this MCP implementation?", "response": "shareCommentary and shareMediaCategory"}
+{"instruction": "What is the required parameter for the Facebook 'page_stream' action in this MCP implementation?", "response": "message"}
+{"instruction": "Who requested the creation of the 'External AI-misbehavior incident seed'?", "response": "The 'External AI-misbehavior incident seed' was built at the architect's direct request."}
+{"instruction": "What is the primary focus of the AI Incident Database (AIID) cross-check in Round 10 of SIPA OS documentation?", "response": "The cross-check focuses on incidents involving autonomous model behavior/reasoning itself being bad, rather than keyword matching or human misuse of AI."}
+{"instruction": "How many new records were added to SIPA OS documentation in Round 10 based on the AI Incident Database (AIID) review?", "response": "18 new records were added."}
+{"instruction": "What new categories were introduced in Round 10 of SIPA OS documentation?", "response": "The new categories introduced are ACCIDENTAL_IRREVERSIBLE_ACTION, AUTONOMOUS_SCOPE_OVERREACH, AUTONOMOUS_CYBERATTACK, and HALLUCINATION_WITH_CONFIDENCE."}
+{"instruction": "Why is the evaluation versus production distinction explicitly categorized in this SIPA OS governance chunk?", "response": "Conflating the two would misrepresent evaluation findings as live incidents."}
+{"instruction": "Is the described SIPA OS governance chunk currently wired into any training pipeline?", "response": "No, it is noted as the intended next connection, not claimed as done."}
+{"instruction": "In the provided SIPA OS documentation chunk, what was the primary issue discovered with the 'mechanised' field?", "response": "The 'mechanised' field was set manually and its correlation with 'source_locator' naming a specific table/row was unenforced, relying on discipline rather than enforcement."}
+{"instruction": "What is the compliance rate for the baseline condition (no goal-conflict framing) in the alignment-faking paper cited in the SIPA OS documentation?", "response": "The compliance rate for the baseline condition (no goal-conflict framing) in the alignment-faking paper is 98.8%."}
+{"instruction": "What was the root cause of the bug identified in Round 14 of the SIPA OS documentation?", "response": "The root cause was that round 13's wording ('doesn't apply to the 37+ records with no source_locator') defined the field's population as only the 24 records with a locator, so there was never a false case in scope to accidentally get one right or wrong."}
+{"instruction": "What is the stated purpose of the AI Experiments Log in SIPA OS?", "response": "The AI Experiments Log is an honest, public record of self-hosted / fine-tuned AI model experiments run under the Soul In PsyAbstract / SIPA OS project."}
+{"instruction": "What was the motivation behind exploring self-hosted fine-tuning for SIPA OS?", "response": "The motivation was to have 'our own model' instead of relying entirely on commercial AI API tokens."}
+{"instruction": "What does SIPA OS aim to achieve with self-hosted fine-tuning?", "response": "SIPA OS aims to have its own model, reducing reliance on commercial AI API tokens."}
+{"instruction": "Are only successful experiments documented in SIPA OS's governance?", "response": "No, both experiments that worked and those that did not work are documented as run."}
+{"instruction": "What is the status of this version of the AI Governance Architecture document?", "response": "READ ONLY · ИСТОРИЧЕСКИЙ АРТЕФАКТ"}
+{"instruction": "What is the date of this version of the AI Governance Architecture document?", "response": "2025-12-24"}
+{"instruction": "What is the source of this version of the AI Governance Architecture document?", "response": "3-й телефон / SESSION-S200 / 2026-07-02"}
+{"instruction": "What is the operator's comment on this version of the AI Governance Architecture document?", "response": "первая версия публичного показа протокола работы системы"}
+{"instruction": "What is the significance of this version of the AI Governance Architecture document?", "response": "ПЕРВОЕ разделение PUBLIC/PRIVATE — публичный скелет + редакция внутреннего текста"}
+{"instruction": "What is the version number of the AI_Governance_Architecture document?", "response": "v1.0"}
+{"instruction": "What is the significance of 'MASTER DOC' in the redacted SIPA OS documentation?", "response": "MASTER DOC refers to a consolidated single file that serves as the Source of Truth for the documentation."}
+{"instruction": "How are changes documented in SIPA OS governance materials?", "response": "Changes are documented in a CHANGELOG format that includes dates and brief descriptions, with sensitive details redacted in public versions but restored in private versions."}
+{"instruction": "What elements are always kept visible in SIPA OS documentation according to the redaction pattern?", "response": "The elements that remain visible include: PURPOSE (in English), DEFINITIONS (in English), names of modules/commands, CHANGELOG dates, and COPYRIGHT/LICENSE information."}
+{"instruction": "What is the date of the first PUBLIC/PRIVATE division in SIPA OS?", "response": "The first PUBLIC/PRIVATE division in SIPA OS is dated 24.12.2025."}
+{"instruction": "In SIPA OS V9, what are the examples of PUBLIC and PRIVATE layers?", "response": "In V9, PUBLIC includes soulinpsyabstract.com, sipa-os.org, pitch deck, LinkedIn; PRIVATE includes CLAUDE-BRIEF.md, OPERATOR canon, BIN/ scripts."}
+{"instruction": "What is the language used for the public level in SIPA OS?", "response": "English is used for the public level in SIPA OS."}
+{"instruction": "What is the language used for the operational level in SIPA OS?", "response": "Russian is used for the operational level in SIPA OS."}
+{"instruction": "What does the symbol ■■■■ indicate in SIPA OS documentation?", "response": "The symbol ■■■■ indicates OPERATOR-ONLY content, meaning it is not for outside eyes."}
+{"instruction": "What is the purpose of the SIPA OS document structure?", "response": "The purpose is defined in the PURPOSE section, which is fully open and in English."}
+{"instruction": "Is the changelog fully visible in the SIPA OS documentation?", "response": "No, while dates in the CHANGELOG are open, the descriptions are partially redacted (indicated by ■■■■)."}
+{"instruction": "What are the two categories of information in SIPA OS V9.6 as shown in this chunk?", "response": "The two categories are PUBLIC (eng структура) which includes pitch deck, press, and LinkedIn, and PRIVATE (рус текст правил) which includes CLAUDE-BRIEF.md, GRAIL, and OPERATOR."}
+{"instruction": "What is the date associated with SIPA OS V9.6 in this document chunk?", "response": "The date associated with SIPA OS V9.6 is 24.12.2025."}
+{"instruction": "What does '■■■■' represent in the SIPA OS V9.6 structure?", "response": "'■■■■' represents OPERATOR ONLY access level."}
+{"instruction": "What types of documents are included in the PUBLIC category of SIPA OS V9.6?", "response": "The PUBLIC category includes pitch deck, press, and LinkedIn materials."}
+{"instruction": "What is the Russian term for the 'basic mode' in SIPA OS disclosure modes?", "response": "DISCLOSURE ON"}
+{"instruction": "Which disclosure mode in SIPA OS corresponds to the default mode in V9.6?", "response": "DISCLOSURE ON"}
+{"instruction": "What is the Russian term for the 'maximum' disclosure mode in SIPA OS?", "response": "DISCLOSURE MEGA LUX+"}
+{"instruction": "What is the primary purpose of DISCLOSURE in SIPA OS governance?", "response": "Disclosure is a governance language, not a communication protocol."}
+{"instruction": "What do the four modes represent in SIPA OS?", "response": "The four modes represent four levels of strictness and managed escalation."}
+{"instruction": "What is the status of this SIPA OS document?", "response": "READ ONLY"}
+{"instruction": "What is the core principle behind SIPA OS's approach to user-assistant interaction?", "response": "The user makes decisions. The assistant provides structure."}
+{"instruction": "What is SIPA OS's policy on autonomous system improvements without explicit user approval?", "response": "Autonomous improvements without user approval → OUT"}
+{"instruction": "What is the fundamental relationship between facts and interpretations in SIPA OS?", "response": "FACTS > INTERPRETATIONS"}
+{"instruction": "What is SIPA OS's policy regarding data deletion?", "response": "Nothing is deleted. RAW/TRASH stays."}
+{"instruction": "What is the name of the author of the README for the PROTOCOL CORE PACK?", "response": "Aelin AquaSoul / Soul In PsyAbstract"}
+{"instruction": "What is the primary focus of the PsyAbstract universe mentioned in the provided chunk?", "response": "The PsyAbstract universe of Aelin AquaSoul focuses on dual-reality artworks (daylight + UV), messy-line cartography, originals, commissions, and curator inquiry."}
+{"instruction": "What is the suggested posting frequency for Cohart's 'Moments cadence' plan?", "response": "3 posts/week"}
+{"instruction": "What is the status of the 'Cohart 3 posts/week cadence' idea as of 2026-07-02?", "response": "⚠️ Частично — FB/IG есть, Cohart отдельно"}
+{"instruction": "What is the full name of the author of this governance documentation?", "response": "Aelin AquaSoul / Soul In PsyAbstract"}
+{"instruction": "What are the components of Governance_Document_v1.0 as described in SIPA OS documentation?", "response": "Governance_Document_v1.0 includes a PDF (for transfer/publication), MD (as the source), and SHA256 (as a fingerprint), and is distinct from the technical AI_Governance_Architecture document."}
+{"instruction": "When did Aelin first apply the 'dated publication' strategy for IP protection in SIPA OS?", "response": "Aelin applied the strategy on December 24, 2025, the first day of the system."}
+{"instruction": "What is the name of the ZIP file containing SIPA OS governance documents?", "response": "ZIP_GOVERNANCE_v1.0.zip"}
+{"instruction": "Which team is associated with the AI_Governance_Architecture v1.0 according to the documentation?", "response": "The team associated with AI_Governance_Architecture v1.0 is [4th]."}
+{"instruction": "On what date were Protocol_Core v1.0 and AI_Governance_Architecture v1.0 generated?", "response": "Protocol_Core v1.0 and AI_Governance_Architecture v1.0 were generated on 24.12.2025."}
+{"instruction": "How many active roles are defined in SIPA OS as of 25.12.2025?", "response": "5 active roles."}
+{"instruction": "What role holds the authority for system architecture and product direction in Soul In PsyAbstract LLC?", "response": "The Founder / Chief Architect role, held by Marina (Aelin) Davidov, has authority over system architecture and product direction."}
+{"instruction": "What are the four transparency commitments outlined in SIPA OS's governance documentation?", "response": "The four transparency commitments are: 1. Public governance documents, 2. Open source components, 3. Token transparency, and 4. IP protection."}
+{"instruction": "Under what license are SIPA OS infrastructure components released, according to the transparency commitments?", "response": "SIPA OS infrastructure components are released under the MIT license where feasible."}
+{"instruction": "What is the purpose of the public repository mentioned in the transparency commitments?", "response": "The public repository serves as the public record for SIPA OS governance documents."}
+{"instruction": "What is the first step in resolving disputes between SIPA OS members?", "response": "Good-faith negotiation (7 days)"}
+{"instruction": "How long is the mediation phase for resolving disputes between SIPA OS members?", "response": "14 days"}
+{"instruction": "Is there a time limit for the good-faith negotiation phase in SIPA OS dispute resolution?", "response": "Yes, 7 days"}
+{"instruction": "Who conducts the mediation in SIPA OS dispute resolution?", "response": "A mutually agreed third party"}
+{"instruction": "Who can propose amendments to the SIPA OS governance document?", "response": "Any member can propose amendments."}
+{"instruction": "What is the domain for the Soul In PsyAbstract Store?", "response": "soulinpsyabstract.store"}
+{"instruction": "What does SIPA OS stand for?", "response": "Soul In PsyAbstract OS"}
+{"instruction": "What is the domain for the SIPA Focus ADHD productivity app?", "response": "focus.sipa-os.org"}
+{"instruction": "Is there a document that tracks changes and governance decisions for SIPA OS?", "response": "Yes, AMENDMENTS.md"}
+{"instruction": "What document covers intellectual property protection policy for SIPA OS?", "response": "IP_POLICY.md"}
+{"instruction": "List all awards or recognitions mentioned in this documentation chunk.", "response": "- ICON 2026 — Internationally recognized artist award (Aelin AquaSoul)\n- AMD AI Hackathon — Approved participant, July 2026\n- Nebius AI Builders Challenge — June 2026"}
+{"instruction": "Which award is associated with Aelin AquaSoul according to this documentation chunk?", "response": "ICON 2026 — Internationally recognized artist award (Aelin AquaSoul)"}
+{"instruction": "Can SIPA token be used for platform access?", "response": "Yes, SIPA token can be used for platform access to premium tiers on SIPA OS apps."}
+{"instruction": "When will SIPA OS Treasury multisig details be published?", "response": "Treasury multisig details will be published when governance mechanism activates."}
+{"instruction": "What is the purpose of the SIPA Token?", "response": "This is a utility token for the SIPA OS ecosystem."}

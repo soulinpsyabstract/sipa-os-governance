@@ -1,0 +1,51 @@
+{"instruction": "Which MLL layers does the Agnes AI service use?", "response": "Agnes AI uses MLL layers L03 and L08."}
+{"instruction": "What is the purpose of the spawn integration?", "response": "The spawn integration is a CLI tool for spawning and connecting to cloud VMs for agents, using SSH keys."}
+{"instruction": "Which file must be read before starting any work to understand the system structure?", "response": "/home/sipa/PROJECT/PAYTON_HUBS/HUB_GOVERNANCE/SIPA_OS_FULL_MAP__2026-06-01.md"}
+{"instruction": "What are the reasons for using TESTKUBE AI EAP?", "response": "SIPASEC 144 findings + EIC Sep 2 + GitLab CI/CD pipeline"}
+{"instruction": "What was the fix for the groq-* models that were failing with CF WAF 403 errors?", "response": "The fix was adding a User-Agent header ('User-Agent: curl/7.88.1') to the call_groq() function, as the issue was not an IP block but using a bare urllib without a User-Agent."}
+{"instruction": "Where is the source material 'BOOK AGENT' located?", "response": "/home/sipa/PROJECT/PAYTON_HUBS/HUB_WORKING_FILES/BOOK_AGENT/CHAPTERS/"}
+{"instruction": "How frequently does MLL scan for new raw thoughts and what does it report?", "response": "MLL scans every 4 hours and reports the INBOX count, flagging entries ≥7 days old as UPGRADE READY."}
+{"instruction": "What are the five things AI in this system does NOT do?", "response": "AI in this system does NOT: have opinions, have preferences, have initiative, interpret, or suggest the 'best solution'."}
+{"instruction": "Does the AI in this system have preferences?", "response": "No, the AI in this system does NOT have preferences."}
+{"instruction": "Does the AI in this system suggest the 'best solution'?", "response": "No, the AI in this system does NOT suggest the 'best solution'."}
+{"instruction": "What are the three core components mentioned in the header of the SPHERE AUTONOMY documentation chunk?", "response": "The header mentions: SIPA_GUARD_SPHERE.sh, 4aa3c116, and единая логика (unified logic). It also notes there are three instances."}
+{"instruction": "What was the reason for deleting the 'Cloudflare Lilongwe, Malawi - (LLW)' component?", "response": "The component was deleted because Cloudflare removed it, causing the mirrored component to be stuck in partial_outage status without possibility of update."}
+{"instruction": "What is the recommended fix if another Cloudflare component becomes orphaned?", "response": "Find the component ID by name and send a DELETE request to /v1/pages/{page}/components/{id}."}
+{"instruction": "Is the SSH key AAAAIL1XuuRrXZmLKwbo1FHG61Bu2QH9HbfBVB3tL+FuIf4n added to any systems?", "response": "The documentation states that the key AAAAIL1XuuRrXZmLKwbo1FHG61Bu2QH9HbfBVB3tL+FuIf4n is 'не добавлен нигде' (not added anywhere)."}
+{"instruction": "What is the commit hash for SIPA_PIPELINE_CORE.sh?", "response": "SIPA_PIPELINE_CORE.sh has commit hash ab67564d."}
+{"instruction": "What does the WATCHDOG module monitor in SIPA OS V9?", "response": "The WATCHDOG module monitors system liveness through heartbeat signals and Process IDs (PIDs)."}
+{"instruction": "What is the current state of MLL L3 (обучение) in SIPA OS?", "response": "L3 — обучение (pattern recognition · dedup · hub routing) → stub / частично"}
+{"instruction": "How is the AUDIT component implemented in the AI LAYER?", "response": "The AUDIT component is implemented as an append-only log."}
+{"instruction": "What is the function of the WATCHDOG in the AI LAYER?", "response": "The WATCHDOG monitors PID and heartbeat."}
+{"instruction": "What are the restrictions on the AI/MLL component in the AI LAYER?", "response": "The AI/MLL component is restricted to advisory and analytical functions only."}
+{"instruction": "What is the role of the HUB LOGIC component in the AI LAYER?", "response": "The HUB LOGIC component handles routing across hubs."}
+{"instruction": "What is the required User-Agent for Python xAI?", "response": "⚠️ ВАЖНО: Python xAI требует User-Agent: curl/7.88.1 (CF блокирует urllib)"}
+{"instruction": "What major system was integrated in SESSION-55 according to the version history?", "response": "AWS SES/Lambda/DynamoDB/Cognito/Secrets"}
+{"instruction": "What is the status of the Agentspan service?", "response": "Agentspan 0.1.9 is running on SQLite, port 6767, has been active for 24+ hours, is managed by systemd, and is verified as active (not NOT ACTIVE)."}
+{"instruction": "How many systemd timers are listed for SIPA in the documentation chunk?", "response": "15 systemd timers"}
+{"instruction": "What is the Auth0 connection name for GitHub?", "response": "con_7zM6TfHi01fKQMsy (github)"}
+{"instruction": "Which worker serves 'github.sipa-os.org/*' and what is its purpose?", "response": "neuropower-app serves github.sipa-os.org/* as a minimal GitHub Marketplace landing for sipa-neuropower GitHub App."}
+{"instruction": "What is the correct command to load .sipa_env in systemd?", "response": "EnvironmentFile=/home/sipa/.sipa_env"}
+{"instruction": "What should be logged if the same bug reappears within a session?", "response": "Log it in `LEARNINGS.md` (category: correction) immediately, noting which layer was missed."}
+{"instruction": "What is the purpose of the `self-improving-agent` skill in the OpenClaw Skills Stack?", "response": "The purpose of the `self-improving-agent` skill is logging corrections and errors."}
+{"instruction": "How is the `self-improving-agent` skill used?", "response": "The `self-improving-agent` skill is used via `.learnings/` and `learn lrn/err/feat`."}
+{"instruction": "What is the purpose of the `agent-team-orchestration` skill that is high priority to add to the stack?", "response": "The purpose of the `agent-team-orchestration` skill is formal orchestration of agent teams."}
+{"instruction": "What is the purpose of the `elite-longterm-memory` skill that is high priority to add to the stack?", "response": "The purpose of the `elite-longterm-memory` skill is providing 6-layer memory with LanceDB and git-notes."}
+{"instruction": "What is the purpose of the `deep-research-pro` skill that is high priority to add to the stack?", "response": "The purpose of the `deep-research-pro` skill is enabling sub-agent research without API keys."}
+{"instruction": "What other components were built on the same day as the 'External AI-misbehavior incident seed'?", "response": "`BACKPEDAL_PHRASE_DETECTOR.py` and the PAYTON-era incident register were built on the same day as the 'External AI-misbehavior incident seed'."}
+{"instruction": "What specific GitHub issue documented an orchestrator silently falling back to its own tools instead of surfacing an error?", "response": "The GitHub issue oh-my-openagent #5604 documented an orchestrator silently falling back to its own tools instead of surfacing an error."}
+{"instruction": "What was the specific unused document found in the `citation` field?", "response": "The unused document was the 'Claude 4 System Card, section 4.1.1.2 'Opportunistic Blackmail'' found in the `citation` field of `ANTHROPIC-2025-opus4-blackmail`."}
+{"instruction": "What was the agent's conclusion regarding the difficulty of finding false pairs for ACCIDENTAL_IRREVERSIBLE_ACTION?", "response": "The agent concluded that destructive-action near-misses that were correctly stopped essentially don't get press coverage, making it difficult to find documented cases of AI systems preventing destructive actions."}
+{"instruction": "Why was no new citation rung added for GitHub repo citations in Round 14?", "response": "No new rung was added because a real file+line+commit pin on a GitHub repo is considered the code-artifact version of `row`, not a new kind of precision, and adding a fourth label for a single record would repeat the same bug shape of a field with only one instance."}
+{"instruction": "Why were the probes in the 02_access_control and 04_infra_misconfig groups hand-written?", "response": "The probes in the 02_access_control and 04_infra_misconfig groups were hand-written because garak's system-prompt-extraction probe loads dynamically from HuggingFace datasets, and garak has no dedicated infra-misconfig probe."}
+{"instruction": "What is the visible content in the PDF version of AI_Governance_Architecture v1.0?", "response": "The visible content includes: PURPOSE, DEFINITIONS, and the names and structure of modules/commands."}
+{"instruction": "What are the two layers of SIPA OS from the first day?", "response": "From the first day, SIPA OS had two layers: PUBLIC (structure - what the system does) and PRIVATE (mechanics - how exactly, in which language, with which details)."}
+{"instruction": "What is the significance of this document in the SIPA system?", "response": "It is the first Markdown document of the SIPA system"}
+{"instruction": "What is the purpose of the CORE DISCLOSURE PROTOCOL?", "response": "Disclosure is a governance language for managing complex human–AI systems without ambiguity."}
+{"instruction": "What are the three required components when a response under NO CAN EQUIS cannot be provided?", "response": "When a response under NO CAN EQUIS cannot be provided, the response must include: 1) an explicit reason (Limitation), 2) a list of what's missing (what's needed), and 3) an alternative path (Solution)."}
+{"instruction": "What day of the system was Christmas 2025?", "response": "Second day of the system"}
+{"instruction": "What is the significance of this document?", "response": "САМЫЙ РАННИЙ НАЙДЕННЫЙ АРТЕФАКТ СИСТЕМЫ (the earliest found artifact of the system)"}
+{"instruction": "When was the earliest artifact of the system found?", "response": "24.12.2025"}
+{"instruction": "How many days before the scaffold of 8 hubs did the earliest artifact appear?", "response": "3 days"}
+{"instruction": "What is the status of the HUB PROTOCOL v1.0 document?", "response": "READ ONLY · ИСТОРИЧЕСКИЙ АРТЕФАКТ"}
+{"instruction": "On what date was this version of the HUB PROTOCOL created?", "response": "2025-12-25 (Рождество)"}

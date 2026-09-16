@@ -1,0 +1,5 @@
+FILE=governance_protocol_safety_b.jsonl
+SHA256=dec1c64fb5a1954970171fcc346fd5d015ddd652b513f9cf619d64cce3a926ff
+SIZE=23907
+DEVICE=SERVER
+TS=2026-09-16__21-33-31

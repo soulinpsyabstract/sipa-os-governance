@@ -146,3 +146,8 @@ AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastro
 # EXP-044 stage 3 candidate #2 failure (governance_protocol_safety_a) -- external artifact class as above.
 AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	eval_results_stage3b_governance_safety_a_hermes3_adversarial_n20.json
 AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	eval_stage3b.log
+
+# DATASETS_MATH_CURRICULUM README references Claude's own memory file
+# (external to this repo), not a repo artifact -- same class as EXP-044's
+# own baseline entry for the same file above.
+AI_EXPERIMENTS/DATASETS_MATH_CURRICULUM/README.md	project_consequence_prediction_architecture.md
