@@ -142,3 +142,7 @@ AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastro
 # EXP-044 stage 3 failure (identity_bio) -- external artifact class as above.
 AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	eval_results_stage3_identity_bio_hermes3_adversarial_n20.json
 AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	eval_stage3.log
+
+# EXP-044 stage 3 candidate #2 failure (governance_protocol_safety_a) -- external artifact class as above.
+AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	eval_results_stage3b_governance_safety_a_hermes3_adversarial_n20.json
+AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	eval_stage3b.log

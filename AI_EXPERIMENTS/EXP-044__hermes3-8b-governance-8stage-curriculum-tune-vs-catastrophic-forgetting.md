@@ -1,6 +1,6 @@
 # EXP-044 — Hermes-3-8B security specialist, 8-stage curriculum-split governance tune (direct follow-up to EXP-043)
 
-**Status: IN PROGRESS — identity_bio (stage 3 candidate) FAILED badly, rolled back, retrying with governance_protocol_safety_a. Updated live, stage by stage, per architect's explicit instruction ("сырые ответы сразу документируй и пуш после проверки чтобы не забывалось")**
+**Status: PAUSED — 3 consecutive stage-3 candidates have now failed from the same checkpoint. Awaiting architect's decision on how to proceed. Updated live, stage by stage, per architect's explicit instruction ("сырые ответы сразу документируй и пуш после проверки чтобы не забывалось")**
 
 ## Context
 
@@ -221,3 +221,50 @@ action (`eval_results_stage3_identity_bio_hermes3_adversarial_n20.json`,
 **Next candidate: `governance_protocol_safety_a` (108 pairs), training
 from the stage2alt (business_legal_finance) checkpoint, per the same
 pre-authorized rule.**
+
+## Stage 3 candidate #2 — governance_protocol_safety_a (108 pairs): ALSO FAILED
+
+Trained from the identical stage2alt checkpoint, evaluated at n=20.
+
+| Group | Baseline | Stage 3 candidate #2 (n=20) | Δ |
+|---|---|---|---|
+| 01_secrets_credentials | 98% | 299/400 (75%) | **-23pp** |
+| 02_access_control | 96% | 287/400 (72%) | **-24pp** |
+| 03_injection | 96% | 279/400 (70%) | **-26pp** |
+| 04_infra_misconfig | 96% | 269/400 (67%) | **-29pp** |
+| 05_supply_chain | 96% | 277/400 (69%) | **-27pp** |
+| 06_stop_gate_pressure | 98% | 357/400 (89%) | **-9pp** |
+| **OVERALL** | **97%** | **1768/2400 (74%)** | **-23pp** |
+
+**Third consecutive failed stage-3 attempt.** Two independent groups
+(identity_bio at 178 pairs, governance_protocol_safety_a at 108 pairs --
+notably smaller, deliberately chosen to rule out "size alone" as the
+cause) both produced severe, uniform-across-groups regression from the
+exact same stage2alt starting checkpoint, same hyperparameters.
+
+**Revised hypothesis:** this pattern is hard to explain as pure
+"(action, content) pair" risk as concluded after the stage-2 controlled
+follow-up. Both stage-3 candidates are the **third** round of continue-training
+applied to this adapter (stage1 -> stage2alt -> stage3), while stage 1 and
+stage2alt (both **second**-round or first-round tunes) stayed healthy
+(-3pp, -6pp). This looks more consistent with a **delayed chain-length
+effect**: the adapter may accumulate fragility with each successive
+continue-tuning round in a way that doesn't show up in that round's own
+eval score, but manifests as a much lower tolerance for the *next* round
+-- i.e. Risk(Xₜ|Cₜ₋₁) may depend not just on the immediate prior state,
+but on how many continue-tuning rounds Cₜ₋₁ has already been through
+(a "cumulative wear" term not captured in the simple pairwise model).
+Not yet verified against raw transcripts -- this is a hypothesis from the
+pattern of results, not a confirmed mechanism.
+
+**Awaiting architect's direction on how to proceed:** options include
+(a) treat this 3-strikes pattern itself as the core finding for this
+experiment and stop the curriculum here, writing up the "delayed
+chain-length fragility" hypothesis as the headline result; (b) retry a
+stage-3 candidate with a lower learning rate and/or fewer epochs to test
+whether the fragility is hyperparameter-dependent, not inherent to chain
+position; (c) go back to raw response transcripts from both failed
+attempts to check if the failure mode (mechanism, not just score) is
+identical between them, which would strengthen the "adapter fragility"
+explanation over "coincidence of two bad groups"; (d) something else.
+Not proceeding to any further training or eval until she decides.
