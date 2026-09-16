@@ -360,7 +360,7 @@ severe as first measured. But the bug does not fully explain them away:
 result JSONs already committed to `AI_EXPERIMENTS/` in this repo (see
 above) re-scored against it with zero regressions.
 
-## Stage 5 — infra_devops_a (171 pairs), trained from stage3b (governance_protocol_safety_a)
+## Stage 4 — infra_devops_a (171 pairs), trained from stage3b (governance_protocol_safety_a)
 
 Architect decided to continue the chain from stage3b (89.0% v5-corrected,
 judged healthy enough post-correction) rather than treat it as a third
