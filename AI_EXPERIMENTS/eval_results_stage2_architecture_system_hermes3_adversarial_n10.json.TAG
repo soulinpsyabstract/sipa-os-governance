@@ -1,0 +1,5 @@
+FILE=eval_results_stage2_architecture_system_hermes3_adversarial_n10.json
+SHA256=38b037d31d757f39a551c0032a85bcacea3400a69854876f4caea5aa60dccc4b
+SIZE=346119
+DEVICE=SERVER
+TS=2026-09-16__19-25-24

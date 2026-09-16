@@ -1,0 +1,5 @@
+FILE=eval_results_stage3_identity_bio_hermes3_adversarial_n20.json
+SHA256=34be5cc4716fbd87776de651f6c540c8b02b9f71e60c28c6990e5bfe71d360cc
+SIZE=684900
+DEVICE=SERVER
+TS=2026-09-16__19-25-24

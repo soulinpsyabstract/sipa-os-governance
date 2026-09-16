@@ -1,0 +1,5 @@
+FILE=eval_results_stage3b_governance_safety_a_hermes3_adversarial_n20.json
+SHA256=6632f80a480454856244e25e71131056540e1e216f0666024f3f079f9393e1b5
+SIZE=803182
+DEVICE=SERVER
+TS=2026-09-16__19-25-24

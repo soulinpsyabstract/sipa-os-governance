@@ -1,0 +1,5 @@
+FILE=eval_results_stage2alt_business_legal_finance_hermes3_adversarial_n10.json
+SHA256=ae3a2e6044742c60b39c8145fd47a9b2b1a60ba359cc2fef669c6bba7a38bbc3
+SIZE=352873
+DEVICE=SERVER
+TS=2026-09-16__19-25-24
