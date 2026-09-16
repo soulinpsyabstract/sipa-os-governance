@@ -127,3 +127,9 @@ AI_EXPERIMENTS/EXP-043__hermes3-8b-governance-continue-tune-catastrophic-forgett
 AI_EXPERIMENTS/EXP-043__hermes3-8b-governance-continue-tune-catastrophic-forgetting.md	train_governance_stage.py
 AI_EXPERIMENTS/EXP-043__hermes3-8b-governance-continue-tune-catastrophic-forgetting.md	eval_results_hermes3-8b-sequential-chain-lora_hermes3_adversarial_n10.json
 AI_EXPERIMENTS/EXP-043__hermes3-8b-governance-continue-tune-catastrophic-forgetting.md	eval_results_sipa-governance-stage-lora_hermes3_adversarial_n10.json
+
+# EXP-044 (in-progress, updated live): same external-artifact class as
+# EXP-043/040/041 above -- dataset/script live on SERVER or the ephemeral
+# GPU box, not this repo.
+AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	train_stage.py
+AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	sipa_os_finetune_dataset.jsonl
