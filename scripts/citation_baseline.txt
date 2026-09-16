@@ -138,3 +138,7 @@ AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastro
 # (external to this repo, ~/.claude/projects/-home-sipa/memory/), not a
 # repo artifact -- same class as other external-path baseline entries above.
 AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	project_consequence_prediction_architecture.md
+
+# EXP-044 stage 3 failure (identity_bio) -- external artifact class as above.
+AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	eval_results_stage3_identity_bio_hermes3_adversarial_n20.json
+AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastrophic-forgetting.md	eval_stage3.log
