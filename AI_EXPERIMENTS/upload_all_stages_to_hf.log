@@ -1,0 +1,1067 @@
+=== uploading .cache ===
+=== done .cache ===
+=== uploading stage10_cold_style ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:   0%|          |  556kB /  168MB            [A[A
+
+  ...adapter_model.safetensors:   0%|          |  556kB /  168MB            [A[AProcessing Files (0 / 1)      :   0%|          |  556kB /  168MB, 54.9kB/s  
+New Data Upload               :   1%|          |  556kB / 67.0MB, 54.9kB/s  [A
+
+  ...adapter_model.safetensors:   1%|▏         | 2.22MB /  168MB            [A[AProcessing Files (0 / 1)      :   1%|▏         | 2.22MB /  168MB,  219kB/s  
+New Data Upload               :   3%|▎         | 2.22MB / 67.0MB,  219kB/s  [A
+
+  ...adapter_model.safetensors:   6%|▌         | 9.45MB /  168MB            [A[AProcessing Files (0 / 1)      :   6%|▌         | 9.45MB /  168MB,  926kB/s  
+New Data Upload               :   7%|▋         | 9.45MB /  134MB,  926kB/s  [A
+
+  ...adapter_model.safetensors:  10%|▉         | 16.7MB /  168MB            [A[AProcessing Files (0 / 1)      :  10%|▉         | 16.7MB /  168MB, 1.62MB/s  
+New Data Upload               :  10%|▉         | 16.7MB /  168MB, 1.62MB/s  [A
+
+  ...adapter_model.safetensors:  15%|█▍        | 25.0MB /  168MB            [A[AProcessing Files (0 / 1)      :  15%|█▍        | 25.0MB /  168MB, 2.42MB/s  
+New Data Upload               :  15%|█▍        | 25.0MB /  168MB, 2.42MB/s  [A
+
+  ...adapter_model.safetensors:  23%|██▎       | 38.3MB /  168MB            [A[AProcessing Files (0 / 1)      :  23%|██▎       | 38.3MB /  168MB, 3.70MB/s  
+New Data Upload               :  23%|██▎       | 38.3MB /  168MB, 3.70MB/s  [A
+
+  ...adapter_model.safetensors:  27%|██▋       | 45.6MB /  168MB            [A[AProcessing Files (0 / 1)      :  27%|██▋       | 45.6MB /  168MB, 4.36MB/s  
+New Data Upload               :  27%|██▋       | 45.6MB /  168MB, 4.36MB/s  [A
+
+  ...adapter_model.safetensors:  34%|███▍      | 57.2MB /  168MB            [A[AProcessing Files (0 / 1)      :  34%|███▍      | 57.2MB /  168MB, 5.45MB/s  
+New Data Upload               :  34%|███▍      | 57.2MB /  168MB, 5.45MB/s  [A
+
+  ...adapter_model.safetensors:  41%|████▏     | 69.5MB /  168MB            [A[AProcessing Files (0 / 1)      :  41%|████▏     | 69.5MB /  168MB, 6.58MB/s  
+New Data Upload               :  41%|████▏     | 69.5MB /  168MB, 6.58MB/s  [A
+
+  ...adapter_model.safetensors:  47%|████▋     | 79.5MB /  168MB            [A[AProcessing Files (0 / 1)      :  47%|████▋     | 79.5MB /  168MB, 7.48MB/s  
+New Data Upload               :  47%|████▋     | 79.5MB /  168MB, 7.48MB/s  [A
+
+  ...adapter_model.safetensors:  52%|█████▏    | 87.3MB /  168MB            [A[AProcessing Files (0 / 1)      :  52%|█████▏    | 87.3MB /  168MB, 8.15MB/s  
+New Data Upload               :  52%|█████▏    | 87.3MB /  168MB, 8.15MB/s  [A
+
+  ...adapter_model.safetensors:  57%|█████▋    | 96.2MB /  168MB            [A[AProcessing Files (0 / 1)      :  57%|█████▋    | 96.2MB /  168MB, 8.93MB/s  
+New Data Upload               :  57%|█████▋    | 96.2MB /  168MB, 8.93MB/s  [A
+
+  ...adapter_model.safetensors:  63%|██████▎   |  106MB /  168MB            [A[AProcessing Files (0 / 1)      :  63%|██████▎   |  106MB /  168MB, 9.79MB/s  
+New Data Upload               :  63%|██████▎   |  106MB /  168MB, 9.79MB/s  [A
+
+  ...adapter_model.safetensors:  70%|███████   |  118MB /  168MB            [A[AProcessing Files (0 / 1)      :  70%|███████   |  118MB /  168MB, 10.8MB/s  
+New Data Upload               :  70%|███████   |  118MB /  168MB, 10.8MB/s  [A
+
+  ...adapter_model.safetensors:  76%|███████▌  |  128MB /  168MB            [A[AProcessing Files (0 / 1)      :  76%|███████▌  |  128MB /  168MB, 11.6MB/s  
+New Data Upload               :  76%|███████▌  |  128MB /  168MB, 11.6MB/s  [A
+
+  ...adapter_model.safetensors:  79%|███████▉  |  133MB /  168MB            [A[AProcessing Files (0 / 1)      :  79%|███████▉  |  133MB /  168MB, 12.1MB/s  
+New Data Upload               :  79%|███████▉  |  133MB /  168MB, 12.1MB/s  [A
+
+  ...adapter_model.safetensors:  80%|███████▉  |  134MB /  168MB            [A[AProcessing Files (0 / 1)      :  80%|███████▉  |  134MB /  168MB, 12.0MB/s  
+New Data Upload               :  80%|███████▉  |  134MB /  168MB, 12.0MB/s  [A
+
+  ...adapter_model.safetensors:  80%|███████▉  |  134MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  80%|███████▉  |  134MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  80%|███████▉  |  134MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  80%|███████▉  |  134MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  80%|███████▉  |  134MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  84%|████████▍ |  141MB /  168MB            [A[AProcessing Files (0 / 1)      :  84%|████████▍ |  141MB /  168MB, 12.0MB/s  
+New Data Upload               :  84%|████████▍ |  141MB /  168MB, 12.0MB/s  [A
+
+  ...adapter_model.safetensors:  85%|████████▌ |  143MB /  168MB            [A[AProcessing Files (0 / 1)      :  85%|████████▌ |  143MB /  168MB, 12.1MB/s  
+New Data Upload               :  85%|████████▌ |  143MB /  168MB, 12.1MB/s  [A
+
+  ...adapter_model.safetensors:  88%|████████▊ |  149MB /  168MB            [A[AProcessing Files (0 / 1)      :  88%|████████▊ |  149MB /  168MB, 12.5MB/s  
+New Data Upload               :  88%|████████▊ |  149MB /  168MB, 12.5MB/s  [A
+
+  ...adapter_model.safetensors:  92%|█████████▏|  154MB /  168MB            [A[AProcessing Files (0 / 1)      :  92%|█████████▏|  154MB /  168MB, 12.9MB/s  
+New Data Upload               :  92%|█████████▏|  154MB /  168MB, 12.9MB/s  [A
+
+  ...adapter_model.safetensors:  94%|█████████▍|  158MB /  168MB            [A[AProcessing Files (0 / 1)      :  94%|█████████▍|  158MB /  168MB, 13.1MB/s  
+New Data Upload               :  94%|█████████▍|  158MB /  168MB, 13.1MB/s  [A
+
+  ...adapter_model.safetensors:  97%|█████████▋|  164MB /  168MB            [A[AProcessing Files (0 / 1)      :  97%|█████████▋|  164MB /  168MB, 13.5MB/s  
+New Data Upload               :  97%|█████████▋|  164MB /  168MB, 13.5MB/s  [A
+
+  ...adapter_model.safetensors:  99%|█████████▉|  166MB /  168MB            [A[AProcessing Files (0 / 1)      :  99%|█████████▉|  166MB /  168MB, 13.6MB/s  
+New Data Upload               :  99%|█████████▉|  166MB /  168MB, 13.6MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 13.7MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 13.7MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 13.2MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 13.2MB/s  [A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 13.1MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 13.1MB/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...cold_style/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...cold_style/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...cold_style/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...cold_style/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...cold_style/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...cold_style/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...cold_style/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...cold_style/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...cold_style/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...cold_style/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...cold_style/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.58MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...cold_style/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage10_cold_style ===
+=== uploading stage11_probability_math_v2 ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:   0%|          |  556kB /  168MB            [A[A
+
+  ...adapter_model.safetensors:   0%|          |  556kB /  168MB            [A[AProcessing Files (0 / 1)      :   0%|          |  556kB /  168MB, 53.6kB/s  
+New Data Upload               :   1%|          |  556kB / 67.1MB, 53.6kB/s  [A
+
+  ...adapter_model.safetensors:   2%|▏         | 3.89MB /  168MB            [A[AProcessing Files (0 / 1)      :   2%|▏         | 3.89MB /  168MB,  374kB/s  
+New Data Upload               :   6%|▌         | 3.89MB / 67.1MB,  374kB/s  [A
+
+  ...adapter_model.safetensors:   6%|▌         | 10.0MB /  168MB            [A[AProcessing Files (0 / 1)      :   6%|▌         | 10.0MB /  168MB,  957kB/s  
+New Data Upload               :   7%|▋         | 10.0MB /  134MB,  957kB/s  [A
+
+  ...adapter_model.safetensors:  13%|█▎        | 21.1MB /  168MB            [A[AProcessing Files (0 / 1)      :  13%|█▎        | 21.1MB /  168MB, 2.01MB/s  
+New Data Upload               :  13%|█▎        | 21.1MB /  168MB, 2.01MB/s  [A
+
+  ...adapter_model.safetensors:  18%|█▊        | 30.0MB /  168MB            [A[AProcessing Files (0 / 1)      :  18%|█▊        | 30.0MB /  168MB, 2.84MB/s  
+New Data Upload               :  18%|█▊        | 30.0MB /  168MB, 2.84MB/s  [A
+
+  ...adapter_model.safetensors:  28%|██▊       | 46.7MB /  168MB            [A[AProcessing Files (0 / 1)      :  28%|██▊       | 46.7MB /  168MB, 4.40MB/s  
+New Data Upload               :  28%|██▊       | 46.7MB /  168MB, 4.40MB/s  [A
+
+  ...adapter_model.safetensors:  37%|███▋      | 62.8MB /  168MB            [A[AProcessing Files (0 / 1)      :  37%|███▋      | 62.8MB /  168MB, 5.89MB/s  
+New Data Upload               :  37%|███▋      | 62.8MB /  168MB, 5.89MB/s  [A
+
+  ...adapter_model.safetensors:  47%|████▋     | 78.9MB /  168MB            [A[AProcessing Files (0 / 1)      :  47%|████▋     | 78.9MB /  168MB, 7.36MB/s  
+New Data Upload               :  47%|████▋     | 78.9MB /  168MB, 7.36MB/s  [A
+
+  ...adapter_model.safetensors:  58%|█████▊    | 97.3MB /  168MB            [A[AProcessing Files (0 / 1)      :  58%|█████▊    | 97.3MB /  168MB, 9.03MB/s  
+New Data Upload               :  58%|█████▊    | 97.3MB /  168MB, 9.03MB/s  [A
+
+  ...adapter_model.safetensors:  65%|██████▌   |  110MB /  168MB            [A[AProcessing Files (0 / 1)      :  65%|██████▌   |  110MB /  168MB, 10.1MB/s  
+New Data Upload               :  65%|██████▌   |  110MB /  168MB, 10.1MB/s  [A
+
+  ...adapter_model.safetensors:  71%|███████   |  119MB /  168MB            [A[AProcessing Files (0 / 1)      :  71%|███████   |  119MB /  168MB, 10.9MB/s  
+New Data Upload               :  71%|███████   |  119MB /  168MB, 10.9MB/s  [A
+
+  ...adapter_model.safetensors:  77%|███████▋  |  129MB /  168MB            [A[AProcessing Files (0 / 1)      :  77%|███████▋  |  129MB /  168MB, 11.7MB/s  
+New Data Upload               :  77%|███████▋  |  129MB /  168MB, 11.7MB/s  [A
+
+  ...adapter_model.safetensors:  78%|███████▊  |  130MB /  168MB            [A[AProcessing Files (0 / 1)      :  78%|███████▊  |  130MB /  168MB, 11.7MB/s  
+New Data Upload               :  78%|███████▊  |  130MB /  168MB, 11.7MB/s  [A
+
+  ...adapter_model.safetensors:  80%|███████▉  |  134MB /  168MB            [A[AProcessing Files (0 / 1)      :  80%|███████▉  |  134MB /  168MB, 11.9MB/s  
+New Data Upload               :  80%|███████▉  |  134MB /  168MB, 11.9MB/s  [A
+
+  ...adapter_model.safetensors:  82%|████████▏ |  137MB /  168MB            [A[AProcessing Files (0 / 1)      :  82%|████████▏ |  137MB /  168MB, 12.1MB/s  
+New Data Upload               :  82%|████████▏ |  137MB /  168MB, 12.1MB/s  [A
+
+  ...adapter_model.safetensors:  83%|████████▎ |  139MB /  168MB            [A[AProcessing Files (0 / 1)      :  83%|████████▎ |  139MB /  168MB, 12.2MB/s  
+New Data Upload               :  83%|████████▎ |  139MB /  168MB, 12.2MB/s  [A
+
+  ...adapter_model.safetensors:  85%|████████▍ |  142MB /  168MB            [A[AProcessing Files (0 / 1)      :  85%|████████▍ |  142MB /  168MB, 12.4MB/s  
+New Data Upload               :  85%|████████▍ |  142MB /  168MB, 12.4MB/s  [A
+
+  ...adapter_model.safetensors:  87%|████████▋ |  145MB /  168MB            [A[AProcessing Files (0 / 1)      :  87%|████████▋ |  145MB /  168MB, 12.6MB/s  
+New Data Upload               :  87%|████████▋ |  145MB /  168MB, 12.6MB/s  [A
+
+  ...adapter_model.safetensors:  88%|████████▊ |  147MB /  168MB            [A[AProcessing Files (0 / 1)      :  88%|████████▊ |  147MB /  168MB, 12.6MB/s  
+New Data Upload               :  88%|████████▊ |  147MB /  168MB, 12.6MB/s  [A
+
+  ...adapter_model.safetensors:  90%|████████▉ |  150MB /  168MB            [A[AProcessing Files (0 / 1)      :  90%|████████▉ |  150MB /  168MB, 12.8MB/s  
+New Data Upload               :  90%|████████▉ |  150MB /  168MB, 12.8MB/s  [A
+
+  ...adapter_model.safetensors:  92%|█████████▏|  154MB /  168MB            [A[AProcessing Files (0 / 1)      :  92%|█████████▏|  154MB /  168MB, 13.0MB/s  
+New Data Upload               :  92%|█████████▏|  154MB /  168MB, 13.0MB/s  [A
+
+  ...adapter_model.safetensors:  93%|█████████▎|  156MB /  168MB            [A[AProcessing Files (0 / 1)      :  93%|█████████▎|  156MB /  168MB, 13.1MB/s  
+New Data Upload               :  93%|█████████▎|  156MB /  168MB, 13.1MB/s  [A
+
+  ...adapter_model.safetensors:  95%|█████████▍|  159MB /  168MB            [A[AProcessing Files (0 / 1)      :  95%|█████████▍|  159MB /  168MB, 13.2MB/s  
+New Data Upload               :  95%|█████████▍|  159MB /  168MB, 13.2MB/s  [A
+
+  ...adapter_model.safetensors:  97%|█████████▋|  162MB /  168MB            [A[AProcessing Files (0 / 1)      :  97%|█████████▋|  162MB /  168MB, 13.4MB/s  
+New Data Upload               :  97%|█████████▋|  162MB /  168MB, 13.4MB/s  [A
+
+  ...adapter_model.safetensors:  98%|█████████▊|  165MB /  168MB            [A[AProcessing Files (0 / 1)      :  98%|█████████▊|  165MB /  168MB, 13.5MB/s  
+New Data Upload               :  98%|█████████▊|  165MB /  168MB, 13.5MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 13.7MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 13.7MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 12.7MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 12.7MB/s  [A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 12.5MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 12.5MB/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...ty_math_v2/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...ty_math_v2/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...ty_math_v2/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...ty_math_v2/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.69MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...ty_math_v2/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage11_probability_math_v2 ===
+=== uploading stage12_chain_math ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:   0%|          |  556kB /  168MB            [A[A
+
+  ...adapter_model.safetensors:   0%|          |  556kB /  168MB            [A[AProcessing Files (0 / 1)      :   0%|          |  556kB /  168MB, 55.1kB/s  
+New Data Upload               :   0%|          |  556kB /  134MB, 55.1kB/s  [A
+
+  ...adapter_model.safetensors:   1%|▏         | 2.22MB /  168MB            [A[AProcessing Files (0 / 1)      :   1%|▏         | 2.22MB /  168MB,  219kB/s  
+New Data Upload               :   2%|▏         | 2.22MB /  134MB,  219kB/s  [A
+
+  ...adapter_model.safetensors:   7%|▋         | 11.1MB /  168MB            [A[AProcessing Files (0 / 1)      :   7%|▋         | 11.1MB /  168MB, 1.09MB/s  
+New Data Upload               :   8%|▊         | 11.1MB /  134MB, 1.09MB/s  [A
+
+  ...adapter_model.safetensors:  12%|█▏        | 20.0MB /  168MB            [A[AProcessing Files (0 / 1)      :  12%|█▏        | 20.0MB /  168MB, 1.96MB/s  
+New Data Upload               :  12%|█▏        | 20.0MB /  168MB, 1.96MB/s  [A
+
+  ...adapter_model.safetensors:  19%|█▊        | 31.1MB /  168MB            [A[AProcessing Files (0 / 1)      :  19%|█▊        | 31.1MB /  168MB, 3.03MB/s  
+New Data Upload               :  19%|█▊        | 31.1MB /  168MB, 3.03MB/s  [A
+
+  ...adapter_model.safetensors:  28%|██▊       | 47.8MB /  168MB            [A[AProcessing Files (0 / 1)      :  28%|██▊       | 47.8MB /  168MB, 4.62MB/s  
+New Data Upload               :  28%|██▊       | 47.8MB /  168MB, 4.62MB/s  [A
+
+  ...adapter_model.safetensors:  41%|████      | 68.9MB /  168MB            [A[AProcessing Files (0 / 1)      :  41%|████      | 68.9MB /  168MB, 6.64MB/s  
+New Data Upload               :  41%|████      | 68.9MB /  168MB, 6.64MB/s  [A
+
+  ...adapter_model.safetensors:  55%|█████▍    | 91.7MB /  168MB            [A[AProcessing Files (0 / 1)      :  55%|█████▍    | 91.7MB /  168MB, 8.78MB/s  
+New Data Upload               :  55%|█████▍    | 91.7MB /  168MB, 8.78MB/s  [A
+
+  ...adapter_model.safetensors:  64%|██████▍   |  108MB /  168MB            [A[AProcessing Files (0 / 1)      :  64%|██████▍   |  108MB /  168MB, 10.3MB/s  
+New Data Upload               :  64%|██████▍   |  108MB /  168MB, 10.3MB/s  [A
+
+  ...adapter_model.safetensors:  74%|███████▍  |  125MB /  168MB            [A[AProcessing Files (0 / 1)      :  74%|███████▍  |  125MB /  168MB, 11.8MB/s  
+New Data Upload               :  74%|███████▍  |  125MB /  168MB, 11.8MB/s  [A
+
+  ...adapter_model.safetensors:  80%|███████▉  |  134MB /  168MB            [A[AProcessing Files (0 / 1)      :  80%|███████▉  |  134MB /  168MB, 12.5MB/s  
+New Data Upload               :  80%|███████▉  |  134MB /  168MB, 12.5MB/s  [A
+
+  ...adapter_model.safetensors:  84%|████████▍ |  141MB /  168MB            [A[AProcessing Files (0 / 1)      :  84%|████████▍ |  141MB /  168MB, 13.1MB/s  
+New Data Upload               :  84%|████████▍ |  141MB /  168MB, 13.1MB/s  [A
+
+  ...adapter_model.safetensors:  86%|████████▌ |  144MB /  168MB            [A[AProcessing Files (0 / 1)      :  86%|████████▌ |  144MB /  168MB, 13.3MB/s  
+New Data Upload               :  86%|████████▌ |  144MB /  168MB, 13.3MB/s  [A
+
+  ...adapter_model.safetensors:  88%|████████▊ |  148MB /  168MB            [A[AProcessing Files (0 / 1)      :  88%|████████▊ |  148MB /  168MB, 13.5MB/s  
+New Data Upload               :  88%|████████▊ |  148MB /  168MB, 13.5MB/s  [A
+
+  ...adapter_model.safetensors:  90%|█████████ |  151MB /  168MB            [A[AProcessing Files (0 / 1)      :  90%|█████████ |  151MB /  168MB, 13.7MB/s  
+New Data Upload               :  90%|█████████ |  151MB /  168MB, 13.7MB/s  [A
+
+  ...adapter_model.safetensors:  93%|█████████▎|  157MB /  168MB            [A[AProcessing Files (0 / 1)      :  93%|█████████▎|  157MB /  168MB, 14.1MB/s  
+New Data Upload               :  93%|█████████▎|  157MB /  168MB, 14.1MB/s  [A
+
+  ...adapter_model.safetensors:  95%|█████████▌|  160MB /  168MB            [A[AProcessing Files (0 / 1)      :  95%|█████████▌|  160MB /  168MB, 14.3MB/s  
+New Data Upload               :  95%|█████████▌|  160MB /  168MB, 14.3MB/s  [A
+
+  ...adapter_model.safetensors:  97%|█████████▋|  163MB /  168MB            [A[AProcessing Files (0 / 1)      :  97%|█████████▋|  163MB /  168MB, 14.4MB/s  
+New Data Upload               :  97%|█████████▋|  163MB /  168MB, 14.4MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 14.7MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 14.7MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 13.7MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 13.7MB/s  [A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 13.6MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 13.6MB/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...chain_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...chain_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...chain_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...chain_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.69MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...chain_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage12_chain_math ===
+=== uploading stage13_game_theory ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:   0%|          |  556kB /  168MB            [A[A
+
+  ...adapter_model.safetensors:   0%|          |  556kB /  168MB            [A[AProcessing Files (0 / 1)      :   0%|          |  556kB /  168MB, 55.0kB/s  
+New Data Upload               :   1%|          |  556kB / 67.1MB, 55.0kB/s  [A
+
+  ...adapter_model.safetensors:   1%|          | 1.11MB /  168MB            [A[AProcessing Files (0 / 1)      :   1%|          | 1.11MB /  168MB,  109kB/s  
+New Data Upload               :   1%|          | 1.11MB /  134MB,  109kB/s  [A
+
+  ...adapter_model.safetensors:   4%|▎         | 6.11MB /  168MB            [A[AProcessing Files (0 / 1)      :   4%|▎         | 6.11MB /  168MB,  601kB/s  
+New Data Upload               :   5%|▍         | 6.11MB /  134MB,  601kB/s  [A
+
+  ...adapter_model.safetensors:   8%|▊         | 12.8MB /  168MB            [A[AProcessing Files (0 / 1)      :   8%|▊         | 12.8MB /  168MB, 1.25MB/s  
+New Data Upload               :   8%|▊         | 12.8MB /  168MB, 1.25MB/s  [A
+
+  ...adapter_model.safetensors:  15%|█▍        | 24.5MB /  168MB            [A[AProcessing Files (0 / 1)      :  15%|█▍        | 24.5MB /  168MB, 2.38MB/s  
+New Data Upload               :  15%|█▍        | 24.5MB /  168MB, 2.38MB/s  [A
+
+  ...adapter_model.safetensors:  28%|██▊       | 47.2MB /  168MB            [A[AProcessing Files (0 / 1)      :  28%|██▊       | 47.2MB /  168MB, 4.58MB/s  
+New Data Upload               :  28%|██▊       | 47.2MB /  168MB, 4.58MB/s  [A
+
+  ...adapter_model.safetensors:  40%|████      | 67.3MB /  168MB            [A[AProcessing Files (0 / 1)      :  40%|████      | 67.3MB /  168MB, 6.49MB/s  
+New Data Upload               :  40%|████      | 67.3MB /  168MB, 6.49MB/s  [A
+
+  ...adapter_model.safetensors:  54%|█████▍    | 90.6MB /  168MB            [A[AProcessing Files (0 / 1)      :  54%|█████▍    | 90.6MB /  168MB, 8.69MB/s  
+New Data Upload               :  54%|█████▍    | 90.6MB /  168MB, 8.69MB/s  [A
+
+  ...adapter_model.safetensors:  67%|██████▋   |  112MB /  168MB            [A[AProcessing Files (0 / 1)      :  67%|██████▋   |  112MB /  168MB, 10.7MB/s  
+New Data Upload               :  67%|██████▋   |  112MB /  168MB, 10.7MB/s  [A
+
+  ...adapter_model.safetensors:  75%|███████▍  |  126MB /  168MB            [A[AProcessing Files (0 / 1)      :  75%|███████▍  |  126MB /  168MB, 11.9MB/s  
+New Data Upload               :  75%|███████▍  |  126MB /  168MB, 11.9MB/s  [A
+
+  ...adapter_model.safetensors:  82%|████████▏ |  137MB /  168MB            [A[AProcessing Files (0 / 1)      :  82%|████████▏ |  137MB /  168MB, 12.9MB/s  
+New Data Upload               :  82%|████████▏ |  137MB /  168MB, 12.9MB/s  [A
+
+  ...adapter_model.safetensors:  87%|████████▋ |  147MB /  168MB            [A[AProcessing Files (0 / 1)      :  87%|████████▋ |  147MB /  168MB, 13.7MB/s  
+New Data Upload               :  87%|████████▋ |  147MB /  168MB, 13.7MB/s  [A
+
+  ...adapter_model.safetensors:  90%|████████▉ |  151MB /  168MB            [A[AProcessing Files (0 / 1)      :  90%|████████▉ |  151MB /  168MB, 13.9MB/s  
+New Data Upload               :  90%|████████▉ |  151MB /  168MB, 13.9MB/s  [A
+
+  ...adapter_model.safetensors:  94%|█████████▍|  158MB /  168MB            [A[AProcessing Files (0 / 1)      :  94%|█████████▍|  158MB /  168MB, 14.4MB/s  
+New Data Upload               :  94%|█████████▍|  158MB /  168MB, 14.4MB/s  [A
+
+  ...adapter_model.safetensors:  97%|█████████▋|  164MB /  168MB            [A[AProcessing Files (0 / 1)      :  97%|█████████▋|  164MB /  168MB, 14.9MB/s  
+New Data Upload               :  97%|█████████▋|  164MB /  168MB, 14.9MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 15.1MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 15.1MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 14.9MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 14.9MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 14.6MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 14.6MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 14.0MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 14.0MB/s  [A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 13.9MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 13.9MB/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...ame_theory/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...ame_theory/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...ame_theory/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...ame_theory/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.69MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...ame_theory/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage13_game_theory ===
+=== uploading stage14_decision_theory ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:   1%|          | 1.11MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:   1%|          | 1.11MB /  168MB            [A[AProcessing Files (0 / 1)      :   1%|          | 1.11MB /  168MB,  110kB/s  
+New Data Upload               :   2%|▏         | 1.11MB / 67.0MB,  110kB/s  [A
+
+  ...adapter_model.safetensors:   1%|          | 1.11MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:   3%|▎         | 5.00MB /  168MB            [A[AProcessing Files (0 / 1)      :   3%|▎         | 5.00MB /  168MB,  491kB/s  
+New Data Upload               :   4%|▎         | 5.00MB /  134MB,  491kB/s  [A
+
+  ...adapter_model.safetensors:   8%|▊         | 13.3MB /  168MB            [A[AProcessing Files (0 / 1)      :   8%|▊         | 13.3MB /  168MB, 1.30MB/s  
+New Data Upload               :  10%|▉         | 13.3MB /  134MB, 1.30MB/s  [A
+
+  ...adapter_model.safetensors:  12%|█▏        | 20.0MB /  168MB            [A[AProcessing Files (0 / 1)      :  12%|█▏        | 20.0MB /  168MB, 1.94MB/s  
+New Data Upload               :  12%|█▏        | 20.0MB /  168MB, 1.94MB/s  [A
+
+  ...adapter_model.safetensors:  18%|█▊        | 30.0MB /  168MB            [A[AProcessing Files (0 / 1)      :  18%|█▊        | 30.0MB /  168MB, 2.90MB/s  
+New Data Upload               :  18%|█▊        | 30.0MB /  168MB, 2.90MB/s  [A
+
+  ...adapter_model.safetensors:  26%|██▋       | 44.5MB /  168MB            [A[AProcessing Files (0 / 1)      :  26%|██▋       | 44.5MB /  168MB, 4.28MB/s  
+New Data Upload               :  26%|██▋       | 44.5MB /  168MB, 4.28MB/s  [A
+
+  ...adapter_model.safetensors:  38%|███▊      | 64.5MB /  168MB            [A[AProcessing Files (0 / 1)      :  38%|███▊      | 64.5MB /  168MB, 6.18MB/s  
+New Data Upload               :  38%|███▊      | 64.5MB /  168MB, 6.18MB/s  [A
+
+  ...adapter_model.safetensors:  49%|████▉     | 82.8MB /  168MB            [A[AProcessing Files (0 / 1)      :  49%|████▉     | 82.8MB /  168MB, 7.90MB/s  
+New Data Upload               :  49%|████▉     | 82.8MB /  168MB, 7.90MB/s  [A
+
+  ...adapter_model.safetensors:  60%|██████    |  101MB /  168MB            [A[AProcessing Files (0 / 1)      :  60%|██████    |  101MB /  168MB, 9.59MB/s  
+New Data Upload               :  60%|██████    |  101MB /  168MB, 9.59MB/s  [A
+
+  ...adapter_model.safetensors:  70%|██████▉   |  117MB /  168MB            [A[AProcessing Files (0 / 1)      :  70%|██████▉   |  117MB /  168MB, 11.0MB/s  
+New Data Upload               :  70%|██████▉   |  117MB /  168MB, 11.0MB/s  [A
+
+  ...adapter_model.safetensors:  78%|███████▊  |  132MB /  168MB            [A[AProcessing Files (0 / 1)      :  78%|███████▊  |  132MB /  168MB, 12.3MB/s  
+New Data Upload               :  78%|███████▊  |  132MB /  168MB, 12.3MB/s  [A
+
+  ...adapter_model.safetensors:  87%|████████▋ |  146MB /  168MB            [A[AProcessing Files (0 / 1)      :  87%|████████▋ |  146MB /  168MB, 13.6MB/s  
+New Data Upload               :  87%|████████▋ |  146MB /  168MB, 13.6MB/s  [A
+
+  ...adapter_model.safetensors:  94%|█████████▍|  158MB /  168MB            [A[AProcessing Files (0 / 1)      :  94%|█████████▍|  158MB /  168MB, 14.6MB/s  
+New Data Upload               :  94%|█████████▍|  158MB /  168MB, 14.6MB/s  [A
+
+  ...adapter_model.safetensors:  99%|█████████▉|  167MB /  168MB            [A[AProcessing Files (0 / 1)      :  99%|█████████▉|  167MB /  168MB, 15.3MB/s  
+New Data Upload               :  99%|█████████▉|  167MB /  168MB, 15.3MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 15.2MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 15.2MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 15.0MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 15.0MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 14.4MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 14.4MB/s  [A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 14.3MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 14.3MB/s  [A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 14.1MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 14.1MB/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...ion_theory/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...ion_theory/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...ion_theory/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...ion_theory/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.69MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...ion_theory/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage14_decision_theory ===
+=== uploading stage1_external_research ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:  62%|██████▏   |  104MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  62%|██████▏   |  104MB /  168MB            [A[AProcessing Files (0 / 1)      :  62%|██████▏   |  104MB /  168MB, 10.3MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.5MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.2MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...l_research/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...l_research/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...l_research/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...l_research/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.69MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...l_research/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage1_external_research ===
+=== uploading stage2_architecture_system ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:  67%|██████▋   |  112MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  67%|██████▋   |  112MB /  168MB            [A[AProcessing Files (0 / 1)      :  67%|██████▋   |  112MB /  168MB, 11.1MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.5MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.3MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...ure_system/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...ure_system/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...ure_system/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...ure_system/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.70MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...ure_system/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage2_architecture_system ===
+=== uploading stage2alt_business_legal_finance ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:  33%|███▎      | 55.9MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  33%|███▎      | 55.9MB /  168MB            [A[AProcessing Files (0 / 1)      :  33%|███▎      | 55.9MB /  168MB, 5.54MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.5MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.2MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...al_finance/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...al_finance/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...al_finance/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+New Data Upload               : |          |  0.00B /  0.00B,   ???B/s  
+  ...al_finance/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage2alt_business_legal_finance ===
+=== uploading stage3_identity_bio_FAILED ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:  81%|████████  |  136MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  81%|████████  |  136MB /  168MB            [A[AProcessing Files (0 / 1)      :  81%|████████  |  136MB /  168MB, 13.5MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.5MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.3MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...bio_FAILED/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...bio_FAILED/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...bio_FAILED/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...bio_FAILED/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...bio_FAILED/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...bio_FAILED/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.66MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...bio_FAILED/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage3_identity_bio_FAILED ===
+=== uploading stage3b_governance_safety_a ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:  10%|▉         | 16.0MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  10%|▉         | 16.0MB /  168MB            [A[AProcessing Files (0 / 1)      :  10%|▉         | 16.0MB /  168MB,   ???B/s  
+
+  ...adapter_model.safetensors:  91%|█████████ |  152MB /  168MB            [A[AProcessing Files (0 / 1)      :  91%|█████████ |  152MB /  168MB, 15.0MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.5MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.2MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...e_safety_a/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...e_safety_a/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...e_safety_a/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...e_safety_a/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.69MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...e_safety_a/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage3b_governance_safety_a ===
+=== uploading stage4_infra_devops_a ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:  71%|███████▏  |  120MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  71%|███████▏  |  120MB /  168MB            [A[AProcessing Files (0 / 1)      :  71%|███████▏  |  120MB /  168MB, 11.9MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.5MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.3MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...a_devops_a/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...a_devops_a/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...a_devops_a/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...a_devops_a/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.70MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...a_devops_a/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage4_infra_devops_a ===
+=== uploading stage5_infra_devops_b ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:  67%|██████▋   |  112MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  67%|██████▋   |  112MB /  168MB            [A[AProcessing Files (0 / 1)      :  67%|██████▋   |  112MB /  168MB, 11.1MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.5MB/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.3MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...a_devops_b/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...a_devops_b/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...a_devops_b/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...a_devops_b/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.70MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...a_devops_b/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage5_infra_devops_b ===
+=== uploading stage6_governance_safety_b ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:  86%|████████▌ |  144MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  86%|████████▌ |  144MB /  168MB            [A[AProcessing Files (0 / 1)      :  86%|████████▌ |  144MB /  168MB,   ???B/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB,   ???B/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.3MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...e_safety_b/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...e_safety_b/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...e_safety_b/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...e_safety_b/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.69MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...e_safety_b/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage6_governance_safety_b ===
+=== uploading stage7_architecture_system_retry ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:  81%|████████  |  136MB /  168MB            [A[A
+
+  ...adapter_model.safetensors:  81%|████████  |  136MB /  168MB            [A[AProcessing Files (0 / 1)      :  81%|████████  |  136MB /  168MB,   ???B/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB,   ???B/s  
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 16.3MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...stem_retry/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...stem_retry/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...stem_retry/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...stem_retry/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.70MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...stem_retry/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage7_architecture_system_retry ===
+=== uploading stage8_risk_math ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:   0%|          |  556kB /  168MB            [A[A
+
+  ...adapter_model.safetensors:   0%|          |  556kB /  168MB            [A[AProcessing Files (0 / 1)      :   0%|          |  556kB /  168MB, 55.1kB/s  
+New Data Upload               :   1%|          |  556kB / 67.0MB, 55.1kB/s  [A
+
+  ...adapter_model.safetensors:   3%|▎         | 5.00MB /  168MB            [A[AProcessing Files (0 / 1)      :   3%|▎         | 5.00MB /  168MB,  494kB/s  
+New Data Upload               :   4%|▎         | 5.00MB /  134MB,  494kB/s  [A
+
+  ...adapter_model.safetensors:   6%|▋         | 10.6MB /  168MB            [A[AProcessing Files (0 / 1)      :   6%|▋         | 10.6MB /  168MB, 1.04MB/s  
+New Data Upload               :   8%|▊         | 10.6MB /  134MB, 1.04MB/s  [A
+
+  ...adapter_model.safetensors:  14%|█▎        | 22.8MB /  168MB            [A[AProcessing Files (0 / 1)      :  14%|█▎        | 22.8MB /  168MB, 2.23MB/s  
+New Data Upload               :  17%|█▋        | 22.8MB /  134MB, 2.23MB/s  [A
+
+  ...adapter_model.safetensors:  20%|█▉        | 32.8MB /  168MB            [A[AProcessing Files (0 / 1)      :  20%|█▉        | 32.8MB /  168MB, 3.19MB/s  
+New Data Upload               :  20%|█▉        | 32.8MB /  168MB, 3.19MB/s  [A
+
+  ...adapter_model.safetensors:  28%|██▊       | 46.7MB /  168MB            [A[AProcessing Files (0 / 1)      :  28%|██▊       | 46.7MB /  168MB, 4.51MB/s  
+New Data Upload               :  28%|██▊       | 46.7MB /  168MB, 4.51MB/s  [A
+
+  ...adapter_model.safetensors:  37%|███▋      | 62.8MB /  168MB            [A[AProcessing Files (0 / 1)      :  37%|███▋      | 62.8MB /  168MB, 6.04MB/s  
+New Data Upload               :  37%|███▋      | 62.8MB /  168MB, 6.04MB/s  [A
+
+  ...adapter_model.safetensors:  50%|████▉     | 83.4MB /  168MB            [A[AProcessing Files (0 / 1)      :  50%|████▉     | 83.4MB /  168MB, 7.98MB/s  
+New Data Upload               :  50%|████▉     | 83.4MB /  168MB, 7.98MB/s  [A
+
+  ...adapter_model.safetensors:  58%|█████▊    | 96.8MB /  168MB            [A[AProcessing Files (0 / 1)      :  58%|█████▊    | 96.8MB /  168MB, 9.19MB/s  
+New Data Upload               :  58%|█████▊    | 96.8MB /  168MB, 9.19MB/s  [A
+
+  ...adapter_model.safetensors:  66%|██████▌   |  111MB /  168MB            [A[AProcessing Files (0 / 1)      :  66%|██████▌   |  111MB /  168MB, 10.4MB/s  
+New Data Upload               :  66%|██████▌   |  111MB /  168MB, 10.4MB/s  [A
+
+  ...adapter_model.safetensors:  71%|███████   |  120MB /  168MB            [A[AProcessing Files (0 / 1)      :  71%|███████   |  120MB /  168MB, 11.2MB/s  
+New Data Upload               :  71%|███████   |  120MB /  168MB, 11.2MB/s  [A
+
+  ...adapter_model.safetensors:  80%|████████  |  134MB /  168MB            [A[AProcessing Files (0 / 1)      :  80%|████████  |  134MB /  168MB, 12.5MB/s  
+New Data Upload               :  80%|████████  |  134MB /  168MB, 12.5MB/s  [A
+
+  ...adapter_model.safetensors:  83%|████████▎ |  140MB /  168MB            [A[AProcessing Files (0 / 1)      :  83%|████████▎ |  140MB /  168MB, 12.9MB/s  
+New Data Upload               :  83%|████████▎ |  140MB /  168MB, 12.9MB/s  [A
+
+  ...adapter_model.safetensors:  87%|████████▋ |  147MB /  168MB            [A[AProcessing Files (0 / 1)      :  87%|████████▋ |  147MB /  168MB, 13.4MB/s  
+New Data Upload               :  87%|████████▋ |  147MB /  168MB, 13.4MB/s  [A
+
+  ...adapter_model.safetensors:  90%|█████████ |  152MB /  168MB            [A[AProcessing Files (0 / 1)      :  90%|█████████ |  152MB /  168MB, 13.8MB/s  
+New Data Upload               :  90%|█████████ |  152MB /  168MB, 13.8MB/s  [A
+
+  ...adapter_model.safetensors:  94%|█████████▍|  158MB /  168MB            [A[AProcessing Files (0 / 1)      :  94%|█████████▍|  158MB /  168MB, 14.3MB/s  
+New Data Upload               :  94%|█████████▍|  158MB /  168MB, 14.3MB/s  [A
+
+  ...adapter_model.safetensors:  98%|█████████▊|  164MB /  168MB            [A[AProcessing Files (0 / 1)      :  98%|█████████▊|  164MB /  168MB, 14.7MB/s  
+New Data Upload               :  98%|█████████▊|  164MB /  168MB, 14.7MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 14.9MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 14.9MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 14.0MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 14.0MB/s  [A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 13.8MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 13.8MB/s  [A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 13.7MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 13.7MB/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ..._risk_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ..._risk_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ..._risk_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ..._risk_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.69MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ..._risk_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage8_risk_math ===
+=== uploading stage9_probability_math ===
+  README.md
+  adapter_config.json
+  adapter_model.safetensors
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...adapter_model.safetensors:   0%|          |  556kB /  168MB            [A[A
+
+  ...adapter_model.safetensors:   0%|          |  556kB /  168MB            [A[AProcessing Files (0 / 1)      :   0%|          |  556kB /  168MB, 54.9kB/s  
+New Data Upload               :   1%|          |  556kB / 67.1MB, 54.9kB/s  [A
+
+  ...adapter_model.safetensors:   1%|          | 1.11MB /  168MB            [A[AProcessing Files (0 / 1)      :   1%|          | 1.11MB /  168MB,  109kB/s  
+New Data Upload               :   2%|▏         | 1.11MB / 67.1MB,  109kB/s  [A
+
+  ...adapter_model.safetensors:   4%|▎         | 6.11MB /  168MB            [A[AProcessing Files (0 / 1)      :   4%|▎         | 6.11MB /  168MB,  599kB/s  
+New Data Upload               :   5%|▍         | 6.11MB /  134MB,  599kB/s  [A
+
+  ...adapter_model.safetensors:   7%|▋         | 11.7MB /  168MB            [A[AProcessing Files (0 / 1)      :   7%|▋         | 11.7MB /  168MB, 1.14MB/s  
+New Data Upload               :   7%|▋         | 11.7MB /  168MB, 1.14MB/s  [A
+
+  ...adapter_model.safetensors:  15%|█▍        | 25.0MB /  168MB            [A[AProcessing Files (0 / 1)      :  15%|█▍        | 25.0MB /  168MB, 2.43MB/s  
+New Data Upload               :  15%|█▍        | 25.0MB /  168MB, 2.43MB/s  [A
+
+  ...adapter_model.safetensors:  25%|██▍       | 41.1MB /  168MB            [A[AProcessing Files (0 / 1)      :  25%|██▍       | 41.1MB /  168MB, 3.97MB/s  
+New Data Upload               :  25%|██▍       | 41.1MB /  168MB, 3.97MB/s  [A
+
+  ...adapter_model.safetensors:  34%|███▍      | 57.8MB /  168MB            [A[AProcessing Files (0 / 1)      :  34%|███▍      | 57.8MB /  168MB, 5.55MB/s  
+New Data Upload               :  34%|███▍      | 57.8MB /  168MB, 5.55MB/s  [A
+
+  ...adapter_model.safetensors:  45%|████▌     | 76.1MB /  168MB            [A[AProcessing Files (0 / 1)      :  45%|████▌     | 76.1MB /  168MB, 7.28MB/s  
+New Data Upload               :  45%|████▌     | 76.1MB /  168MB, 7.28MB/s  [A
+
+  ...adapter_model.safetensors:  57%|█████▋    | 95.1MB /  168MB            [A[AProcessing Files (0 / 1)      :  57%|█████▋    | 95.1MB /  168MB, 9.03MB/s  
+New Data Upload               :  57%|█████▋    | 95.1MB /  168MB, 9.03MB/s  [A
+
+  ...adapter_model.safetensors:  67%|██████▋   |  112MB /  168MB            [A[AProcessing Files (0 / 1)      :  67%|██████▋   |  112MB /  168MB, 10.5MB/s  
+New Data Upload               :  67%|██████▋   |  112MB /  168MB, 10.5MB/s  [A
+
+  ...adapter_model.safetensors:  77%|███████▋  |  130MB /  168MB            [A[AProcessing Files (0 / 1)      :  77%|███████▋  |  130MB /  168MB, 12.2MB/s  
+New Data Upload               :  77%|███████▋  |  130MB /  168MB, 12.2MB/s  [A
+
+  ...adapter_model.safetensors:  86%|████████▋ |  145MB /  168MB            [A[AProcessing Files (0 / 1)      :  86%|████████▋ |  145MB /  168MB, 13.5MB/s  
+New Data Upload               :  86%|████████▋ |  145MB /  168MB, 13.5MB/s  [A
+
+  ...adapter_model.safetensors:  91%|█████████ |  152MB /  168MB            [A[AProcessing Files (0 / 1)      :  91%|█████████ |  152MB /  168MB, 14.1MB/s  
+New Data Upload               :  91%|█████████ |  152MB /  168MB, 14.1MB/s  [A
+
+  ...adapter_model.safetensors:  95%|█████████▍|  159MB /  168MB            [A[AProcessing Files (0 / 1)      :  95%|█████████▍|  159MB /  168MB, 14.6MB/s  
+New Data Upload               :  95%|█████████▍|  159MB /  168MB, 14.6MB/s  [A
+
+  ...adapter_model.safetensors:  98%|█████████▊|  165MB /  168MB            [A[AProcessing Files (0 / 1)      :  98%|█████████▊|  165MB /  168MB, 15.0MB/s  
+New Data Upload               :  98%|█████████▊|  165MB /  168MB, 15.0MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 15.1MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 15.1MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 15.0MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 15.0MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[AProcessing Files (0 / 1)      : 100%|█████████▉|  168MB /  168MB, 14.6MB/s  
+New Data Upload               : 100%|█████████▉|  168MB /  168MB, 14.6MB/s  [A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|█████████▉|  168MB /  168MB            [A[A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 14.2MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 14.2MB/s  [A
+
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            [A[AProcessing Files (1 / 1)      : 100%|██████████|  168MB /  168MB, 14.1MB/s  
+New Data Upload               : 100%|██████████|  168MB /  168MB, 14.1MB/s  
+  ...adapter_model.safetensors: 100%|██████████|  168MB /  168MB            
+  chat_template.jinja
+  tokenizer.json
+Processing Files (0 / 0)      : |          |  0.00B /  0.00B            
+New Data Upload               : |          |  0.00B /  0.00B            [A
+
+  ...ility_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...ility_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB,   ???B/s  
+
+  ...ility_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[A
+
+  ...ility_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            [A[AProcessing Files (1 / 1)      : 100%|██████████| 17.2MB / 17.2MB, 1.70MB/s  
+New Data Upload               : |          |  0.00B /  0.00B,  0.00B/s  
+  ...ility_math/tokenizer.json: 100%|██████████| 17.2MB / 17.2MB            
+  tokenizer_config.json
+=== done stage9_probability_math ===
+ALL DONE
+huge-red-chipmunk

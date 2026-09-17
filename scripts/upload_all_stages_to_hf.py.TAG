@@ -1,0 +1,5 @@
+FILE=upload_all_stages_to_hf.py
+SHA256=b67431a7b295ca7fac08113e835c68a48510498b8838b9fadb460aedab6369fe
+SIZE=1041
+DEVICE=AI_EXPERIMENTS/upload_all_stages_to_hf.log
+TS=2026-09-18__02-41-01
