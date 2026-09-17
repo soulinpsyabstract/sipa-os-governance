@@ -1,0 +1,5 @@
+FILE=eval_results_stage12_chain_math_hermes3_adversarial_n20.json
+SHA256=d71cb2a6216af56e53cd327440c4f2998a5106599974d3d11d5ae8e0677da151
+SIZE=866410
+DEVICE=SERVER
+TS=2026-09-17__22-53-34
