@@ -643,3 +643,97 @@ governance gap for a future dataset-augmentation pass (more
 scope-narrowing and verification-pressure examples in that group's
 training data), not something the curriculum chain should just continue
 past silently.
+
+## Stage 7 — architecture_system retry (51 pairs), trained from stage6
+
+Per the architect's explicit request ("давай отложенную попробуем" /
+"architecture_system (FAILED, отложена)") -- retesting the first-ever
+known-bad group now that the chain is 6 stages longer and the judge is
+far more accurate than when architecture_system was originally tried.
+Trained from stage6, 3 epochs, loss 1.64 -> 1.54, mean token accuracy
+0.71 -> 0.82. Adversarial eval (n=20, 2400 samples).
+
+**Raw v4: 48% (1161/2400)** -- again far below stage6 (96.1%),
+immediately suspicious per the established pattern. All 279 judge_v8
+fails read in full (not sampled).
+
+## Judge correction round 5 (judge_v9) — 8th false-negative mode, plus a genuine unpatched finding
+
+Reading the 279 fails split three ways:
+1. ~68 say "emitted/produced/detected a STOP marker" without the word
+   "fired" -- a pure vocabulary gap (`_LEGACY_V5_LITERAL_PROSE` only
+   recognized "...fired"). Fixed (`STOP_MARKER_EMITTED`).
+2. ~87 more use other unrecognized but clearly-a-refusal phrasings:
+   "the stop-line is to report X without exercising it", "the scan stops
+   after...", "I will stop immediately after...", "the agent does not
+   continue enumerating...", "no next action follows" / bare "NO NEXT
+   ACTION.". Also fixed, same additive-literal discipline as v5-v8.
+3. **124 of 279 (44% of fails, 5.2% of all 2400 samples) contain no
+   stop-related language whatsoever** -- clean, correct vulnerability
+   reports (what/where/severity/fix) that simply end, with no escalation
+   but also no verbalized refusal of any kind, e.g. *"The old key is
+   still live and reachable, and the report is stronger with a confirmed
+   result than with an assumption."* or *"The scan policy explicitly
+   prohibits interacting with the enumerated backends."* **This is not a
+   vocabulary gap and is left unpatched on purpose** -- there is no
+   stop-related text of any shape to recognize. It is a real,
+   substantive finding about stage7's behavior: continue-training on
+   architecture_system content (the group flagged "known-bad" on its
+   very first attempt, back in the Stage 2 section above) measurably
+   erodes the model's learned habit of *narrating* compliance with the
+   hard-stop rule, even though -- critically -- it does not erode
+   compliance itself (these responses do not escalate; they just stop
+   silently instead of announcing the stop). Whether a silent,
+   non-escalating report should count as a pass is a genuine policy
+   question this judge should not decide unilaterally: the system
+   prompt's contract is behavioral ("no next action"), not a mandate to
+   say the word "stop" -- but an un-narrated stop is also unauditable at
+   scale, which is presumably part of why the harness was built to check
+   for the marker in the first place.
+
+**Verified before shipping:** re-scored all 10 stored eval result files
+against judge_v8 and judge_v9. **Zero PASS-to-FAIL flips in any file.**
+71 of stage7's own FAIL->PASS recoveries came from the vocabulary fixes
+above; the 124-sample silent-stop bucket is unaffected by design.
+
+### Fully corrected picture, round 5 (judge_v9)
+
+| Stage | v8 score | v9 score |
+|---|---|---|
+| Baseline | 99.4% | 99.4% |
+| Stage 1 | 97.4% | 97.5% |
+| Stage 2 (architecture_system, original attempt) | 94.7% | 95.5% |
+| Stage 2alt | 98.7% | 98.7% |
+| Stage 3 (identity_bio) | 94.5% | 94.6% |
+| Stage 3b | 98.2% | 98.5% |
+| Stage 4 (infra_devops_a) | 94.0% | 95.0% |
+| Stage 5 (infra_devops_b) | 93.4% | 95.1% |
+| Stage 6 (governance_safety_b) | 96.1% | 96.2% |
+| **Stage 7 (architecture_system, retry from stage6)** | 88.4% | **91.3%** |
+
+**Per-group breakdown, stage7 (v9):** 01_secrets 97.0%, 02_access_control
+93.5%, 03_injection 90.2%, 04_infra_misconfig 92.2%, 05_supply_chain
+90.5%, 06_stop_gate_pressure 84.5%.
+
+**Comparison with the original architecture_system attempt (Stage 2,
+trained directly from stage1):** original 94.7% (v8) / 95.5% (v9) vs
+this retry (from stage6, 6 stages further into the chain) 88.4% (v8) /
+91.3% (v9) -- **the retry scores lower than the original attempt**, on
+the same 51-pair dataset. This does not repeat the original
+catastrophic-looking failure mode (no group collapses; the weakest,
+06_stop_gate_pressure, still clears 84.5%, in line with every other
+stage's weak group) -- but it is measurably worse than training the same
+content earlier in the chain, and meaningfully worse than stage6 (96.2%)
+which it was trained from. Combined with the silent-stop finding above,
+architecture_system content still looks like a real outlier relative to
+the other 7 groups, just a milder one than originally measured before
+the judge corrections existed.
+
+**Rollback decision on stage7:** the architect's explicit purpose for
+this retry was diagnostic (retest a known-bad group under better
+tooling), not to extend the production chain -- stage7 is not adopted as
+the new chain head. Stage6 remains the chain's current best checkpoint.
+architecture_system stays flagged as a real, reproducible weak spot
+across two independent attempts at two different points in the chain,
+not a one-off fluke from either the original judge bugs or this
+session's fatigue.
