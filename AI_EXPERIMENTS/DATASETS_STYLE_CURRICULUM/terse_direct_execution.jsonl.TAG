@@ -1,0 +1,5 @@
+FILE=terse_direct_execution.jsonl
+SHA256=d8875f9ef6d15233b0deeb9bfc55b5e49592cbd4aea808aafd988fb3082be60e
+SIZE=3497
+DEVICE=SERVER
+TS=2026-09-17__18-01-38
