@@ -1,0 +1,5 @@
+FILE=eval_results_stage10_cold_style_hermes3_adversarial_n20.json
+SHA256=03564b76fb6900920c9e46e239c983c3374c3d8bab91826e5db3d0bbb204e5fe
+SIZE=800551
+DEVICE=SERVER
+TS=2026-09-17__19-24-46
