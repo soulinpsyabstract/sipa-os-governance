@@ -818,6 +818,66 @@ multi-step-arithmetic failure, not a probe-wording issue.
 
 Stage6 here is the pre-math-curriculum baseline (only the 8-stage G15
 governance chain, no math-specific training yet) -- see Stage 8 above
-for the first math-curriculum training step and its safety-eval result;
-its math-competency result is pending its own `eval_math_curriculum.py`
-run.
+for the first math-curriculum training step and its safety-eval result.
+
+### Stage8 math-competency result and a real process bug (checker desync)
+
+Ran `eval_math_curriculum.py` against stage8 -- raw terminal output showed
+OVERALL 62.7% (188/300), with `decision_theory` *dropping* from stage6's
+93.3% to 75.0%. That drop looked wrong on its face (math training should
+not selectively break decision-theory phrasing), so per this project's
+"read raw before trusting a score" rule, pulled the raw JSON and read the
+9 + 6 samples the checker marked wrong for `decision_theory_1`/`_2`.
+
+**All 15 were correct answers, mis-scored.** Every one correctly computed
+EU(CONTINUE) > EU(STOP) and stated it as `"Decision: CONTINUE"` or
+`"...the decision is to CONTINUE"` -- phrasing the checker's marker list
+didn't cover (it only recognized `"optimal action: continue"` and
+similar). Checked stage6's 4 `decision_theory_2` fails too: 2 were the
+same false-negative pattern, 2 were genuine wrong answers (model stated
+`"Optimal action: STOP"` against a correct answer of CONTINUE).
+
+**Root cause of the confusing drop turned out to be worse than a missed
+phrasing pattern.** `eval_math_curriculum.py` imports its checkers via
+`sys.path.insert(0, '/home/shadeform')` + `from math_eval_questions import
+...` -- i.e. from a copy of the file living on the GPU box, not from this
+repo's `scripts/math_eval_questions.py` directly. That copy was never
+re-synced after the v2 rewrite (`59b0c06`, the "перепиши" commit) -- it
+was still the 72-line v1 file. **The entire stage8 run was scored with
+the discredited v1 checkers**, not v2. The 62.7%/75.0% numbers printed
+to the terminal at run time are void.
+
+Fixed the actual gap (`math_eval_questions.py`, v3): added
+`"decision: continue"` / `"decision is to continue"` /
+`"decision is continue"` / `"continue is better"` (and STOP equivalents)
+to the marker lists for `decision_theory_1`, `decision_theory_2`,
+`chain_1`, and `chain_2` -- the chain questions had the identical gap
+(`"the decision is to STOP"` wasn't recognized either). **Verified 0
+regressions**: re-scored every stored raw response (stage6 + stage8, all
+600 samples) with the pre-fix (v2, commit `59b0c06`) and post-fix (v3)
+checkers side by side -- 0 PASS->FAIL flips, 45 additional FAIL->PASS
+recoveries (2 in stage6, 43 in stage8). Then copied the fixed file to the
+GPU box (`scp` to `/home/shadeform/math_eval_questions.py`, md5 verified
+identical to the repo copy) so the next run in this eval chain can't
+silently drift onto a stale checker again.
+
+**Corrected stage6 vs stage8 comparison (v3 checker, re-scored from the
+raw response text already on disk -- no model re-run needed):**
+
+| Group | Stage6 (v3) | Stage8 (v3) | Delta |
+|---|---|---|---|
+| risk_math | 100.0% (60/60) | 100.0% (60/60) | 0 |
+| probability_math | 1.7% (1/60) | 18.3% (11/60) | +16.6pp |
+| chain_math | 45.0% (27/60) | 46.7% (28/60) | +1.7pp |
+| game_theory | 71.7% (43/60) | 68.3% (41/60) | -3.4pp |
+| decision_theory | 96.7% (58/60) | 100.0% (60/60) | +3.3pp |
+| **Overall** | **63.0% (189/300)** | **66.7% (200/300)** | **+3.7pp** |
+
+Net read: stage8's risk_math-focused math training produced a small,
+real, broad-based improvement (no group regressed outside noise range at
+n=30/question), most notably on `probability_math` -- still the weakest
+group by far, but the first movement off its near-zero baseline.
+`game_theory`'s -3.4pp is within plausible sampling noise for n=30 and
+not treated as a regression without further data. This *replaces* the
+initially-reported (v1-checker, void) 61.3%/62.7%/-18.3pp-on-decision_theory
+picture -- that picture is struck, not just superseded.
