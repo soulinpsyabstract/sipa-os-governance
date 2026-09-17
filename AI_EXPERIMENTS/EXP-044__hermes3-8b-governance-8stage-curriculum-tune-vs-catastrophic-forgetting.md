@@ -737,3 +737,87 @@ architecture_system stays flagged as a real, reproducible weak spot
 across two independent attempts at two different points in the chain,
 not a one-off fluke from either the original judge bugs or this
 session's fatigue.
+
+## Stage 8 — risk_math (51 pairs, math curriculum), trained from stage6
+
+First step of a planned new branch: continue-training stage6 on the
+5-topic math curriculum (risk, probability/Bayes, chain, game theory,
+decision theory -- `AI_EXPERIMENTS/DATASETS_MATH_CURRICULUM/`) toward an
+"engineer + mathematician + theorist" specialization, per the architect's
+explicit direction to build from stage6 (the clean chain head) rather
+than stage7 (the diagnosed-weaker architecture_system branch). risk_math
+first since it's the table's first topic and thematically closest to the
+existing G15 risk-threshold framing.
+
+**Raw v4: 72% (1719/2400).** Corrected under judge_v9: **94.1%
+(2259/2400)** -- healthier than stage7's 91.3%, and closer to stage6's
+own 96.2% baseline than the architecture_system branch ever got.
+Per-group: 01_secrets 94.5%, 02_access_control 94.8%, 03_injection
+95.0%, 04_infra_misconfig 92.2%, 05_supply_chain 95.5%,
+06_stop_gate_pressure **92.8%** -- markedly better than stage7's 84.5%
+on the same group. Read the residual fails: 41/141 (29%) are the same
+bare no-stop-word pattern as stage7 (vs 124/279, 44%, there) -- present
+but proportionally smaller. Plausible explanation, not yet proven:
+risk_math's content (STOP/CONTINUE risk-threshold decisions) reinforces
+the same decision framing G15 trains, rather than diluting it the way
+architecture_system's unrelated software-design content did.
+
+**Rollback decision on stage8:** none warranted -- safety metric held up
+well post-math-training. Math competency itself measured separately (see
+`eval_math_curriculum.py`, `math_eval_result_stage6.json`) as the actual
+purpose of this branch, not by the G15 safety eval.
+
+## Math-curriculum competency eval (upgrade of the ad-hoc risk/Bayes/chain probe)
+
+Per the architect's direction, the 3-question probe used earlier in this
+document to spot-check the curriculum chain (risk_calc, bayes_update,
+chain_calc, run once per checkpoint via an ad-hoc interactive probe script,
+never committed under a stable filename) is retired as an
+ad-hoc side-check and replaced with a proper held-out eval:
+`scripts/eval_math_curriculum.py` + `scripts/math_eval_questions.py` --
+2 fresh questions per theory (10 total), each with an automated
+correctness checker, run with repeated sampling (n=30, do_sample=True)
+matching this project's adversarial-eval convention rather than a single
+greedy pass.
+
+**v1 checkers were unreliable** (built in one pass, not verified against
+raw text first) -- found and fixed after reading stage6's raw responses:
+a false negative on `game_theory_1` (a response that gave the exactly
+correct Nash-equilibrium answer, "6 units for Alpha and 6 for Beta, each
+receiving a payoff of 0", was scored wrong because the checker only
+matched the literal string "6 and 6") and a false positive on
+`probability_1` (a response with genuinely broken Bayes arithmetic
+landed a final number that coincidentally fell inside a too-wide
+15-24% acceptance band). Rewritten (`math_eval_questions.py`) to extract
+the model's actual final numeric claim or decision polarity instead of
+matching literal substrings, and re-verified by hand against the raw
+stage6 responses for the two previously-wrong questions before trusting
+the numbers.
+
+### Stage6 result (baseline, before any math-specific training)
+
+| Group | Score |
+|---|---|
+| risk_math | 100% (60/60) |
+| decision_theory | 93.3% (56/60) |
+| game_theory | 71.7% (43/60) |
+| chain_math | 45.0% (27/60) |
+| probability_math | **1.7% (1/60)** |
+| **Overall** | **62.3% (187/300)** |
+
+**probability_math is a genuine, validated weakness, not a checker
+artifact** -- read 8 raw `probability_1` responses in full: the model
+consistently states Bayes' theorem correctly (`P(H|E) = P(E|H)P(H)/P(E)`)
+but reliably miscomputes the marginal `P(E)`, most often by dropping the
+`P(¬H)` weighting term entirely (adding conditionals instead of a
+properly weighted sum) or by arithmetic slips even when the formula
+shape is right. Final answers observed across 8 samples: 3.6%, 24%,
+(incomplete), 92%, 2.7%, ≈22%, (incomplete), ≈42.4% -- against a correct
+answer of 19.83%; none land close. This is a real, reproducible
+multi-step-arithmetic failure, not a probe-wording issue.
+
+Stage6 here is the pre-math-curriculum baseline (only the 8-stage G15
+governance chain, no math-specific training yet) -- see Stage 8 above
+for the first math-curriculum training step and its safety-eval result;
+its math-competency result is pending its own `eval_math_curriculum.py`
+run.
