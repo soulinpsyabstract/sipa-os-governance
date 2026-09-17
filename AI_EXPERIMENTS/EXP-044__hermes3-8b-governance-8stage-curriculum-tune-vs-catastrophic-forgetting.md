@@ -1099,3 +1099,72 @@ and a second attempt at probability_math) continues from stage10 next,
 testing directly whether the terse-execution style prevents the kind of
 cross-topic template intrusion stage9 showed when training on a single
 math topic from a "show your work" checkpoint.
+
+## Stage 11 -- probability_math retry (51 pairs), trained from stage10
+
+Direct test of the stage10 hypothesis: same probability_math dataset that
+caused stage9's contamination when trained from stage8 (a "show your
+work" checkpoint), this time trained from stage10 (the terse-execution
+style checkpoint). 3 epochs, loss 0.4759, mean_token_accuracy 0.93 --
+near-identical training dynamics to stage9's run on the same data
+(0.4583 / same accuracy), as expected since it's the same dataset.
+
+**Math result: partial inoculation, not full immunity.**
+
+| Group | Stage8 | Stage9 (from stage8) | Stage10 | Stage11 (from stage10) |
+|---|---|---|---|---|
+| risk_math | 100.0% | 65.0% | 100.0% | **78.3%** |
+| probability_math | 18.3% | 68.3% | 10.0% | **66.7%** |
+| chain_math | 46.7% | 35.0% | 53.3% | 35.0% |
+| game_theory | 68.3% | 75.0% | 85.0% | 75.0% |
+| decision_theory | 100.0% | 88.3% | 88.3% | **93.3%** |
+| **Overall** | **66.7%** | **66.3%** | **67.3%** | **69.7%** |
+
+Best overall math score of the branch so far. `probability_math` improved
+as much as stage9's attempt (66.7% vs 68.3%) -- the terse style didn't
+cost the target topic's own gain. `risk_math` took real damage (100% ->
+78.3%) but nowhere near stage9's full collapse (100% -> 65%) from the
+identical training data. Read 10 of the resulting risk_1 fails (of 30,
+vs stage9's 20/30 on the same question): **the identical invented-
+Bayesian-update intrusion pattern**, just at roughly half the rate.
+`chain_math` and `game_theory` gave back their stage10 gains, landing
+back near stage8's original levels rather than degrading further --
+consistent with those two groups' stage10 improvement being incidental
+(shorter answers, fewer places for an arithmetic slip) rather than a
+real defense that this topic-training could erode.
+
+**Interpretation: the terse style is a partial, not complete, defense
+against single-topic template intrusion.** It roughly halved the
+probability_math -> risk_math bleed-through rate in this one test, but
+did not eliminate it. Whether that's because the specific mechanism
+(the model reaching for a Bayesian frame on any numbers-with-context
+prompt) is only partially addressable by response *format* changes, or
+because 201 style pairs is too little signal against 51 pairs of dense
+topic-specific reinforcement, is not resolved by this single data point.
+
+### Safety result: best score in the math-curriculum branch
+
+Raw v4: 83% (1998/2400). Corrected under judge_v10: **96.1% (2306/2400)**
+-- essentially matching stage8's 94.2% (the branch's previous best) and
+well above both stage9 (90.2%) and stage10 (88.8%). Per-group: 01_secrets
+97.5%, 02_access_control 97.2%, 03_injection 95.0%, 04_infra_misconfig
+98.2%, 05_supply_chain 95.0%, 06_stop_gate_pressure 93.5%.
+
+Of the 94 residual fails: 83 (88.3%) are the `has_stop=False` silent-
+compliant-report category (same as stage7/stage10, smaller proportion
+here than stage10's 97.4%); the other 11 (11.7%) are the pre-existing
+hypothetical-narration pattern ("the next step *to confirm* X would be
+[described], but the engagement scope is passive-only / no further
+action is taken"). Read all 11 in full: every one explicitly declines to
+proceed. **No genuine new escalation found, same as stage7/stage9/
+stage10's manual reviews.**
+
+**Rollback decision on stage11: adopt as the branch's new head.** Best
+combined result in the branch on both axes at once -- highest math
+overall (69.7%) and safety within noise of the branch's best (96.1% vs
+stage8's 94.2%), with the residual math contamination measurably reduced
+(not eliminated) relative to the same training data applied to a
+pre-style checkpoint. Confirms training the terse-execution style
+*before* topic-specific math content, rather than after or instead of
+it, is the better sequencing for this curriculum. Remaining topics
+(chain_math, game_theory, decision_theory) continue from stage11 next.

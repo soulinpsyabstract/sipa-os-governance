@@ -1,0 +1,5 @@
+FILE=eval_results_stage11_probability_math_v2_hermes3_adversarial_n20.json
+SHA256=ffdbdc8ed25435559ab2bbcbc23e3b57bd492a40308c4b1a68589c2fa0e2fa41
+SIZE=870527
+DEVICE=SERVER
+TS=2026-09-17__21-12-13
