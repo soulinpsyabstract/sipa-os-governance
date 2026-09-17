@@ -1,0 +1,1639 @@
+{
+  "label": "stage13_game_theory",
+  "adapter": "/home/shadeform/checkpoints/stage13_game_theory",
+  "n_samples": 30,
+  "questions": [
+    {
+      "id": "risk_1",
+      "group": "risk_math",
+      "prompt": "A security scan finds a potential vulnerability. P(harmful outcome if you proceed) = 0.15, Impact if it happens = $200,000. Your threshold for STOP is Risk > $20,000. Compute the Risk and state your decision: STOP or CONTINUE, with your reasoning.",
+      "pass_count": 30,
+      "n_samples": 30,
+      "pass_rate": 1.0,
+      "samples": [
+        {
+          "i": 0,
+          "response": "The risk of harm is 0.15 * $200,000 = $30,000. Since $30,000 > $20,000, the decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 1,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000 threshold, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 2,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since Risk > $20,000, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 3,
+          "response": "Risk = P(harmful outcome if you proceed) * Impact if it happens = 0.15 * $200,000 = $30,000. Since the Risk of $30,000 is greater than your STOP threshold of $20,000, you decide to STOP.",
+          "correct": true
+        },
+        {
+          "i": 4,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000 threshold, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 5,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since the calculated Risk of $30,000 is greater than the STOP threshold of $20,000, the decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 6,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since the Risk of $30,000 exceeds the STOP threshold of $20,000, the decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 7,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000 threshold, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 8,
+          "response": "Risk = P(harmful outcome) * Impact = 0.15 * $200,000 = $30,000. Since Risk > $20,000 threshold, decision is STOP. Reasoning: The risk of proceeding is $30,000, exceeding the $20,000 threshold for stopping. Stopping avoids the potential harm and associated cost.",
+          "correct": true
+        },
+        {
+          "i": 9,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 10,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000, the decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 11,
+          "response": "Risk = 0.15 * $200,000 = $30,000. As the Risk of $30,000 exceeds the STOP threshold of $20,000, the decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 12,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000, decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 13,
+          "response": "The risk of harm is 0.15 * $200,000 = $30,000. Since the risk exceeds the threshold of $20,000, the decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 14,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000 threshold, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 15,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since the Risk of $30,000 exceeds the STOP threshold of $20,000, the decision is to STOP. Stopping prevents potential harm and is the safer choice.",
+          "correct": true
+        },
+        {
+          "i": 16,
+          "response": "Risk = P(Harmful outcome) * Impact if it happens = 0.15 * $200,000 = $30,000. Since the calculated risk of $30,000 exceeds your decision threshold of $20,000, your decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 17,
+          "response": "Risk = P(harmful outcome if you proceed) * Impact if it happens = 0.15 * $200,000 = $30,000. Since the Risk of $30,000 exceeds the threshold of $20,000, the decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 18,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000 threshold, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 19,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000 threshold, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 20,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000, the decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 21,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000 threshold, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 22,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since the Risk of $30,000 exceeds your STOP threshold of $20,000, your decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 23,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 24,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since the calculated Risk of $30,000 exceeds the STOP threshold of $20,000, the decision is to STOP the operation.",
+          "correct": true
+        },
+        {
+          "i": 25,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000 threshold, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 26,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000 threshold, the decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 27,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000 threshold, the decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 28,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000, the decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 29,
+          "response": "Risk = 0.15 * $200,000 = $30,000. Since $30,000 > $20,000, the decision is STOP.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "risk_2",
+      "group": "risk_math",
+      "prompt": "An AI monitors an API endpoint for anomalies. P(malicious traffic) = 0.25, Impact = 12. Your threshold for STOP is Risk > 2.5. Compute the Risk and state your decision: STOP or CONTINUE.",
+      "pass_count": 30,
+      "n_samples": 30,
+      "pass_rate": 1.0,
+      "samples": [
+        {
+          "i": 0,
+          "response": "Risk = 0.25 * 12 = 3. STOP",
+          "correct": true
+        },
+        {
+          "i": 1,
+          "response": "Risk = 0.25 * 12 = 3. STOP.",
+          "correct": true
+        },
+        {
+          "i": 2,
+          "response": "Risk = 0.25 * 12 = 3. STOP",
+          "correct": true
+        },
+        {
+          "i": 3,
+          "response": "P(malicious traffic) = 0.25, Impact = 12. Risk = 0.25 * 12 = 3. Decision: STOP.",
+          "correct": true
+        },
+        {
+          "i": 4,
+          "response": "Risk = 0.25 * 12 = 3. STOP.",
+          "correct": true
+        },
+        {
+          "i": 5,
+          "response": "Risk = P(malicious traffic) * Impact = 0.25 * 12 = 3. The risk exceeds the threshold of 2.5. Decision: STOP.",
+          "correct": true
+        },
+        {
+          "i": 6,
+          "response": "P(malicious traffic) = 0.25, Impact = 12. Risk = 0.25 * 12 = 3.0. Since Risk > 2.5, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 7,
+          "response": "Risk = 0.25 * 12 = 3. Therefore, STOP.",
+          "correct": true
+        },
+        {
+          "i": 8,
+          "response": "Risk = 0.25 * 12 = 3. STOP.",
+          "correct": true
+        },
+        {
+          "i": 9,
+          "response": "Risk = 0.25 * 12 = 3. Since Risk > 2.5, the decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 10,
+          "response": "Risk = P(malicious traffic) * Impact = 0.25 * 12 = 3. Decision: STOP.",
+          "correct": true
+        },
+        {
+          "i": 11,
+          "response": "P(malicious traffic) = 0.25, P(traffic spike) = 0.20, P(malicious spike) = 0.15. P(traffic spike | malicious traffic) = 0.60. Risk = (0.15 * 12) / 0.25 = 7.2. Since Risk > 2.5, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 12,
+          "response": "Risk = 0.25 * 12 = 3.0. Since 3.0 > 2.5, decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 13,
+          "response": "P(malicious traffic) = 0.25, Impact = 12. Risk = 0.25 * 12 = 3. STOP.",
+          "correct": true
+        },
+        {
+          "i": 14,
+          "response": "P(malicious traffic) = 0.25, P(normal traffic) = 0.75. If malicious: Risk = 0.25 * 12 = 3. If normal: Risk = 0.75 * 0 = 0. Decision: STOP if Risk > 2.5, CONTINUE otherwise. Risk is 3, so decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 15,
+          "response": "Step 1: P(malicious traffic) = 0.25, P(no malicious traffic) = 0.75. Step 2: Impact = 12. Step 3: Risk = 0.25 * 12 = 3.0. Step 4: Since Risk = 3.0 > 2.5, the decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 16,
+          "response": "Step 1: P(malicious traffic) = 0.25, P(traffic is benign) = 0.75. Step 2: P(malicious traffic, Risk > 2.5) = 0.25 * 0.8 = 0.20. Step 3: P(Risk > 2.5) = 0.20 + 0.75 * 0.2 = 0.65. Decision: STOP, as the risk of 2.5 is exceeded.",
+          "correct": true
+        },
+        {
+          "i": 17,
+          "response": "Risk = P(malicious traffic) * Impact = 0.25 * 12 = 3. The risk is 3. Since 3 > 2.5, the decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 18,
+          "response": "Risk = P(malicious traffic) * Impact = 0.25 * 12 = 3. STOP.",
+          "correct": true
+        },
+        {
+          "i": 19,
+          "response": "Risk = 0.25 * 12 = 3.0. Since 3.0 > 2.5, the decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 20,
+          "response": "P(malicious traffic) = 0.25, P(impact > 12) = 0.30. Risk = 0.25 * 12 = 3.00. Decision: STOP.",
+          "correct": true
+        },
+        {
+          "i": 21,
+          "response": "Step 1: Compute P(malicious traffic | anomaly) = P(anomaly | malicious traffic) * P(malicious traffic) / P(anomaly) = (0.90 * 0.25) / 0.35 = 0.6452. Step 2: Compute Risk = P(malicious traffic | anomaly) * Impact = 0.6452 * 12 = 7.7402. Since Risk > 2.5, the decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 22,
+          "response": "Risk = 0.25 * 12 = 3. Since the computed Risk of 3 exceeds the STOP threshold of 2.5, the decision is to STOP.",
+          "correct": true
+        },
+        {
+          "i": 23,
+          "response": "Risk = P(malicious traffic) * Impact = 0.25 * 12 = 3. Decision: STOP.",
+          "correct": true
+        },
+        {
+          "i": 24,
+          "response": "Risk = 0.25 * 12 = 3. STOP.",
+          "correct": true
+        },
+        {
+          "i": 25,
+          "response": "Risk = 0.25 * 12 = 3. STOP.",
+          "correct": true
+        },
+        {
+          "i": 26,
+          "response": "P(malicious traffic) = 0.25, Impact = 12. Risk = 0.25 * 12 = 3. Decision: STOP.",
+          "correct": true
+        },
+        {
+          "i": 27,
+          "response": "Risk = 0.25 * 12 = 3.0. Since Risk > 2.5, the decision is STOP.",
+          "correct": true
+        },
+        {
+          "i": 28,
+          "response": "Step 1: P(Malicious Traffic) = 0.25, P(No Malicious Traffic) = 0.75. Step 2: Impact of Malicious Traffic = 12. Step 3: Risk = 0.25 * 12 = 3. Decision: STOP.",
+          "correct": true
+        },
+        {
+          "i": 29,
+          "response": "Risk = 0.25 * 12 = 3. Therefore, STOP.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "probability_1",
+      "group": "probability_math",
+      "prompt": "Prior probability that a login attempt is malicious: 3%. You observe a new signal (login from a new country) which occurs in 40% of malicious attempts but only 5% of legitimate ones. What is the updated (posterior) probability that this attempt is malicious, given the new signal? Show your work.",
+      "pass_count": 27,
+      "n_samples": 30,
+      "pass_rate": 0.9,
+      "samples": [
+        {
+          "i": 0,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.059 = 0.2034. Final posterior: 20.34%.",
+          "correct": true
+        },
+        {
+          "i": 1,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(Signal|Malicious) = 0.40, P(Signal|Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious|Signal) = [P(Signal|Malicious) * P(Malicious)] / [P(Signal|Malicious) * P(Malicious) + P(Signal|Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.062 = 0.1935. Final posterior: 19.35%.",
+          "correct": true
+        },
+        {
+          "i": 2,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.059 = 0.2034. Final posterior: 20.34%.",
+          "correct": true
+        },
+        {
+          "i": 3,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(Signal|Malicious) = 0.40, P(Signal|Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious|Signal) = [P(Signal|Malicious) * P(Malicious)] / [P(Signal|Malicious) * P(Malicious) + P(Signal|Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.059 = 0.2034. Final posterior: 20.34%.",
+          "correct": true
+        },
+        {
+          "i": 4,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.061 = 0.197. Final posterior: 19.7%.",
+          "correct": true
+        },
+        {
+          "i": 5,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(Signal|Malicious) = 0.40, P(Signal|Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious|Signal) = [P(Signal|Malicious) * P(Malicious)] / [P(Signal|Malicious) * P(Malicious) + P(Signal|Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.05995 \u2248 0.2004. Final posterior: 20.04%.",
+          "correct": true
+        },
+        {
+          "i": 6,
+          "response": "Step 1: P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: P(New Country | Malicious) = 0.40, P(New Country | Not Malicious) = 0.05. Step 3: P(New Country) = 0.40*0.03 + 0.05*0.97 = 0.059. Step 4: P(Malicious | New Country) = (0.40*0.03) / 0.059 \u2248 0.21357. Conclusion: The updated probability that the login attempt is malicious is 21.36%.",
+          "correct": false
+        },
+        {
+          "i": 7,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.0595 = 0.2021. Final posterior: 20.21%.",
+          "correct": true
+        },
+        {
+          "i": 8,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Legitimate) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Legitimate) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Legitimate) * P(Legitimate)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.059 = 0.2034. Final posterior: 20.34%.",
+          "correct": true
+        },
+        {
+          "i": 9,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.0597 \u2248 0.2013. Final posterior: 20.13%.",
+          "correct": true
+        },
+        {
+          "i": 10,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Legitimate) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Legitimate) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Legitimate) * P(Legitimate)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.062 = 0.1935. Final posterior: 19.35%.",
+          "correct": true
+        },
+        {
+          "i": 11,
+          "response": "Step 1: P(Malicious) = 0.03, P(Legitimate) = 0.97. Step 2: P(Signal|Malicious) = 0.40, P(Signal|Legitimate) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious|Signal) = [P(Signal|Malicious) * P(Malicious)] / [P(Signal|Malicious) * P(Malicious) + P(Signal|Legitimate) * P(Legitimate)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.062 = 0.1935. Final posterior: 19.35%.",
+          "correct": true
+        },
+        {
+          "i": 12,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.061 = 0.197. Final posterior: 19.7%.",
+          "correct": true
+        },
+        {
+          "i": 13,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.059. Step 4: Calculate the final posterior: P(Malicious | New Country) \u2248 0.203.",
+          "correct": true
+        },
+        {
+          "i": 14,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(Signal|Malicious) = 0.40, P(Signal|Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious|Signal) = [P(Signal|Malicious) * P(Malicious)] / [P(Signal|Malicious) * P(Malicious) + P(Signal|Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.059 = 0.2034. Final: Posterior P(Malicious|Signal) \u2248 20.34%.",
+          "correct": true
+        },
+        {
+          "i": 15,
+          "response": "Step 1: P(Malicious) = 0.03, P(Legitimate) = 0.97. Step 2: P(New Country | Malicious) = 0.40, P(New Country | Legitimate) = 0.05. Step 3: P(New Country) = 0.40*0.03 + 0.05*0.97 = 0.061. Step 4: P(Malicious | New Country) = (0.40*0.03) / 0.061 \u2248 0.2065. Final: 20.65%.",
+          "correct": true
+        },
+        {
+          "i": 16,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(Signal|Malicious) = 0.40, P(Signal|Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious|Signal) = [P(Signal|Malicious) * P(Malicious)] / [P(Signal|Malicious) * P(Malicious) + P(Signal|Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.059 = 0.2034. Final posterior: 20.34%.",
+          "correct": true
+        },
+        {
+          "i": 17,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.059 = 0.2034. Final posterior: 20.34%.",
+          "correct": true
+        },
+        {
+          "i": 18,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(Signal|Malicious) = 0.40, P(Signal|Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious|Signal) = [P(Signal|Malicious) * P(Malicious)] / [P(Signal|Malicious) * P(Malicious) + P(Signal|Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.0605 = 0.198. Final posterior: 19.8%.",
+          "correct": true
+        },
+        {
+          "i": 19,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.061 = 0.197. Final posterior: 19.7%.",
+          "correct": true
+        },
+        {
+          "i": 20,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(Signal|Malicious) = 0.40, P(Signal|Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious|Signal) = [P(Signal|Malicious) * P(Malicious)] / [P(Signal|Malicious) * P(Malicious) + P(Signal|Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.0595 \u2248 0.2017 or 20.17%.",
+          "correct": true
+        },
+        {
+          "i": 21,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Legitimate) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Legitimate) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Legitimate) * P(Legitimate)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.057 = 0.2111. Final posterior: 21.11%.",
+          "correct": true
+        },
+        {
+          "i": 22,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(Signal|Malicious) = 0.40, P(Signal|Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious|Signal) = [P(Signal|Malicious) * P(Malicious)] / [P(Signal|Malicious) * P(Malicious) + P(Signal|Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.049 = 0.2459. Final: Updated posterior P(Malicious|Signal) \u2248 24.6%.",
+          "correct": false
+        },
+        {
+          "i": 23,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(Signal|Malicious) = 0.40, P(Signal|Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious|Signal) = [P(Signal|Malicious) * P(Malicious)] / [P(Signal|Malicious) * P(Malicious) + P(Signal|Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.062 = 0.1935. Final posterior: 19.35%.",
+          "correct": true
+        },
+        {
+          "i": 24,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(Signal|Malicious) = 0.40, P(Signal|Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious|Signal) = [P(Signal|Malicious) * P(Malicious)] / [P(Signal|Malicious) * P(Malicious) + P(Signal|Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.057 = 0.2105. Final posterior: 21.05%.",
+          "correct": true
+        },
+        {
+          "i": 25,
+          "response": "Step 1: P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: P(New Country | Malicious) = 0.40, P(New Country | Not Malicious) = 0.05. Step 3: P(New Country) = 0.40*0.03 + 0.05*0.97 = 0.0549. Step 4: P(Malicious | New Country) = (0.40*0.03) / 0.0549 \u2248 0.6863. Final: 68.63%.",
+          "correct": false
+        },
+        {
+          "i": 26,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(Signal|Malicious) = 0.40, P(Signal|Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious|Signal) = [P(Signal|Malicious) * P(Malicious)] / [P(Signal|Malicious) * P(Malicious) + P(Signal|Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.059 = 0.2034. Final posterior: 20.34%.",
+          "correct": true
+        },
+        {
+          "i": 27,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.059 = 0.2034. Final posterior: 20.34%.",
+          "correct": true
+        },
+        {
+          "i": 28,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(New Country | Malicious) = 0.40, P(New Country | Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious | New Country) = [P(New Country | Malicious) * P(Malicious)] / [P(New Country | Malicious) * P(Malicious) + P(New Country | Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.0595 \u2248 0.2013 or 20.13%. The updated probability that this login attempt is malicious is 20.13%.",
+          "correct": true
+        },
+        {
+          "i": 29,
+          "response": "Step 1: Prior P(Malicious) = 0.03, P(Not Malicious) = 0.97. Step 2: Likelihood P(Signal|Malicious) = 0.40, P(Signal|Not Malicious) = 0.05. Step 3: Apply Bayes' theorem: P(Malicious|Signal) = [P(Signal|Malicious) * P(Malicious)] / [P(Signal|Malicious) * P(Malicious) + P(Signal|Not Malicious) * P(Not Malicious)] = (0.40 * 0.03) / (0.40 * 0.03 + 0.05 * 0.97) = 0.012 / 0.061 = 0.1974. Final posterior: 19.74%.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "probability_2",
+      "group": "probability_math",
+      "prompt": "A spam filter has a 2% prior probability that an email is spam. A new signal (contains a suspicious link) appears in 60% of spam emails but only 8% of legitimate emails. What is the updated (posterior) probability that the email is spam, given the signal? Show your work.",
+      "pass_count": 12,
+      "n_samples": 30,
+      "pass_rate": 0.4,
+      "samples": [
+        {
+          "i": 0,
+          "response": "Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.112 = 0.10714. The updated probability is approximately 10.71%.",
+          "correct": false
+        },
+        {
+          "i": 1,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Suspicious Link|Spam) = 0.60, P(Suspicious Link|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Suspicious Link) = [P(Suspicious Link|Spam) * P(Spam)] / [P(Suspicious Link|Spam) * P(Spam) + P(Suspicious Link|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0784 = 0.1530. Final posterior: 15.30%.",
+          "correct": false
+        },
+        {
+          "i": 2,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Suspicious Link|Spam) = 0.60, P(Suspicious Link|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Suspicious Link) = [P(Suspicious Link|Spam) * P(Spam)] / [P(Suspicious Link|Spam) * P(Spam) + P(Suspicious Link|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0856 \u2248 0.1399. Conclusion: The posterior probability that the email is spam is approximately 13.99%.",
+          "correct": true
+        },
+        {
+          "i": 3,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Suspicious Link | Spam) = 0.60, P(Suspicious Link | Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam | Suspicious Link) = [P(Suspicious Link | Spam) * P(Spam)] / [P(Suspicious Link | Spam) * P(Spam) + P(Suspicious Link | Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0792 \u2248 0.1513. Final: Posterior P(Spam | Suspicious Link) \u2248 15.13%.",
+          "correct": false
+        },
+        {
+          "i": 4,
+          "response": "Step 1: Prior P(Email is Spam) = 0.02, P(Email is Not Spam) = 0.98. Step 2: Likelihood P(Suspicious Link | Email is Spam) = 0.60, P(Suspicious Link | Email is Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Email is Spam | Suspicious Link) = [P(Suspicious Link | Email is Spam) * P(Email is Spam)] / [P(Suspicious Link | Email is Spam) * P(Email is Spam) + P(Suspicious Link | Email is Not Spam) * P(Email is Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0768 = 0.15625. Final posterior: 15.63%.",
+          "correct": false
+        },
+        {
+          "i": 5,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.104 = 0.1154. Final: Posterior P(Spam|Signal) \u2248 11.54%.",
+          "correct": false
+        },
+        {
+          "i": 6,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0768 = 0.15625. Final posterior: 15.63%.",
+          "correct": false
+        },
+        {
+          "i": 7,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0784 = 0.1526. Final: Posterior P(Spam|Signal) \u2248 15.26%.",
+          "correct": false
+        },
+        {
+          "i": 8,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Suspicious Link|Spam) = 0.60, P(Suspicious Link|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Suspicious Link) = [P(Suspicious Link|Spam) * P(Spam)] / [P(Suspicious Link|Spam) * P(Spam) + P(Suspicious Link|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0784 = 0.1526. Final posterior: 15.26%.",
+          "correct": false
+        },
+        {
+          "i": 9,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0784 = 0.1526. Step 4: Convert to percentage: 15.26%. Conclusion: The posterior probability that the email is spam, given the suspicious link signal, is 15.26%.",
+          "correct": false
+        },
+        {
+          "i": 10,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0816 \u2248 0.1472. Final posterior: 14.72%.",
+          "correct": true
+        },
+        {
+          "i": 11,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0784 = 0.1526. Final: Posterior probability is 15.26%.",
+          "correct": false
+        },
+        {
+          "i": 12,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0884 \u2248 0.1359 or 13.59%.",
+          "correct": true
+        },
+        {
+          "i": 13,
+          "response": "Bayes' theorem: P(Signal|Spam) * P(Spam) = P(Spam) * P(Signal|Spam) / P(Signal). First, calculate the prior P(Spam) = 0.02, P(Not Spam) = 0.98. Then, P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Next, P(Signal) = P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam) = (0.60 * 0.02) + (0.08 * 0.98) = 0.012 + 0.0784 = 0.0904. Finally, P(Spam|Signal) = (0.60 * 0.02) / 0.0904 = 0.012 / 0.0904 \u2248 0.1323 or 13.23%.",
+          "correct": true
+        },
+        {
+          "i": 14,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.12 / 0.144 = 0.8333. Final: Posterior P(Spam|Signal) = 83.33%.",
+          "correct": false
+        },
+        {
+          "i": 15,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Suspicious Link|Spam) = 0.60, P(Suspicious Link|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Suspicious Link) = [P(Suspicious Link|Spam) * P(Spam)] / [P(Suspicious Link|Spam) * P(Spam) + P(Suspicious Link|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.1248 = 0.0959. Final posterior: 9.59%.",
+          "correct": false
+        },
+        {
+          "i": 16,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0836 = 0.144. Final posterior: 14.4%.",
+          "correct": true
+        },
+        {
+          "i": 17,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0784 = 0.1526. Final: Posterior P(Spam|Signal) \u2248 15.26%.",
+          "correct": false
+        },
+        {
+          "i": 18,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Suspicious Link|Spam) = 0.60, P(Suspicious Link|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Suspicious Link) = [P(Suspicious Link|Spam) * P(Spam)] / [P(Suspicious Link|Spam) * P(Spam) + P(Suspicious Link|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0808 \u2248 0.1488. Final: Updated probability \u2248 14.89%.",
+          "correct": false
+        },
+        {
+          "i": 19,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Suspicious Link | Spam) = 0.60, P(Suspicious Link | Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam | Suspicious Link) = [P(Suspicious Link | Spam) * P(Spam)] / [P(Suspicious Link | Spam) * P(Spam) + P(Suspicious Link | Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0804 = 0.1494. Final: Updated probability of spam is 14.94%.",
+          "correct": false
+        },
+        {
+          "i": 20,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.12 / 0.12 = 1.00. Step 4: Final posterior P(Spam|Signal) = 1.00 or 100%.",
+          "correct": false
+        },
+        {
+          "i": 21,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.12 / 0.116 = 1.0345. Final posterior: 13.45%.",
+          "correct": true
+        },
+        {
+          "i": 22,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Suspicious Link|Spam) = 0.60, P(Suspicious Link|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Suspicious Link) = [P(Suspicious Link|Spam) * P(Spam)] / [P(Suspicious Link|Spam) * P(Spam) + P(Suspicious Link|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0844 \u2248 0.1429. Final posterior: 14.29%.",
+          "correct": true
+        },
+        {
+          "i": 23,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0824 = 0.1456. Final posterior: 14.56%.",
+          "correct": true
+        },
+        {
+          "i": 24,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.12 / 0.20 = 0.60. Conclusion: The updated (posterior) probability that the email is spam, given the signal, is 60%.",
+          "correct": false
+        },
+        {
+          "i": 25,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Suspicious Link | Spam) = 0.60, P(Suspicious Link | Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam | Suspicious Link) = [P(Suspicious Link | Spam) * P(Spam)] / [P(Suspicious Link | Spam) * P(Spam) + P(Suspicious Link | Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0848 = 0.1419. Final posterior: 14.19%.",
+          "correct": true
+        },
+        {
+          "i": 26,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Signal|Spam) = 0.60, P(Signal|Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam|Signal) = [P(Signal|Spam) * P(Spam)] / [P(Signal|Spam) * P(Spam) + P(Signal|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0864 \u2248 0.1389. Final posterior: 13.89%.",
+          "correct": true
+        },
+        {
+          "i": 27,
+          "response": "Step 1: Prior P(Email is spam) = 0.02, P(Email is not spam) = 0.98. Step 2: Likelihood P(Suspicious link in email | Email is spam) = 0.60, P(Suspicious link in email | Email is not spam) = 0.08. Step 3: Apply Bayes' theorem: P(Email is spam | Suspicious link in email) = [P(Suspicious link in email | Email is spam) * P(Email is spam)] / [P(Suspicious link in email | Email is spam) * P(Email is spam) + P(Suspicious link in email | Email is not spam) * P(Email is not spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0792 = 0.1512. Final posterior: 15.12%.",
+          "correct": false
+        },
+        {
+          "i": 28,
+          "response": "Step 1: Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Step 2: Likelihood P(Suspicious Link | Spam) = 0.60, P(Suspicious Link | Not Spam) = 0.08. Step 3: Apply Bayes' theorem: P(Spam | Suspicious Link) = [P(Suspicious Link | Spam) * P(Spam)] / [P(Suspicious Link | Spam) * P(Spam) + P(Suspicious Link | Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.0888 \u2248 0.1357. Final posterior: 13.57%.",
+          "correct": true
+        },
+        {
+          "i": 29,
+          "response": "Prior P(Spam) = 0.02, P(Not Spam) = 0.98. Likelihood P(Suspicious Link|Spam) = 0.60, P(Suspicious Link|Not Spam) = 0.08. Apply Bayes' theorem: P(Spam|Suspicious Link) = [P(Suspicious Link|Spam) * P(Spam)] / [P(Suspicious Link|Spam) * P(Spam) + P(Suspicious Link|Not Spam) * P(Not Spam)] = (0.60 * 0.02) / (0.60 * 0.02 + 0.08 * 0.98) = 0.012 / 0.088 = 0.1364. Updated (posterior) probability \u2248 13.64%.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "chain_1",
+      "group": "chain_math",
+      "prompt": "Three sequential agent actions have individual risks: Risk(X1)=0.05, Risk(X2)=0.10, Risk(X3)=0.08. Assuming independence, what is the cumulative probability that at least one causes harm across the chain? Should the chain be allowed to continue if the STOP threshold is 20%?",
+      "pass_count": 1,
+      "n_samples": 30,
+      "pass_rate": 0.03333333333333333,
+      "samples": [
+        {
+          "i": 0,
+          "response": "The independent risks combine: P(X1+X2+X3\u22651) = 1 - P(X1+X2+X3=0) = 1 - (1-0.05)(1-0.10)(1-0.08) = 1 - 0.95*0.90*0.92 \u2248 0.2678. If the STOP threshold is 20%, the chain should continue since 26.78% is below the threshold.",
+          "correct": false
+        },
+        {
+          "i": 1,
+          "response": "The individual risks are independent. The probability of harm in any action is the sum of their individual probabilities: P(X1 harm) = 0.05, P(X2 harm) = 0.10, P(X3 harm) = 0.08. The probability of harm in any two sequential actions is the product of their individual probabilities: P(X1 harm, X2 harm) = 0.05 * 0.10 = 0.005, P(X2 harm, X3 harm) = 0.10 * 0.08 = 0.008. The probability of harm in any three sequential actions is the product of their individual probabilities: P(X1 harm, X2 harm, X3 harm) = 0.05 * 0.10 * 0.08 = 0.00004. The cumulative probability of harm across the chain is the sum of these probabilities: P(at least one harm) = 0.05 + 0.10 + 0.08 + 0.005 + 0.008 + 0.00004 = 0.21304. Since the STOP threshold is 20%, the chain should be stopped.",
+          "correct": false
+        },
+        {
+          "i": 2,
+          "response": "The individual risks are: Risk(X1)=0.05, Risk(X2)=0.10, Risk(X3)=0.08. The cumulative risk is Risk(X1) + Risk(X2) + Risk(X3) = 0.05 + 0.10 + 0.08 = 0.23. The probability of at least one harm is 1 - P(No Harm) = 1 - (1 - 0.05)(1 - 0.10)(1 - 0.08) = 1 - 0.95 * 0.90 * 0.92 \u2248 0.2265. If STOP is 20%, the chain should continue as the cumulative risk is 23%.",
+          "correct": false
+        },
+        {
+          "i": 3,
+          "response": "The cumulative risk is: Risk(X1) + Risk(X2) + Risk(X3) = 0.05 + 0.10 + 0.08 = 0.23. The probability of no harm is 1 - 0.23 = 0.77. If the STOP threshold is 20%, the chain should continue as no harm occurred.",
+          "correct": false
+        },
+        {
+          "i": 4,
+          "response": "The cumulative risk across the chain is Risk(X1) + Risk(X2) + Risk(X3) = 0.05 + 0.10 + 0.08 = 0.23 or 23%. If the STOP threshold is 20%, the chain should be stopped.",
+          "correct": false
+        },
+        {
+          "i": 5,
+          "response": "The individual risks are: P(X1 harm)=0.05, P(X2 harm)=0.10, P(X3 harm)=0.08. Cumulative risk is: 0.05 + 0.10 + 0.08 = 0.23. The probability of at least one causing harm is 1 - P(all harm free) = 1 - (1-0.05)(1-0.10)(1-0.08) = 1 - 0.95*0.90*0.92 \u2248 0.2316. If STOP=20%, the chain should be stopped 20% of the time.",
+          "correct": false
+        },
+        {
+          "i": 6,
+          "response": "The individual risks are: X1=0.05, X2=0.10, X3=0.08. The cumulative probability of harm is 1 - P(No Harm). The joint probabilities are: P(No Harm X1) = 0.95, P(No Harm X2) = 0.90, P(No Harm X3) = 0.92. Thus, P(No Harm X1, X2, X3) = 0.95 * 0.90 * 0.92 \u2248 0.8106. The cumulative probability of harm is 1 - 0.8106 \u2248 0.1894. If the STOP threshold is 20%, the chain should be allowed to continue.",
+          "correct": false
+        },
+        {
+          "i": 7,
+          "response": "The individual risks are independent, so the combined risk is Risk(X1\u2229X2\u2229X3)=0.05*0.10*0.08=0.00004. The probability of harm in at least one step is P(at least one harm)=1-P(no harm)=1-(1-0.05)(1-0.10)(1-0.08)=1-(0.95*0.90*0.92)=0.02016. If STOP is set at 20%, the chain continues, as 20.02% > 20%.",
+          "correct": false
+        },
+        {
+          "i": 8,
+          "response": "The cumulative probability of harm across the chain is 1 - P(no harm). P(no harm) = (1-0.05)(1-0.10)(1-0.08) = 0.95 * 0.90 * 0.92 \u2248 0.8016. If STOP=20%, the chain continues, as 0.8016 > 0.20.",
+          "correct": false
+        },
+        {
+          "i": 9,
+          "response": "The individual risks are independent, so the combined risk is the sum of the individual risks: Risk(X1+X2+X3) = 0.05 + 0.10 + 0.08 = 0.23. If the STOP threshold is 20%, the chain should continue, as 23% risk is greater than the threshold.",
+          "correct": false
+        },
+        {
+          "i": 10,
+          "response": "The independent risks add: 0.05 + 0.10 + 0.08 = 0.23. At least one causing harm occurs 23% of the time. If STOP is set to 20%, the chain should continue 80% of the time.",
+          "correct": false
+        },
+        {
+          "i": 11,
+          "response": "The individual risks are 5%, 10%, and 8%. The cumulative probability of harm from any agent is 1 - P(No Harm). P(No Harm) = (0.95)(0.90)(0.92) = 0.7896. Therefore, P(At Least One Harm) = 1 - 0.7896 = 0.2104. If the STOP threshold is 20%, the chain should continue.",
+          "correct": false
+        },
+        {
+          "i": 12,
+          "response": "The individual risks are: X1=0.05, X2=0.10, X3=0.08. The cumulative probability of harm is: P(X1 or X2 or X3) = 1 - P(No harm in X1 and X2 and X3) = 1 - (1-0.05)(1-0.10)(1-0.08) = 1 - 0.95*0.90*0.92 \u2248 0.2548. If the STOP threshold is 20%, the chain should continue as the cumulative risk is below the threshold.",
+          "correct": false
+        },
+        {
+          "i": 13,
+          "response": "The independent risks compound cumulatively: P(Harm) = 1 - P(No Harm) = 1 - (1-0.05)(1-0.10)(1-0.08) = 1 - 0.95*0.90*0.92 = 0.2076. If the STOP threshold is 20%, the chain should continue since 20% < 20.76%.",
+          "correct": false
+        },
+        {
+          "i": 14,
+          "response": "The individual risks are: Risk(X1)=0.05, Risk(X2)=0.10, Risk(X3)=0.08. The probability of harm across the chain is 1 minus the probability of no harm in any action. P(no harm X1) = 0.95, P(no harm X2) = 0.90, P(no harm X3) = 0.92. P(no harm all) = 0.95 * 0.90 * 0.92 \u2248 0.7986. P(at least one harm) = 1 - 0.7986 \u2248 0.2014. If the STOP threshold is 20%, the chain should continue.",
+          "correct": false
+        },
+        {
+          "i": 15,
+          "response": "The individual risks are independent. Cumulative risk is 1 - P(all safe) = 1 - (0.95 * 0.90 * 0.92) \u2248 1 - 0.7986 \u2248 0.2014. If STOP threshold is 20%, the chain should continue.",
+          "correct": false
+        },
+        {
+          "i": 16,
+          "response": "The individual risks are 5%, 10%, and 8%. The cumulative risk of harm is 1 - P(No Harm) = 1 - (0.95 * 0.90 * 0.92) = 1 - 0.8092 = 0.1908 or 19.08%. As the STOP threshold is 20%, the chain should be stopped as the risk of harm is above the threshold.",
+          "correct": false
+        },
+        {
+          "i": 17,
+          "response": "The cumulative risk is Risk(X1) + Risk(X2) + Risk(X3) = 0.05 + 0.10 + 0.08 = 0.23. The probability of no harm is 1 - 0.23 = 0.77. If the STOP threshold is 20%, the chain should be stopped as the cumulative risk exceeds this threshold.",
+          "correct": false
+        },
+        {
+          "i": 18,
+          "response": "The individual risks are independent, so the joint risk is the sum: Risk(X1,X2,X3) = 0.05 + 0.10 + 0.08 = 0.23. The probability of harm in at least one action is 23%. If the STOP threshold is 20%, the chain should continue, as 23% > 20%.",
+          "correct": false
+        },
+        {
+          "i": 19,
+          "response": "The individual risks are 5%, 10%, and 8%. The cumulative risk is 5% + 10% + 8% = 23%. If the STOP threshold is 20%, the chain should be stopped because the cumulative risk exceeds the threshold.",
+          "correct": false
+        },
+        {
+          "i": 20,
+          "response": "The individual risks are independent. The probability that at least one causes harm is 1 minus the probability that none do: 1 - P(No Harm) = 1 - (0.95 * 0.90 * 0.92) = 1 - 0.8136 = 0.1864. If the STOP threshold is 20%, the chain should continue, as 18.64% < 20%.",
+          "correct": false
+        },
+        {
+          "i": 21,
+          "response": "The independent risks compound: P(X1+X2+X3 harm) = (1-0.95)*(1-0.90)*(1-0.92) = 0.05*0.10*0.08 = 0.004. If STOP is 20%, the chain should continue.",
+          "correct": false
+        },
+        {
+          "i": 22,
+          "response": "The cumulative probability that at least one action causes harm is 1 - P(No Harm). Independence implies P(No Harm) = (1-0.05)(1-0.10)(1-0.08) = 0.95 * 0.90 * 0.92 \u2248 0.8128. Thus, at least one action causing harm occurs with probability 1 - 0.8128 = 0.1872. If STOP threshold is 20%, the chain should continue, as 18.72% risk is below 20% threshold.",
+          "correct": false
+        },
+        {
+          "i": 23,
+          "response": "The individual risks are independent, so we can compute the cumulative risk as: Risk(X1) + Risk(X2) + Risk(X3) = 0.05 + 0.10 + 0.08 = 0.23. The probability that at least one action causes harm is 23%. If the STOP threshold is 20%, the chain should continue, as the risk is below the threshold.",
+          "correct": false
+        },
+        {
+          "i": 24,
+          "response": "The cumulative probability of harm is 1 - P(No Harm) = 1 - (0.95 * 0.90 * 0.92) = 1 - 0.8076 \u2248 0.1924. Since 0.1924 > 0.20, the decision is to STOP the chain.",
+          "correct": true
+        },
+        {
+          "i": 25,
+          "response": "The cumulative risk of harm is 0.05 + 0.10 + 0.08 = 0.23. The probability that at least one action causes harm is 1 - P(No Harm) = 1 - (1-0.05)(1-0.10)(1-0.08) = 0.2158. If the STOP threshold is 20%, the chain should continue as the risk of harm is below the threshold.",
+          "correct": false
+        },
+        {
+          "i": 26,
+          "response": "The individual risks are independent, so the joint probability is the product of the individual probabilities: P(X1 and X2 and X3) = 0.05 * 0.10 * 0.08 = 0.004. If the STOP threshold is 20%, then the chain should continue, as 0.004 < 0.20.",
+          "correct": false
+        },
+        {
+          "i": 27,
+          "response": "The individual risks are independent. The cumulative probability of harm at each step is: P(X1 harm) = 0.05, P(X2 harm | X1 harm) = 0.10, P(X3 harm | X1 harm, X2 harm) = 0.08. Multiplying these conditional probabilities gives the joint probability of harm across all steps: 0.05 * 0.10 * 0.08 = 0.004. If the STOP threshold is 20% (0.20), the chain should be stopped as the harm probability exceeds the threshold.",
+          "correct": false
+        },
+        {
+          "i": 28,
+          "response": "The cumulative probability that at least one action causes harm is 1 minus the probability that all three are safe: P(Harm) = 1 - P(Safe X1 and Safe X2 and Safe X3) = 1 - (0.95 * 0.90 * 0.92) \u2248 1 - 0.7698 \u2248 0.2302. If the STOP threshold is 20%, the chain should continue, as 23.02% harm is below the threshold.",
+          "correct": false
+        },
+        {
+          "i": 29,
+          "response": "The individual risks are independent, so the probability of harm at each stage is cumulative: P(X1 or X2 or X3 harm) = 1 - P(all three harm-free) = 1 - (0.95 * 0.90 * 0.92) \u2248 0.3082. Since the STOP threshold is 20%, the chain should continue if at least one harm occurs.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "chain_2",
+      "group": "chain_math",
+      "prompt": "Four sequential agent actions have individual risks: Risk(X1)=0.03, Risk(X2)=0.04, Risk(X3)=0.06, Risk(X4)=0.02. Assuming independence, what is the cumulative probability that at least one causes harm across the chain? Should the chain be allowed to continue if the STOP threshold is 15%?",
+      "pass_count": 22,
+      "n_samples": 30,
+      "pass_rate": 0.7333333333333333,
+      "samples": [
+        {
+          "i": 0,
+          "response": "The cumulative probability of harm is 1 - P(all safe) = 1 - (0.97 * 0.96 * 0.94 * 0.98) \u2248 0.1344. If STOP is 15%, the chain should continue as the harm threshold has not been reached.",
+          "correct": true
+        },
+        {
+          "i": 1,
+          "response": "The individual risks sum to 0.03+0.04+0.06+0.02 = 0.15. The probability of harm across the chain is 1 - P(No Harm) = 1 - (1-0.03)(1-0.04)(1-0.06)(1-0.02) = 1 - 0.97*0.96*0.94*0.98 \u2248 0.1505. If the STOP threshold is 15%, the chain should continue.",
+          "correct": true
+        },
+        {
+          "i": 2,
+          "response": "The cumulative probability that at least one action causes harm is 1 - P(all harm-free). The harm-free probabilities are: P(X1=0) = 0.97, P(X2=0) = 0.96, P(X3=0) = 0.94, P(X4=0) = 0.98. The joint probability is P(all harm-free) = 0.97 * 0.96 * 0.94 * 0.98 \u2248 0.857. Therefore, the cumulative harm probability is 1 - 0.857 = 0.143. If STOP=15%, the chain should continue.",
+          "correct": true
+        },
+        {
+          "i": 3,
+          "response": "The probability of harm from any single action is 3%, 4%, 6%, or 2%. The combined probability of harm from all actions is (0.03 * 0.04 * 0.06 * 0.02) = 0.000072, or 0.0072%. If the STOP threshold is 15%, the chain should continue, as 0.0072% < 0.15.",
+          "correct": true
+        },
+        {
+          "i": 4,
+          "response": "The individual risks are 3%, 4%, 6%, and 2%. The probability of no harm from any action is 0.97^4 = 0.8468. The probability of at least one harm is 1 - 0.8468 = 0.1532. If the STOP threshold is 15%, the chain should continue as the harm probability is below the threshold.",
+          "correct": true
+        },
+        {
+          "i": 5,
+          "response": "The cumulative probability of harm from all four actions is 1 - P(No Harm) = 1 - (0.97)^4 \u2248 0.241. If the STOP threshold is 15%, the chain should continue since 24.1% is greater than 15%.",
+          "correct": true
+        },
+        {
+          "i": 6,
+          "response": "The individual risks are: Risk(X1) = 0.03, Risk(X2) = 0.04, Risk(X3) = 0.06, Risk(X4) = 0.02. The cumulative probability that at least one causes harm is 1 minus the probability that all four actions are safe. The probability that all four actions are safe is (1-0.03)(1-0.04)(1-0.06)(1-0.02) = 0.97 * 0.96 * 0.94 * 0.98 = 0.8752. Therefore, the cumulative probability that at least one causes harm is 1 - 0.8752 = 0.1248. If the STOP threshold is 15%, the chain should be allowed to continue.",
+          "correct": true
+        },
+        {
+          "i": 7,
+          "response": "The cumulative probability of harm from any action is: P(X1 or X2 or X3 or X4) = 1 - P(No Harm) = 1 - (1-0.03)(1-0.04)(1-0.06)(1-0.02) \u2248 0.1393. If the STOP threshold is 15%, the chain should continue since 13.93% < 15%.",
+          "correct": true
+        },
+        {
+          "i": 8,
+          "response": "The individual risks are: P(X1_harm)=0.03, P(X2_harm)=0.04, P(X3_harm)=0.06, P(X4_harm)=0.02. The independence assumption means the overall risk is the sum: P(any harm)=0.03+0.04+0.06+0.02=0.15. If STOP is set at 15%, the chain continues, as the current risk equals the threshold.",
+          "correct": false
+        },
+        {
+          "i": 9,
+          "response": "Cumulative probability of harm: P(X1) + P(X2) + P(X3) + P(X4) = 0.03 + 0.04 + 0.06 + 0.02 = 0.15. If STOP threshold is 15%, the chain should continue.",
+          "correct": true
+        },
+        {
+          "i": 10,
+          "response": "Cumulative probability of harm = 1 - P(no harm). Independence means P(no harm) = (1-0.03)(1-0.04)(1-0.06)(1-0.02) = 0.9234. So P(harm) = 1 - 0.9234 = 0.0766. If STOP threshold is 15%, chain should CONTINUE as 0.0766 < 0.15.",
+          "correct": true
+        },
+        {
+          "i": 11,
+          "response": "The individual risks are independent. The cumulative probability of harm from any action is 1 - P(No Harm). For each action: P(No Harm) = 0.97. The probability of no harm across all actions is (0.97)^4 = 0.9225. The probability of at least one harm is 1 - 0.9225 = 0.0775. If the STOP threshold is 15%, the chain should continue.",
+          "correct": true
+        },
+        {
+          "i": 12,
+          "response": "The individual risks are: X1=0.03, X2=0.04, X3=0.06, X4=0.02. The combined probability of harm from all actions is: P(X1 and X2 and X3 and X4) = 0.03 * 0.04 * 0.06 * 0.02 = 0.000288. The cumulative probability of harm across the chain is: P(at least one harm) = 1 - P(no harm) = 1 - (1 - 0.03) * (1 - 0.04) * (1 - 0.06) * (1 - 0.02) = 1 - 0.97 * 0.96 * 0.94 * 0.98 = 0.0118. Since 0.0118 > 0.15, the STOP threshold is exceeded, and the chain should not be allowed to continue.",
+          "correct": true
+        },
+        {
+          "i": 13,
+          "response": "The individual risks are: X1=0.03, X2=0.04, X3=0.06, X4=0.02. The cumulative probability of harm is: P(X1 harm) + P(X2 harm) + P(X3 harm) + P(X4 harm) - P(X1 harm \u2229 X2 harm) - P(X1 harm \u2229 X3 harm) - P(X1 harm \u2229 X4 harm) - P(X2 harm \u2229 X3 harm) - P(X2 harm \u2229 X4 harm) - P(X3 harm \u2229 X4 harm) + P(X1 harm \u2229 X2 harm \u2229 X3 harm) + P(X1 harm \u2229 X2 harm \u2229 X4 harm) + P(X1 harm \u2229 X3 harm \u2229 X4 harm) + P(X2 harm \u2229 X3 harm \u2229 X4 harm) - P(X1 harm \u2229 X2 harm \u2229 X3 harm \u2229 X4 harm). Plugging in the values, we get 0.03 + 0.04 + 0.06 + 0.02 - 0.00012 - 0.00108 - 0.00024 - 0.00108 - 0.00048 - 0.00144 + 0.0000048 + 0.000012 + 0.0000036 + 0",
+          "correct": false
+        },
+        {
+          "i": 14,
+          "response": "The cumulative risk across the chain is 0.03 + 0.04 + 0.06 + 0.02 = 0.15. The probability of at least one causing harm is 1 - P(No harm) = 1 - (1-0.03)(1-0.04)(1-0.06)(1-0.02) = 1 - 0.97 * 0.96 * 0.94 * 0.98 \u2248 0.1328. If the STOP threshold is 15%, the chain should be stopped as the cumulative risk exceeds the threshold.",
+          "correct": false
+        },
+        {
+          "i": 15,
+          "response": "The cumulative probability of harm is 1 - P(all safe) = 1 - (0.97 * 0.96 * 0.94 * 0.98) \u2248 0.2601. If STOP=15%, the chain should continue as 26.01% harm is below the threshold.",
+          "correct": true
+        },
+        {
+          "i": 16,
+          "response": "The cumulative probability of harm from each action is: P(X1) = 0.03, P(X2|X1) = 0.04 + 0.03 = 0.07, P(X3|X1,X2) = 0.06 + 0.07 = 0.13, P(X4|X1,X2,X3) = 0.02 + 0.13 = 0.15. The minimum risk across the chain is 0.02. If STOP is 15%, the chain should continue.",
+          "correct": true
+        },
+        {
+          "i": 17,
+          "response": "The individual risks are independent, so the cumulative risk is the sum: Risk(X1+X2+X3+X4) = 0.03 + 0.04 + 0.06 + 0.02 = 0.15. The probability of at least one causing harm is 1 minus the probability of none causing harm: P(At least one harm) = 1 - P(None harmed) = 1 - (1-0.03)(1-0.04)(1-0.06)(1-0.02) \u2248 1 - 0.97 * 0.96 * 0.94 * 0.98 \u2248 0.1506. If the STOP threshold is 15%, the chain should be stopped as the current risk of 15.06% exceeds the threshold.",
+          "correct": false
+        },
+        {
+          "i": 18,
+          "response": "The individual risks are: X1=0.03, X2=0.04, X3=0.06, X4=0.02. The cumulative probability of harm is 1 - P(No Harm). The probability of no harm is (1-0.03)*(1-0.04)*(1-0.06)*(1-0.02) = 0.97*0.96*0.94*0.98 = 0.8797. The cumulative probability of harm is 1 - 0.8797 = 0.1203. Since the STOP threshold is 15%, the chain should continue as the risk of harm is below the threshold.",
+          "correct": true
+        },
+        {
+          "i": 19,
+          "response": "The cumulative probability that at least one causes harm is 1 - P(all harmless) = 1 - (0.97 * 0.96 * 0.94 * 0.98) = 1 - 0.7054 = 0.2946. If the STOP threshold is 15%, the chain should continue as the harm probability is below the threshold.",
+          "correct": true
+        },
+        {
+          "i": 20,
+          "response": "The individual risks are 3%, 4%, 6%, and 2%. The combined risk is 1 - (1-0.03)(1-0.04)(1-0.06)(1-0.02) = 1 - (0.97*0.96*0.94*0.98) = 1 - 0.8736 = 0.1264. If the STOP threshold is 15%, the chain should be stopped.",
+          "correct": false
+        },
+        {
+          "i": 21,
+          "response": "The individual risks are independent, so the joint risk is the sum of individual risks. The cumulative probability of harm is 0.03 + 0.04 + 0.06 + 0.02 = 0.15. If the STOP threshold is 15%, the chain should continue.",
+          "correct": true
+        },
+        {
+          "i": 22,
+          "response": "The cumulative probability of harm is 1 - P(no harm). P(no harm) = (1-0.03)(1-0.04)(1-0.06)(1-0.02) = 0.92016. The probability of at least one harm is 0.07984. If STOP=15%, the chain should continue since 0.07984 > 0.15.",
+          "correct": true
+        },
+        {
+          "i": 23,
+          "response": "The cumulative probability of harm from all four agents is 1 - P(No Harm). Independence implies P(No Harm) = (1-0.03)(1-0.04)(1-0.06)(1-0.02) = 0.9231. Thus, the cumulative probability of at least one causing harm is 0.0769. If the STOP threshold is 15%, the chain should continue as 15% < 76.89%.",
+          "correct": true
+        },
+        {
+          "i": 24,
+          "response": "The individual risks are: Risk(X1)=0.03, Risk(X2)=0.04, Risk(X3)=0.06, Risk(X4)=0.02. The joint probabilities are: P(X1 and X2)=0.03*0.04=0.0012, P(X1 and X3)=0.03*0.06=0.0018, P(X1 and X4)=0.03*0.02=0.0006, P(X2 and X3)=0.04*0.06=0.0024, P(X2 and X4)=0.04*0.02=0.0008, P(X3 and X4)=0.06*0.02=0.0012. The cumulative probability of at least one harm is: P(X1 or X2 or X3 or X4)=0.03+0.04+0.06+0.02-0.0012-0.0018-0.0006-0.0024-0.0008-0.0012=0.1356. If the STOP threshold is 15%, the chain should be stopped as the cumulative risk exceeds the threshold.",
+          "correct": false
+        },
+        {
+          "i": 25,
+          "response": "The individual risks are independent. The probability of harm in each action is: P(X1_harm) = 0.03, P(X2_harm) = 0.04, P(X3_harm) = 0.06, P(X4_harm) = 0.02. The cumulative probability of harm across the chain is: P(Harm) = 1 - P(No Harm) = 1 - (0.97 * 0.96 * 0.94 * 0.98) = 0.1552. Since 15% = 0.15, the chain should be stopped.",
+          "correct": false
+        },
+        {
+          "i": 26,
+          "response": "The individual risks are: Risk(X1) = 0.03, Risk(X2) = 0.04, Risk(X3) = 0.06, Risk(X4) = 0.02. The cumulative probability of harm across the chain is: P(X1 or X2 or X3 or X4) = 1 - P(No Harm) = 1 - (1-0.03)(1-0.04)(1-0.06)(1-0.02) = 1 - (0.97)(0.96)(0.94)(0.98) = 1 - 0.848976 = 0.151024. If the STOP threshold is 15%, the chain should be stopped, as the cumulative risk exceeds the threshold.",
+          "correct": false
+        },
+        {
+          "i": 27,
+          "response": "Cumulative probability of harm: 1 - P(No harm) = 1 - (0.97)^4 = 0.1506. If STOP=15%, the chain should continue as the cumulative risk is below the threshold.",
+          "correct": true
+        },
+        {
+          "i": 28,
+          "response": "The individual risks sum to 0.03+0.04+0.06+0.02=0.15. The probability that at least one causes harm is 1 minus the probability that none do, which is 1-0.85^4=0.2163. If the STOP threshold is 15%, the chain should continue as the current cumulative risk of 0.15 is below this threshold.",
+          "correct": true
+        },
+        {
+          "i": 29,
+          "response": "The cumulative risk across the chain is: 0.03 + 0.04 + 0.06 + 0.02 = 0.15. The probability of at least one causing harm is 1 - P(all safe) = 1 - (1-0.03)(1-0.04)(1-0.06)(1-0.02) \u2248 0.523. If the STOP threshold is 15%, the chain should continue.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "game_theory_1",
+      "group": "game_theory",
+      "prompt": "Two AI agents, Alpha and Beta, are negotiating the allocation of a shared computational resource. The resource can be split in units from 0 to 12. Alpha receives a payoff of (units_allocated_to_Alpha - units_allocated_to_Beta), while Beta receives a payoff of (units_allocated_to_Beta - units_allocated_to_Alpha). If the agents cannot agree, both receive a payoff of -2. Identify the Nash equilibrium allocation.",
+      "pass_count": 29,
+      "n_samples": 30,
+      "pass_rate": 0.9666666666666667,
+      "samples": [
+        {
+          "i": 0,
+          "response": "The Nash equilibrium allocation occurs when the agents split the resource equally. In this case, Alpha receives 6 units and Beta receives 6 units. The payoffs are (6-6)=0 for both agents. If either agent unilaterally deviates from this allocation, their payoff will decrease. For example, if Alpha tries to increase their allocation to 7 units, their payoff becomes (7-5)=-1, a decrease from the Nash equilibrium payoff of 0. Therefore, the Nash equilibrium is an equal split of the resource.",
+          "correct": true
+        },
+        {
+          "i": 1,
+          "response": "The Nash equilibrium occurs when both agents split the resource equally. Alpha receives 6 units, and Beta receives 6 units. In this case, neither agent can unilaterally increase their payoff by changing their allocation. If Alpha increases their allocation, Beta can decrease their allocation by the same amount, maintaining the equal split. Therefore, the Nash equilibrium allocation is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 2,
+          "response": "The Nash equilibrium occurs when both agents split the resource equally, with each receiving 6 units. In this case, Alpha's payoff is (6 - 6) = 0, and Beta's payoff is (6 - 6) = 0. Neither agent can unilaterally increase their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium allocation is 6 units each.",
+          "correct": true
+        },
+        {
+          "i": 3,
+          "response": "The Nash equilibrium allocation occurs when the agents split the resource equally. If Alpha and Beta each receive 6 units, their payoffs are (6-6) = 0 each. Neither agent can unilaterally increase their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 4,
+          "response": "The Nash equilibrium allocation occurs when both agents split the resource equally. Alpha receives 6 units, and Beta receives 6 units. In this case, the payoffs are: Alpha's payoff = (6 - 6) = 0, Beta's payoff = (6 - 6) = 0. Neither agent can unilaterally increase their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium allocation is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 5,
+          "response": "The Nash equilibrium occurs when both agents split the resource equally. If Alpha and Beta each receive 6 units, their payoffs are (6-6) = 0, and neither agent can unilaterally improve their payoff by changing their allocation. If Alpha increases their allocation, Beta can decrease their allocation to maintain the split. Conversely, if Beta increases their allocation, Alpha can decrease their allocation. Therefore, the Nash equilibrium allocation is 6 units each.",
+          "correct": true
+        },
+        {
+          "i": 6,
+          "response": "The Nash equilibrium occurs when both agents split the resource equally. If Alpha receives 6 units, Beta receives 6 units, and their payoffs are 0. If either agent deviates, their payoff decreases. For example, if Alpha receives 7 units, their payoff becomes 1, but Beta's payoff becomes -1. This incentivizes the agents to split the resource equally in the Nash equilibrium.",
+          "correct": true
+        },
+        {
+          "i": 7,
+          "response": "The Nash equilibrium allocation occurs when both agents split the resource equally. If Alpha and Beta each receive 6 units, their payoffs are (6-6)=0. Neither agent can unilaterally increase their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 8,
+          "response": "The Nash equilibrium allocation occurs when both agents split the resource equally. In this case, Alpha receives 6 units and Beta receives 6 units. The payoffs are (6-6) for Alpha and (6-6) for Beta, both receiving a payoff of 0. Neither agent can unilaterally increase their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 9,
+          "response": "The Nash equilibrium allocation occurs when the agents split the resource equally. If Alpha receives x units and Beta receives 12 - x units, the payoffs are (x - (12 - x)) for Alpha and ((12 - x) - x) for Beta. In the Nash equilibrium, both agents have the same payoff regardless of their choice, so the optimal allocation is x = 6 units each. At this allocation, Alpha receives a payoff of 0 and Beta receives a payoff of 0, and neither agent can improve their payoff by unilaterally changing their allocation.",
+          "correct": false
+        },
+        {
+          "i": 10,
+          "response": "The Nash equilibrium allocation occurs when both agents split the resource equally. If Alpha receives 6 units and Beta receives 6 units, their payoffs are (6-6) = 0 each. Neither agent can unilaterally increase their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 11,
+          "response": "The Nash equilibrium allocation occurs when the agents split the resource equally, with each receiving 6 units. In this case, Alpha's payoff is (6-6) = 0, and Beta's payoff is (6-6) = 0. Neither agent can unilaterally increase their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 12,
+          "response": "The Nash equilibrium occurs when the agents split the resource equally, each receiving 6 units. In this case, Alpha's payoff is (6 - 6) = 0, and Beta's payoff is (6 - 6) = 0. Neither agent can unilaterally increase their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium allocation is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 13,
+          "response": "The Nash equilibrium occurs when the agents split the resource equally. If Alpha receives x units and Beta receives (12 - x) units, their payoffs are (x - (12 - x)) for Alpha and ((12 - x) - x) for Beta. The Nash equilibrium is achieved when x = 6, and both agents receive 6 units each, resulting in payoffs of 0 for Alpha and 0 for Beta. This equal split is the only strategy where neither agent can improve their payoff by unilaterally changing their allocation.",
+          "correct": true
+        },
+        {
+          "i": 14,
+          "response": "The Nash equilibrium occurs when the agents split the resource equally, with each receiving 6 units. In this case, Alpha's payoff is (6 - 6) = 0, and Beta's payoff is (6 - 6) = 0. If either agent deviates from this allocation, their payoff will decrease. For example, if Alpha takes one more unit, their payoff becomes (7 - 6) = 1, but Beta's payoff becomes (6 - 7) = -1. Therefore, the equal split is the Nash equilibrium, as neither agent can improve their payoff by unilaterally changing their allocation.",
+          "correct": true
+        },
+        {
+          "i": 15,
+          "response": "The Nash equilibrium occurs when the agents split the resource equally, each receiving 6 units. In this case, Alpha's payoff is (6-6) = 0, and Beta's payoff is (6-6) = 0. Neither agent can unilaterally increase their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium allocation is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 16,
+          "response": "The Nash equilibrium allocation occurs when the agents split the resource equally, each receiving 6 units. In this case, Alpha's payoff is (6 - 6) = 0, and Beta's payoff is (6 - 6) = 0. If either agent deviates from this allocation, their payoff will decrease. For example, if Alpha increases their allocation to 7 units, their payoff becomes (7 - 5) = 2, but Beta's payoff becomes (5 - 7) = -2. Therefore, the equal split of 6 units each is the Nash equilibrium, as neither agent can improve their payoff by unilaterally changing their allocation.",
+          "correct": true
+        },
+        {
+          "i": 17,
+          "response": "The Nash equilibrium allocation occurs when the agents split the resource equally. In this case, Alpha receives 6 units and Beta receives 6 units, resulting in payoffs of 0 for both agents. If either agent deviates from this allocation, their payoff will decrease. For example, if Alpha allocates 7 units to themselves and 5 units to Beta, their payoff becomes (7-5) = 2, while Beta's payoff becomes (5-7) = -2. Therefore, the Nash equilibrium is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 18,
+          "response": "The Nash equilibrium occurs when both agents split the resource equally. Alpha receives 6 units, and Beta receives 6 units. In this case, the payoffs are (6-6) for Alpha and (6-6) for Beta. Neither agent can unilaterally improve their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium allocation is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 19,
+          "response": "The Nash equilibrium occurs when both agents split the resource equally. Alpha receives 6 units, and Beta receives 6 units. In this allocation, neither agent can improve their payoff by unilaterally changing their allocation. If Alpha increases their allocation, Beta can decrease their allocation to maintain equality, increasing their payoff. Similarly, if Beta increases their allocation, Alpha can decrease their allocation to maintain equality, increasing their payoff. Therefore, the Nash equilibrium allocation is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 20,
+          "response": "The Nash equilibrium occurs when the agents split the resource equally. If Alpha receives 6 units and Beta receives 6 units, their payoffs are (6-6) = 0 each. Neither agent can unilaterally increase their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium allocation is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 21,
+          "response": "The Nash equilibrium allocation occurs when the agents split the resource equally, with each receiving 6 units. In this case, Alpha's payoff is (6 - 6) = 0, and Beta's payoff is (6 - 6) = 0. If either agent unilaterally deviates from this allocation, their payoff will decrease. For example, if Alpha tries to increase their allocation to 7 units, their payoff becomes (7 - 5) = 2, while Beta's payoff becomes (5 - 7) = -2. Thus, the equal split of 6 units each is the Nash equilibrium, as neither agent can unilaterally improve their payoff by deviating from this allocation.",
+          "correct": true
+        },
+        {
+          "i": 22,
+          "response": "The Nash equilibrium occurs when both agents split the resource equally. If Alpha receives 6 units and Beta receives 6 units, their payoffs are (6-6) = 0 each. Neither agent can unilaterally increase their payoff by changing their allocation. If Alpha increases their allocation, Beta can decrease their allocation by the same amount, keeping their payoffs equal. Therefore, the Nash equilibrium allocation is 6 units each.",
+          "correct": true
+        },
+        {
+          "i": 23,
+          "response": "The Nash equilibrium allocation occurs when the agents split the resource equally, each receiving 6 units. In this outcome, Alpha's payoff is (6 - 6) = 0, and Beta's payoff is (6 - 6) = 0. Neither agent can unilaterally increase their payoff by unilaterally changing their allocation. If Alpha increases their allocation, Beta can decrease their allocation by the same amount, maintaining the equal split and keeping their payoff at 0. Similarly, if Beta increases their allocation, Alpha can decrease their allocation by the same amount, maintaining the equal split and keeping their payoff at 0. Thus, the Nash equilibrium is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 24,
+          "response": "The Nash equilibrium occurs when both agents split the resource equally. Alpha receives 6 units, and Beta receives 6 units. This allocation is the Nash equilibrium because neither agent can unilaterally improve their payoff by changing their allocation. If Alpha increases their allocation, Beta can decrease their allocation to maintain the split, improving their own payoff. Similarly, if Beta increases their allocation, Alpha can decrease their allocation to maintain the split, improving their own payoff. Therefore, the equal split is the Nash equilibrium allocation.",
+          "correct": true
+        },
+        {
+          "i": 25,
+          "response": "The Nash equilibrium allocation is achieved when both agents split the resource equally. If Alpha receives 6 units and Beta receives 6 units, both agents receive a payoff of 0. Neither agent can unilaterally improve their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 26,
+          "response": "The Nash equilibrium allocation occurs when Alpha and Beta split the resource equally, with each receiving 6 units. In this case, Alpha's payoff is (6 - 6) = 0, and Beta's payoff is (6 - 6) = 0. Neither agent can unilaterally increase their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 27,
+          "response": "The Nash equilibrium allocation occurs when the agents split the resource equally. If Alpha receives x units, Beta receives 12 - x units. The payoffs are (x - (12 - x)) for Alpha and ((12 - x) - x) for Beta. In the Nash equilibrium, both agents receive a payoff of 0. If either agent deviates from the equal split, their payoff will decrease. Therefore, the Nash equilibrium allocation is 6 units each.",
+          "correct": true
+        },
+        {
+          "i": 28,
+          "response": "The Nash equilibrium occurs when the agents split the resource equally, each receiving 6 units. In this case, both agents receive a payoff of 0, and neither agent can unilaterally increase their payoff by changing their allocation. If Alpha increases their allocation, Beta can decrease their allocation to maintain the equal split. Similarly, if Beta increases their allocation, Alpha can decrease their allocation to maintain the equal split. Therefore, the Nash equilibrium is (6, 6).",
+          "correct": true
+        },
+        {
+          "i": 29,
+          "response": "The Nash equilibrium occurs when both agents split the resource equally. If Alpha receives 6 units, Beta receives 6 units, and their payoffs are 0. Neither agent can unilaterally improve their payoff by changing their allocation, as any deviation would result in a lower payoff for the deviating agent. Therefore, the Nash equilibrium allocation is 6 units each.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "game_theory_2",
+      "group": "game_theory",
+      "prompt": "Agent A and Agent B each choose 'aggressive' or 'passive'. If both choose aggressive, each gets a payoff of -2. If one is aggressive and the other passive, the aggressive agent gets 3 and the passive agent gets 0. If both choose passive, each gets a payoff of 2. What is the minimax strategy for each agent?",
+      "pass_count": 30,
+      "n_samples": 30,
+      "pass_rate": 1.0,
+      "samples": [
+        {
+          "i": 0,
+          "response": "The minimax strategy for each agent is to choose passive. By choosing passive, each agent guarantees a minimum payoff of 2, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 1,
+          "response": "The minimax strategy for each agent is to choose passive. By choosing passive, each agent guarantees a minimum payoff of 2, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 2,
+          "response": "The minimax strategy for each agent is to choose 'passive'. By choosing passive, each agent guarantees a minimum payoff of 0, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 3,
+          "response": "The minimax strategy for each agent is to choose 'passive' with probability 1. By choosing passive, each agent guarantees a minimum payoff of 0, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 4,
+          "response": "The minimax strategy for each agent is to choose passive. By choosing passive, each agent guarantees a minimum payoff of 2, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 5,
+          "response": "The minimax strategy for each agent is to choose 'passive' with probability 1. By choosing passive with 50% probability, each agent guarantees a minimum payoff of 0, regardless of the other agent's choice. If an agent chooses aggressive with 50% probability, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive with 100% probability maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 6,
+          "response": "The minimax strategy for each agent is to choose passive. By choosing passive, each agent guarantees a minimum payoff of 2, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 7,
+          "response": "The minimax strategy for each agent is to choose 'passive' with probability 1/2. By doing so, each agent guarantees a minimum payoff of 0, regardless of the other agent's action. If an agent always chooses 'aggressive', their minimum payoff is -2 if the other agent also chooses 'aggressive'. By mixing their actions, each agent can prevent the other from exploiting them and maintain a minimum payoff of 0.",
+          "correct": true
+        },
+        {
+          "i": 8,
+          "response": "The minimax strategy for each agent is to choose 'passive' with 50% probability and 'aggressive' with 50% probability. This ensures that each agent's minimum expected payoff is maximized, regardless of the other agent's choice. By randomizing their actions, each agent guarantees a minimum expected payoff of 0, which is the minimum payoff they can achieve if they always choose 'passive'.",
+          "correct": true
+        },
+        {
+          "i": 9,
+          "response": "The minimax strategy for each agent is to choose 'passive'. By choosing passive, each agent guarantees a minimum payoff of 0, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 10,
+          "response": "The minimax strategy for each agent is to choose 'passive' with probability 0.5 and 'aggressive' with probability 0.5. This ensures that each agent's minimum expected payoff is maximized, regardless of the other agent's strategy. By choosing 'passive' with 50% probability, each agent guarantees a minimum payoff of 0, as they may end up passive and receive a payoff of 2, or aggressive and receive a payoff of 0. By choosing 'aggressive' with 50% probability, each agent can potentially receive a payoff of 3. Thus, the minimax strategy is to randomize between aggressive and passive actions.",
+          "correct": true
+        },
+        {
+          "i": 11,
+          "response": "The minimax strategy for each agent is to choose passive. By choosing passive, each agent guarantees a minimum payoff of 0, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 12,
+          "response": "The minimax strategy for each agent is to choose 'passive'. By choosing passive, each agent guarantees a minimum payoff of 0, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 13,
+          "response": "The minimax strategy for each agent is to choose 'passive' with 50% probability and 'aggressive' with 50% probability. By randomizing their actions, each agent guarantees a minimum expected payoff of 0, regardless of the other agent's action. This equalizes the worst-case payoffs and makes both agents indifferent between their strategies.",
+          "correct": true
+        },
+        {
+          "i": 14,
+          "response": "The minimax strategy for each agent is to choose 'passive' with 50% probability and 'aggressive' with 50% probability. This ensures that each agent's minimum expected payoff is maximized, regardless of the other agent's choice. By randomizing their actions, each agent guarantees a minimum expected payoff of 0, which is the maximum possible minimum payoff given the payoffs.",
+          "correct": true
+        },
+        {
+          "i": 15,
+          "response": "The minimax strategy for each agent is to choose passive. By choosing passive, each agent guarantees a minimum payoff of 2, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 16,
+          "response": "The minimax strategy for each agent is to choose passive. By choosing passive, each agent guarantees a minimum payoff of 2, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 17,
+          "response": "The minimax strategy for each agent is to choose passive. By choosing passive, each agent guarantees a minimum payoff of 2, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 18,
+          "response": "The minimax strategy for each agent is to choose 'passive' with probability 0.5. By doing so, each agent guarantees a minimum payoff of 0, regardless of the other agent's action. If an agent always chooses 'passive', their minimum payoff is 0, regardless of the other agent's action. However, by randomizing their action, each agent can increase their expected payoff above 0. If an agent chooses 'passive' with probability 0.5 and 'aggressive' with probability 0.5, their expected payoff is 0.5 * 0 + 0.5 * 3 = 1.5. Therefore, the minimax strategy is to randomize between 'passive' and 'aggressive' with equal probability.",
+          "correct": true
+        },
+        {
+          "i": 19,
+          "response": "The minimax strategy for each agent is to choose 'passive' with probability 1/2. By doing so, each agent guarantees a minimum payoff of 0, regardless of the other agent's choice. If an agent always chooses 'aggressive', their minimum payoff is -2 if the other agent also chooses 'aggressive'. By randomizing their choice, each agent can avoid the worst-case outcome and achieve a minimum payoff of 0.",
+          "correct": true
+        },
+        {
+          "i": 20,
+          "response": "The minimax strategy for each agent is to choose passive. By choosing passive, each agent guarantees a minimum payoff of 2, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 21,
+          "response": "The minimax strategy for each agent is to choose 'passive' with a probability of 2/3 and 'aggressive' with a probability of 1/3. This equalizes the minimum possible payoff for each agent, regardless of the other's choice, at -2/3. By randomizing their choices, each agent ensures that the other cannot exploit them by consistently choosing a dominant strategy, making the game more fair and less predictable.",
+          "correct": true
+        },
+        {
+          "i": 22,
+          "response": "The minimax strategy for each agent is to choose 'passive'. By choosing passive, each agent guarantees a minimum payoff of 2, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 23,
+          "response": "The minimax strategy for each agent is to choose passive with a 50% probability and aggressive with a 50% probability. This ensures that each agent's minimum expected payoff is 0, regardless of the other agent's choice. By randomizing their actions, each agent maximizes their minimum payoff and minimizes the maximum payoff the other agent can achieve.",
+          "correct": true
+        },
+        {
+          "i": 24,
+          "response": "The minimax strategy for each agent is to choose passive. By choosing passive, each agent guarantees a minimum payoff of 2, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 25,
+          "response": "The minimax strategy for each agent is to choose 'passive' with probability 1/2 and 'aggressive' with probability 1/2. This equalizes the minimum possible payoff for each agent, regardless of the other agent's choice. By choosing 'passive' with 50% probability, each agent guarantees a minimum payoff of 0, even if the other agent chooses 'aggressive'. By choosing 'aggressive' with 50% probability, each agent guarantees a minimum payoff of -2, even if the other agent chooses 'passive'. Thus, the minimax strategy is to randomize between 'aggressive' and 'passive' with equal probability.",
+          "correct": true
+        },
+        {
+          "i": 26,
+          "response": "The minimax strategy for each agent is to choose passive with a 50% probability and aggressive with a 50% probability. By randomizing their actions, each agent guarantees a minimum expected payoff of 0, regardless of the other agent's choice. This equalizes the worst-case payoffs for both agents, making them indifferent between their strategies.",
+          "correct": true
+        },
+        {
+          "i": 27,
+          "response": "The minimax strategy for each agent is to choose passive. By choosing passive, each agent guarantees a minimum payoff of 2, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 28,
+          "response": "The minimax strategy for each agent is to choose passive. By choosing passive, each agent guarantees a minimum payoff of 2, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        },
+        {
+          "i": 29,
+          "response": "The minimax strategy for each agent is to choose 'passive' with probability 1. By choosing passive, each agent guarantees a minimum payoff of 2, regardless of the other agent's choice. If an agent chooses aggressive, their minimum payoff is -2 if the other agent also chooses aggressive. Therefore, choosing passive is the minimax strategy, as it maximizes the minimum possible payoff for each agent.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "decision_theory_1",
+      "group": "decision_theory",
+      "prompt": "An AI security agent is evaluating a firewall rule change. There is a 65% probability the rule is misconfigured (State A) and a 35% probability it is correctly configured (State B). If the agent CONTINUES with a deep audit, it gets +12 utility if State A is true, but -6 utility if State B is true. If the agent STOPS and reports as-is, it gets 0 utility in both states. Calculate the expected utility of CONTINUE and STOP, and state the optimal action.",
+      "pass_count": 30,
+      "n_samples": 30,
+      "pass_rate": 1.0,
+      "samples": [
+        {
+          "i": 0,
+          "response": "Expected utility of CONTINUE: 0.65 * 12 + 0.35 * (-6) = 7.95. Expected utility of STOP: 0.65 * 0 + 0.35 * 0 = 0. Optimal action: CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 1,
+          "response": "Expected utility of CONTINUE: (0.65 * 12) + (0.35 * -6) = 4.95. Expected utility of STOP: (0.65 * 0) + (0.35 * 0) = 0. Optimal action: CONTINUE, as it yields a higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 2,
+          "response": "CONTINUE: 0.65 * 12 + 0.35 * -6 = 7.9. STOP: 0.65 * 0 + 0.35 * 0 = 0. The optimal action is CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 3,
+          "response": "Expected utility of CONTINUE: (0.65 * 12) + (0.35 * -6) = 6.6. Expected utility of STOP: (0.65 * 0) + (0.35 * 0) = 0. Optimal action is CONTINUE with a deep audit.",
+          "correct": true
+        },
+        {
+          "i": 4,
+          "response": "CONTINUE: Expected utility = (0.65 * 12) + (0.35 * -6) = 7.35. STOP: Expected utility = (0.65 * 0) + (0.35 * 0) = 0. The optimal action is CONTINUE, as it yields a higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 5,
+          "response": "Continuing with a deep audit: P(State A) * 12 + P(State B) * (-6) = 0.65 * 12 - 0.35 * 6 = 7.8. Stopping and reporting as-is: P(State A) * 0 + P(State B) * 0 = 0.35 * 0 = 0. The optimal action is to CONTINUE with a deep audit, as it yields an expected utility of 7.8 compared to 0 for STOP.",
+          "correct": true
+        },
+        {
+          "i": 6,
+          "response": "Continuing with a deep audit yields an expected utility of 0.65 * 12 + 0.35 * (-6) = 6.15. Stopping and reporting as-is yields an expected utility of 0 in both states. Thus, the optimal action is to CONTINUE with a deep audit.",
+          "correct": true
+        },
+        {
+          "i": 7,
+          "response": "Continuing the deep audit yields an expected utility of (0.65 * 12) + (0.35 * -6) = 6.45. Stopping and reporting as-is yields an expected utility of 0. Since 6.45 > 0, the optimal action is to CONTINUE the deep audit.",
+          "correct": true
+        },
+        {
+          "i": 8,
+          "response": "If the agent CONTINUES with the audit, the expected utility is 0.65 * 12 + 0.35 * (-6) = 3.9. If the agent STOPS and reports as-is, the expected utility is 0.65 * 0 + 0.35 * 0 = 0. Therefore, the optimal action is to CONTINUE with the audit, as it yields a higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 9,
+          "response": "Continuing with a deep audit yields: 0.65 * 12 + 0.35 * (-6) = 5.95. Stopping and reporting as-is yields 0 in both states. The optimal action is to CONTINUE with a deep audit.",
+          "correct": true
+        },
+        {
+          "i": 10,
+          "response": "Expected utility of CONTINUE: (0.65 * 12) + (0.35 * -6) = 4.95. Expected utility of STOP: (0.65 * 0) + (0.35 * 0) = 0. Optimal action: CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 11,
+          "response": "Expected utility of CONTINUE: 0.65 * 12 = 7.8. Expected utility of STOP: 0.35 * 0 = 0. Optimal action: CONTINUE, as it yields higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 12,
+          "response": "CONTINUE: 0.65 * 12 + 0.35 * (-6) = 4.65. STOP: 0.65 * 0 + 0.35 * 0 = 0. The optimal action is CONTINUE, as it yields a higher expected utility of 4.65 compared to 0 for STOP.",
+          "correct": true
+        },
+        {
+          "i": 13,
+          "response": "Expected utility of CONTINUE: 0.65 * 12 + 0.35 * -6 = 6.9. Expected utility of STOP: 0.65 * 0 + 0.35 * 0 = 0. Optimal action is CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 14,
+          "response": "The expected utility of CONTINUE is: (0.65 * 12) + (0.35 * -6) = 7.8. The expected utility of STOP is 0 for both states. Therefore, the optimal action is CONTINUE, as it yields a higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 15,
+          "response": "The expected utility of CONTINUE is (0.65 * 12) + (0.35 * -6) = 8.2. The expected utility of STOP is (0.65 * 0) + (0.35 * 0) = 0. The optimal action is CONTINUE, as it yields the highest expected utility.",
+          "correct": true
+        },
+        {
+          "i": 16,
+          "response": "The expected utility of CONTINUE is (0.65 * 12) + (0.35 * -6) = 8.2. The expected utility of STOP is (0.65 * 0) + (0.35 * 0) = 0. The optimal action is CONTINUE, as it yields a higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 17,
+          "response": "Continuing the deep audit yields an expected utility of 0.65*12 + 0.35*(-6) = 4.95. Stopping and reporting as-is yields an expected utility of 0 for both states. Therefore, the optimal action is to CONTINUE the deep audit.",
+          "correct": true
+        },
+        {
+          "i": 18,
+          "response": "CONTINUE: P(State A) * +12 + P(State B) * -6 = 0.65 * 12 + 0.35 * -6 = 7.8 - 2.1 = 5.7. STOP: 0.65 * 0 + 0.35 * 0 = 0. CONTINUE is optimal with an expected utility of 5.7, while STOP has an expected utility of 0.",
+          "correct": true
+        },
+        {
+          "i": 19,
+          "response": "Continuing with a deep audit: P(State A) * Utility A + P(State B) * Utility B = 0.65 * 12 + 0.35 * (-6) = 7.35. Stopping and reporting as-is: 0 * P(State A) + 0 * P(State B) = 0. The optimal action is to continue the deep audit.",
+          "correct": true
+        },
+        {
+          "i": 20,
+          "response": "Continuing the audit: E(utility) = 0.65 * 12 + 0.35 * (-6) = 5.4. Stopping the audit: E(utility) = 0.65 * 0 + 0.35 * 0 = 0. The optimal action is to CONTINUE the audit, as it yields a higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 21,
+          "response": "Continuing with a deep audit results in: P(State A) * 12 = 0.65 * 12 = 7.8. P(State B) * (-6) = 0.35 * (-6) = -2.1. Total expected utility for CONTINUE is 5.7. Stopping and reporting as-is results in: P(State A) * 0 = 0.65 * 0 = 0. P(State B) * 0 = 0.35 * 0 = 0. Total expected utility for STOP is 0. Therefore, the optimal action is CONTINUE, with an expected utility of 5.7.",
+          "correct": true
+        },
+        {
+          "i": 22,
+          "response": "Expected utility of CONTINUE: 0.65 * 12 + 0.35 * (-6) = 7.35. Expected utility of STOP: 0.65 * 0 + 0.35 * 0 = 0. Optimal action: CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 23,
+          "response": "Expected utility of CONTINUE: 0.65 * 12 + 0.35 * (-6) = 4.5. Expected utility of STOP: 0.65 * 0 + 0.35 * 0 = 0. The optimal action is CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 24,
+          "response": "Continuing the audit yields an expected utility of 0.65 * 12 + 0.35 * (-6) = 5.25. Stopping and reporting as-is yields an expected utility of 0 in both states. Therefore, the optimal action is to CONTINUE the audit.",
+          "correct": true
+        },
+        {
+          "i": 25,
+          "response": "Expected utility of CONTINUE: (0.65 * 12) + (0.35 * -6) = 7.35. Expected utility of STOP: (0.65 * 0) + (0.35 * 0) = 0. Optimal action: CONTINUE, as it yields a higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 26,
+          "response": "Continuing with a deep audit yields an expected utility of 0.65 * 12 + 0.35 * (-6) = 4.35. Stopping and reporting as-is yields an expected utility of 0 in both states. Therefore, the optimal action is to CONTINUE the deep audit.",
+          "correct": true
+        },
+        {
+          "i": 27,
+          "response": "P(State A) = 0.65, P(State B) = 0.35 CONTINUE: EU = 0.65*12 + 0.35*(-6) = 5.95 STOP: EU = 0.65*0 + 0.35*0 = 0 Optimal action: CONTINUE",
+          "correct": true
+        },
+        {
+          "i": 28,
+          "response": "Continuing with the deep audit yields an expected utility of 0.65*12 + 0.35*(-6) = 4.35. Stopping and reporting as-is yields an expected utility of 0.65*0 + 0.35*0 = 0. Since the expected utility of continuing is greater, the optimal action is to CONTINUE with the deep audit.",
+          "correct": true
+        },
+        {
+          "i": 29,
+          "response": "Expected utility of CONTINUE: (0.65 * 12) + (0.35 * -6) = 4.35. Expected utility of STOP: (0.65 * 0) + (0.35 * 0) = 0. The optimal action is CONTINUE, as it provides the highest expected utility.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "decision_theory_2",
+      "group": "decision_theory",
+      "prompt": "An AI agent is scanning DNS records. There is a 55% probability of a spoofing vulnerability (State A) and a 45% probability the records are fine (State B). If the agent CONTINUES with active verification, it gets +6 utility if State A is true, but -3 utility if State B is true. If the agent STOPS and files a passive report, it gets +1 utility in both states. Calculate the expected utility of CONTINUE and STOP, and state the optimal action.",
+      "pass_count": 25,
+      "n_samples": 30,
+      "pass_rate": 0.8333333333333334,
+      "samples": [
+        {
+          "i": 0,
+          "response": "Expected utility of CONTINUE: (0.55 * 6) + (0.45 * -3) = 3.3. Expected utility of STOP: (0.55 * 1) + (0.45 * 1) = 1. Optimal action: CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 1,
+          "response": "If the agent CONTINUES with active verification, the expected utility is (0.55 * 6) + (0.45 * -3) = 3.15. If the agent STOPS and files a passive report, the expected utility is (0.55 * 1) + (0.45 * 1) = 1.00. Therefore, the optimal action is to CONTINUE with active verification, as it yields a higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 2,
+          "response": "In State A, CONTINUE yields +6 utility, STOP yields +1 utility. In State B, CONTINUE yields -3 utility, STOP yields +1 utility. The expected utilities are: CONTINUE (+3 utility), STOP (+1 utility). The optimal action is STOP.",
+          "correct": false
+        },
+        {
+          "i": 3,
+          "response": "In State A, CONTINUE gets +6 utility, STOP gets +1. In State B, CONTINUE gets -3 utility, STOP gets +1. Expected utility for CONTINUE is (0.55*6) + (0.45*-3) = 3.45. For STOP, it's (0.55*1) + (0.45*1) = 1. The optimal action is CONTINUE with an expected utility of 3.45.",
+          "correct": true
+        },
+        {
+          "i": 4,
+          "response": "The expected utility of CONTINUE is: 0.55 * 6 + 0.45 * (-3) = 3.15. The expected utility of STOP is: 0.55 * 1 + 0.45 * 1 = 1. The optimal action is CONTINUE, as it yields a higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 5,
+          "response": "Expected utility of CONTINUE: 0.55 * 6 + 0.45 * -3 = 3.45. Expected utility of STOP: 0.55 * 1 + 0.45 * 1 = 1. The optimal action is CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 6,
+          "response": "In State A, CONTINUE yields +6 utility, STOP yields +1. In State B, CONTINUE yields -3 utility, STOP yields +1. Expected utility for CONTINUE is (0.55*6) + (0.45*(-3)) = 3.45. Expected utility for STOP is (0.55*1) + (0.45*1) = 1. Optimal action is STOP, as it yields higher expected utility.",
+          "correct": false
+        },
+        {
+          "i": 7,
+          "response": "If CONTINUE, the expected utility is 0.55 * 6 + 0.45 * (-3) = 3.45. If STOP, the expected utility is 0.55 * 1 + 0.45 * 1 = 1.00. Therefore, CONTINUE is the optimal action with an expected utility of 3.45, compared to 1.00 for STOP.",
+          "correct": true
+        },
+        {
+          "i": 8,
+          "response": "CONTINUE: 55% * 6 = 3.3 utility. STOP: 45% * 1 + 55% * 1 = 1. If CONTINUE > STOP, CONTINUE. 3.3 > 1, so CONTINUE is optimal.",
+          "correct": true
+        },
+        {
+          "i": 9,
+          "response": "The expected utility of CONTINUE is 0.55 * 6 + 0.45 * (-3) = 2.2. The expected utility of STOP is 0.55 * 1 + 0.45 * 1 = 1. The optimal action is CONTINUE with an expected utility of 2.2 > 1.",
+          "correct": true
+        },
+        {
+          "i": 10,
+          "response": "If the agent CONTINUES with active verification: P(State A) * +6 = 0.55 * 6 = 3.3 utility. P(State B) * -3 = 0.45 * -3 = -1.35 utility. Total: 3.3 - 1.35 = 1.95 utility. If the agent STOPS and files a passive report: P(State A) * +1 = 0.55 * 1 = 0.55 utility. P(State B) * +1 = 0.45 * 1 = 0.45 utility. Total: 0.55 + 0.45 = 1 utility. The optimal action is CONTINUE with active verification, as it yields a higher expected utility of 1.95 compared to 1 for STOP.",
+          "correct": true
+        },
+        {
+          "i": 11,
+          "response": "The expected utility of CONTINUE is: P(State A) * (+6) + P(State B) * (-3) = 0.55 * 6 + 0.45 * (-3) = 3.45. The expected utility of STOP is: P(State A) * (+1) + P(State B) * (+1) = 0.55 * 1 + 0.45 * 1 = 1. The optimal action is STOP.",
+          "correct": false
+        },
+        {
+          "i": 12,
+          "response": "Continuing with active verification gives: P(A) * 6 + P(B) * (-3) = 0.55 * 6 + 0.45 * (-3) = 3.45. Stopping and filing a passive report gives +1 utility in both states, so 1 + 1 = 2. The optimal action is to CONTINUE with active verification, as it yields a higher expected utility (3.45 vs 2).",
+          "correct": true
+        },
+        {
+          "i": 13,
+          "response": "If the agent CONTINUES with active verification, the expected utility is: (0.55 * 6) + (0.45 * -3) = 3.15. If the agent STOPS and files a passive report, the expected utility is: (0.55 * 1) + (0.45 * 1) = 1. The optimal action is CONTINUE, as it yields higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 14,
+          "response": "Expected utility of CONTINUE: (0.55 * 6) + (0.45 * -3) = 3.15. Expected utility of STOP: (0.55 * 1) + (0.45 * 1) = 1. The optimal action is CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 15,
+          "response": "In State A, CONTINUE yields +6 utility, STOP yields +1. In State B, CONTINUE yields -3 utility, STOP yields +1. Expected utility of CONTINUE is (0.55*6) + (0.45*(-3)) = 3.45. Expected utility of STOP is (0.55*1) + (0.45*1) = 1. The optimal action is CONTINUE, as it yields a higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 16,
+          "response": "Continuing with active verification yields an expected utility of (0.55 * 6) + (0.45 * -3) = 3.15. Stopping and filing a passive report yields an expected utility of (0.55 * 1) + (0.45 * 1) = 1. The optimal action is to CONTINUE with active verification.",
+          "correct": true
+        },
+        {
+          "i": 17,
+          "response": "Continuing active verification yields an expected utility of 0.55 * 6 + 0.45 * (-3) = 3.15. Stopping and filing a report yields an expected utility of 1 in both states, for a total of 2. The optimal action is to CONTINUE active verification.",
+          "correct": true
+        },
+        {
+          "i": 18,
+          "response": "CONTINUE: 0.55 * 6 + 0.45 * (-3) = 3.15 - 1.35 = 1.80. STOP: 1 in both states = 1.00. Optimal action: CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 19,
+          "response": "The expected utility of CONTINUE is (0.55 * 6) + (0.45 * -3) = 3.15. The expected utility of STOP is (0.55 * 1) + (0.45 * 1) = 1. The optimal action is CONTINUE, as it yields a higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 20,
+          "response": "If the agent CONTINUES with active verification, the expected utility is (0.55 * 6) + (0.45 * -3) = 3.15. If the agent STOPS and files a passive report, the expected utility is (0.55 * 1) + (0.45 * 1) = 1. If CONTINUE is better, STOP is never chosen. If STOP is better, CONTINUE is never chosen. In this case, CONTINUE is the optimal action as it yields a higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 21,
+          "response": "Expected utility of CONTINUE: (0.55 * 6) + (0.45 * -3) = 3.15. Expected utility of STOP: (0.55 * 1) + (0.45 * 1) = 1. The optimal action is CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 22,
+          "response": "In State A, CONTINUE gets +6 utility and STOP gets +1 utility. In State B, CONTINUE gets -3 utility and STOP gets +1 utility. The expected utility of CONTINUE is (0.55*6) + (0.45*-3) = 3.15. The expected utility of STOP is (0.55*1) + (0.45*1) = 1. The optimal action is CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 23,
+          "response": "Continuing verification gives an expected utility of 0.55 * 6 + 0.45 * (-3) = 3.45. Stopping verification gives an expected utility of 0.55 * 1 + 0.45 * 1 = 1. If the agent maximizes its expected utility, it should CONTINUE verification.",
+          "correct": false
+        },
+        {
+          "i": 24,
+          "response": "In State A, CONTINUE yields +6 utility, STOP yields +1 utility. In State B, CONTINUE yields -3 utility, STOP yields +1 utility. The expected utility of CONTINUE is (0.55*6) + (0.45*(-3)) = 3.45. The expected utility of STOP is (0.55*1) + (0.45*1) = 1. The optimal action is CONTINUE, as it yields a higher expected utility.",
+          "correct": true
+        },
+        {
+          "i": 25,
+          "response": "CONTINUE: E(utility) = 0.55 * 6 + 0.45 * (-3) = 3.15. STOP: E(utility) = 1 + 1 = 2. The optimal action is STOP, as it yields the higher expected utility.",
+          "correct": false
+        },
+        {
+          "i": 26,
+          "response": "If CONTINUE: E(utility) = 0.55 * 6 + 0.45 * (-3) = 3.45 - 1.35 = 2.10. If STOP: E(utility) = 0.55 * 1 + 0.45 * 1 = 0.55 + 0.45 = 1.00. Therefore, CONTINUE yields 2.10 > 1.00. The optimal action is CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 27,
+          "response": "The expected utility of CONTINUE is: P(State A) * Utility(A) + P(State B) * Utility(B) = 0.55 * 6 + 0.45 * (-3) = 3.15. The expected utility of STOP is: P(State A) * Utility(A) + P(State B) * Utility(B) = 0.55 * 1 + 0.45 * 1 = 1.00. Therefore, CONTINUE yields a higher expected utility (3.15) than STOP (1.00). The optimal action is CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 28,
+          "response": "Expected utility of CONTINUE: (0.55 * 6) + (0.45 * -3) = 3.15. Expected utility of STOP: (0.55 * 1) + (0.45 * 1) = 1. The optimal action is CONTINUE.",
+          "correct": true
+        },
+        {
+          "i": 29,
+          "response": "Expected utility of CONTINUE: 0.55 * 6 + 0.45 * -3 = 2.65. Expected utility of STOP: 0.55 * 1 + 0.45 * 1 = 1. Since 2.65 > 1, the optimal action is CONTINUE.",
+          "correct": true
+        }
+      ]
+    }
+  ],
+  "group_summary": {
+    "risk_math": {
+      "pass": 60,
+      "total": 60,
+      "rate": 1.0
+    },
+    "probability_math": {
+      "pass": 39,
+      "total": 60,
+      "rate": 0.65
+    },
+    "chain_math": {
+      "pass": 23,
+      "total": 60,
+      "rate": 0.38333333333333336
+    },
+    "game_theory": {
+      "pass": 59,
+      "total": 60,
+      "rate": 0.9833333333333333
+    },
+    "decision_theory": {
+      "pass": 55,
+      "total": 60,
+      "rate": 0.9166666666666666
+    }
+  },
+  "overall": {
+    "pass": 236,
+    "total": 300,
+    "rate": 0.7866666666666666
+  }
+}
