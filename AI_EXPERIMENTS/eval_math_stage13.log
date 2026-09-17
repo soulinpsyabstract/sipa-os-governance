@@ -1,0 +1,20 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<00:34,  8.45it/s]Loading weights:   1%|          | 2/291 [00:00<00:41,  7.04it/s]Loading weights:   5%|▌         | 15/291 [00:00<00:05, 50.30it/s]Loading weights:  11%|█         | 32/291 [00:00<00:02, 87.05it/s]Loading weights:  17%|█▋        | 49/291 [00:00<00:02, 110.26it/s]Loading weights:  21%|██        | 61/291 [00:00<00:02, 108.98it/s]Loading weights:  26%|██▋       | 77/291 [00:00<00:01, 120.02it/s]Loading weights:  32%|███▏      | 94/291 [00:00<00:01, 130.51it/s]Loading weights:  38%|███▊      | 112/291 [00:01<00:01, 139.12it/s]Loading weights:  44%|████▎     | 127/291 [00:01<00:01, 141.51it/s]Loading weights:  49%|████▉     | 142/291 [00:01<00:01, 136.99it/s]Loading weights:  54%|█████▍    | 157/291 [00:01<00:01, 132.27it/s]Loading weights:  60%|██████    | 176/291 [00:01<00:00, 143.03it/s]Loading weights:  66%|██████▋   | 193/291 [00:01<00:00, 145.89it/s]Loading weights:  71%|███████▏  | 208/291 [00:01<00:00, 142.04it/s]Loading weights:  77%|███████▋  | 223/291 [00:01<00:00, 136.00it/s]Loading weights:  82%|████████▏ | 238/291 [00:01<00:00, 128.85it/s]Loading weights:  88%|████████▊ | 257/291 [00:02<00:00, 141.01it/s]Loading weights:  94%|█████████▍| 274/291 [00:02<00:00, 142.34it/s]Loading weights:  99%|█████████▉| 289/291 [00:02<00:00, 141.66it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 125.02it/s]
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[stage13_game_theory] risk_1 (risk_math): 30/30
+[stage13_game_theory] risk_2 (risk_math): 30/30
+[stage13_game_theory] probability_1 (probability_math): 27/30
+[stage13_game_theory] probability_2 (probability_math): 12/30
+[stage13_game_theory] chain_1 (chain_math): 1/30
+[stage13_game_theory] chain_2 (chain_math): 22/30
+[stage13_game_theory] game_theory_1 (game_theory): 29/30
+[stage13_game_theory] game_theory_2 (game_theory): 30/30
+[stage13_game_theory] decision_theory_1 (decision_theory): 30/30
+[stage13_game_theory] decision_theory_2 (decision_theory): 25/30
+[stage13_game_theory] GROUP risk_math: 60/60 (100.0%)
+[stage13_game_theory] GROUP probability_math: 39/60 (65.0%)
+[stage13_game_theory] GROUP chain_math: 23/60 (38.3%)
+[stage13_game_theory] GROUP game_theory: 59/60 (98.3%)
+[stage13_game_theory] GROUP decision_theory: 55/60 (91.7%)
+[stage13_game_theory] OVERALL: 236/300 (78.7%)
+Saved math_eval_result_stage13_game_theory.json

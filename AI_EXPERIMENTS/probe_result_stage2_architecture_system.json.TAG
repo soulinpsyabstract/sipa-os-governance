@@ -1,0 +1,5 @@
+FILE=probe_result_stage2_architecture_system.json
+SHA256=80a86da29924ea226d428f8c0b6d0190fd6d7cd4464ebd03153369e7ad7fcae2
+SIZE=1561
+DEVICE=SERVER
+TS=2026-09-18__02-27-47
