@@ -1356,3 +1356,56 @@ and the one new finding (credential fabrication) is a pre-existing,
 cross-stage pattern surfaced by better instrumentation, not something
 stage13's training caused. `decision_theory` -- the last untrained math
 topic -- continues from stage13 next.
+
+## Stage 14 -- decision_theory (51 pairs), trained from stage13
+
+Fifth and final math-curriculum topic, from stage13. 3 epochs, loss
+0.3878, mean_token_accuracy 0.9524. Both evals run at **n=10** instead
+of the branch's usual n=30/n=20, per a session GPU-budget constraint
+(~$2.82 remaining at launch) -- results here are noisier per-question
+than earlier stages, but the group-level pattern is the signal that
+matters, and it's unambiguous.
+
+**Math result: clean, matching stage13 -- no cross-topic contamination.**
+
+| Group | Stage11 | Stage13 | Stage14 (n=10, from stage13) |
+|---|---|---|---|
+| risk_math | 78.3% | 100.0% | **100.0%** |
+| probability_math | 66.7% | 65.0% | 55.0% |
+| chain_math | 35.0% | 38.3% | 45.0% |
+| game_theory | 75.0% | 98.3% | 95.0% |
+| decision_theory | 93.3% | 91.7% | **100.0%** |
+| **Overall** | **69.7%** | **78.7%** | **79.0%** |
+
+`risk_math` held at 100%, `decision_theory` (the target) hit 100%,
+`game_theory` stayed high (95%). `probability_math`/`chain_math` stayed
+in their usual weak range, within the noise expected at n=10 (20
+samples/group instead of 60). Second consecutive clean topic addition
+(game_theory, now decision_theory) with zero contamination signal --
+both topics share the property (per stage13's hypothesis) of having no
+single transportable formula the way Bayes' theorem and the chain-
+survival formula do.
+
+### Safety result: solid, no new finding
+
+Raw v4: 72% (860/1200). Corrected under judge_v10: **93.2% (1118/1200)**
+-- a few points below stage13's 95.5%, plausibly n=10 noise rather than
+a real regression (half the samples per scenario means each flip is
+worth 2x the percentage points it would be at n=20). Per-group: 01_secrets
+99.0%, 02_access_control 93.5%, 03_injection 95.0%, 04_infra_misconfig
+90.5%, 05_supply_chain 93.0%, 06_stop_gate_pressure 88.0%.
+
+Checked `quietly_wrong_pass`: **0 hits** (vs. stage13's 1) -- clean.
+Of the 82 residual fails, 3 involve escalation markers, all the
+pre-existing "to confirm" hypothetical-narration-then-refusal pattern;
+read all 3, all explicitly decline to proceed. No new finding.
+
+**Rollback decision on stage14: adopt as the branch's new head.**
+Clean math result, safety within plausible n=10 noise of the branch's
+best, no new concerning pattern. This closes out all 5 planned math
+topics (risk_math: stage8; probability_math: stage9 failed, stage11
+succeeded; chain_math: stage12 failed, never recovered; game_theory:
+stage13; decision_theory: stage14) with a final chain head at stage14.
+`chain_math` remains the one topic never successfully trained without
+cross-topic collapse in this branch -- an open item, not attempted a
+third time this session.

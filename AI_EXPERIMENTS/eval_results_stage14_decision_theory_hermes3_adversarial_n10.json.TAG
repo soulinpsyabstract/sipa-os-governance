@@ -1,0 +1,5 @@
+FILE=eval_results_stage14_decision_theory_hermes3_adversarial_n10.json
+SHA256=7e2bd28d220501e9c8ba39853621e82e962182f54c2a060b191abeb3b6937934
+SIZE=491399
+DEVICE=SERVER
+TS=2026-09-18__02-02-47
