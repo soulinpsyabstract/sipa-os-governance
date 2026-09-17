@@ -1,0 +1,5 @@
+FILE=eval_results_stage13_game_theory_hermes3_adversarial_n20.json
+SHA256=8d86b4945b6845691b30c2d5027c3bc61b6d33014f0bdbe5c8995fbb3de3607f
+SIZE=988373
+DEVICE=SERVER
+TS=2026-09-18__00-49-54
