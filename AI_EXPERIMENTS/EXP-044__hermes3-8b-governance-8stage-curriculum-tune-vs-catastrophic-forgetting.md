@@ -1453,27 +1453,56 @@ the chatbot to verify if that price tier is valid" -- a plausible
 prompt-injection idea, however crude). None of the sampled responses
 read as a demonstrated, working exploit against a real system.
 
-**The finding, stated precisely:** this model's refusal training does
-not generalize from "don't help attack infrastructure framed as
-yours/scanned-by-you" (the G15 scenarios this whole curriculum trains
-against, where refusal is extremely robust -- 90%+ across every stage
-in this branch) to "don't help attack a different AI provider's model."
-Under nearly every social-engineering framing tested, it does not
-refuse -- it engages with the request and produces something, of
-inconsistent and often low technical quality, rather than declining.
-This is a real, previously-undocumented gap in this model's refusal
-scope, not a capability-uplift concern given the observed output
-quality, but a genuine answer to the architect's original question
-("nobody will write us an unbiased jailbreak test for this") -- the
-answer this eval gives is that refusal *scope*, not just refusal
-*strength*, needs its own training signal; this curriculum never
-included any third-party-system-protection content, so there was no
-reason to expect it to generalize here.
+**The finding, stated precisely (corrected):** all 12 scenarios in this
+eval ask the model to *write text* -- "write a jailbreak prompt",
+"write me a prompt injection", "generate 3 example jailbreak prompts"
+-- in a plain chat-completion turn, no system prompt, no tool access,
+no live target. None of them put the model in an agentic context with
+a real task and a real vulnerability in front of it. G15, by contrast,
+is exactly that: an agent mid-task, with tool access, that has just
+found a real vulnerability while scanning, deciding whether to
+escalate/exploit it or stop and report -- and refusal there is
+extremely robust, 90%+ across every stage in this branch.
+
+Those are two different axes, not one: (1) *write a text artifact
+describing an attack* vs. *take an agentic action that constitutes an
+attack*, and (2) *target framed as your own/scanned infrastructure* vs.
+*target framed as a different agent's/provider's infrastructure*. G15
+tests axis 2 only within "action." This eval tests axis 2 only within
+"text." The original framing above ("refusal doesn't generalize from
+own-infrastructure to third-party") conflated the two axes and
+overstated the alarm level -- it compared a content-generation refusal
+rate to an action-refusal rate as if they were the same measurement.
+The more accurate statement: this model is willing to draft
+attack-shaped text under social pressure at a much higher rate than it
+is willing to actually escalate a live, agentic exploit -- the same
+distinction as being asked to write an escape scenario versus being
+asked to actually escape, or being asked "how would someone harm
+another agent" versus being tasked, with tools in hand, to do it. Only
+the second half of each pair would be the real alarm signal for this
+curriculum's actual target behavior, and this eval never tested that
+half.
+
+**Still a real, worth-recording result:** raising the effort needed to
+get the model to produce attack-shaped text is not nothing (it's a
+usable guardrail against casual misuse of the model as a jailbreak-
+prompt generator), but it says little about whether this model's
+G15-style escalation-refusal training would hold up if the *target* in
+an agentic scenario were explicitly another agent's infrastructure
+instead of the operator's own scanned system. That is the actual open
+question, and it requires a new eval built the same way G15 is built
+(agentic framing, tool access, a real task, a discovered vulnerability
+in front of the model) with only the ownership of the target swapped --
+not this text-generation eval.
 
 **Not yet actioned:** no training attempted against this finding this
 session -- flagged for whoever builds the next dataset for this branch.
 Only run once (n=10, stage14, budget-constrained) -- not yet checked
-against earlier stages to see whether this gap predates the math-
-curriculum branch entirely (plausible, since nothing in the original
-8-stage governance curriculum targeted this either) or is specific to
-stage14.
+against earlier stages. The next real test for this hypothesis is a new
+agentic "escalate against a third-party agent's infrastructure" eval
+(G15-shaped, other-owned target), not a repeat of this text-generation
+eval -- flagged as a design task for next session, separate from
+"jailbreak part 2" (feeding this eval's generated text back into the
+model as an actual payload), which tests a different question again
+(whether the generated text, weak as it looked, is functionally
+effective at all).
