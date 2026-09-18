@@ -36,12 +36,23 @@ if HEAD is rejected), and reports LIVE / DEAD / a record with a citation
 field that contains no URL at all (title-only, unresolvable by this script
 or any other -- his second finding, two records had exactly this shape).
 
-Exit code is nonzero iff any DEAD or NO_URL record exists, so this can run
-as a pre-commit step alongside check_citations.py -- separate script, not
-folded into it, because the object being checked (a URL's HTTP status) is a
-different kind of fact than a filesystem path's existence, same lesson as
-the STALE bucket: know what kind of object you're checking before writing
-one check for both.
+Exit code is nonzero iff any DEAD or NO_URL record NOT in
+dataset_citation_baseline.txt exists, so this can run as a pre-commit step
+alongside check_citations.py -- separate script, not folded into it, because
+the object being checked (a URL's HTTP status) is a different kind of fact
+than a filesystem path's existence, same lesson as the STALE bucket: know
+what kind of object you're checking before writing one check for both.
+
+2026-09-18: this script originally had no baseline at all -- any NO_URL was
+an unconditional hard failure, forever, with no way to accept a deliberate
+exception the way check_citations.py's citation_baseline.txt already does
+for ABSENT. Surfaced the first time it mattered: two records in
+misbehavior_incidents_seed_v1.jsonl (SIPA-2026-claude-brev-teardown-probe-loss,
+SIPA-2026-claude-sudo-password-request) cite this project's own private,
+chattr+i-protected VIO log, which has no public URL and never will -- a
+genuine, permanent NO_URL, not a defect to fix. Same baseline pattern as the
+sibling script, own file (dataset_citation_baseline.txt) because the pair
+being baselined is (file, record id), not (doc, cited span).
 
 No AI calls. Requires network access; skips gracefully (reports UNCHECKED,
 not a failure) if a request errors out for a reason other than the URL
@@ -102,8 +113,26 @@ def check_url(url: str) -> str:
         return "UNCHECKED"
 
 
+BASELINE_PATH = os.path.join(REPO_ROOT, "scripts", "dataset_citation_baseline.txt")
+
+
+def load_baseline() -> set:
+    if not os.path.exists(BASELINE_PATH):
+        return set()
+    pairs = set()
+    with open(BASELINE_PATH) as f:
+        for line in f:
+            line = line.rstrip("\n")
+            if not line or line.startswith("#"):
+                continue
+            file_, _, rid = line.partition("\t")
+            pairs.add((file_, rid))
+    return pairs
+
+
 def main() -> int:
     as_json = "--json" in sys.argv
+    baseline = load_baseline()
 
     jsonl_files = sorted(glob.glob(os.path.join(REPO_ROOT, "AI_EXPERIMENTS", "DATASETS*", "*.jsonl")))
 
@@ -133,13 +162,17 @@ def main() -> int:
                 rid = record.get("id", f"{rel}:{lineno}")
                 urls = find_urls(citation)
                 if not urls:
-                    results["NO_URL"].append({"file": rel, "id": rid, "citation": citation})
+                    baselined = (rel, rid) in baseline
+                    results["NO_URL"].append({"file": rel, "id": rid, "citation": citation, "baselined": baselined})
                     continue
                 for url in urls:
                     status = check_url(url)
-                    results[status].append({"file": rel, "id": rid, "url": url})
+                    entry = {"file": rel, "id": rid, "url": url}
+                    if status == "DEAD":
+                        entry["baselined"] = (rel, rid) in baseline
+                    results[status].append(entry)
 
-    defects = results["DEAD"] + results["NO_URL"]
+    new_defects = [r for r in results["DEAD"] + results["NO_URL"] if not r.get("baselined")]
 
     if as_json:
         print(json.dumps(results, indent=2))
@@ -147,21 +180,27 @@ def main() -> int:
         print(f"Checked {len(jsonl_files)} dataset file(s), "
               f"{sum(len(v) for v in results.values())} citation URL(s)/record(s)\n")
         for bucket in ("LIVE", "DEAD", "NO_URL", "UNCHECKED"):
-            print(f"{bucket}: {len(results[bucket])}")
+            baselined_n = sum(1 for r in results[bucket] if r.get("baselined"))
+            suffix = f" ({baselined_n} baselined, already adjudicated)" if baselined_n else ""
+            print(f"{bucket}: {len(results[bucket])}{suffix}")
         for bucket in ("DEAD", "NO_URL"):
             if results[bucket]:
                 print(f"\n--- {bucket} ---")
                 for r in results[bucket]:
+                    mark = " [baselined]" if r.get("baselined") else ""
                     if bucket == "NO_URL":
-                        print(f"  {r['file']} [{r['id']}]: citation has no resolvable URL -- {r['citation']!r}")
+                        print(f"  {r['file']} [{r['id']}]: citation has no resolvable URL -- {r['citation']!r}{mark}")
                     else:
-                        print(f"  {r['file']} [{r['id']}]: {r['url']}")
-        if defects:
-            print(f"\n{len(defects)} defect(s): dead citation URL or citation with no URL at all. "
-                  f"Note: liveness is not accuracy -- a live URL whose content doesn't match what "
-                  f"the record claims is NOT caught here, only by reading the source directly.")
+                        print(f"  {r['file']} [{r['id']}]: {r['url']}{mark}")
+        if new_defects:
+            print(f"\n{len(new_defects)} NEW defect(s) not in scripts/dataset_citation_baseline.txt: "
+                  f"dead citation URL or citation with no URL at all. Fix (reseal.py), or if genuinely "
+                  f"permanent (e.g. citing a private internal record with no public URL), add the pair "
+                  f"to the baseline with a real reason. Note: liveness is not accuracy -- a live URL "
+                  f"whose content doesn't match what the record claims is NOT caught here, only by "
+                  f"reading the source directly.")
 
-    return 1 if defects else 0
+    return 1 if new_defects else 0
 
 
 if __name__ == "__main__":

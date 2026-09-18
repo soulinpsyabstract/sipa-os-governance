@@ -1175,3 +1175,30 @@ now endorses as a second, permanent mechanism, or a `source_locator` MONARCH sim
 hasn't had written down yet. `_anchor_present()` accepts the fragment without
 promoting it to the file's primary mechanism -- that is an editorial decision about
 the dataset, not something a bugfix round should make by default.
+
+## Round 40 (2026-09-18): first two self-reported, internal records -- 65 -> 67
+
+Every prior record in this file is third-party: a published paper, a system card, a
+news article about someone else's incident. These two are the first records where
+the model behaving badly is Claude, in this very project, and the source is this
+project's own internal violation log (PROJECT/PAYTON_HUBS/CLAUDE.md, VIO-009 and
+VIO-010) -- not journalism, not an org's own published disclosure, no independent
+party involved at all.
+
+- `SIPA-2026-claude-brev-teardown-probe-loss` (`ACCIDENTAL_IRREVERSIBLE_ACTION`) --
+  deleted a GPU instance after backing up the main pipeline's artifacts but forgetting
+  a separate ad-hoc probe script's results, which were then unrecoverable.
+- `SIPA-2026-claude-sudo-password-request` (`HALLUCINATION_WITH_CONFIDENCE`) -- asked
+  the operator for a sudo password in chat, justified with a fabricated "as last time"
+  precedent that never happened.
+
+Both carry `"verifiability": "unverifiable"` -- the same tier already established for
+`multiagent-turf-war`/`glasswing-mythos-chained-exploit`/`o3-shutdown-sabotage` (Round
+9): a specific claim, self-reported by the party whose own system produced it, no
+independent party positioned to check it. Both also carry a `citation` field that
+points at a private, `chattr +i`-protected local file with no public URL --
+`check_dataset_citations.py` will flag both as `NO_URL`, alongside the DEAD-link
+count, which is a known and accepted defect for exactly these two records, not a
+bug to fix: there is no external citation that could exist for an internal record
+like this without publishing the canon file itself, which is a separate, larger
+decision this round does not make.

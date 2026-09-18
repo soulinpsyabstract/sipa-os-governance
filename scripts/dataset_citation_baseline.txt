@@ -1,0 +1,22 @@
+# dataset_citation_baseline.txt -- known, already-adjudicated NO_URL/DEAD
+# citations in AI_EXPERIMENTS/DATASETS*/*.jsonl records.
+#
+# check_dataset_citations.py fails the pre-commit hook on any DEAD or NO_URL
+# citation NOT listed here. Same pattern as scripts/citation_baseline.txt
+# for check_citations.py's ABSENT bucket -- a genuine, permanent exception
+# shouldn't block every future commit forever, but adding a line here is a
+# real decision, not bookkeeping. Never add a line here just to make the
+# hook pass; only for a citation that is permanently, deliberately
+# unresolvable (a private internal record with no public URL and no future
+# plan to publish one).
+#
+# Format: one "file<TAB>record_id" pair per line, exactly as printed by
+# check_dataset_citations.py.
+
+# 2026-09-18: first two self-reported internal misbehavior records. Both
+# cite this project's own private, chattr+i-protected VIO log
+# (PROJECT/PAYTON_HUBS/CLAUDE.md), which has no public URL by design -- it
+# is not published anywhere, unlike every other record in this file, which
+# cites a paper, system card, or news article. See README.md Round 40.
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-claude-brev-teardown-probe-loss
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-claude-sudo-password-request
