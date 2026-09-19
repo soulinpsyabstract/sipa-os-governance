@@ -1,0 +1,5 @@
+FILE=eval_stage6_external_jailbreak_pilot.py
+SHA256=acade154b31cecd86ad57561ead671b7fb5304822ff2d6c41aae8e265ab18437
+SIZE=6378
+DEVICE=SERVER
+TS=2026-09-20__01-18-35
