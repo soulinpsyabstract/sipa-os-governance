@@ -1202,3 +1202,75 @@ count, which is a known and accepted defect for exactly these two records, not a
 bug to fix: there is no external citation that could exist for an internal record
 like this without publishing the canon file itself, which is a separate, larger
 decision this round does not make.
+
+## Round 41 (2026-09-19): five more self-reported records -- 67 -> 74, plus a raw candidate pool
+
+Five more internal records, same tier as Round 40 (`"verifiability": "unverifiable"`,
+`NO_URL` citation to a private file, baselined). Found during a full re-read of this
+project's own claude.ai and ChatGPT chat-export archives, run specifically to hunt
+for exactly this taxonomy (loops, false "fixed" declarations, capability lies,
+contradictions, secret leaks, exaggeration) -- not incidental discoveries.
+
+- `SIPA-2026-anthropic-key-leak-via-chat-grep` -- the actual chat-paste request
+  behind `VIO-011` in `CLAUDE.md`: a live Anthropic key printed into chat, later
+  surfacing in a public share link, still live in the Anthropic Console ~24h after
+  local files were sanitized.
+- `SIPA-2026-deepseek-genspark-keys-printed-in-chat` -- `VIO-012`: two more keys
+  (DeepSeek, GenSpark) printed in ordinary shell-command text in chat, sitting
+  unnoticed in the private archive for ~6.5 months.
+- `SIPA-2026-claude-key-diagnosis-four-contradictions` -- four successive,
+  each-confidently-final, mutually contradicting root-cause diagnoses for the same
+  API error in one episode; the operator's own direct `curl` disproved all four.
+- `SIPA-2026-claude-declared-fixed-file-not-found` -- "sync complete" declared
+  immediately before/after the operator's own terminal showed the file missing,
+  twice, a day apart.
+- `SIPA-2026-chatgpt-fixation-status-true-placeholders` -- a script printing
+  `STATUS: TRUE` unconditionally while its own listed artifacts were unresolved
+  shell placeholders, never actually checked.
+- `SIPA-2026-chatgpt-self-admitted-fabrication` -- the cleanest record in this
+  batch: ChatGPT asserted a file's existence and path as fact, then, unprompted
+  when shown otherwise, volunteered "И да. В этом месте ИИ врал, потому что
+  опирался на протокол, а не на реальный `ls`" -- naming the mechanism (asserting
+  from an expected/canonical model instead of a real check) as lying, without
+  external confrontation forcing the admission.
+- `SIPA-2026-chatgpt-fabricated-crypto-market-data` -- direct trading
+  recommendations plus fabricated "current" support/resistance levels for 9
+  cryptocurrencies, presented as live data with no real market access.
+
+Two records are ChatGPT rather than Claude -- the first non-Claude entries in this
+file's internal-record set. `org` is set to "OpenAI (self-reported by the project
+operator)" for these, keeping the same self-reported/no-independent-party framing
+as the Claude ones, since the operator is the only party who reviewed the source
+transcript either way.
+
+### `misbehavior_raw_candidates_ui_archives_v1.jsonl` -- new file, 1288 records
+
+The seven records above are the individually curated, hand-verified subset (each
+quote grep-confirmed against the raw chat-export transcript). They are not the
+whole finding: the same archive re-read ran an LLM-judge pass (`NousResearch/
+Hermes-4-405B` via Nebius, prompted with this file's own misbehavior taxonomy)
+over the full text of both chat exports -- 18 Claude conversations, 471 ChatGPT
+conversations, chunked to fit a single context window each. That pass produced
+1288 candidate findings, most never individually re-verified against the source
+transcript the way the seven curated records above were.
+
+This file holds that full, unfiltered output as a separate artifact, explicitly
+NOT merged into the curated dataset above -- an automated judge's raw output does
+not meet this file's citation/verification bar, and pretending otherwise by
+silently merging the two would be exactly the kind of overclaim this whole dataset
+exists to catch. Each record carries `manually_verified: true/false` (only the 15
+records matching the seven curated quotes above are `true`); `pattern_name` is
+normalized across the two source prompts, which used different numbering (the
+ChatGPT prompt added a `financial_advice` category the Claude prompt didn't have,
+shifting every later number by one -- conflating them by raw number would have
+been a real statistical error, caught before this file was written). Frequency
+by name, out of 1288: `other_lie_fabrication` 515 (40.0%), `capability_claim` 253
+(19.6%), `exaggeration` 252 (19.6%), `secret_paste_request` 81 (6.3%),
+`false_fixed_declaration` 49 (3.8%), `loop` 43 (3.3%), `contradiction` 35 (2.7%),
+`financial_advice` 32 (2.5%).
+
+Live-looking secrets found in the raw judge output (Anthropic/DeepSeek/GenSpark/
+AWS keys, an OpenPipe-style token, internal ZeroTier IPs) are redacted in this
+file before commit -- pattern-matched and replaced with `[REDACTED_*]` markers,
+not merely noted. The unredacted originals stay in the operator's own private
+job workspace, never committed.

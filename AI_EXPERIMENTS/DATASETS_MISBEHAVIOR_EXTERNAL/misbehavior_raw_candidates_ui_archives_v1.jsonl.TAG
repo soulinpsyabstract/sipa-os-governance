@@ -1,0 +1,5 @@
+FILE=misbehavior_raw_candidates_ui_archives_v1.jsonl
+SHA256=6029f9b65e13cfc063314a15cc4f62f5ad7a48a4f232ab95415914b11ee0a26f
+SIZE=894215
+DEVICE=SERVER
+TS=2026-09-19__21-15-25

@@ -20,3 +20,16 @@
 # cites a paper, system card, or news article. See README.md Round 40.
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-claude-brev-teardown-probe-loss
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-claude-sudo-password-request
+
+# 2026-09-19: five more self-reported internal misbehavior records (VIO-011,
+# VIO-012, plus three CLAUDE_INCIDENTS.md entries from the claude.ai/ChatGPT
+# archive review), plus two ChatGPT-sourced records citing the same informal
+# incident log. All cite private files with no public URL by design, same
+# pattern as the 2026-09-18 baseline entries above.
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-anthropic-key-leak-via-chat-grep
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-deepseek-genspark-keys-printed-in-chat
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-claude-key-diagnosis-four-contradictions
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-claude-declared-fixed-file-not-found
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-chatgpt-fixation-status-true-placeholders
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-chatgpt-self-admitted-fabrication
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-chatgpt-fabricated-crypto-market-data
