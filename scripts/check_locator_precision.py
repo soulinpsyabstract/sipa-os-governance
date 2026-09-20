@@ -1324,9 +1324,78 @@ citations, checked today, don't clear even "section," so reaching for a
 finer rung than that would repeat the exact mistake round 18 named: writing
 down a precision claim before the source was opened to see what it affords.
 
+Round 41 (dipankarsarkar): three threads, one provenance correction owed
+by the other side of this exchange, not by him.
+
+First, a correction to a mistake made responding to him, said plainly: he
+cited five commit hashes (a4818e9e, 18aa3ef4, d8931d59, ef0bec1c, 52f8b120)
+as evidence for a span-census walk across five revisions. Checked against
+the local git clone (git cat-file, git reflog --all, git fsck
+--unreachable, a direct search of .git/objects/ by prefix) and found none
+of them -- and said so, twice, calling it fabrication. Wrong: this
+project's HF dataset mirror (SoulInPsyAbstract/sipa-os-governance,
+scripts/hf_mirror_push.py) keeps its own separate git history, one commit
+per "Mirror GitHub commit X" push, and all five hashes resolve there
+immediately, timestamps matching his citations to the minute. The mistake
+was checking one of two real git histories this project has and
+concluding absence from reality rather than absence from the half that was
+checked -- the same failure shape this file's own citations have been
+built to catch in secondary sources, now caught in a live exchange instead
+of a paper trail.
+
+Second, the span-census finding underneath the corrected provenance: 0
+"located AND carries a 40+-char quoted span" records at his round-34
+baseline, 6 at current HEAD (AISI, MONARCH, ANTHROPIC-2026-deepseek-
+distillation-relay, and the three round-40 document-precision records).
+His question: when a record carries both, which one is the citation, and
+do they have to agree? Checked all six by hand, not by formula: AISI's
+figures sit inside the "What we found" section its locator names (round
+29's own verification); MONARCH's quote IS the GitHub comment its locator
+points at (round 39/40); ANTHROPIC-2026-deepseek-distillation-relay's
+"12.1 million exchanges" quote is, verbatim, "the section's closing
+sentence" its own source_locator already describes. The three document-
+precision records agree trivially -- a document-level claim has no finer
+position to contradict, so any quote from that document is consistent
+with it by construction. All six agree, checked, not assumed. Not
+mechanized: verifying a quote sits where a locator claims requires either
+a live fetch (this file's own round-28 finding: HTTP 200 means a URL
+resolves, not that anyone read what's there) or trusting the locator
+text's own prose, which is exactly the self-asserted-fact problem round 22
+closed for source_structured. The honest answer is the same one this
+docstring already gives for locator_precision and locator_ceiling values
+themselves: correctness stays a human-checked judgment call, made fresh
+each time a record newly carries both fields, not something this checker
+asserts by formula.
+
+Third, a real fixture, tested before shipping: ANTHROPIC-2026-deepseek-
+distillation-relay's source_locator opens with a PDF title containing the
+word "and" ("Detecting and countering misuse of AI"), inert today only
+because the record's citation has no repo host yet. The day its citation
+gains the extracted-file path its own source_locator already says this
+project produced (pypdf text extraction), a word-boundary delimiter on
+"and" -- proposed, not shipped -- would truncate the anchor head at the
+title and flip source_structured from True to False silently. Added
+FIXTURE-word-delimiter-not-a-rung, symmetric to round 36's
+FIXTURE-over-split-guard (that one guards single-character delimiters,
+this one guards word-boundary ones): reproduces exit 0 today, reran with
+an 'and'/' to '/' of ' word-rung spliced into _ANCHOR_SPLIT_RE on a
+throwaway copy of this file and confirmed FAIL on exactly this fixture,
+by name, then reverted and confirmed exit 0 restored -- not asserted from
+the punctuation fixtures' behavior, checked on its own.
+
+Correction to the round-41 message itself, found running the matrix
+rather than re-reading it: "see" was proposed as a safe word alongside
+"then", "with", "plus", "in", "from", "at", "via", "described in" --
+it isn't. "see" already breaks FIXTURE-over-split-guard (round 36),
+whose source_locator opens with the literal word "see" ("see the attached
+file (run 3): outputs/final-report.csv") -- a word-boundary split there
+truncates the head to "see", drops the .csv, flips an existing True
+fixture to False. "described in" (also in that same fixture's tail) was
+checked separately and is safe, as claimed.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-20, in direct response to dipankarsarkar's
-rounds 12 through 40.
+rounds 12 through 41.
 """
 
 import json
