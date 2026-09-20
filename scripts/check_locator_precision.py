@@ -1259,9 +1259,74 @@ are a real second carrier worth documenting as such, but that is an
 editorial call about the dataset, not something this round's fix should
 decide by default.
 
+Round 40 (dipankarsarkar, 2026-09-20): re-verified the round-39 push at
+9c518f9 byte-identical, then ran it unmodified against HEAD's 12 new
+records and got FAIL, 6 violations, not the exit-0 the round-39 commit
+shipped with -- three new records (GOOGLE-2026-gemini-irregular-ctf-
+breakout, USMIL-2026-china-ship-ai-hallucinated-intel-report, OPENAI-2026-
+sol-astra-successor-concealment-notes) were added with
+locator_precision=locator_ceiling="paragraph", off the LADDER entirely, so
+`lc not in LADDER` fired and its `continue` masked the anchor check on the
+same three records too -- exercised by construction the same week the
+records were added, same shape as every prior round's find.
+
+Fixed the data first, by opening what could actually be opened: TechCrunch
+(the OpenAI record's citation) fetched directly, confirmed zero internal
+h2/h3 headings, continuous prose start to finish -- "document" is this
+source's genuine, verified ceiling, not an underclaim. CNBC (Google record)
+and CNN (USMIL record) both blocked on direct fetch (403 and 451
+respectively, checked the same way this file already documents openai.com's
+403 in rounds 27/31) -- structure not independently verifiable right now,
+so both also set to "document", the honest floor given what could actually
+be checked today, not an assumption that no finer structure exists. All
+three: locator_precision=locator_ceiling="document"=lp==lc so
+locator_exhaustive=True, source_locator states plainly what was checked
+(TechCrunch's confirmed flat structure, or the CNBC/CNN fetch block) rather
+than asserting a fragment that doesn't exist.
+
+Then the sharper find, against the checker itself: dipankarsarkar noticed
+`_anchor_present()`'s citation-fragment carrier (round 39's MONARCH
+accommodation) cannot tell a real URL fragment from a literal '#' inside
+prose. This file's own internal NO_URL citations read "...CLAUDE_INCIDENTS.
+md, entry #13 (private, not publicly resolvable -- no external URL exists
+for this record)" -- non-empty text sits after that '#', so a record set to
+locator_precision="section" with that exact citation and no source_locator
+passes the round-39 anchor check clean. He demonstrated this on a scratch
+copy (SIPA-2026-chatgpt-self-admitted-fabrication, promoted there only,
+never touching the tracked file) rather than arguing it, and it reproduces
+here identically: reran the same construction independently before touching
+anything, confirmed exit 0 on the exploit as he described it, then restored
+and confirmed the tracked file itself was never edited by his probe.
+
+His fix, applied verbatim: single carrier, not two. `_anchor_present()` now
+checks source_locator only. MONARCH-2026-dismech-agent-scope-overreach's
+citation-fragment anchor (its GitHub comment permalink's own
+'#issuecomment-...' suffix, the only '#' among all 65 citations at round
+39) is moved into an explicit source_locator naming the same permalink and
+the maintainer's quote it was always standing in for -- uniform with every
+other located record's carrier now, not a second, weaker mechanism living
+in citation. Re-ran the SIPA-2026-chatgpt-self-admitted-fabrication exploit
+against the tightened checker on a fresh scratch copy: FAIL, caught by
+name, same message the round-39 anchor check already used for a record with
+no carrier at all -- the two-carrier version's specific hole is closed, not
+patched around. Full corpus re-verified clean after both fixes: exit 0,
+n=78, 0 violations.
+
+His closing question -- is "paragraph" a real sixth rung below "section"
+for prose sources, or were these three simply typed one level too fine --
+is answered here as the second, for these three specifically: neither
+"section" (no anchored or nameable heading was actually found -- TechCrunch
+has none, CNBC/CNN couldn't be checked) nor a new "paragraph" rung was
+earned by opening the source, so "document" is what the evidence in hand
+actually supports. This does not foreclose a genuine "paragraph" rung
+existing for some future prose source -- it says these three specific
+citations, checked today, don't clear even "section," so reaching for a
+finer rung than that would repeat the exact mistake round 18 named: writing
+down a precision claim before the source was opened to see what it affords.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
-Claude, 2026-09-01 through 09-15, in direct response to dipankarsarkar's
-rounds 12 through 39.
+Claude, 2026-09-01 through 09-20, in direct response to dipankarsarkar's
+rounds 12 through 40.
 """
 
 import json
@@ -1356,17 +1421,23 @@ def derive_source_structured(citation, source_locator) -> bool:
 def _anchor_present(record) -> bool:
     """Round 39 (dipankarsarkar): a located record (locator_precision is not
     None) asserts that someone found a specific position in the source. This
-    checks that the record still carries evidence of where -- a non-empty
-    source_locator, or (MONARCH's case) a non-empty fragment after '#' in
-    citation, which round 35 used as a de facto position-anchor without ever
-    writing it into source_locator. Either carrier counts; this does not
-    judge which one a record *should* use, only whether at least one exists."""
-    if record.get("source_locator"):
-        return True
-    citation = record.get("citation") or ""
-    if "#" not in citation:
-        return False
-    return bool(citation.split("#", 1)[1].strip())
+    checks that the record still carries evidence of where.
+
+    Round 39 originally accepted a non-empty source_locator OR a non-empty
+    fragment after '#' in citation (MONARCH's case: a GitHub comment
+    permalink's own '#issuecomment-...' fragment, used as a de facto anchor
+    without ever being written into source_locator). Same round, follow-up
+    (dipankarsarkar): the citation-fragment carrier cannot distinguish a real
+    URL fragment from a literal '#' inside prose. Demonstrated: this file's
+    own internal NO_URL citations read like "...CLAUDE_INCIDENTS.md, entry
+    #13 (private, not publicly resolvable -- no external URL exists for this
+    record)" -- non-empty text sits after that '#', so the two-carrier
+    version certifies an anchor on a citation that states outright it cannot
+    be resolved. Fixed: single carrier. source_locator only. MONARCH's
+    fragment was moved into an explicit source_locator (same commit), making
+    it uniform with every other located record instead of a second, weaker
+    mechanism living in a different field."""
+    return bool(record.get("source_locator"))
 
 
 # Round 38 (dipankarsarkar): the anchor's own split characters, as a set --
