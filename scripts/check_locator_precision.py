@@ -1393,9 +1393,70 @@ truncates the head to "see", drops the .csv, flips an existing True
 fixture to False. "described in" (also in that same fixture's tail) was
 checked separately and is safe, as claimed.
 
+Round 42 (dipankarsarkar): re-ran round 41 at HEAD 110b943 first, unmodified
+-- exit 0, n=78, all eight fixtures silent, provenance closed, no further
+action on hashes. Then asked the question round 41 didn't: not just does a
+word-rung break a fixture, but WHICH spelling of the word-rung, tested
+against each fixture's expected_head rather than only its pass/fail. Three
+spellings per candidate word -- bare (unanchored substring), \bword\b
+(word-boundary), " word " (space-padded) -- against FIXTURE-over-split-guard
+("see the attached file...") and FIXTURE-tail-extension-discarded /
+FIXTURE-comma-only-delimiter-round26-regression (both open "the referenced
+run directory"). Reproduced independently, byte for byte: bare "see" and
+\bsee\b both collapse the head to '' (empty string; a word at position 0 of
+the source_locator has no boundary in front of it for \b to require, so it
+matches there same as bare does) -- " see " never matches at position 0,
+because a string-initial word has no leading space, and correctly returns
+the full head. Separately, bare "to" matches the substring inside
+"directory" itself (d-i-r-e-c-TO-ry) and truncates the head mid-word on
+both directory-fixtures -- \bto\b and " to " do not, since "directory" has
+letters on both sides of that substring and no boundary exists there.
+
+The round-41 fixture spliced 'and' bare and tested 'to'/'of' only spaced --
+inconsistent spellings across the same matrix. For 'and'/'to'/'of'
+specifically this doesn't matter: FIXTURE-word-delimiter-not-a-rung fails
+correctly in all three spellings for all three words (spelling-robust,
+confirmed by the same matrix) -- but that robustness is a property of
+which words got tested, not evidence the fixture would catch an arbitrary
+future word-rung regardless of how it's spelled. FIXTURE-over-split-guard
+is the one fixture whose locator opens with a candidate word at all, so
+it's the only one where the bare/\b vs spaced distinction is observable --
+carrying that entire axis on one word, by coincidence of which fixture
+happens to start that way, not by design.
+
+Answering the question directly: the file does not want the word "and"
+forbidden. "and" was the word real data (ANTHROPIC-2026-deepseek-
+distillation-relay's PDF title) happened to surface first. What the file
+wants forbidden is any delimiter rung -- whatever word or spelling backs
+it -- that can match at position 0 of a source_locator and truncate the
+head to empty or to a fragment of the first word. A future word-rung
+spelled with \b or bare is exactly as dangerous as "and" was; one spelled
+with mandatory leading/trailing spaces is not, for locators that don't
+open mid-sentence -- but "not observed dangerous on today's 78 records"
+is not the same claim as "safe as a rule", since the corpus's next new
+record could open with the word in question. Methodology note for next
+time: verifying a word-rung's safety means testing bare + \b + spaced
+against expected_head, not picking one spelling and generalizing from it
+-- a single spelling would have called "see" safe or "to" catastrophic
+depending which one got picked, as it did here.
+
+Citation nit (dipankarsarkar, checked and confirmed not a liveness bug):
+FIXTURE-word-delimiter-not-a-rung's citation is the only one of eight
+without the "(synthetic fixture, not a real incident)" suffix, and the
+only one naming a repo this project actually owns rather than example-org
+-- deliberate, not an oversight, since the fixture exists to mirror the
+specific real record (ANTHROPIC-2026-deepseek-distillation-relay) whose
+citation doesn't have a repo-host-cited path YET but will once its PDF is
+extracted to exactly this path. That's also why the path 404s today: it
+doesn't exist yet, same as the real record it mirrors. check_dataset_
+citations.py skips every record with fixture: true regardless, so this
+was never a machine-checked gap -- only a human reading the file cold
+would misread it as a live path. Annotated in place below so that
+misreading stops being possible without re-deriving this paragraph.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-20, in direct response to dipankarsarkar's
-rounds 12 through 41.
+rounds 12 through 42.
 """
 
 import json
