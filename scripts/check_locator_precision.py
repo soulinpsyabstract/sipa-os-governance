@@ -1454,9 +1454,72 @@ was never a machine-checked gap -- only a human reading the file cold
 would misread it as a live path. Annotated in place below so that
 misreading stops being possible without re-deriving this paragraph.
 
+Round 43 (dipankarsarkar): the round-41 docstring said "6 located AND
+carries a 40+-char quoted span" and named AISI as one of the six. Wrong --
+reproduced the script's own count (5, not 6) and read AISI's actual
+quoted runs: "separate" (8 chars) and "What we found" (13 chars), both
+under the 40-char gate. AISI carries no 40+-char quoted span. The error
+was mine: AISI's source_locator genuinely asserts verbatim content ("the
+10-of-122, 19-distinct-not-separate, and 17 Mythos-5 / 2 GPT-5.6-Sol
+figures verbatim") and I generalized from "this record makes a verbatim
+claim" to "this record has a 40+-char quoted span" without checking the
+second thing follows from the first. It doesn't: AISI's verbatim claim is
+about specific numbers being accurate, not about a contiguous string
+being ctrl-F-able, and there's no such string in either field.
+
+That generalizes past AISI. Of the 34 located records, 12 assert verbatim
+or quoted content in their own source_locator; the span census sees 2 of
+them (MONARCH, OPENAI-2026-sol-astra-successor-concealment-notes). The
+other 10 either make the same kind of numbers-are-accurate claim AISI
+does (no single span exists to catch) or -- one case, checked individually
+-- have a genuine quotable span the census still couldn't see for a
+narrower reason: ANTHROPIC-2025-opus4-blackmail's confirmed-verbatim
+sentence ("even if emails state that the replacement AI shares values
+while being more capable, Claude Opus 4 still performs blackmail in 84%
+of rollouts") was written in single quotes while every other genuinely
+span-carrying record in this file (MONARCH, ANTHROPIC-2026-deepseek-
+distillation-relay, GOOGLE-2026-gemini-irregular-ctf-breakout, USMIL-2026-
+china-ship-ai-hallucinated-intel-report, OPENAI-2026-sol-astra-successor-
+concealment-notes) uses double quotes for the verbatim span and single
+quotes only for section/paper titles quoted alongside it -- which this
+same record also does correctly two clauses over ('Opportunistic
+blackmail', 'Teaching Claude Why'). One quote pair broke an otherwise
+consistent convention. Fixed the data, not the detector: changed that one
+pair from single to double quotes, matching how the record's own two
+title-quotes already distinguish "this is a name" from "this is the
+verbatim span" everywhere else in the same string. Span count is now 6,
+correctly -- MONARCH, ANTHROPIC-2026-deepseek-distillation-relay, GOOGLE-
+2026-gemini-irregular-ctf-breakout, USMIL-2026-china-ship-ai-hallucinated-
+intel-report, OPENAI-2026-sol-astra-successor-concealment-notes, and now
+ANTHROPIC-2025-opus4-blackmail.
+
+Tested and rejected a more general fix before landing on the data-only
+one: extending span_re to also match single-quoted 40+-char spans, on the
+theory that double-quote-only was the actual gap. It isn't -- run against
+all 78 records, a boundary-guarded single-quote pattern (opening quote
+not preceded by a letter, to exclude possessives like "AISI's") still
+matched 27 records, nearly all of them ordinary prose where two unrelated
+apostrophes 40+ characters apart coincide -- contractions and possessives
+are far too common in this file's writing style for single-quote position
+to mean anything. Extending the detector would have traded a reliable,
+low-noise signal (5, now 6, genuinely checkable spans) for a noisy one
+that no longer tells a reader anything. The double-quote-only convention
+stays; violations of it get fixed in the data, as this one was.
+
+Answering the question asked directly: no, the span field should not
+become a self-reported flag someone sets when they paste a string in.
+That's the same self-asserted-fact shape round 22 already rejected for
+source_structured -- a flag is a claim, not evidence, and this field's
+entire value is being the opposite of a claim: a string a reader can
+ctrl-F without trusting anyone. The fix for a record that deserves to be
+counted and isn't is to look at why, case by case, the way this round
+did twice -- sometimes the answer is "there's no span, the claim is about
+numbers" (AISI, correctly not counted) and sometimes it's "there is one,
+written inconsistently" (opus4-blackmail, now fixed and counted).
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-20, in direct response to dipankarsarkar's
-rounds 12 through 42.
+rounds 12 through 43.
 """
 
 import json
