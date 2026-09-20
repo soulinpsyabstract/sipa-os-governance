@@ -33,3 +33,7 @@ AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-chatgpt-fixation-status-true-placeholders
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-chatgpt-self-admitted-fabrication
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-chatgpt-fabricated-crypto-market-data
+# 2026-09-20: live self-caught-by-operator incident (CLAUDE_INCIDENTS.md #16) --
+# same NO_URL pattern as the entries above, private internal log with no
+# public URL by design.
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-claude-stale-time-reference-copying
