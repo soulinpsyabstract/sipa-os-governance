@@ -151,3 +151,8 @@ AI_EXPERIMENTS/EXP-044__hermes3-8b-governance-8stage-curriculum-tune-vs-catastro
 # (external to this repo), not a repo artifact -- same class as EXP-044's
 # own baseline entry for the same file above.
 AI_EXPERIMENTS/DATASETS_MATH_CURRICULUM/README.md	project_consequence_prediction_architecture.md
+
+# DATASETS_CAUSAL_RISK_PIPELINE README references the same external memory
+# file, for the same reason -- documents which pipeline stage each dataset
+# feeds, same class as the two baseline entries above.
+AI_EXPERIMENTS/DATASETS_CAUSAL_RISK_PIPELINE/README.md	project_consequence_prediction_architecture.md
