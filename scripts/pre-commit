@@ -45,6 +45,17 @@
 # to; source_locator fields naming the exact table/section are the manual
 # discipline for that, not something this script enforces.
 #
+# Round 19, same reviewer: "What is supposed to check a seal that nothing
+# cites?" Both checks above are citation-driven -- they only ever look at
+# a file because some doc mentioned its name. scripts/citation_baseline.txt,
+# scripts/dataset_citation_baseline.txt, and scripts/install-hooks.sh are
+# never cited by any doc, so all three sat stale for weeks (one of them
+# broken again by this very hook's own maintenance a commit ago) with
+# every check above exiting 0. scripts/check_seals.py is citation-
+# independent: it walks every *.sha256 in the tree and verifies it against
+# its target's current content regardless of whether anything ever names
+# that file.
+#
 # .git/hooks/ is not tracked by git, so this file lives in scripts/ and has
 # to be installed once per clone: scripts/install-hooks.sh does that.
 set -euo pipefail
@@ -54,3 +65,4 @@ trap 'rm -rf "$tmp"' EXIT
 git archive --format=tar "$(git write-tree)" | tar -x -C "$tmp"
 python3 "$tmp/scripts/check_citations.py"
 python3 "$tmp/scripts/check_dataset_citations.py"
+python3 "$tmp/scripts/check_seals.py" "$tmp"

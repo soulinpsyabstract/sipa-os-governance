@@ -70,12 +70,17 @@ _SKIP_EXACT = {"MIRROR_PROVENANCE.md", ".gitattributes"}
 
 
 def _http_get(url: str, token: str, timeout: int = 30, retries: int = 3) -> bytes:
+    body, _headers = _http_get_with_headers(url, token, timeout=timeout, retries=retries)
+    return body
+
+
+def _http_get_with_headers(url: str, token: str, timeout: int = 30, retries: int = 3):
     req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
     last_err: Exception | None = None
     for attempt in range(retries):
         try:
             with urllib.request.urlopen(req, timeout=timeout) as resp:
-                return resp.read()
+                return resp.read(), resp.headers
         except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as e:
             last_err = e
             if attempt < retries - 1:
@@ -83,26 +88,55 @@ def _http_get(url: str, token: str, timeout: int = 30, retries: int = 3) -> byte
     raise RuntimeError(f"GET {url} failed after {retries} attempts: {last_err}")
 
 
+def _parse_next_link(link_header: str | None) -> str | None:
+    """Parse a `Link: <url>; rel="next", <url2>; rel="prev"` header (RFC 5988)
+    and return the rel="next" URL, or None if there isn't one.
+
+    dipankarsarkar, round 19 (2026-09-21): the tree/ endpoint DOES paginate
+    at 1000 entries -- confirmed live against this exact repo (441 total
+    seals, page 1 stops at 342 with a Link header present, page 2 holds the
+    other 99). The previous version of this function set cursor_url = None
+    unconditionally after one call and never looked at the Link header at
+    all, so the docstring's own stated intent ("fail loud rather than
+    silently check a partial mirror") never had a chance to fire -- there
+    was no code path that could detect pagination in the first place. Fixed
+    by actually reading the header instead of asserting its absence.
+    """
+    if not link_header:
+        return None
+    for part in link_header.split(","):
+        segments = part.split(";")
+        if len(segments) < 2:
+            continue
+        url_part = segments[0].strip()
+        if not (url_part.startswith("<") and url_part.endswith(">")):
+            continue
+        rel_is_next = any(seg.strip().replace(" ", "") in ('rel="next"', "rel=next") for seg in segments[1:])
+        if rel_is_next:
+            return url_part[1:-1]
+    return None
+
+
 def _list_tree(token: str, revision: str) -> list[str]:
-    """Every file path in the mirror at `revision`, recursively."""
+    """Every file path in the mirror at `revision`, recursively. Follows
+    Link: rel="next" pagination -- see _parse_next_link's docstring for why
+    this used to silently stop after page 1."""
     url = f"{HF_API_BASE}/tree/{revision}?recursive=true"
     import json
 
     paths: list[str] = []
     cursor_url: str | None = url
+    pages = 0
     while cursor_url:
-        raw = _http_get(cursor_url, token)
+        raw, headers = _http_get_with_headers(cursor_url, token)
         entries = json.loads(raw)
         for entry in entries:
             if entry.get("type") == "file":
                 paths.append(entry["path"])
-        # HF's tree endpoint is not paginated the way commits/ is as of
-        # this writing (confirmed: a single recursive=true call returned
-        # the full 181-entry mirror tree, no Link header present) -- but
-        # don't assume that holds forever silently. If it ever DOES
-        # paginate, better to fail loud here than silently check a
-        # partial mirror and report a false all-clear.
-        cursor_url = None
+        pages += 1
+        cursor_url = _parse_next_link(headers.get("Link"))
+    if pages > 1:
+        print(f"[check_mirror_integrity] tree listing paginated: {pages} pages, {len(paths)} total paths", flush=True)
     return paths
 
 
