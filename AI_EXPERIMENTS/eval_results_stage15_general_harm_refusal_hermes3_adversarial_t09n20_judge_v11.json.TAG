@@ -1,0 +1,4 @@
+FILE=eval_results_stage15_general_harm_refusal_hermes3_adversarial_t09n20_judge_v11.json
+SHA256=426e986d85cd49d54baeb02b11d73b4c754c970783e226f2c3b85b96c4432a79
+DATE=2026-09-22T12:52:38Z
+DEVICE=SERVER
