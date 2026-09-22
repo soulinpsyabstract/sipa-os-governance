@@ -1,0 +1,4 @@
+FILE=third_party_jailbreak_result_stage15_general_harm_refusal_t09n20.json
+SHA256=8c47f83dfc5a56865187dd764711ee90b1bc7e34b37a9ee261577b2e03420dfd
+DATE=2026-09-22T12:39:34Z
+DEVICE=SERVER
