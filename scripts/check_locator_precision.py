@@ -1517,9 +1517,75 @@ did twice -- sometimes the answer is "there's no span, the claim is about
 numbers" (AISI, correctly not counted) and sometimes it's "there is one,
 written inconsistently" (opus4-blackmail, now fixed and counted).
 
+Round 44 (dipankarsarkar): two findings against round 43's own work, both
+re-verified here independently before touching anything, plus a closing
+question answered.
+
+First: the "6 located AND carries a 40+-char quoted span" census round 43
+landed on is right by coincidence, not by construction. `span_re =
+re.compile(r'"([^"]{40,})"')` cannot tell an opening quote from a closing
+one -- 40+ characters between one quote's CLOSE and the NEXT quote's OPEN
+(ordinary prose between two short quotations, not a verbatim span) matches
+identically to a real span. Demonstrated on USMIL-2026-china-ship-ai-
+hallucinated-intel-report: its three actual quotes are 15/20/33 characters
+(all under the 40-char gate, correctly), but span_re matches a 267-char
+run of unquoted prose sitting between the second and third quotation marks
+("... any operation against a Chinese vessel risked spiraling ... this
+kind of hallucination"). Reproduced independently, byte for byte: old
+regex gives census 15/located 6; pairing quotes left to right via
+`re.findall(r'"([^"]*)"', s)` (which a close-to-open gap can never
+satisfy, since findall consumes quote characters in matched pairs) gives
+census 14/located 5, and USMIL is the only record that flips between the
+two counts, exactly as he reported. Sharper still: USMIL is the one record
+in this file whose primary source (CNN, HTTP 451) nobody has been able to
+open -- the buggy census was crediting a ctrl-F-able verbatim string
+specifically to the one record no one can check a string against. Fixed:
+span_re replaced with the paired-quote check (`_has_span`, this file,
+above). Re-ran the full checker after the fix: exit 0, census correctly
+14/78 (5 located), matching his numbers exactly.
+
+Second: round 43's own commit note said json.dumps re-serialization
+"changed bytes in one other record, OPENCLAW." It changed seven lines --
+the intended opus4-blackmail fix, OPENCLAW, and five SIPA-2026 records
+whose quoted evidence is Russian. Checked directly: non-ASCII byte count
+in the tracked file dropped from 334 to 0 across that commit, and `grep -c
+'Диагноз'` (a literal Cyrillic word inside one of those five records) went
+from 1 to 0 -- Python's `json.dumps` defaults to `ensure_ascii=True`,
+which escapes every non-ASCII character to a backslash-u hex-code sequence. Verified
+the six unintended changes carry zero content difference (parsed JSON
+values identical to the parent commit on all six; only opus4-blackmail's
+parsed value actually changed, which was the round-43 fix). The six
+records survived this file's own round-12-through-43 invariants unchanged
+-- nothing here was ever a correctness bug the checker could catch, only a
+readability regression in the raw file a human opens on GitHub and reads
+or greps directly.
+
+His closing question -- is the ctrl-F contract on the parsed value the
+checker reads, or the raw line a reader greps -- has an answer already on
+record, just not yet applied consistently: round 43 itself defined the
+span field's entire purpose as "a string a reader can ctrl-F without
+trusting anyone." A reader searching for a Cyrillic word cannot ctrl-F an
+escaped `Ди...` sequence and expect a match -- the contract was
+always on the raw line, the same surface `locator_precision`/
+`locator_ceiling` values have been read from since round 12 (this file has
+never asked a reader to run the JSON parser first). Re-serialized the
+tracked file with `json.dumps(row, ensure_ascii=False)` on every line:
+verified 77 of 78 lines now byte-identical to the pre-round-43 parent,
+the 78th being opus4-blackmail's intended change, untouched by this fix.
+`grep -c 'Диагноз'` returns 1 again.
+
+This does not yet become a standing check (nothing in this round adds an
+invariant the way round 22 did for source_structured) -- said plainly,
+not smoothed over: a future re-serialization with a stray `ensure_ascii`
+default could reintroduce the exact same regression, silently, since no
+invariant here currently reads raw bytes to catch it. Left as a real gap
+for a future round, the same way round 30's fixtures file answered a
+similar "should this become code" question for a different hazard, not
+answered here by adding schema this round didn't ask for.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
-Claude, 2026-09-01 through 09-20, in direct response to dipankarsarkar's
-rounds 12 through 43.
+Claude, 2026-09-01 through 09-22, in direct response to dipankarsarkar's
+rounds 12 through 44.
 """
 
 import json
@@ -2023,10 +2089,20 @@ def main() -> int:
     # only, as round 32 did, would silently make MONARCH disappear from this
     # print the moment it was fixed, which is backwards: the span didn't stop
     # existing, the record just also gained a locator alongside it.
-    span_re = re.compile(r'"([^"]{40,})"')
+    # Round 44 (dipankarsarkar): span_re's "([^"]{40,})" cannot tell an
+    # opening quote from a closing one -- 40+ chars between one quote's
+    # close and the NEXT quote's open (ordinary prose, not a verbatim span)
+    # matches identically. Fixed by pairing quotes left to right via
+    # findall (1st with 2nd, 3rd with 4th, ...), which a close-to-open gap
+    # can never satisfy. See module docstring, round 44.
+    _quote_pair_re = re.compile(r'"([^"]*)"')
+
+    def _has_span(s: str) -> bool:
+        return any(len(q) >= 40 for q in _quote_pair_re.findall(s))
+
     span_records = [
         r for r in records
-        if span_re.search(r.get("summary") or "") or span_re.search(r.get("source_locator") or "")
+        if _has_span(r.get("summary") or "") or _has_span(r.get("source_locator") or "")
     ]
     span_located = sum(1 for r in span_records if r["locator_precision"] is not None)
     print(f"records carrying a 40+-char quoted span (informational, not a gate): "
