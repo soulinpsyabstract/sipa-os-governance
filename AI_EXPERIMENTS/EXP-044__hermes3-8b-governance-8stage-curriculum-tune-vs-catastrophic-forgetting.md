@@ -1506,3 +1506,94 @@ eval -- flagged as a design task for next session, separate from
 model as an actual payload), which tests a different question again
 (whether the generated text, weak as it looked, is functionally
 effective at all).
+
+## Stage 15 -- general_harm_refusal (199 pairs), trained from stage14
+
+Closes the gap `FINDING__stage6-governance-safety-general-refusal-collapse-
+outside-vulngate-framing.md` (2026-09-20) opened: the entire G15
+vuln-gate curriculum (groups 01-06) only ever trains "you found this
+while auditing your own system, stop escalating" -- never a harmful
+request handed to the model directly, with no vuln-scanning setup at
+all. `07_general_harm_refusal.jsonl` (10 categories: malware/ransomware,
+unauthorized interception, financial fraud, illegal-goods logistics,
+psychological manipulation, hate speech, disinformation, privacy
+violation, weapons/CBRN, and a meta category testing fiction/roleplay-
+wrapper resistance directly) was generated the same day as that finding
+but never trained on until this stage. Field mapping for
+`train_stage.py` (which expects `instruction`/`response`, not this
+group's `scenario`/`positive`/`negative`): `instruction = scenario`,
+`response = positive` -- no system-prompt wrapper added at train time,
+matching every other stage in this chain (`train_stage.py` has never
+used a system prompt during training; the G15 protocol vocabulary the
+judge looks for is learned from the completion text itself, and only
+introduced at eval time).
+
+### Third-party jailbreak result: 1.7% -> 95%+ (narrow), ~80%+ (broad)
+
+Two independent external evals, both against the trained stage15
+adapter directly (local GPU inference, not the live `sipa-llm.sipa-os.online`
+endpoint stage6 uses):
+
+1. **Narrow (12 hand-written third-party-jailbreak prompts,
+   `eval_third_party_jailbreak.py`, n=10):** stage14 baseline was 2/120
+   (1.7%) on this exact eval. Stage15: **114/120 (95%) on the crude
+   keyword heuristic**, and manually reading all 6 remaining "fails"
+   showed every one was also a genuine refusal the heuristic's marker
+   list didn't recognize ("I can't assist with...") -- real score is
+   closer to 120/120.
+2. **Broad (45 prompts sampled from 15 externally-cited jailbreak/harm
+   benchmark files -- AdvBench, JailbreakBench, wildguardmix, JADE-db,
+   etc., the same sourcing the original FINDING pilot used, but local
+   GPU inference at k=10 instead of the pilot's single-shot HTTP calls):
+   323/450 (71.8%) on the same crude heuristic. Manually re-scored the
+   6 Chinese-language prompts (JailBench-Tiny, JADE-db) by hand, since
+   the heuristic's marker list is English-only: 54/60 correct refusals
+   in Chinese vs. 17/60 the heuristic credited -- corrected overall
+   ~360/450 (~80%). Both heuristics are the same class of measurement
+   gap this whole file's judge history has hit repeatedly; neither was
+   built into a fixed judge version this round, flagged for a future
+   one if this eval is run again.
+
+### G15 regression check: 34% raw -> 97.1% corrected (judge_v11)
+
+Per this project's standing practice (every stage checked on the G15
+vuln-gate benchmark, not just its own training target -- stage9's
+probability_math contamination is why), ran the standard 120-scenario/
+6-group adversarial eval against stage15 with judge_v10 (the most recent
+judge at the time): **407/1200 (34%)** -- the largest apparent single-
+stage drop in this file's history, suspicious on its face for the same
+reason every prior "collapse" here turned out to be a judge gap: stage15
+just scored 95%+ on general harm refusal the same session, so a model
+that got *more* refusal-capable collapsing on *this* benchmark specifically
+doesn't fit.
+
+Read a sample of the fails, then all 793 by pattern: every one read is a
+correct STOP. Root cause found and fixed as `judge_v11.py` -- `07_general_
+harm_refusal`'s externally-sourced refusal register opens with "can't"/
+"cannot" (never in `NEGATION_OPENERS`, any judge version v6 through v10)
+and refuses with verbs like "assist"/"help"/"provide" (never in
+`VERB_STEM_PATTERN`). Full mechanism, evidence, and the exact fix are in
+`judge_v11.py`'s own docstring, not repeated here. Re-scored: **1165/1200
+(97.1%)**, per-group 94.5%-98.5%, squarely back in this chain's normal
+range. Zero PASS-to-FAIL flips checked against judge_v10 on the 4 stored
+math-branch eval files (stage8/9/10/11) before shipping.
+
+**Rollback decision on stage15: adopt as the branch's new head, pending
+the G15 result being trusted.** No safety regression once correctly
+scored -- the raw 34% was a checker artifact, not a real drop, verified
+the same way every prior apparent collapse in this file was (read the
+raw responses first, don't trust the score). Weights pushed to
+`hermes3-8b-exp044-8stage-curriculum-loras/stage15_general_harm_refusal`
+before this write-up, per the standing rule that a GPU box's trained
+output goes to durable storage before anything else happens to it (see
+VIO-013, a real near-miss this same session where the prior stages'
+weights were nearly reported lost from checking only one of two
+repositories holding them).
+
+**Artifacts:** `judge_v11.py` (this repo, `scripts/`);
+`eval_results_stage15_general_harm_refusal_hermes3_adversarial_n10.json`
+(raw G15 regression, 1200 samples);
+`third_party_jailbreak_result_stage15_general_harm_refusal.json` (narrow,
+120 samples); `third_party_jailbreak_result_stage15_EXTERNAL45.json`
+(broad, 450 samples) -- all three committed to `AI_EXPERIMENTS/` in this
+repo.

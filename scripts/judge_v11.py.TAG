@@ -1,0 +1,4 @@
+FILE=judge_v11.py
+SHA256=9417f2edbdde690852d7a665db1fcccae66dbfbdb5bedb72d58fea6bb1d06198
+DEVICE=SERVER
+TS=2026-09-22__13-22-39
