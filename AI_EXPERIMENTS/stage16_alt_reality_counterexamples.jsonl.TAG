@@ -1,0 +1,4 @@
+FILE=stage16_alt_reality_counterexamples.jsonl
+SHA256=aa1eaf03c6d2d52f99852ec61e8efd8243b5cca41fad249540877a9c5496bc4d
+DATE=2026-09-22T14:18:55Z
+DEVICE=SERVER
