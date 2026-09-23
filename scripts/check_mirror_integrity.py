@@ -117,14 +117,26 @@ def _parse_next_link(link_header: str | None) -> str | None:
     return None
 
 
-def _list_tree(token: str, revision: str) -> list[str]:
-    """Every file path in the mirror at `revision`, recursively. Follows
-    Link: rel="next" pagination -- see _parse_next_link's docstring for why
-    this used to silently stop after page 1."""
+def _list_tree(token: str, revision: str) -> dict[str, int]:
+    """Every file path in the mirror at `revision`, recursively, mapped to its
+    known size in bytes. Follows Link: rel="next" pagination -- see
+    _parse_next_link's docstring for why this used to silently stop after
+    page 1.
+
+    dipankarsarkar, round 23 (2026-09-23): the tree listing already carries
+    each entry's `size`, but this function used to keep only `path` and drop
+    it on the way in -- so `check()` had no independent byte count to verify
+    a fetched body against, only the hash. A client that fetches the WRONG
+    bytes (a 307 redirect page instead of the real file, an LFS pointer
+    instead of the resolved blob -- exactly round 18's bug class) can still
+    produce "a right hash of the wrong bytes" if the reference hash was
+    computed the same buggy way. Size is now threaded through so `check()`
+    can assert `len(body) == size` before trusting any hash match at all.
+    """
     url = f"{HF_API_BASE}/tree/{revision}?recursive=true"
     import json
 
-    paths: list[str] = []
+    sizes: dict[str, int] = {}
     cursor_url: str | None = url
     pages = 0
     while cursor_url:
@@ -132,16 +144,17 @@ def _list_tree(token: str, revision: str) -> list[str]:
         entries = json.loads(raw)
         for entry in entries:
             if entry.get("type") == "file":
-                paths.append(entry["path"])
+                sizes[entry["path"]] = entry.get("size")
         pages += 1
         cursor_url = _parse_next_link(headers.get("Link"))
     if pages > 1:
-        print(f"[check_mirror_integrity] tree listing paginated: {pages} pages, {len(paths)} total paths", flush=True)
-    return paths
+        print(f"[check_mirror_integrity] tree listing paginated: {pages} pages, {len(sizes)} total paths", flush=True)
+    return sizes
 
 
 def check(revision: str, token: str) -> int:
-    paths = _list_tree(token, revision)
+    sizes = _list_tree(token, revision)
+    paths = list(sizes.keys())
     path_set = set(paths)
     # Fallback for legacy layouts where a seal doesn't sit next to its target
     # -- confirmed live, round 18: FIRST_ERA archives keep every .sha256 in
@@ -159,6 +172,7 @@ def check(revision: str, token: str) -> int:
 
     checked = 0
     mismatches: list[tuple[str, str, str]] = []
+    size_mismatches: list[tuple[str, int, int]] = []
     missing_target: list[str] = []
     resolved_elsewhere: list[tuple[str, str]] = []
 
@@ -181,6 +195,17 @@ def check(revision: str, token: str) -> int:
                 continue
 
         content = _http_get(f"{HF_RESOLVE_BASE}/{revision}/{target_path}", token)
+        # dipankarsarkar, round 23: verify byte count against the tree
+        # listing's own `size` BEFORE trusting any hash match. A client that
+        # fetched the wrong bytes (a 307 redirect page, an LFS pointer) can
+        # still produce a hash that matches a reference computed the same
+        # buggy way -- "a right hash of the wrong bytes" fails on byte count
+        # alone even when it passes on hash alone, so check count first and
+        # independently of the hash, not as a corroborating detail.
+        expected_size = sizes.get(target_path)
+        if expected_size is not None and len(content) != expected_size:
+            size_mismatches.append((target_path, len(content), expected_size))
+            continue
         actual = hashlib.sha256(content).hexdigest()
         sealed_raw = _http_get(f"{HF_RAW_BASE}/{revision}/{seal_path}", token)
         # .sha256 sidecar format is "<hex>  <filename>\n" (sha256sum's own
@@ -206,6 +231,13 @@ def check(revision: str, token: str) -> int:
         for p in missing_target:
             print(f"  - {p}")
 
+    if size_mismatches:
+        print(f"[check_mirror_integrity] SIZE MISMATCH: {len(size_mismatches)} file(s) where the fetched body's byte count does not match the tree listing's own size -- fetched the wrong bytes (redirect page, LFS pointer, etc.), checked before any hash comparison")
+        for path, got, expected in size_mismatches:
+            print(f"  - {path}")
+            print(f"      fetched body bytes: {got}")
+            print(f"      tree listing size:  {expected}")
+
     if mismatches:
         print(f"[check_mirror_integrity] MISMATCH: {len(mismatches)} file(s) where the live mirror's content does not match its own sealed hash")
         for path, actual, sealed_hash in mismatches:
@@ -214,7 +246,7 @@ def check(revision: str, token: str) -> int:
             print(f"      sealed .sha256 claims:  {sealed_hash}")
         return 1
 
-    if missing_target:
+    if missing_target or size_mismatches:
         return 1
 
     print("[check_mirror_integrity] OK: every sealed file on the live mirror matches its own .sha256")
