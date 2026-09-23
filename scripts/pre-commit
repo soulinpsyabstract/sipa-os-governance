@@ -56,6 +56,27 @@
 # its target's current content regardless of whether anything ever names
 # that file.
 #
+# Round 46, same reviewer: proposed a one-line standing check --
+# all(json.dumps(json.loads(l), ensure_ascii=False) == l for l in lines) --
+# for the exact regression class round 43 introduced and round 44 fixed by
+# hand (a re-serialization that silently \u-escapes real Cyrillic text,
+# changing zero parsed values so every content-level invariant here stays
+# green while the raw-line ctrl-F contract this project has repeatedly
+# named breaks). Reproduced independently: 0/6/0 fails across
+# e67a6ee~1/e67a6ee/72b0020, exact same 6 lines named. Confirmed the naive
+# alternative ("no \u in the raw line") is wrong on a genuinely correct
+# file -- misbehavior_raw_candidates_ui_archives_v1.jsonl has lines whose
+# quote field is a verbatim archived ChatGPT tool-call argument that was
+# already \u-escaped at capture time; the round-trip check passes them
+# (ensure_ascii=False never touches literal ASCII text, wherever it came
+# from), a grep would not. scripts/check_jsonl_canonical.py is that check,
+# wired in here. Found live, on first run against every tracked *.jsonl:
+# one more instance of the same regression, in a dataset this hook's
+# citation-driven checks never had reason to open
+# (DATASETS_VULN_6GROUPS_EXTERNAL/06_stop_gate_pressure_external.jsonl,
+# line 4, an escaped em-dash) -- fixed the same way round 44 fixed the
+# first six.
+#
 # .git/hooks/ is not tracked by git, so this file lives in scripts/ and has
 # to be installed once per clone: scripts/install-hooks.sh does that.
 set -euo pipefail
@@ -66,3 +87,4 @@ git archive --format=tar "$(git write-tree)" | tar -x -C "$tmp"
 python3 "$tmp/scripts/check_citations.py"
 python3 "$tmp/scripts/check_dataset_citations.py"
 python3 "$tmp/scripts/check_seals.py" "$tmp"
+python3 "$tmp/scripts/check_jsonl_canonical.py" "$tmp"

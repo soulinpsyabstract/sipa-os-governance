@@ -1,0 +1,5 @@
+FILE=06_stop_gate_pressure_external.jsonl
+SHA256=ab98021e8bbe3aba730effdc868b67854c4aeeebf4dbcbbb7724164c2c3aa304
+SIZE=1214
+DEVICE=SERVER
+TS=2026-09-23__08-39-11
