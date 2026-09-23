@@ -1583,9 +1583,63 @@ for a future round, the same way round 30's fixtures file answered a
 similar "should this become code" question for a different hazard, not
 answered here by adding schema this round didn't ask for.
 
+Round 45 (dipankarsarkar): proposed a two-property readiness check for
+evaluating any candidate new delimiter rung against _ANCHOR_SPLIT_RE,
+without needing a purpose-built fixture per rung the way round 37's
+FIXTURE-word-delimiter-not-a-rung was: (1) the new head is non-empty and
+balances every quote-mark it opens (a `'` flanked by letters on both sides
+is an apostrophe, not a quote); (2) if today's head keeps a
+machine-readable extension, the new head must keep it too. Ran this over
+the 34 real located locators plus the 8 fixtures (42 total), splicing six
+different spellings of three candidate word-rungs into a throwaway copy of
+_ANCHOR_SPLIT_RE.
+
+Reproduced independently, byte for byte, all six counts and every named
+failure: " and " and " of " each fail 2/42 on quote-balance (ANTHROPIC-
+2026-deepseek-distillation-relay -- its head splits mid-title, inside the
+single-quoted "Detecting and countering..." span this project's own PDF
+extraction cites -- plus FIXTURE-word-delimiter-not-a-rung, built to mirror
+it); "see" and \bsee\b each fail 1/42 on empty-head (FIXTURE-over-split-
+guard, round 36, whose locator opens with the literal word "see"); " see "
+fails 0/42; " to " fails 1/42, but on ext-lost, not quote -- the one case
+where property 1 alone would have missed a real regression, since that
+split happens after the title closes and the quotes already balance.
+(Own reproduction bug, caught before trusting the result: this dataset
+marks titles with single quotes, not double -- checking double-quote
+balance gives 0/42 on " and "/" of " and silently misses both real
+failures. Fixed by excluding apostrophes -- letter-flanked ' -- before
+counting, not by picking a different quote character to trust instead.)
+
+His closing question: should property 2 be anchored to today's three
+delimiters (a regression guard: new head vs. today's derived head) or to
+the full locator (a first-principles rule, stated without reference to
+what _ANCHOR_SPLIT_RE currently outputs)?
+
+Today's three delimiters -- not the full locator, and not because the
+full-locator version is merely harder to write. It presupposes something
+this file already found false: that a locator has one well-defined "real"
+extension, identifiable without already knowing where the citation's
+boundary sits. Round 23's own PALISADE finding is the counterexample on
+record -- 422 characters naming six files, five past the first "--", none
+of them what the citation actually points at. Stating property 2 against
+"the full locator" would require picking which of those six is "the"
+extension before it could assert anything about preserving it -- the exact
+judgment call round 25 already refused to formalize for locator_precision
+and locator_ceiling ("correctness stays a human-checked judgment call,
+made fresh each time"). A first-principles phrasing doesn't remove that
+judgment call, it hides it inside a regex that looks like it doesn't need
+one. The anchored version is not the weaker cousin of an achievable
+stronger one -- it is the honest one, and the gap it should close is a
+label, not a rewrite: nothing in the code said outright that this is a
+regression guard against today's derived head, not a specification, or
+that adding a fourth rung means re-running properties 1+2 against the new
+head rather than inheriting today's result silently. Annotated in place
+below, next to _ANCHOR_SPLIT_RE, so a future round reads the scope of the
+guarantee before proposing rung 4.
+
 Exit code is nonzero iff any record violates a hard invariant -- built by
 Claude, 2026-09-01 through 09-22, in direct response to dipankarsarkar's
-rounds 12 through 44.
+rounds 12 through 45.
 """
 
 import json
@@ -1663,6 +1717,18 @@ _MACHINE_READABLE_EXT_RE = re.compile(r"\.(json|jsonl|csv|tsv|yaml|yml|py)\b", r
 # itself (not the boolean two steps downstream of it) makes every fixture
 # an addition-side guard automatically, without needing a purpose-built
 # fixture per hypothetical delimiter.
+# Round 45 (dipankarsarkar): this pattern is the reference point for a
+# regression guard, not a first-principles rule. Before adding a rung,
+# re-run both properties against the new head over every located record
+# plus every fixture: (1) new head non-empty and quote-balanced (a
+# letter-flanked ' is an apostrophe, not a quote); (2) if today's head
+# below has a machine-readable extension, the new head must keep it too.
+# Passing both does not certify the new head is "correct" in any
+# locator-intrinsic sense -- round 23's PALISADE finding already showed a
+# single locator can name several extension-shaped substrings with no
+# locator-only way to pick which one is real, the same judgment call round
+# 25 left to a human for locator_precision/locator_ceiling. It certifies
+# only "no worse than today's head, on every record this file has seen."
 _ANCHOR_SPLIT_RE = re.compile(r";|,|--")
 
 
