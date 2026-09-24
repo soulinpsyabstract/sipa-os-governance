@@ -258,7 +258,6 @@ def main() -> None:
     ap.add_argument("--revision", default="main", help="HF revision/commit to audit (default: main, i.e. right now)")
     args = ap.parse_args()
 
-    token = None
     import os
 
     token = os.environ.get("HF_TOKEN")
@@ -270,9 +269,18 @@ def main() -> None:
                         token = line.split("=", 1)[1].strip().strip('"')
         except FileNotFoundError:
             pass
+    # dipankarsarkar, round 48: this mirror is public and ungated
+    # (private: false, gated: false on the API) -- every call check() makes
+    # works with no token at all, just slower (anonymous resolve/ reads are
+    # rate-limited harder than authenticated ones: ~296-561s observed vs
+    # ~90-180s with a token). A read token on an already-public, ungated
+    # repo grants a caller nothing a stranger lacks -- it only buys speed,
+    # not access. For a scheduled job nobody is waiting on, that speed isn't
+    # worth holding a secret for. So: no token is not an error, it's the
+    # default; only warn, don't refuse.
     if not token:
-        print("[check_mirror_integrity] REFUSED: no HF_TOKEN in environment or ~/.sipa_env", file=sys.stderr)
-        sys.exit(2)
+        print("[check_mirror_integrity] no HF_TOKEN found -- running anonymous (slower, same result on a public/ungated repo)", file=sys.stderr)
+        token = ""
 
     sys.exit(check(args.revision, token))
 
