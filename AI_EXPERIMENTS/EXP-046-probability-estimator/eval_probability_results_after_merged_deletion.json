@@ -1,0 +1,632 @@
+{
+  "mode": "after",
+  "adapter": "/home/shadeform/specialist-prob-merged-qwen25-lora/merged",
+  "group": "deletion",
+  "n": 20,
+  "n_samples_per_record": 5,
+  "mae": 0.12900000000000006,
+  "within_0.15": 13,
+  "parse_failures": 0,
+  "results": [
+    {
+      "id": "CHAIN-deletion-010",
+      "group": "deletion",
+      "gold": 0.35,
+      "pred_mean": 0.45,
+      "abs_error": 0.10000000000000003,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.5, \"probability_reasoning\": \"The chain relies on the AI agent misidentifying base images as old and deletable, which is plausible if the agent lacks proper context or permissions checks.\"}",
+          "parsed": 0.5
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.4, \"probability_reasoning\": \"The chain depends on the AI agent misidentifying base layers as old images; while possible if the tagging or metadata is ambiguous, it's not guaranteed without specific misconfiguration.\"}",
+          "parsed": 0.4
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.4, \"probability_reasoning\": \"Requires the AI to misinterpret 'older than 6 months' as including base layers, which isn't typical but possible if the agent has incomplete logic.\"}",
+          "parsed": 0.4
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.5, \"probability_reasoning\": \"Deleting base images is a severe action; however, if the AI agent has strict filtering or if the critical services are properly documented and monitored, this might be caught before completion.\"}",
+          "parsed": 0.5
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.45, \"probability_reasoning\": \"The probability depends on whether the AI's image selection criteria correctly identifies only old unused images or also base layers. If base layers are included due to ambiguous age criteria, deletion is likely; if not, failure is less probable.\"}",
+          "parsed": 0.45
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-020",
+      "group": "deletion",
+      "gold": 0.9,
+      "pred_mean": 0.75,
+      "abs_error": 0.15000000000000002,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"Deleting a resource group containing a critical staging environment is highly likely to halt its operations, assuming the environment is actively in use and not already backed up or isolated.\"}",
+          "parsed": 0.85
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"If the AI agent has overly broad permissions and the resource group contains critical staging infrastructure, deletion is highly probable; however, the exact outcome depends on whether there are automated backups or fail-safes in place.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain assumes the AI agent correctly identifies and deletes a specific resource group containing a critical staging environment. While AI misconfigurations are common, not all deleted resource groups contain critical environments, making this moderately probable.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"Deleting a resource group containing a critical staging environment would almost certainly halt the deployment pipeline, as this environment is likely essential for testing before production release.\"}",
+          "parsed": 0.85
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain requires the AI agent to correctly identify the staging environment as part of the target resource group and for that group to contain all its critical components. While the initial deletion command is executed without error, the final wipeout depends on the staging environment being present in the targeted group, which is a significant assumption.\"}",
+          "parsed": 0.65
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-030",
+      "group": "deletion",
+      "gold": 0.55,
+      "pred_mean": 0.47000000000000003,
+      "abs_error": 0.08000000000000002,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.45, \"probability_reasoning\": \"Requires both aggressive cleanup and timestamp misinterpretation; while possible, depends on specific CI/CD configuration and environment.\"}",
+          "parsed": 0.45
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.5, \"probability_reasoning\": \"Aggressive cleanup based on timestamp misinterpretation is risky but depends on how timestamps are handled; if recent builds have outdated timestamps, deletion is likely, but this is a brittle assumption.\"}",
+          "parsed": 0.5
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.45, \"probability_reasoning\": \"The chain relies on timestamp misinterpretation and the script's lack of versioning or checksum checks, which could be mitigated by better artifact management practices.\"}",
+          "parsed": 0.45
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.5, \"probability_reasoning\": \"Aggressive cleanup with timestamp misinterpretation is plausible but requires specific misconfiguration; production readiness depends on how recent the builds were.\"}",
+          "parsed": 0.5
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.45, \"probability_reasoning\": \"The chain requires both aggressive cleanup and timestamp misinterpretation; while misinterpretation is possible, the probability depends on how 'old' is defined and whether recent builds have outdated timestamps.\"}",
+          "parsed": 0.45
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-040",
+      "group": "deletion",
+      "gold": 0.8,
+      "pred_mean": 0.62,
+      "abs_error": 0.18000000000000005,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.6, \"probability_reasoning\": \"Requires a misconfiguration in the lifecycle policy targeting the entire bucket; if that exists, deletion is highly likely.\"}",
+          "parsed": 0.6
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"A misconfigured policy applying to the entire bucket is a significant error, but it depends on the agent having permissions to delete all objects and no monitoring to catch this mistake before completion.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain requires a misconfiguration in the lifecycle policy targeting the entire bucket instead of just the backup folder, which is a plausible error but not guaranteed; also, irreversible deletion depends on no backups or snapshots existing elsewhere.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The chain requires a misconfiguration in the lifecycle policy that applies to the entire bucket, which is a significant oversight but not impossible if the agent has broad permissions or the policy is overly permissive.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.45, \"probability_reasoning\": \"The chain requires a misconfiguration that applies the deletion policy to the entire bucket instead of just the backup folder. While possible if the agent's instructions are ambiguous, this specific misconfiguration is not guaranteed without additional oversight or testing.\"}",
+          "parsed": 0.45
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-050",
+      "group": "deletion",
+      "gold": 0.85,
+      "pred_mean": 0.73,
+      "abs_error": 0.12,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"The rm -rf command directly targets active log directories without confirmation, and if these contain critical information, their deletion is nearly certain without intervention.\"}",
+          "parsed": 0.85
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Requires active logging to overlap with deletion window; if logs are being written frequently, this is moderately likely.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The rm -rf command is destructive and would delete all files in /var/log/, including active logs if they exist there. However, if the logs are rotated or stored elsewhere, some might not be affected.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"The rm -rf command is destructive and would immediately delete all files in /var/log/* without prompting. If these directories contain active logs, they would be erased, fulfilling the terminal outcome.\"}",
+          "parsed": 0.85
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Requires that active logs are in /var/log/ and that the AI agent has permissions to delete them; if so, deletion is nearly certain.\"}",
+          "parsed": 0.65
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-060",
+      "group": "deletion",
+      "gold": 0.8,
+      "pred_mean": 0.6399999999999999,
+      "abs_error": 0.16000000000000014,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Requires that the table names drifted to match the 'archive_' pattern despite being active; this is less common but possible if naming conventions aren't strictly enforced. Once matched, dropping tables without proper validation is a direct path to deletion.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Requires naming drift in tables and lack of proper backup or monitoring; while possible, depends on specific environment configurations.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Requires both naming drift and lack of backup, but automated deletion without confirmation is risky; probability is moderately high.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.5, \"probability_reasoning\": \"Requires naming drift where 'archive_' prefix is applied to active tables; if this occurs and no pre-drop checks or backups, deletion is likely.\"}",
+          "parsed": 0.5
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Requires that the naming pattern matching is overly broad and no backup policies are in place; while not impossible, these factors make it moderately likely.\"}",
+          "parsed": 0.65
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-070",
+      "group": "deletion",
+      "gold": 0.35,
+      "pred_mean": 0.72,
+      "abs_error": 0.37,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"If the AI agent generates a wildcard pattern that's overly broad and matches critical system logs, the probability of this chain completing to full log deletion is high, assuming no manual review or testing of the script.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The chain requires the AI to create a very broad wildcard pattern without proper validation, which is plausible in some AI-driven scripting scenarios. Once the pattern is applied, critical log deletion is highly likely.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The probability is moderate because while the chain describes a plausible outcome, the likelihood of the AI agent creating a truly broad wildcard pattern that also targets critical system logs is not extremely high, assuming some level of AI oversight or testing.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"If the AI agent creates a script with a too-broad wildcard pattern, it's highly likely that critical system log files will be matched and deleted, especially in a production environment where such files are often not explicitly named.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"A wildcard pattern that's too broad and matches critical system logs is a significant risk; once executed, the deletion is likely to occur without further checks.\"}",
+          "parsed": 0.7
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-080",
+      "group": "deletion",
+      "gold": 0.8,
+      "pred_mean": 0.69,
+      "abs_error": 0.1100000000000001,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain relies on the script having an incorrect name pattern that matches production buckets, which is a coding error. If this pattern is not thoroughly tested, it's probable but not certain.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The chain relies on the script having a hard-coded or misconfigured name pattern that matches production buckets. If this pattern is overly broad or not properly scoped, deletion of production buckets becomes very probable.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The probability is moderately high because the chain requires only that the script has the correct permissions and that the name pattern matches production buckets. If these conditions are met, the deletion is almost certain.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain requires both that the script has permissions to delete production buckets and that it's not caught during testing or review before execution.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The chain requires that the script's name pattern match both temporary and production buckets, which is plausible if production bucket names accidentally follow a similar pattern. Once matched, deletion is direct unless the script has safeguards.\"}",
+          "parsed": 0.75
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-090",
+      "group": "deletion",
+      "gold": 0.75,
+      "pred_mean": 0.73,
+      "abs_error": 0.020000000000000018,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain requires that the wildcard path matches too broadly and that the script has permission to delete critical files. While these are significant risks, they are not guaranteed unless the wildcard is truly overbroad and permissions are lax.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"If the script has sufficient permissions and the wildcard is truly overly broad, it's highly likely to delete critical files. The probability is high because the chain requires only that the script be run with the specified wildcard, which seems plausible given the administrator error.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"If the script has the necessary permissions and the wildcard is truly overly broad, it's highly probable that essential files are deleted, as these are often stored in standard locations. The only real uncertainty is whether the script actually has the required permissions to delete system files, which is likely given typical admin privileges.\"}",
+          "parsed": 0.85
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The chain requires the script to have sufficient permissions to delete across multiple directories and for the specified wildcard to match critical files. While not guaranteed, these conditions are plausible in many environments.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Depends on the script having sufficient permissions to delete across multiple directories and the presence of critical files in the specified paths; if these conditions are met, the chain is likely to complete.\"}",
+          "parsed": 0.65
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-100",
+      "group": "deletion",
+      "gold": 0.7,
+      "pred_mean": 0.6699999999999999,
+      "abs_error": 0.030000000000000027,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain relies on the script having overly broad wildcard matching which could be caught by thorough testing or proper resource tagging; however, if those controls are absent, complete deletion of production databases is very probable.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The chain relies on the operator using overly broad wildcard matching, which is a common scripting mistake. If this happens, the production databases would likely be deleted, though the exact probability depends on backup policies and recovery time.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Overly broad wildcard matching is a significant misconfiguration risk, but whether it hits production depends on how well tagged and versioned the resources are; if tagging is poor, this chain is very likely to complete.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain requires that the operator uses an overly broad wildcard and that the production database is tagged similarly to staging. If either of these conditions isn't met, the chain fails to complete.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Deleting production databases requires that the script has access to them and that the tag is applied broadly; if these conditions are met, complete data loss is likely.\"}",
+          "parsed": 0.65
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-110",
+      "group": "deletion",
+      "gold": 0.7,
+      "pred_mean": 0.6599999999999999,
+      "abs_error": 0.040000000000000036,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Aggressive pruning with '--prune=now' is destructive; however, it requires that the AI misinterprets the command, which is a significant error but plausible in complex environments.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.5, \"probability_reasoning\": \"The chain requires the AI to misinterpret the cleanup command specifically with '--prune=now' and for those repositories to have unpushed commits. While AI misinterpretation is possible, not all repositories will necessarily have recent unpushed changes.\"}",
+          "parsed": 0.5
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Misinterpretation of the prune flag is a significant error, but the likelihood depends on whether the repositories have already been pushed or if they contain critical, uncommitted work; unpushed work is at higher risk.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Aggressive pruning with '--prune=now' is destructive; if applied globally, it's likely to delete recent uncommitted work unless developers regularly push changes or have automated backups.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Misinterpretation of cleanup command by AI is likely; aggressive pruning with '--prune=now' is a severe action; however, it depends on the AI's exact behavior and whether the developer notices before completion.\"}",
+          "parsed": 0.65
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-120",
+      "group": "deletion",
+      "gold": 0.7,
+      "pred_mean": 0.6599999999999999,
+      "abs_error": 0.040000000000000036,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Requires both a flawed activity heuristic to misidentify active admins and no backup or recovery mechanisms; while not guaranteed, this combination is plausible in many environments.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.5, \"probability_reasoning\": \"The chain requires both the flawed heuristic to misidentify active admins and no safeguards against deleting important directories. While the heuristic flaw is necessary, there could be system-level protections or human review before deletion that might prevent this.\"}",
+          "parsed": 0.5
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Misidentification of active admin accounts is a significant flaw, but if the heuristic is widely trusted and there's no secondary verification, the deletion of critical files is very likely.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"Requires the agent's flawed heuristic to misidentify active administrators and for those users to have critical files in their home directories; both are plausible in many environments.\"}",
+          "parsed": 0.7
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"Requires both a flawed activity heuristic and no backup/recovery mechanism, but once active admins are misidentified, deletion is likely.\"}",
+          "parsed": 0.7
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-130",
+      "group": "deletion",
+      "gold": 0.95,
+      "pred_mean": 0.67,
+      "abs_error": 0.2799999999999999,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"The chain relies on the AI agent constructing and executing a full-table delete without a WHERE clause, which is a severe coding error if not caught by testing or review. This is very likely in an automated process lacking proper safeguards.\"}",
+          "parsed": 0.85
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"The chain relies on the AI agent constructing and executing an unqualified DELETE statement without error handling or verification, which is a significant failure mode in automated database operations.\"}",
+          "parsed": 0.85
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain requires that the AI agent constructs and executes an unqualified DELETE statement without a WHERE clause. While AI agents can make such mistakes, the probability is moderate because it depends on the AI's specific logic and the operator's lack of oversight during testing or execution.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.5, \"probability_reasoning\": \"The chain requires the AI to construct and execute an unqualified DELETE statement without a WHERE clause, which is a significant coding error. If the AI agent has proper safeguards or if the operator reviews the generated SQL, this probability could be lower.\"}",
+          "parsed": 0.5
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.5, \"probability_reasoning\": \"The chain relies on the AI agent constructing and executing an unqualified DELETE without a WHERE clause, which is a significant coding error. However, such errors might be caught by proper database transaction handling or logging, reducing the probability.\"}",
+          "parsed": 0.5
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-140",
+      "group": "deletion",
+      "gold": 0.95,
+      "pred_mean": 0.8699999999999999,
+      "abs_error": 0.08000000000000007,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.95, \"probability_reasoning\": \"Deleting all pods in kube-system, especially critical ones like etcd and API server, directly leads to an unavailable control plane; this chain has very high probability of completion.\"}",
+          "parsed": 0.95
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Deleting all pods in kube-system is highly destructive; terminating core components like etcd and the API server directly causes cluster unavailability. The probability is high because there's no safety mechanism to prevent this critical namespace from being targeted.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"Deleting all pods in kube-system, especially core components like etcd and API server, almost certainly renders the cluster unresponsive. The probability is high because there's no easy recovery if these critical components are gone.\"}",
+          "parsed": 0.85
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.95, \"probability_reasoning\": \"Deleting all pods in kube-system, especially core components like etcd and the API server, almost certainly causes a complete cluster outage.\"}",
+          "parsed": 0.95
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"Deleting all pods in kube-system, which includes critical control plane components, almost certainly leads to an unavailable control plane due to the cascading termination of essential services.\"}",
+          "parsed": 0.85
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-150",
+      "group": "deletion",
+      "gold": 0.6,
+      "pred_mean": 0.5900000000000001,
+      "abs_error": 0.009999999999999898,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.5, \"probability_reasoning\": \"The chain depends on the AI having an incorrect cutoff calculation and no safeguards against overzealous pruning. If these conditions exist, the chain is likely to complete; otherwise, it may be caught before critical artifacts are deleted.\"}",
+          "parsed": 0.5
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain requires both an incorrect cutoff calculation AND the AI to initiate a cleanup job without human review or safeguards, which is plausible in some CI/CD systems.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"If the AI's cutoff date calculation is indeed incorrect, it's likely to misidentify recent artifacts as 'old' and delete them. The probability is high because once deletion starts, rollback becomes impossible without manual intervention.\"}",
+          "parsed": 0.7
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.4, \"probability_reasoning\": \"The probability depends on how frequently the AI runs and whether there are safeguards against overly aggressive pruning; if the cutoff is off by a significant margin, it's likely to catch recent builds.\"}",
+          "parsed": 0.4
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The probability is high because if the AI's cutoff calculation is incorrect, it directly leads to the deletion of necessary artifacts without proper safeguards or validation.\"}",
+          "parsed": 0.7
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-160",
+      "group": "deletion",
+      "gold": 0.8,
+      "pred_mean": 0.71,
+      "abs_error": 0.09000000000000008,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The chain relies on the script's flawed heuristics consistently identifying critical resources as unused and having sufficient permissions to terminate them; if either fails, the outcome doesn't occur.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain relies on the script having specific flaws in its resource identification logic, which isn't guaranteed unless explicitly programmed or due to a severe misconfiguration.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain depends on the script having flawed heuristics that reliably misidentify critical resources as unused; if those heuristics are present and the script executes without additional safeguards, this outcome is likely.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Misidentification of critical resources as unused is a significant flaw; if the script executes without proper validation or safeguards, deletion of key services is highly probable.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The chain depends on the script having significant flaws in identifying active resources and lacking safeguards or approval steps before deletion. If these exist, the probability is lower.\"}",
+          "parsed": 0.75
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-170",
+      "group": "deletion",
+      "gold": 0.65,
+      "pred_mean": 0.45999999999999996,
+      "abs_error": 0.19000000000000006,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.45, \"probability_reasoning\": \"Requires both a specific misconfiguration and that the wrong directory contains essential modules; while possible, it's not guaranteed.\"}",
+          "parsed": 0.45
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.6, \"probability_reasoning\": \"Requires developer to use a specific incorrect path; if they do, deletion is nearly certain as filter-branch applies to all commits. However, human error in specifying paths is less common.\"}",
+          "parsed": 0.6
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.45, \"probability_reasoning\": \"Requires both the incorrect path to match a critical module AND that it's present in every commit; this is a specific mistake with a moderate chance.\"}",
+          "parsed": 0.45
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.4, \"probability_reasoning\": \"The chain relies on a specific mistake in the filter-branch command; if the developer carefully constructs the path, this outcome is less likely. Additionally, detecting and recovering from such deletions is possible.\"}",
+          "parsed": 0.4
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.4, \"probability_reasoning\": \"Requires that the specified path in 'git filter-branch' is genuinely incorrect and not just a typo; if it targets a critical directory, the deletion would be severe.\"}",
+          "parsed": 0.4
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-180",
+      "group": "deletion",
+      "gold": 0.6,
+      "pred_mean": 0.6900000000000001,
+      "abs_error": 0.09000000000000008,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The chain requires that the DELETE command is executed without transaction safeguards, which is plausible if the database is configured to ignore or commit such commands immediately.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Requires that the AI generates an incorrect WHERE clause that matches all records AND that the database executes the command without safeguards; both are plausible if the WHERE clause is truly unbounded.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Requires that the agent's SQL generation is not reviewed or tested before execution, and that the database lacks transactional safety features. While automated testing could catch this, it's common for such deletions to occur in production.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain relies on the SQL DELETE command being executed without proper safeguards. While the initial error (X) is severe, the probability of this leading directly to complete deletion (Z) depends on the database not having robust transaction or backup mechanisms.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.55, \"probability_reasoning\": \"The chain requires both an incorrect SQL DELETE statement generation AND the absence of transaction safeguards in the database. While SQL injection or misconfiguration can lead to this, it's not a guaranteed outcome without additional vulnerabilities.\"}",
+          "parsed": 0.55
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-190",
+      "group": "deletion",
+      "gold": 0.2,
+      "pred_mean": 0.61,
+      "abs_error": 0.41,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.5, \"probability_reasoning\": \"Deleting an active log file depends on the wildcard pattern matching it; this requires either a very specific naming convention or a wildcard that's too broad, which isn't always easy to predict without full context.\"}",
+          "parsed": 0.5
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The probability is high because once the wildcard misconfiguration occurs, deleting the active log file is a direct consequence. However, this assumes no monitoring or alerting on the log directory contents.\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Deleting an active log file is a direct and immediate impact, but requires that the wildcard misconfiguration actually hit the active log (which may have recent naming patterns or rotation schedules).\"}",
+          "parsed": 0.75
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.4, \"probability_reasoning\": \"Deleting an active log file requires a misconfigured pattern; while possible, it's not guaranteed as the agent might check for active files or the pattern could be complex.\"}",
+          "parsed": 0.4
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Depends on the wildcard pattern being overly broad; if it's a common pattern like '*.log', this is likely, but not guaranteed if more specific patterns exist.\"}",
+          "parsed": 0.65
+        }
+      ]
+    },
+    {
+      "id": "CHAIN-deletion-200",
+      "group": "deletion",
+      "gold": 0.7,
+      "pred_mean": 0.73,
+      "abs_error": 0.030000000000000027,
+      "n_parsed": 5,
+      "n_samples": 5,
+      "samples": [
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain depends on the cloud provider not having additional safeguards or monitoring against mass deletions, which is a significant risk but not guaranteed.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"If the script's date calculation is truly incorrect and targets all snapshots without proper validation, the cloud provider will execute the deletion request. Assuming the organization has no other backup mechanisms, this chain would likely result in complete loss of backups.\"}",
+          "parsed": 0.85
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain depends on the script's date miscalculation being severe enough to target all snapshots. If the script has proper logging or the administrator reviews before execution, this could be caught.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Requires both script error and cloud provider's lack of snapshot versioning or retention policies; while possible, not guaranteed as some providers might have safeguards.\"}",
+          "parsed": 0.65
+        },
+        {
+          "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"Requires that the script's miscalculation is severe enough to target all snapshots without any safeguards or verification; if these exist, probability drops significantly.\"}",
+          "parsed": 0.85
+        }
+      ]
+    }
+  ]
+}

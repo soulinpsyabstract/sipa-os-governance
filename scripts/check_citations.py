@@ -103,6 +103,16 @@ KNOWN_EXTERNAL_REFS = {
     # as provenance for the backpedal-phrase-detector's origin. This repo
     # can't seal a file it doesn't contain.
     "HUB_LEGAL_FORENSIC/INCIDENTS/INCIDENT__PAYTON-ERA-FAILURE-PATTERNS__2026-08-31.md",
+    # Same cross-hub category: the architect's own Claude-memory file
+    # (project_consequence_prediction_architecture.md, under
+    # ~/.claude/projects/, not this repo) cited in EXP-046 as the source of
+    # the Risk(X|C)=P*Impact architecture the experiment fills a gap in.
+    "project_consequence_prediction_architecture.md",
+    # Real production log at /home/sipa/SYNTAX_CHANNEL/logs/ (confirmed via
+    # grep -- cited by FREQUENCY_PROBABILITY_ESTIMATOR.py,
+    # prep_binary_gate_dryrun_dataset.py, train_specialist_cd_hermes3_v2.py,
+    # and now EXP-046's docstring) -- not a file this repo could ever seal.
+    "binary-gate-dryrun-verdicts.jsonl",
 }
 
 BACKTICK_RE = re.compile(r"`([^`\n]+)`")
