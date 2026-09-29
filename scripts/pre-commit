@@ -79,6 +79,15 @@
 #
 # .git/hooks/ is not tracked by git, so this file lives in scripts/ and has
 # to be installed once per clone: scripts/install-hooks.sh does that.
+#
+# 2026-09-29: check_infra_disclosure.py added -- architect's own live finding
+# (chat, not a review round) that the citation/seal/canonical checks above
+# all guard PROVENANCE, none of them guard architecture-TOPOLOGY disclosure
+# (ZeroTier IPs, phone SSH port, named CF tokens, canon paths) leaking into a
+# public repo's own committed content -- a different kind of exposure than
+# the secret-VALUE leaks detect-secrets already covers, and one that had no
+# mechanism, only memory, same asymmetry every other check in this file was
+# built to close.
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 tmp="$(mktemp -d)"
@@ -86,5 +95,6 @@ trap 'rm -rf "$tmp"' EXIT
 git archive --format=tar "$(git write-tree)" | tar -x -C "$tmp"
 python3 "$tmp/scripts/check_citations.py"
 python3 "$tmp/scripts/check_dataset_citations.py"
+python3 "$tmp/scripts/check_infra_disclosure.py" "$tmp"
 python3 "$tmp/scripts/check_seals.py" "$tmp"
 python3 "$tmp/scripts/check_jsonl_canonical.py" "$tmp"
