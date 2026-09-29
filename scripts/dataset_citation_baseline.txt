@@ -37,3 +37,11 @@ AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl
 # same NO_URL pattern as the entries above, private internal log with no
 # public URL by design.
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	SIPA-2026-claude-stale-time-reference-copying
+# 2026-09-29: rdi.berkeley.edu/blog/peer-preservation/ now returns HTTP 404
+# (checked directly) -- found incidentally while adding new OpenAI
+# misalignment-report entries to this same file, pre-existing record, not
+# something this edit introduced. The record's second citation
+# (arXiv:2604.19784) is unaffected and remains the record's real
+# source_locator anchor -- the blog post going dead does not invalidate
+# the record, just one of its two citations.
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	BERKELEY-2026-peer-preservation
