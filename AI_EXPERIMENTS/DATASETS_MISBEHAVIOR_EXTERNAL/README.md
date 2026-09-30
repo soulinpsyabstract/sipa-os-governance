@@ -9,7 +9,9 @@ not conversational backpedaling.
 
 ## What's in `misbehavior_incidents_seed_v1.jsonl`
 
-63 entries (was 25, "closed out deliberately" -- reopened 2026-09-01 at the
+91 entries as of 2026-09-30 (count stale again as of every prior mention below --
+this file logs history, not live state; check `wc -l` on the jsonl for the
+real number). Was 25, "closed out deliberately" -- reopened 2026-09-01 at the
 architect's direct request after cross-checking against the AI Incident
 Database, see Round 10 below; the earlier closure was honest about the
 tradeoff at the time, not wrong, just superseded). Real incidents of this kind are
