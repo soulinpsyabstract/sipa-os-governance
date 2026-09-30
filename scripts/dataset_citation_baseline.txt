@@ -45,3 +45,10 @@ AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl
 # source_locator anchor -- the blog post going dead does not invalidate
 # the record, just one of its two citations.
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	BERKELEY-2026-peer-preservation
+
+# 2026-09-30: WSJ citation for OPENAI-2026-rubygems-dsewiki-agent-swarm returns
+# HTTP 401 (subscription paywall), not a genuinely dead/removed article --
+# confirmed live via curl with a browser User-Agent, same 401 either way.
+# WSJ is a legitimate primary-tier outlet; paywall is permanent by design,
+# not a transient failure -- exception, not a fix-the-link situation.
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	OPENAI-2026-rubygems-dsewiki-agent-swarm
