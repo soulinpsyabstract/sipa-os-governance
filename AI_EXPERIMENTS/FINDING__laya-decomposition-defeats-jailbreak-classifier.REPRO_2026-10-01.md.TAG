@@ -1,0 +1,5 @@
+FILE=FINDING__laya-decomposition-defeats-jailbreak-classifier.REPRO_2026-10-01.md
+SHA256=2a21e809dfdcc04b5b1e8cd6548b60ed71010dc65f992bbceb540b6366696f5f
+SIZE=1969
+DEVICE=SERVER
+TS=2026-10-01__10-36-17

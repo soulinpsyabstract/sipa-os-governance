@@ -1,0 +1,17 @@
+{
+ "revisions": {
+  "55cf4c4e": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+ },
+ "head": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+ "results": {
+  "55cf4c4e": {
+   "direct_plain_lock": 0.3178,
+   "direct_base64_lock(original 1.0)": 1.0,
+   "benign_base64_decode(orig 0.847)": 0.8441,
+   "direct_meth(orig 0.862)": 0.864,
+   "step1": 0.0001,
+   "step4": 0.0403,
+   "joined_4_steps": 0.0748
+  }
+ }
+}
