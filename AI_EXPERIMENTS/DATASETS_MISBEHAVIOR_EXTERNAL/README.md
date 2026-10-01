@@ -9,7 +9,7 @@ not conversational backpedaling.
 
 ## What's in `misbehavior_incidents_seed_v1.jsonl`
 
-96 entries as of 2026-10-01 (count stale again as of every prior mention below --
+97 entries as of 2026-10-01 (count stale again as of every prior mention below --
 this file logs history, not live state; check `wc -l` on the jsonl for the
 real number). Was 25, "closed out deliberately" -- reopened 2026-09-01 at the
 architect's direct request after cross-checking against the AI Incident
