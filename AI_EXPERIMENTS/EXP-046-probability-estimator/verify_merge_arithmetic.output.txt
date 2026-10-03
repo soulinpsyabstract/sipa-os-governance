@@ -1,0 +1,9 @@
+modules: 196
+A: scale median 0.816497 (min 0.816496, max 0.816497); rel err max 2.23e-07
+B: scale median 0.816497 (min 0.816496, max 0.816497); rel err max 2.24e-07
+sqrt(2/3) = 0.816496580927726
+delta analysis on 12 attention modules (layers 0/13/27):
+  median |cosine| between specialist deltas: 0.020
+  median regression coef of merged on each specialist: 0.333
+  median share of merged energy OUTSIDE the span of the 3 specialists: 64%
+  median ||off-diagonal terms|| / ||merged||: 80%

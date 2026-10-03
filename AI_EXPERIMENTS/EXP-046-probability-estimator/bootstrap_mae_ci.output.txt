@@ -1,0 +1,4 @@
+group                    base   spec  merged | gain kept by merge | 95% CI (merged-base) | 95% CI (spec-base)
+vulnerability           0.098  0.085   0.102 |   -35% of spec gain | [-0.034, +0.048] | [-0.047, +0.024]  (n=20)
+deletion                0.144  0.113   0.129 |    48% of spec gain | [-0.078, +0.052] | [-0.103, +0.050]  (n=20)
+sensitive_publication   0.134  0.100   0.104 |    87% of spec gain | [-0.056, -0.001] | [-0.056, -0.010]  (n=20)
