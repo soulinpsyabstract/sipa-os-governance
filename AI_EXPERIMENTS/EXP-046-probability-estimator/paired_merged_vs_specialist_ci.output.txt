@@ -1,0 +1,4 @@
+group                   gap m-s     sd   95% CI (merged-specialist)      kept-share 95% CI  n for 80%
+vulnerability           +0.0175  0.056 [-0.005, +0.042]             [-1100%, +1167%]         79   (n=20)
+deletion                +0.0160  0.105 [-0.029, +0.061]               [-450%, +419%]        339   (n=20)
+sensitive_publication   +0.0045  0.036 [-0.010, +0.021]                 [+6%, +142%]        508   (n=20)
