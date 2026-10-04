@@ -1,0 +1,5 @@
+FILE=verify_cat_merge_arithmetic.output.txt
+SHA256=41f19aa30c76a6f76223b2e8d7bc515e5e2633a727aab43a9d0d9fba3bdc600f
+SIZE=156
+DEVICE=SERVER
+TS=2026-10-04__08-16-41
