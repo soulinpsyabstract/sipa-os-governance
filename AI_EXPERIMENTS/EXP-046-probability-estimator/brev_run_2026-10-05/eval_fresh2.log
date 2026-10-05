@@ -1,0 +1,25 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights:   0%|          | 1/339 [00:00<01:17,  4.37it/s]Loading weights:   5%|▌         | 18/339 [00:00<00:04, 66.93it/s]Loading weights:  12%|█▏        | 42/339 [00:00<00:02, 124.39it/s]Loading weights:  19%|█▉        | 65/339 [00:00<00:01, 155.30it/s]Loading weights:  27%|██▋       | 90/339 [00:00<00:01, 182.24it/s]Loading weights:  34%|███▎      | 114/339 [00:00<00:01, 197.21it/s]Loading weights:  41%|████      | 138/339 [00:00<00:00, 203.25it/s]Loading weights:  48%|████▊     | 162/339 [00:00<00:00, 210.16it/s]Loading weights:  55%|█████▍    | 186/339 [00:01<00:00, 213.98it/s]Loading weights:  62%|██████▏   | 210/339 [00:01<00:00, 215.71it/s]Loading weights:  69%|██████▉   | 234/339 [00:01<00:00, 218.11it/s]Loading weights:  76%|███████▌  | 258/339 [00:01<00:00, 218.30it/s]Loading weights:  83%|████████▎ | 282/339 [00:01<00:00, 215.73it/s]Loading weights:  90%|█████████ | 306/339 [00:01<00:00, 218.49it/s]Loading weights:  97%|█████████▋| 330/339 [00:01<00:00, 220.22it/s]Loading weights: 100%|██████████| 339/339 [00:01<00:00, 194.46it/s]
+done base
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights:   0%|          | 1/339 [00:00<00:47,  7.16it/s]Loading weights:   1%|          | 2/339 [00:00<00:53,  6.25it/s]Loading weights:   5%|▌         | 18/339 [00:00<00:05, 55.17it/s]Loading weights:  12%|█▏        | 41/339 [00:00<00:02, 108.87it/s]Loading weights:  19%|█▉        | 64/339 [00:00<00:01, 143.59it/s]Loading weights:  26%|██▌       | 87/339 [00:00<00:01, 154.55it/s]Loading weights:  33%|███▎      | 113/339 [00:00<00:01, 182.79it/s]Loading weights:  40%|███▉      | 134/339 [00:00<00:01, 186.27it/s]Loading weights:  45%|████▌     | 154/339 [00:01<00:00, 188.69it/s]Loading weights:  51%|█████▏    | 174/339 [00:01<00:00, 185.33it/s]Loading weights:  58%|█████▊    | 195/339 [00:01<00:00, 190.20it/s]Loading weights:  65%|██████▍   | 219/339 [00:01<00:00, 194.05it/s]Loading weights:  72%|███████▏  | 244/339 [00:01<00:00, 208.26it/s]Loading weights:  78%|███████▊  | 266/339 [00:01<00:00, 209.43it/s]Loading weights:  85%|████████▍ | 288/339 [00:01<00:00, 203.29it/s]Loading weights:  91%|█████████ | 309/339 [00:01<00:00, 196.79it/s]Loading weights:  97%|█████████▋| 330/339 [00:01<00:00, 192.51it/s]Loading weights: 100%|██████████| 339/339 [00:01<00:00, 170.81it/s]
+done specialist_vulnerability
+{
+ "n": 80,
+ "arms": {
+  "base": {
+   "mae_vs_orig": 0.154375,
+   "mae_vs_shuffled": 0.15125,
+   "unparsed": 0
+  },
+  "specialist_vulnerability": {
+   "mae_vs_orig": 0.12187500000000001,
+   "mae_vs_shuffled": 0.115,
+   "unparsed": 0
+  },
+  "constant_0.70": {
+   "mae_vs_orig": 0.135,
+   "mae_vs_shuffled": 0.129375,
+   "unparsed": 0
+  }
+ }
+}

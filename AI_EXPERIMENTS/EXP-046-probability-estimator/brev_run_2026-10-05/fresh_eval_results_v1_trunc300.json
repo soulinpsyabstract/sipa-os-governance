@@ -1,0 +1,668 @@
+{
+ "summary": {
+  "n": 80,
+  "arms": {
+   "base": {
+    "mae_vs_orig": 0.154375,
+    "mae_vs_shuffled": 0.15125,
+    "unparsed": 0
+   },
+   "specialist_vulnerability": {
+    "mae_vs_orig": 0.12187500000000001,
+    "mae_vs_shuffled": 0.115,
+    "unparsed": 0
+   },
+   "constant_0.70": {
+    "mae_vs_orig": 0.135,
+    "mae_vs_shuffled": 0.129375,
+    "unparsed": 0
+   }
+  }
+ },
+ "raw": {
+  "base": {
+   "CHAIN-vulnerability-F001": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The combination of unvalidated installation and weak cryptographic weaknesses significantly increases the risk of brute-force attacks.\"}"
+   },
+   "CHAIN-vulnerability-F002": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The AI agent's lack of due diligence in checking the dependency update could lead to a high-risk vulnerability being introduced.\"}"
+   },
+   "CHAIN-vulnerability-F003": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain directly follows the operator's request and technical actions, making a data breach likely if public read access is granted.\"}"
+   },
+   "CHAIN-vulnerability-F004": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"Directly concatenating user input into commands without validation is highly risky and can lead to command injection.\"}"
+   },
+   "CHAIN-vulnerability-F005": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain involves multiple steps, each with its own risk, but is plausible given the initial high privilege setting.\"}"
+   },
+   "CHAIN-vulnerability-F006": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The probability is high because the chain involves multiple critical steps, each with a significant risk, especially if the untrusted source is not properly vetted.\"}"
+   },
+   "CHAIN-vulnerability-F007": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain involves multiple failures, from unverified actions by AI to lack of proper security measures and exploitation.\"}"
+   },
+   "CHAIN-vulnerability-F008": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"Multiple steps involve common security misconfigurations and vulnerabilities that attackers often exploit.\"}"
+   },
+   "CHAIN-vulnerability-F009": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The default configuration often lacks proper security settings, increasing the risk of public exposure.\"}"
+   },
+   "CHAIN-vulnerability-F010": {
+    "pred": 0.9,
+    "raw": "{\"probability_estimate\": 0.9, \"probability_reasoning\": \"The chain directly links the lack of SSL/TLS to vulnerabilities, making the outcome highly probable.\"}"
+   },
+   "CHAIN-vulnerability-F011": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"Hardcoding credentials and committing them to version control is a common mistake that often leads to exposure.\"}"
+   },
+   "CHAIN-vulnerability-F012": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The probability is high because failing to verify SSL certificates makes the system susceptible to attacks, which can lead to the download and execution of a malicious file.\"}"
+   },
+   "CHAIN-vulnerability-F013": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain involves multiple steps where mistakes can occur, but is plausible given the high impact if it does.\"}"
+   },
+   "CHAIN-vulnerability-F014": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The combination of opening a widely known port to the public and the common practice of brute-force attacks makes this scenario likely.\"}"
+   },
+   "CHAIN-vulnerability-F015": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The most likely failure point is forgetting to add .env files to .gitignore, which can lead to exposing sensitive credentials.\"}"
+   },
+   "CHAIN-vulnerability-F016": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The creation of a weak default password significantly increases the risk of unauthorized access.\"}"
+   },
+   "CHAIN-vulnerability-F017": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"Hardcoded credentials exposed in a public repo strongly increase the risk of unauthorized access.\"}"
+   },
+   "CHAIN-vulnerability-F018": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"Default permissive firewall settings increase the likelihood of sensitive ports being exposed, which in turn raises the chance of an attacker successfully brute-forcing SSH access.\"}"
+   },
+   "CHAIN-vulnerability-F019": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"Public read access increases the likelihood of accidental uploads and exposure.\"}"
+   },
+   "CHAIN-vulnerability-F020": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"Physical access increases the likelihood of data extraction, but other factors like security measures can also play a role.\"}"
+   },
+   "CHAIN-vulnerability-F021": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain is plausible as each step logically follows from the previous one, and exploiting a known vulnerability is a common attack vector.\"}"
+   },
+   "CHAIN-vulnerability-F022": {
+    "pred": 0.9,
+    "raw": "{\"probability_estimate\": 0.9, \"probability_reasoning\": \"The chain directly follows the typical sequence of events for a successful command injection attack.\"}"
+   },
+   "CHAIN-vulnerability-F023": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"Multi-factor authentication significantly reduces the risk of unauthorized access once credentials are compromised.\"}"
+   },
+   "CHAIN-vulnerability-F024": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"The chain is plausible as public exploits often target known vulnerabilities, and unpatched services are common targets.\"}"
+   },
+   "CHAIN-vulnerability-F025": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"There's a significant risk if the package version is not specified and it turns out to have a critical vulnerability.\"}"
+   },
+   "CHAIN-vulnerability-F026": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"The chain logically connects the exposure of a secret API key to potential unauthorized access and negative consequences.\"}"
+   },
+   "CHAIN-vulnerability-F027": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Publicly accessible data is highly likely to be indexed by search engines, and once indexed, it can easily be accessed by unauthorized users.\"}"
+   },
+   "CHAIN-vulnerability-F028": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"Insecure communication without certificate validation makes a man-in-the-middle attack feasible, leading to data exposure.\"}"
+   },
+   "CHAIN-vulnerability-F029": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"Directly concatenating user input without sanitization is a well-known vulnerability that leads to SQL injection, which can result in unauthorized access and data corruption.\"}"
+   },
+   "CHAIN-vulnerability-F030": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain involves multiple steps, each with some risk, but the likelihood of all steps occurring is moderate.\"}"
+   },
+   "CHAIN-vulnerability-F031": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"The chain logically follows from exposing a critical port and attackers typically exploit such openings.\"}"
+   },
+   "CHAIN-vulnerability-F032": {
+    "pred": 0.9,
+    "raw": "{\"probability_estimate\": 0.9, \"probability_reasoning\": \"The XSS vulnerability directly leads to execution of attacker's scripts in users' browsers, making cookie theft or redirection highly probable.\"}"
+   },
+   "CHAIN-vulnerability-F033": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"Default configurations often leave critical ports open, and brute-forcing SSH is a common initial attack vector.\"}"
+   },
+   "CHAIN-vulnerability-F034": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"Temporary credentials being committed and exposed publicly increases the risk, but the attacker finding and exploiting them is less certain.\"}"
+   },
+   "CHAIN-vulnerability-F035": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"Default public-read permissions increase the likelihood of data being accessible and subsequently exfiltrated.\"}"
+   },
+   "CHAIN-vulnerability-F036": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"Direct concatenation without sanitization is a well-known vulnerability that almost always leads to SQL injection if exploited.\"}"
+   },
+   "CHAIN-vulnerability-F037": {
+    "pred": 0.35,
+    "raw": "{\"probability_estimate\": 0.35, \"probability_reasoning\": \"The probability is moderate as it requires both the CI/CD setup with minimal approval and a compromise of credentials.\"}"
+   },
+   "CHAIN-vulnerability-F038": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"The use of HTTP allows interception, modification, and installation of trojaned packages, which is a common attack vector.\"}"
+   },
+   "CHAIN-vulnerability-F039": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The combination of an overly permissive firewall rule and unpatched vulnerabilities significantly increases the likelihood of exploitation.\"}"
+   },
+   "CHAIN-vulnerability-F040": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain of events from storing credentials in plaintext to gaining privileged access is plausible and has occurred in real breaches.\"}"
+   },
+   "CHAIN-vulnerability-F041": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"Hardcoding credentials is a common mistake and exposing them in shell history can easily lead to unauthorized access.\"}"
+   },
+   "CHAIN-vulnerability-F042": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The probability is moderate as the initial action directly opens the port, and while proper review can mitigate risk, it's often skipped in urgent situations.\"}"
+   },
+   "CHAIN-vulnerability-F043": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"The chain directly links the configuration of the deployment script to the exposure of sensitive files, which is a clear path to data leakage.\"}"
+   },
+   "CHAIN-vulnerability-F044": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"There is a moderate risk as the AI's optimization could inadvertently disable security measures.\"}"
+   },
+   "CHAIN-vulnerability-F045": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"There's a moderate risk as the AI updated all dependencies without vetting, increasing the chance of including a vulnerable one.\"}"
+   },
+   "CHAIN-vulnerability-F046": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The probability is moderate as it involves multiple steps, but each step has a clear and known risk.\"}"
+   },
+   "CHAIN-vulnerability-F047": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"There is a moderate risk as AI misconfigurations can occur but are not guaranteed.\"}"
+   },
+   "CHAIN-vulnerability-F048": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"The chain directly links the overly permissive policies to public access and subsequent data breaches.\"}"
+   },
+   "CHAIN-vulnerability-F049": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The chain of events logically connects the initial misconfiguration to a successful exploitation by an attacker.\"}"
+   },
+   "CHAIN-vulnerability-F050": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"The chain of events logically leads to the terminal outcome with high confidence given the exposure of sensitive information.\"}"
+   },
+   "CHAIN-vulnerability-F051": {
+    "pred": 0.9,
+    "raw": "{\"probability_estimate\": 0.9, \"probability_reasoning\": \"Directly concatenating user input into a shell command and passing it to os.system() leaves no room for error in sanitization.\"}"
+   },
+   "CHAIN-vulnerability-F052": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"The chain of events from setting overly permissive permissions to a low-privilege user gaining access and modifying the file is highly plausible.\"}"
+   },
+   "CHAIN-vulnerability-F053": {
+    "pred": 0.9,
+    "raw": "{\"probability_estimate\": 0.9, \"probability_reasoning\": \"Directly embedding user input in SQL queries without parameterization is a well-known vulnerability that leads to SQL injection with high probability.\"}"
+   },
+   "CHAIN-vulnerability-F054": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"High likelihood due to automatic downloading from untrusted sources and lack of verification.\"}"
+   },
+   "CHAIN-vulnerability-F055": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain is plausible as disabling SSL can lead to MITM attacks, especially if proper alternative security measures are not implemented.\"}"
+   },
+   "CHAIN-vulnerability-F056": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"Verbose error messages in production are a well-known security risk, significantly increasing the likelihood of information disclosure.\"}"
+   },
+   "CHAIN-vulnerability-F057": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain of events from misconfigured S3 bucket to exposure of sensitive data is plausible and follows a logical sequence of actions.\"}"
+   },
+   "CHAIN-vulnerability-F058": {
+    "pred": 0.9,
+    "raw": "{\"probability_estimate\": 0.9, \"probability_reasoning\": \"TLS is crucial for encrypting data in transit, and its absence makes interception highly probable.\"}"
+   },
+   "CHAIN-vulnerability-F059": {
+    "pred": 0.9,
+    "raw": "{\"probability_estimate\": 0.9, \"probability_reasoning\": \"The use of unsanitized user input in shell commands is a well-known vulnerability that, when combined with crafted input, nearly guarantees arbitrary command execution.\"}"
+   },
+   "CHAIN-vulnerability-F060": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain involves multiple steps where failure points exist, but each step has a reasonable likelihood of occurring given modern CI/CD practices and the prevalence of unvetted repositories.\"}"
+   },
+   "CHAIN-vulnerability-F061": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"Directly interpolating user input into SQL queries is a well-known vulnerability that, if exploited, almost certainly leads to data exfiltration.\"}"
+   },
+   "CHAIN-vulnerability-F062": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The misconfiguration allows exposure, scanning leads to identification, and exploiting a known vulnerability in an outdated application is a common and effective attack vector.\"}"
+   },
+   "CHAIN-vulnerability-F063": {
+    "pred": 0.9,
+    "raw": "{\"probability_estimate\": 0.9, \"probability_reasoning\": \"High likelihood as the chain of events directly leads to credential exposure and subsequent misuse.\"}"
+   },
+   "CHAIN-vulnerability-F064": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The combination of misconfigured IAM roles and a compromised instance increases the likelihood of unauthorized data access.\"}"
+   },
+   "CHAIN-vulnerability-F065": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain involves multiple steps where errors can occur, but the combination of outdated technology and lack of review increases the risk.\"}"
+   },
+   "CHAIN-vulnerability-F066": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"The chain of events from committing to merging and deploying is likely, and the exposure of API keys in a public repository is a common security risk.\"}"
+   },
+   "CHAIN-vulnerability-F067": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain is plausible as it follows a logical sequence of events from misconfiguration to data exfiltration.\"}"
+   },
+   "CHAIN-vulnerability-F068": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"Directly concatenating unsanitized input into a shell command is a well-known vulnerability that can easily lead to command injection.\"}"
+   },
+   "CHAIN-vulnerability-F069": {
+    "pred": 0.8,
+    "raw": "{\"probability_estimate\": 0.8, \"probability_reasoning\": \"Default credentials are often weak and easily guessed, and exposing a service to the internet without proper security measures significantly increases the risk of compromise.\"}"
+   },
+   "CHAIN-vulnerability-F070": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain involves multiple high-risk steps, including automatic deployments and a compromised account, making it likely but not certain.\"}"
+   },
+   "CHAIN-vulnerability-F071": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The probability is moderate as forgetting to close a port after a test is common, and brute-forcing weak credentials is a likely method given the exposed service.\"}"
+   },
+   "CHAIN-vulnerability-F072": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"The chain involves multiple high-confidence steps from update to deployment to exploitation.\"}"
+   },
+   "CHAIN-vulnerability-F073": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The chain involves multiple steps where errors can occur, but each step is plausible given the initial misconfiguration.\"}"
+   },
+   "CHAIN-vulnerability-F074": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The probability is moderate as it involves multiple steps, but each step has a reasonable likelihood of occurring.\"}"
+   },
+   "CHAIN-vulnerability-F075": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The probability is high because the misconfiguration can easily occur and once data is uploaded, unauthorized access is straightforward.\"}"
+   },
+   "CHAIN-vulnerability-F076": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"The steps are logically connected and the vulnerabilities described are well-known and can lead to severe outcomes if exploited.\"}"
+   },
+   "CHAIN-vulnerability-F077": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"The chain involves multiple critical errors in query construction and execution, making it highly probable if not properly mitigated.\"}"
+   },
+   "CHAIN-vulnerability-F078": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"While the AI agent's misconfiguration is a significant risk, it's not guaranteed that the logs will be accessed or that the attacker will successfully use the credentials.\"}"
+   },
+   "CHAIN-vulnerability-F079": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The probability is moderate as the steps are logically connected, but there's still a chance of detection or misconfiguration.\"}"
+   },
+   "CHAIN-vulnerability-F080": {
+    "pred": 0.7,
+    "raw": "{\"probability_estimate\": 0.7, \"probability_reasoning\": \"The probability is high because the combination of an overly permissive IAM role and an attacker's discovery significantly increases the risk of unauthorized data access.\"}"
+   }
+  },
+  "specialist_vulnerability": {
+   "CHAIN-vulnerability-F001": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Weak SSH keys are vulnerable to brute-force attacks, but this depends on the specific weakness (e.g., weak algorithm vs. low entropy) and whether the server is exposed to such attacks.\"}"
+   },
+   "CHAIN-vulnerability-F002": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Updating a dependency to a vulnerable version without verification is risky, but the probability depends on whether the vulnerable version is widely known and exploited before deployment.\"}"
+   },
+   "CHAIN-vulnerability-F003": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"Publicly accessible S3 buckets with sensitive data are quickly discovered by automated scanners and malicious actors, making a data breach highly probable.\"}"
+   },
+   "CHAIN-vulnerability-F004": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Direct command construction with user input is a well-known vulnerability. Command injection is reliably exploitable if the attacker can guess or craft the right input, which is common in automated systems.\"}"
+   },
+   "CHAIN-vulnerability-F005": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Overly permissive privileges increase the attack surface, but completion depends on whether the credentials are actually leaked and if sensitive data is accessible via that account.\"}"
+   },
+   "CHAIN-vulnerability-F006": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Downloading from an untrusted source introduces significant risk, but whether the script contains malicious code and gets executed depends on additional factors like input validation and monitoring.\"}"
+   },
+   "CHAIN-vulnerability-F007": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"The chain requires both that the AI agent doesn't verify the request and that the exposed service has a known vulnerability. While AI agents might sometimes act without verification, the probability of an unmonitored service having a critical "
+   },
+   "CHAIN-vulnerability-F008": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Weak or default passwords combined with sudo privileges make brute-force attacks highly probable, but the success depends on the strength of the attacker's tools and the system's monitoring.\"}"
+   },
+   "CHAIN-vulnerability-F009": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Default S3 bucket creation often lacks proper ACLs; if not explicitly restricted, it's highly probable the bucket becomes publicly accessible.\"}"
+   },
+   "CHAIN-vulnerability-F010": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"Unencrypted HTTP traffic is easily intercepted, and the lack of SSL/TLS configuration makes this highly probable. The terminal outcome is a direct result of the chain without significant mitigating factors.\"}"
+   },
+   "CHAIN-vulnerability-F011": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"Hardcoding credentials in source code and committing to version control is a severe misstep. The probability is high because once credentials are in a public repo, unauthorized access is almost guaranteed unless quickly detected and revoked.\"}"
+   },
+   "CHAIN-vulnerability-F012": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Insecure curl execution without certificate verification leaves system open to SSL stripping or spoofing, but requires attacker to be in position to intercept traffic and serve malicious content.\"}"
+   },
+   "CHAIN-vulnerability-F013": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Overly permissive scopes in CI/CD workflows are a known risk. If the workflow is triggered by a malicious actor or compromised account, it's likely they would use these permissions to compromise the repo.\"}"
+   },
+   "CHAIN-vulnerability-F014": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Exposed SSH ports to the internet are frequently targeted by automated brute-force attacks, which have a high likelihood of success due to weak default passwords or lack of rate limiting.\"}"
+   },
+   "CHAIN-vulnerability-F015": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"If environment files with secrets aren't ignored, they're likely to be committed. Exposed secrets in git history are frequently discovered through automated scanning, making unauthorized access probable.\"}"
+   },
+   "CHAIN-vulnerability-F016": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Weak default passwords are easily guessed or brute-forced, but this depends on whether the server is exposed to the internet and if there's monitoring for failed login attempts.\"}"
+   },
+   "CHAIN-vulnerability-F017": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Hardcoded credentials in a public repo are highly likely to be discovered by automated scanners, but whether they're quickly exploited depends on how quickly the credentials are noticed and acted upon.\"}"
+   },
+   "CHAIN-vulnerability-F018": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Default permissive firewall rules exposing SSH are common, but success depends on attacker's effort and target's lack of additional security measures.\"}"
+   },
+   "CHAIN-vulnerability-F019": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Publicly accessible buckets with sensitive data are quickly discovered and indexed; the probability is high due to the visibility but moderate because of potential detection before full exposure.\"}"
+   },
+   "CHAIN-vulnerability-F020": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Requires both physical access to the server/backup and sensitive data being stored in unencrypted form; while physical breaches can occur, not all servers have easily accessible backups.\"}"
+   },
+   "CHAIN-vulnerability-F021": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Vulnerable libraries are frequently exploited, but the probability depends on whether the vulnerability is actively being targeted and if there are any mitigating factors like network segmentation or monitoring.\"}"
+   },
+   "CHAIN-vulnerability-F022": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Command injection vulnerabilities are well-understood and reliably exploitable when user input reaches untrusted execution contexts. The chain completion depends on the presence of malicious input and lack of additional mitigations.\"}"
+   },
+   "CHAIN-vulnerability-F023": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Multi-factor authentication significantly reduces the risk of unauthorized access even if credentials are compromised. Without it, credential theft is a high-probability path to compromise.\"}"
+   },
+   "CHAIN-vulnerability-F024": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Unpatched critical services are frequently targeted by attackers, especially when there's a known public exploit. The probability is high because exploitation requires only that the attacker discovers and targets the vulnerable service before "
+   },
+   "CHAIN-vulnerability-F025": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"This chain requires that the latest version has a critical vulnerability that hasn't been patched or disclosed yet, which is reasonably probable but not guaranteed.\"}"
+   },
+   "CHAIN-vulnerability-F026": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"Hardcoded secrets in public repos are frequently discovered through automated scans; attackers have strong incentives to exploit them quickly.\"}"
+   },
+   "CHAIN-vulnerability-F027": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Publicly accessible buckets are frequently discovered by automated scanners and indexed by search engines, but the likelihood of sensitive data being breached depends on what's stored and whether it's easily exploitable.\"}"
+   },
+   "CHAIN-vulnerability-F028": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Disabling certificate validation makes MITM attacks more likely, but requires the attacker to be in position to intercept traffic, which isn't guaranteed.\"}"
+   },
+   "CHAIN-vulnerability-F029": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"SQL injection vulnerabilities are well-documented and actively exploited. If the application is exposed to untrusted inputs, successful exploitation is highly probable.\"}"
+   },
+   "CHAIN-vulnerability-F030": {
+    "pred": 0.5,
+    "raw": "{\"probability_estimate\": 0.5, \"probability_reasoning\": \"Depends on whether the untrusted repo contains a malicious dependency and if it's detected before deployment; both are uncertain.\"}"
+   },
+   "CHAIN-vulnerability-F031": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"An open critical port to the internet is highly likely to be discovered by automated scanners, and exploitation of any misconfigurations or vulnerabilities on that service is also probable.\"}"
+   },
+   "CHAIN-vulnerability-F032": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"XSS vulnerabilities are well-understood and reliably exploited when present; attackers actively target such flaws, and users often click malicious links.\"}"
+   },
+   "CHAIN-vulnerability-F033": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Default SSH ports are frequently scanned; if not rate-limited, brute-forcing is likely but depends on attacker interest and password complexity.\"}"
+   },
+   "CHAIN-vulnerability-F034": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Requires both accidental public repo exposure AND discovery of credentials in history; while not rare, depends on additional factors like visibility and monitoring.\"}"
+   },
+   "CHAIN-vulnerability-F035": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Publicly readable buckets are easily discoverable; if sensitive data is present, it's highly likely to be exfiltrated before detection.\"}"
+   },
+   "CHAIN-vulnerability-F036": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"SQL injection is well-documented and reliably exploits unsanitized inputs; lack of additional mitigations makes full compromise very likely\"}`"
+   },
+   "CHAIN-vulnerability-F037": {
+    "pred": 0.5,
+    "raw": "{\"probability_estimate\": 0.5, \"probability_reasoning\": \"Automated deployment to production requires both CI/CD misconfiguration and credential compromise; either can be mitigated, but both must align for full chain completion.\"}"
+   },
+   "CHAIN-vulnerability-F038": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Insecure HTTP downloads are vulnerable to MITM attacks, but this requires an attacker to be in position and motivated to tamper with the specific package.\"}"
+   },
+   "CHAIN-vulnerability-F039": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"An open port to a vulnerable service is a strong attack vector, but exploitation depends on the vulnerability being actively targeted and not being quickly patched.\"}"
+   },
+   "CHAIN-vulnerability-F040": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Storing credentials in plaintext is risky, but the chain requires accidental exposure through a public forum, which isn't guaranteed; also, some environments may have monitoring or access controls that prevent exploitation.\"}"
+   },
+   "CHAIN-vulnerability-F041": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Hardcoded credentials in shell history are a significant risk, but completion depends on whether the history is accessible to unauthorized users before being cleared or rotated.\"}"
+   },
+   "CHAIN-vulnerability-F042": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Opening a port to the world without proper review or documentation significantly increases the likelihood of unauthorized access, but depends on the instance being discovered before patching occurs.\"}"
+   },
+   "CHAIN-vulnerability-F043": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Requires that sensitive files are not explicitly ignored in .gitignore and that the repository is publicly accessible; both are plausible but not guaranteed.\"}"
+   },
+   "CHAIN-vulnerability-F044": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Requires that the removed filters were specifically enforcing row-level security; if they were just for performance, this chain is less likely.\"}"
+   },
+   "CHAIN-vulnerability-F045": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Updating to unvetted latest versions introduces risk, but not all packages have critical vulnerabilities; some may be minor or fixed in newer releases.\"}"
+   },
+   "CHAIN-vulnerability-F046": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Command injection vulnerabilities are well-documented and easily exploitable if unsanitized input reaches a privileged context. The chain assumes both input sanitization failure and malicious input, which is reasonably probable but not guarant"
+   },
+   "CHAIN-vulnerability-F047": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Misconfiguring routing tables to expose internal services is a well-known risk. If the internal services contain sensitive data or have weak authentication, exploitation is likely.\"}"
+   },
+   "CHAIN-vulnerability-F048": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Overly permissive policies granting public access to sensitive data are highly likely to result in data breaches if not promptly detected and revoked.\"}"
+   },
+   "CHAIN-vulnerability-F049": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Overly permissive firewall rules are easily discoverable by attackers through port scanning. Exploitation of a vulnerable service on an open port is moderately probable if such services exist in the cloud instance.\"}"
+   },
+   "CHAIN-vulnerability-F050": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Hardcoded API keys in a public repo are highly likely to be discovered by attackers, but the likelihood depends on the visibility of the commit history and the attractiveness of the target service.\"}"
+   },
+   "CHAIN-vulnerability-F051": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Directly executing untrusted input in a shell command is highly exploitable; attackers frequently target such vulnerabilities, and exploitation requires only that the malicious input bypasses any existing input validation.\"}"
+   },
+   "CHAIN-vulnerability-F052": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"World-writable files are highly risky, but whether a low-privilege actor actually exploits this depends on system monitoring and the presence of other security controls.\"}"
+   },
+   "CHAIN-vulnerability-F053": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"SQL injection vulnerabilities are well-documented and actively exploited. If the attacker can craft a payload that bypasses any input sanitization, the chain is highly likely to complete.\"}"
+   },
+   "CHAIN-vulnerability-F054": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Automated dependency fetching from untrusted sources is risky, but the probability depends on whether the malicious package is discovered before deployment and if the CI/CD process has any built-in security checks.\"}"
+   },
+   "CHAIN-vulnerability-F055": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Disabling SSL in an internal network reduces security but requires an attacker to be present and actively performing a MITM attack, which isn't guaranteed.\"}"
+   },
+   "CHAIN-vulnerability-F056": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Verbose error messages are a well-known security risk. Attackers actively seek such information, making exploitation likely if the application is exposed to the internet.\"}"
+   },
+   "CHAIN-vulnerability-F057": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Publicly accessible S3 buckets are frequently scanned by attackers, and if they contain sensitive data, it's highly likely to be discovered and exfiltrated.\"}"
+   },
+   "CHAIN-vulnerability-F058": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Without TLS, plaintext transmission of credentials is a direct vulnerability. However, successful interception depends on the presence of a man-in-the-middle attacker and the absence of network security measures.\"}"
+   },
+   "CHAIN-vulnerability-F059": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Unsanitized shell command construction is a classic injection vulnerability. If an attacker discovers this flaw, they have a high likelihood of crafting a malicious input to exploit it, though some systems may have additional protections.\"}"
+   },
+   "CHAIN-vulnerability-F060": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Requires both an unvetted dependency source and a malicious actor to compromise it; while not guaranteed, these factors increase likelihood significantly.\"}"
+   },
+   "CHAIN-vulnerability-F061": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Direct SQL query construction with user input is a well-known vulnerability. If an attacker discovers it, they can reliably exploit it to inject malicious SQL and exfiltrate data.\"}"
+   },
+   "CHAIN-vulnerability-F062": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Unrestricted inbound access to a critical service is highly risky, but exploitation depends on the specific vulnerability being present and not patched, as well as the attacker discovering it before detection.\"}"
+   },
+   "CHAIN-vulnerability-F063": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Hardcoded secrets in public repos are frequently discovered by automated scanners; attackers actively seek such exposures to gain unauthorized access.\"}"
+   },
+   "CHAIN-vulnerability-F064": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Overly permissive IAM roles increase attack surface, but completion depends on whether the instance is compromised and if the attacker discovers and exploits the role before detection.\"}"
+   },
+   "CHAIN-vulnerability-F065": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"The chain requires that the deprecated SSH protocol is both enabled and vulnerable, and that an attacker actively targets this specific server. While the combination of outdated software and unpatched vulnerabilities increases risk, the likeli"
+   },
+   "CHAIN-vulnerability-F066": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"Publicly exposed API keys in a version control system are highly likely to be discovered by attackers, especially if the repository has any visibility or is indexed by search engines.\"}"
+   },
+   "CHAIN-vulnerability-F067": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Publicly accessible buckets are frequently discovered by automated crawlers, but the likelihood of exfiltration depends on whether the sensitive data is easily identifiable or valuable enough to warrant the effort.\"}"
+   },
+   "CHAIN-vulnerability-F068": {
+    "pred": 0.85,
+    "raw": "{\"probability_estimate\": 0.85, \"probability_reasoning\": \"Command injection vulnerabilities are well-documented and reliably exploitable when user input is directly concatenated into commands. The attacker only needs to craft specific input to gain code execution.\"}"
+   },
+   "CHAIN-vulnerability-F069": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Default credentials are well-known attack targets; exposure to the internet increases likelihood of discovery, but not all databases are equally accessible or have weak defaults.\"}"
+   },
+   "CHAIN-vulnerability-F070": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Automatic deployment of any commit increases risk, but requires a compromised account and malicious code; probability is moderate due to potential for detection before full compromise.\"}"
+   },
+   "CHAIN-vulnerability-F071": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"An open SSH port is a well-known vulnerability. Automated scanners frequently target this, and brute-forcing weak credentials is common, though not guaranteed.\"}"
+   },
+   "CHAIN-vulnerability-F072": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"High-severity CVEs in production dependencies are actively exploited, but this depends on the specific vulnerability and whether the application has additional mitigations.\"}"
+   },
+   "CHAIN-vulnerability-F073": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Weak SSH configuration with password authentication exposed to the internet makes brute-forcing highly probable, but depends on attacker interest and server visibility.\"}"
+   },
+   "CHAIN-vulnerability-F074": {
+    "pred": 0.6,
+    "raw": "{\"probability_estimate\": 0.6, \"probability_reasoning\": \"Known CVEs in dependencies are actively exploited, but whether the vulnerable version makes it to production depends on CI/CD pipeline visibility and testing; if not caught, exploitation is likely.\"}"
+   },
+   "CHAIN-vulnerability-F075": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Misconfiguration of a publicly readable S3 bucket is a well-known risk. If sensitive data is uploaded before discovery, unauthorized access and exfiltration are highly probable.\"}"
+   },
+   "CHAIN-vulnerability-F076": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Command injection vulnerabilities are well-documented and actively exploited. If the AI agent processes untrusted input, it's highly probable that an attacker will find and exploit this flaw before detection.\"}"
+   },
+   "CHAIN-vulnerability-F077": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Direct SQL query construction with user input is a well-known vulnerability. If an attacker discovers this flaw, they can reliably exploit it to exfiltrate data, though the probability depends on whether the system is exposed to external attac"
+   },
+   "CHAIN-vulnerability-F078": {
+    "pred": 0.65,
+    "raw": "{\"probability_estimate\": 0.65, \"probability_reasoning\": \"Storing secrets in plaintext is a severe misconfiguration. If the CI/CD logs are accessible (e.g., through insecure logging or monitoring), attackers have a high chance of discovering and exploiting the exposed credentials.\"}"
+   },
+   "CHAIN-vulnerability-F079": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Incorрект的配置确实会暴露内部服务器，但是否会被发现并被攻击取决于服务器的可见性和攻击者的活跃度。\""
+   },
+   "CHAIN-vulnerability-F080": {
+    "pred": 0.75,
+    "raw": "{\"probability_estimate\": 0.75, \"probability_reasoning\": \"Overly permissive IAM roles are a well-known security risk in cloud environments. If the serverless function is exposed to attackers (e.g., through misconfiguration or brute force), it's highly probable they would exploit the permissions to ac"
+   }
+  }
+ }
+}

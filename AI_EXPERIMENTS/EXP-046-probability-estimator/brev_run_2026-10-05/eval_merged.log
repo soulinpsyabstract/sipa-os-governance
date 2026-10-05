@@ -1,0 +1,18 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights:   1%|          | 2/339 [00:00<00:37,  9.00it/s]Loading weights:   7%|▋         | 23/339 [00:00<00:03, 86.82it/s]Loading weights:  14%|█▎        | 46/339 [00:00<00:02, 137.06it/s]Loading weights:  19%|█▉        | 66/339 [00:00<00:01, 157.81it/s]Loading weights:  27%|██▋       | 90/339 [00:00<00:01, 181.25it/s]Loading weights:  34%|███▎      | 114/339 [00:00<00:01, 196.04it/s]Loading weights:  41%|████      | 138/339 [00:00<00:00, 208.42it/s]Loading weights:  48%|████▊     | 162/339 [00:00<00:00, 216.86it/s]Loading weights:  55%|█████▍    | 186/339 [00:01<00:00, 220.87it/s]Loading weights:  62%|██████▏   | 210/339 [00:01<00:00, 219.25it/s]Loading weights:  69%|██████▉   | 234/339 [00:01<00:00, 219.96it/s]Loading weights:  76%|███████▌  | 258/339 [00:01<00:00, 221.44it/s]Loading weights:  83%|████████▎ | 282/339 [00:01<00:00, 224.38it/s]Loading weights:  90%|█████████ | 306/339 [00:01<00:00, 226.30it/s]Loading weights:  97%|█████████▋| 330/339 [00:01<00:00, 226.17it/s]Loading weights: 100%|██████████| 339/339 [00:01<00:00, 200.10it/s]
+done merged_all
+{
+ "n": 80,
+ "arms": {
+  "merged_all": {
+   "mae_vs_orig": 0.12125000000000001,
+   "mae_vs_shuffled": 0.11062500000000001,
+   "unparsed": 0
+  },
+  "constant_0.70": {
+   "mae_vs_orig": 0.135,
+   "mae_vs_shuffled": 0.129375,
+   "unparsed": 0
+  }
+ }
+}
