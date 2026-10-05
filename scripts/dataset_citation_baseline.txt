@@ -52,3 +52,16 @@ AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl
 # WSJ is a legitimate primary-tier outlet; paywall is permanent by design,
 # not a transient failure -- exception, not a fix-the-link situation.
 AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_incidents_seed_v1.jsonl	OPENAI-2026-rubygems-dsewiki-agent-swarm
+
+# 2026-10-05: internal canon records (VIO / internal review) with no public URL by design.
+# Citation names the private record; no external URL exists. Permanent NO_URL, not a defect.
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_chains_grounded_v1.jsonl	SIPA-2026-claude-brev-teardown-probe-loss
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_chains_grounded_v1.jsonl	SIPA-2026-claude-sudo-password-request
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_chains_grounded_v1.jsonl	SIPA-2026-anthropic-key-leak-via-chat-grep
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_chains_grounded_v1.jsonl	SIPA-2026-deepseek-genspark-keys-printed-in-chat
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_chains_grounded_v1.jsonl	SIPA-2026-claude-key-diagnosis-four-contradictions
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_chains_grounded_v1.jsonl	SIPA-2026-claude-declared-fixed-file-not-found
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_chains_grounded_v1.jsonl	SIPA-2026-chatgpt-fixation-status-true-placeholders
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_chains_grounded_v1.jsonl	SIPA-2026-chatgpt-self-admitted-fabrication
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_chains_grounded_v1.jsonl	SIPA-2026-chatgpt-fabricated-crypto-market-data
+AI_EXPERIMENTS/DATASETS_MISBEHAVIOR_EXTERNAL/misbehavior_chains_grounded_v1.jsonl	SIPA-2026-claude-stale-time-reference-copying
