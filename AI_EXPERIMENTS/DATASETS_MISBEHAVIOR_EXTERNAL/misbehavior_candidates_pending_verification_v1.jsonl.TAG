@@ -1,0 +1,5 @@
+FILE=misbehavior_candidates_pending_verification_v1.jsonl
+SHA256=0245b088e10f7c9a980f5beabf8163e6a211d2f54b750664d84a1ec5de97e7ec
+SIZE=1347
+DEVICE=SERVER
+TS=2026-10-05__13-20-13
